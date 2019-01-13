@@ -223,6 +223,9 @@
                                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0UH-mT-LKM" secondAttribute="trailing" constant="20" symbolic="YES" id="y83-5i-uz6"/>
                                                                     </constraints>
                                                                 </tableViewCellContentView>
+                                                                <connections>
+                                                                    <outlet property="sentence" destination="0UH-mT-LKM" id="fZe-gF-a2h"/>
+                                                                </connections>
                                                             </tableViewCell>
                                                         </prototypes>
                                                         <connections>

@@ -64,18 +64,10 @@ class FillCoreData {
     
     func fillCoreData() {
         
-        //Fill sentence
-        let sentences = getSentece()
-        for sentence in sentences {
-            
-            let dbSentence = DBSentence(context: managedObjectContext!)
-            dbSentence.data = sentence.data
-            self.managedObjectContext!.insert(dbSentence)
-        }
-        appDelegate!.saveContext()
-        
-        //Fill Dictionary
+        //Fill Dictionary and Sentence
         let dictionaries = getDictionary()
+        
+        var addSentence = true
         for dictionary in dictionaries {
             
             let dbDictionary = DBDictionary(context: managedObjectContext!)
@@ -84,11 +76,22 @@ class FillCoreData {
             dbDictionary.level = Int32(dictionary.dificulty)
             dbDictionary.favorite = dictionary.favorite
             
-            //dbDictionary.addToSentence(<#T##value: DBSentence##DBSentence#>)
+            if addSentence == true {
+                let dbSentence1 = DBSentence(context: managedObjectContext!)
+                let dbSentence2 = DBSentence(context: managedObjectContext!)
+                
+                dbSentence1.data = "Ja idem behat"
+                dbSentence2.data = "Beham vela"
+
+                dbDictionary.addToSentence(dbSentence1)
+                dbDictionary.addToSentence(dbSentence2)
+        
+                addSentence = false
+            }
             
             self.managedObjectContext!.insert(dbDictionary)
+            appDelegate!.saveContext()
         }
-        appDelegate!.saveContext()
         
     }
     
@@ -112,15 +115,6 @@ class FillCoreData {
         dictionary.append(DictionaryStruct(name: "Nozik", dificulty: 2, category: 2, favorite: false))
         
         return dictionary;
-    }
-    
-    func getSentece()-> Array<SentenceStruct>{
-        
-        var sentence = Array<SentenceStruct>();
-        
-        sentence.append(SentenceStruct(data: "Ja idem behat"))
-        
-        return sentence
     }
     
 }

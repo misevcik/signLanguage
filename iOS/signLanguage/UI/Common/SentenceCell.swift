@@ -13,6 +13,8 @@ class SentenceCell : UITableViewCell {
 
     static let reuseIdentifier = "SentenceCell"
     
+    @IBOutlet weak var sentence: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

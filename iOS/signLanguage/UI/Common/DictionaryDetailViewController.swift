@@ -22,7 +22,8 @@ class DictionaryDetailViewController : UIViewController {
     
     //MARK - local variables
     var dbDictionary : DBDictionary!
-        
+    var dbSentences : Array<DBSentence>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,7 +49,7 @@ class DictionaryDetailViewController : UIViewController {
 
 extension DictionaryDetailViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return dbDictionary.sentence!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -56,6 +57,9 @@ extension DictionaryDetailViewController: UITableViewDataSource, UITableViewDele
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SentenceCell.reuseIdentifier, for: indexPath) as? SentenceCell else {
             fatalError("Unexpected Index Path")
         }
+        
+        let sentence = dbDictionary.sentence!.allObjects[indexPath.row]
+        cell.sentence.text = (sentence as! DBSentence).data
         
         return cell
     }

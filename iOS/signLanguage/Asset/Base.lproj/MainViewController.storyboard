@@ -67,6 +67,7 @@
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="knowImage" destination="sy2-2e-ZOa" id="yGv-5p-mjR"/>
+                                                    <outlet property="wordLabel" destination="fXd-tb-Oxd" id="RmV-3s-hwg"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -257,6 +258,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="H0t-fE-OfA"/>
                     </view>
+                    <connections>
+                        <outlet property="dictionary" destination="aQm-QA-OxX" id="Ifv-dF-f3g"/>
+                        <outlet property="dictionaryLevel" destination="20I-ms-TYv" id="Cp8-HP-sRK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5UD-Js-dPW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

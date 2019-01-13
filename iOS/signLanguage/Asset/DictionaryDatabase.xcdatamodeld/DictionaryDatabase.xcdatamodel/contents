@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="17G4015" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="DBDictionary" representedClassName="DBDictionary" syncable="YES" codeGenerationType="class">
+        <attribute name="category" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="dictionary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="favorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="level" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="videoFront" optional="YES" attributeType="URI" syncable="YES"/>
+        <attribute name="videoSide" optional="YES" attributeType="URI" syncable="YES"/>
+        <relationship name="sentence" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DBSentence" inverseName="dictionary" inverseEntity="DBSentence" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="dictionary"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="DBSentence" representedClassName="DBSentence" syncable="YES" codeGenerationType="class">
+        <attribute name="data" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="dictionary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBDictionary" inverseName="sentence" inverseEntity="DBDictionary" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="DBDictionary" positionX="-305.83984375" positionY="-66.11328125" width="128" height="150"/>
+        <element name="DBSentence" positionX="-60.91796875" positionY="139.33984375" width="128" height="75"/>
+    </elements>
+</model>

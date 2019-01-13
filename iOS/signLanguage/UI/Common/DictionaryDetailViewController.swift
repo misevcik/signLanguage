@@ -9,15 +9,25 @@
 import Foundation
 import UIKit
 import AVKit
+import CoreData
 
 class DictionaryDetailViewController : UIViewController {
-        
+    
+    //MARK Outlets
     @IBAction func actionPlay(_ sender: Any) {
         playVideo()
     }
+    @IBOutlet weak var dictionary: UILabel!
+    @IBOutlet weak var dictionaryLevel: UILabel!
     
+    //MARK - local variables
+    var dbDictionary : DBDictionary!
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        dictionary.text = dbDictionary.dictionary
+        dictionaryLevel.text = String(describing: dbDictionary.level)
     }
     
     fileprivate func playVideo() {

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5408735221D55B5900061016 /* Dictionary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5408735021D55B5900061016 /* Dictionary.xcdatamodeld */; };
 		5416D03D21D62134009E8D02 /* DictionaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5416D03C21D62134009E8D02 /* DictionaryCell.swift */; };
 		5419295221D7ABE300A9277C /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5419295121D7ABE300A9277C /* CategoryViewController.swift */; };
 		5419295421D7AF7700A9277C /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5419295321D7AF7700A9277C /* CategoryCell.swift */; };
@@ -16,6 +15,8 @@
 		542912B821E295D700BF1FDD /* CategoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542912B721E295D700BF1FDD /* CategoryDetailViewController.swift */; };
 		543F199221DEA2AB00F08764 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543F199121DEA2AB00F08764 /* FavoritesViewController.swift */; };
 		543F199521DEA30F00F08764 /* DictionaryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543F199421DEA30F00F08764 /* DictionaryDetailViewController.swift */; };
+		5485807A21E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5485807821E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld */; };
+		549D9BED21E6727A00E930AD /* FillCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549D9BEC21E6727A00E930AD /* FillCoreData.swift */; };
 		54AAD6CA21DE8DCD00D9F303 /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AAD6C921DE8DCD00D9F303 /* DictionaryViewController.swift */; };
 		54B12C6721D11FBC00A9E2C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B12C6621D11FBC00A9E2C1 /* AppDelegate.swift */; };
 		54B12C6C21D11FBC00A9E2C1 /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54B12C6A21D11FBC00A9E2C1 /* MainViewController.storyboard */; };
@@ -24,7 +25,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5408735121D55B5900061016 /* Dictionary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Dictionary.xcdatamodel; sourceTree = "<group>"; };
 		5416D03C21D62134009E8D02 /* DictionaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryCell.swift; sourceTree = "<group>"; };
 		5419295121D7ABE300A9277C /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		5419295321D7AF7700A9277C /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
@@ -33,6 +33,8 @@
 		542912B721E295D700BF1FDD /* CategoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailViewController.swift; sourceTree = "<group>"; };
 		543F199121DEA2AB00F08764 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		543F199421DEA30F00F08764 /* DictionaryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryDetailViewController.swift; sourceTree = "<group>"; };
+		5485807921E7C6FA00440282 /* DictionaryDatabase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DictionaryDatabase.xcdatamodel; sourceTree = "<group>"; };
+		549D9BEC21E6727A00E930AD /* FillCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillCoreData.swift; sourceTree = "<group>"; };
 		54AAD6C921DE8DCD00D9F303 /* DictionaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewController.swift; sourceTree = "<group>"; };
 		54B12C6321D11FBC00A9E2C1 /* signLanguage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = signLanguage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B12C6621D11FBC00A9E2C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +91,14 @@
 			path = Favorites;
 			sourceTree = "<group>";
 		};
+		549D9BEB21E6725B00E930AD /* AppLogic */ = {
+			isa = PBXGroup;
+			children = (
+				549D9BEC21E6727A00E930AD /* FillCoreData.swift */,
+			);
+			path = AppLogic;
+			sourceTree = "<group>";
+		};
 		54B12C5A21D11FBC00A9E2C1 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +119,7 @@
 		54B12C6521D11FBC00A9E2C1 /* signLanguage */ = {
 			isa = PBXGroup;
 			children = (
+				549D9BEB21E6725B00E930AD /* AppLogic */,
 				54B12C7921D1200A00A9E2C1 /* UI */,
 				54B12C7821D11FE100A9E2C1 /* Asset */,
 				54B12C6621D11FBC00A9E2C1 /* AppDelegate.swift */,
@@ -123,7 +134,7 @@
 				54B12C6D21D11FBD00A9E2C1 /* Assets.xcassets */,
 				54B12C6F21D11FBD00A9E2C1 /* LaunchScreen.storyboard */,
 				54B12C7221D11FBD00A9E2C1 /* Info.plist */,
-				5408735021D55B5900061016 /* Dictionary.xcdatamodeld */,
+				5485807821E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld */,
 			);
 			path = Asset;
 			sourceTree = "<group>";
@@ -211,16 +222,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				549D9BED21E6727A00E930AD /* FillCoreData.swift in Sources */,
 				54AAD6CA21DE8DCD00D9F303 /* DictionaryViewController.swift in Sources */,
 				5416D03D21D62134009E8D02 /* DictionaryCell.swift in Sources */,
 				543F199221DEA2AB00F08764 /* FavoritesViewController.swift in Sources */,
 				54B12C6721D11FBC00A9E2C1 /* AppDelegate.swift in Sources */,
-				5408735221D55B5900061016 /* Dictionary.xcdatamodeld in Sources */,
 				542912B421E28CFC00BF1FDD /* SentenceCell.swift in Sources */,
 				5419295421D7AF7700A9277C /* CategoryCell.swift in Sources */,
 				5419295221D7ABE300A9277C /* CategoryViewController.swift in Sources */,
 				543F199521DEA30F00F08764 /* DictionaryDetailViewController.swift in Sources */,
 				542912B821E295D700BF1FDD /* CategoryDetailViewController.swift in Sources */,
+				5485807A21E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,13 +435,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		5408735021D55B5900061016 /* Dictionary.xcdatamodeld */ = {
+		5485807821E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				5408735121D55B5900061016 /* Dictionary.xcdatamodel */,
+				5485807921E7C6FA00440282 /* DictionaryDatabase.xcdatamodel */,
 			);
-			currentVersion = 5408735121D55B5900061016 /* Dictionary.xcdatamodel */;
-			path = Dictionary.xcdatamodeld;
+			currentVersion = 5485807921E7C6FA00440282 /* DictionaryDatabase.xcdatamodel */;
+			path = DictionaryDatabase.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

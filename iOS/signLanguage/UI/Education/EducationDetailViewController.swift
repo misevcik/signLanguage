@@ -8,18 +8,16 @@
 
 import UIKit
 
-class CategoryDetailViewController : UIViewController {
-    
+class EducationDetailViewController : UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
 }
 
-extension CategoryDetailViewController: UITableViewDataSource, UITableViewDelegate {
+extension EducationDetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return 2
     }
     
@@ -28,7 +26,6 @@ extension CategoryDetailViewController: UITableViewDataSource, UITableViewDelega
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DictionaryCell.reuseIdentifier, for: indexPath) as? DictionaryCell else {
             fatalError("Unexpected Index Path")
         }
-        
         return cell
     }
     

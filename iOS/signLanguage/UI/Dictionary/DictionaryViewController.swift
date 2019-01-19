@@ -14,7 +14,7 @@ class DictionaryViewController : UIViewController {
     
     //MARK Outlets
     @IBOutlet weak var dictionaryTable: UITableView!
-    
+        
     //MARK Persistence
     fileprivate let persistentContainer = NSPersistentContainer(name: "DictionaryDatabase")
     fileprivate lazy var fetchedResultsController: NSFetchedResultsController<DBDictionary> = {

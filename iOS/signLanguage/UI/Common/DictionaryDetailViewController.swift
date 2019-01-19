@@ -17,6 +17,12 @@ class DictionaryDetailViewController : UIViewController {
     @IBAction func actionPlay(_ sender: Any) {
         playVideo()
     }
+    
+    @IBAction func actionBack(_ sender: Any) {
+        _ = navigationController?.popViewController(animated: true)
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
     @IBOutlet weak var dictionary: UILabel!
     @IBOutlet weak var dictionaryLevel: UILabel!
     
@@ -26,7 +32,7 @@ class DictionaryDetailViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         dictionary.text = dbDictionary.dictionary
         dictionaryLevel.text = String(describing: dbDictionary.level)
     }

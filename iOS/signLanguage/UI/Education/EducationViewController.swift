@@ -11,12 +11,12 @@ import UIKit
 
 //simply guide https://www.youtube.com/watch?v=NSryf0YJHHk
 
-class CategoryViewController : UIViewController {
+class EducationViewController : UIViewController {
     
     fileprivate var items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
 }
 
-extension CategoryViewController : UICollectionViewDataSource, UICollectionViewDelegate {
+extension EducationViewController : UICollectionViewDataSource, UICollectionViewDelegate {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -38,13 +38,13 @@ extension CategoryViewController : UICollectionViewDataSource, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("You selected cell #\(indexPath.item)!")
         
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CategoryDetailViewController") as! CategoryDetailViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "EducationDetailViewController") as! EducationDetailViewController
         self.show(vc, sender: true)
         
     }
 }
 
-extension CategoryViewController : UICollectionViewDelegateFlowLayout {
+extension EducationViewController : UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         

@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		5416D03D21D62134009E8D02 /* DictionaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5416D03C21D62134009E8D02 /* DictionaryCell.swift */; };
-		5419295221D7ABE300A9277C /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5419295121D7ABE300A9277C /* CategoryViewController.swift */; };
+		5419295221D7ABE300A9277C /* EducationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5419295121D7ABE300A9277C /* EducationViewController.swift */; };
 		5419295421D7AF7700A9277C /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5419295321D7AF7700A9277C /* CategoryCell.swift */; };
 		542912B221E2720B00BF1FDD /* SampleVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 542912B121E2720A00BF1FDD /* SampleVideo.mp4 */; };
 		542912B421E28CFC00BF1FDD /* SentenceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542912B321E28CFC00BF1FDD /* SentenceCell.swift */; };
-		542912B821E295D700BF1FDD /* CategoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542912B721E295D700BF1FDD /* CategoryDetailViewController.swift */; };
+		542912B821E295D700BF1FDD /* EducationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542912B721E295D700BF1FDD /* EducationDetailViewController.swift */; };
 		543F199221DEA2AB00F08764 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543F199121DEA2AB00F08764 /* FavoritesViewController.swift */; };
 		543F199521DEA30F00F08764 /* DictionaryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543F199421DEA30F00F08764 /* DictionaryDetailViewController.swift */; };
 		5485807A21E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5485807821E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld */; };
@@ -26,11 +26,11 @@
 
 /* Begin PBXFileReference section */
 		5416D03C21D62134009E8D02 /* DictionaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryCell.swift; sourceTree = "<group>"; };
-		5419295121D7ABE300A9277C /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		5419295121D7ABE300A9277C /* EducationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationViewController.swift; sourceTree = "<group>"; };
 		5419295321D7AF7700A9277C /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		542912B121E2720A00BF1FDD /* SampleVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = SampleVideo.mp4; sourceTree = "<group>"; };
 		542912B321E28CFC00BF1FDD /* SentenceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceCell.swift; sourceTree = "<group>"; };
-		542912B721E295D700BF1FDD /* CategoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailViewController.swift; sourceTree = "<group>"; };
+		542912B721E295D700BF1FDD /* EducationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationDetailViewController.swift; sourceTree = "<group>"; };
 		543F199121DEA2AB00F08764 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		543F199421DEA30F00F08764 /* DictionaryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryDetailViewController.swift; sourceTree = "<group>"; };
 		5485807921E7C6FA00440282 /* DictionaryDatabase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DictionaryDatabase.xcdatamodel; sourceTree = "<group>"; };
@@ -63,14 +63,14 @@
 			path = Dictionary;
 			sourceTree = "<group>";
 		};
-		5419295021D7AB9F00A9277C /* Category */ = {
+		5419295021D7AB9F00A9277C /* Education */ = {
 			isa = PBXGroup;
 			children = (
-				5419295121D7ABE300A9277C /* CategoryViewController.swift */,
+				5419295121D7ABE300A9277C /* EducationViewController.swift */,
 				5419295321D7AF7700A9277C /* CategoryCell.swift */,
-				542912B721E295D700BF1FDD /* CategoryDetailViewController.swift */,
+				542912B721E295D700BF1FDD /* EducationDetailViewController.swift */,
 			);
-			path = Category;
+			path = Education;
 			sourceTree = "<group>";
 		};
 		542912B621E293B300BF1FDD /* Common */ = {
@@ -144,7 +144,7 @@
 			children = (
 				542912B621E293B300BF1FDD /* Common */,
 				543F199021DEA25300F08764 /* Favorites */,
-				5419295021D7AB9F00A9277C /* Category */,
+				5419295021D7AB9F00A9277C /* Education */,
 				5416D03E21D62167009E8D02 /* Dictionary */,
 			);
 			path = UI;
@@ -229,9 +229,9 @@
 				54B12C6721D11FBC00A9E2C1 /* AppDelegate.swift in Sources */,
 				542912B421E28CFC00BF1FDD /* SentenceCell.swift in Sources */,
 				5419295421D7AF7700A9277C /* CategoryCell.swift in Sources */,
-				5419295221D7ABE300A9277C /* CategoryViewController.swift in Sources */,
+				5419295221D7ABE300A9277C /* EducationViewController.swift in Sources */,
 				543F199521DEA30F00F08764 /* DictionaryDetailViewController.swift in Sources */,
-				542912B821E295D700BF1FDD /* CategoryDetailViewController.swift in Sources */,
+				542912B821E295D700BF1FDD /* EducationDetailViewController.swift in Sources */,
 				5485807A21E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

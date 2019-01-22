@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		5416D03D21D62134009E8D02 /* DictionaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5416D03C21D62134009E8D02 /* DictionaryCell.swift */; };
 		5419295221D7ABE300A9277C /* EducationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5419295121D7ABE300A9277C /* EducationViewController.swift */; };
-		5419295421D7AF7700A9277C /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5419295321D7AF7700A9277C /* CategoryCell.swift */; };
+		5419295421D7AF7700A9277C /* EducationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5419295321D7AF7700A9277C /* EducationCell.swift */; };
 		542912B221E2720B00BF1FDD /* SampleVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 542912B121E2720A00BF1FDD /* SampleVideo.mp4 */; };
 		542912B421E28CFC00BF1FDD /* SentenceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542912B321E28CFC00BF1FDD /* SentenceCell.swift */; };
 		542912B821E295D700BF1FDD /* EducationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542912B721E295D700BF1FDD /* EducationDetailViewController.swift */; };
 		543F199221DEA2AB00F08764 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543F199121DEA2AB00F08764 /* FavoritesViewController.swift */; };
 		543F199521DEA30F00F08764 /* DictionaryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543F199421DEA30F00F08764 /* DictionaryDetailViewController.swift */; };
+		545CA46221F78B220034E23C /* UPCarouselFlowLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54EA763021F670FB00A5C50C /* UPCarouselFlowLayout.framework */; };
+		545CA46321F78B220034E23C /* UPCarouselFlowLayout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 54EA763021F670FB00A5C50C /* UPCarouselFlowLayout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5485807A21E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5485807821E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld */; };
 		549D9BED21E6727A00E930AD /* FillCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549D9BEC21E6727A00E930AD /* FillCoreData.swift */; };
 		54AAD6CA21DE8DCD00D9F303 /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AAD6C921DE8DCD00D9F303 /* DictionaryViewController.swift */; };
@@ -22,12 +24,28 @@
 		54B12C6C21D11FBC00A9E2C1 /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54B12C6A21D11FBC00A9E2C1 /* MainViewController.storyboard */; };
 		54B12C6E21D11FBD00A9E2C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54B12C6D21D11FBD00A9E2C1 /* Assets.xcassets */; };
 		54B12C7121D11FBD00A9E2C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54B12C6F21D11FBD00A9E2C1 /* LaunchScreen.storyboard */; };
+		54EA763521F677BD00A5C50C /* EducationDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EA763421F677BD00A5C50C /* EducationDetailCell.swift */; };
+		54EA763A21F67A8000A5C50C /* UPCarouselFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EA763921F67A8000A5C50C /* UPCarouselFlowLayout.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		545CA46421F78B220034E23C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				545CA46321F78B220034E23C /* UPCarouselFlowLayout.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5416D03C21D62134009E8D02 /* DictionaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryCell.swift; sourceTree = "<group>"; };
 		5419295121D7ABE300A9277C /* EducationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationViewController.swift; sourceTree = "<group>"; };
-		5419295321D7AF7700A9277C /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		5419295321D7AF7700A9277C /* EducationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationCell.swift; sourceTree = "<group>"; };
 		542912B121E2720A00BF1FDD /* SampleVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = SampleVideo.mp4; sourceTree = "<group>"; };
 		542912B321E28CFC00BF1FDD /* SentenceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceCell.swift; sourceTree = "<group>"; };
 		542912B721E295D700BF1FDD /* EducationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationDetailViewController.swift; sourceTree = "<group>"; };
@@ -42,6 +60,9 @@
 		54B12C6D21D11FBD00A9E2C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		54B12C7021D11FBD00A9E2C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		54B12C7221D11FBD00A9E2C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		54EA763021F670FB00A5C50C /* UPCarouselFlowLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UPCarouselFlowLayout.framework; sourceTree = "<group>"; };
+		54EA763421F677BD00A5C50C /* EducationDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EducationDetailCell.swift; sourceTree = "<group>"; };
+		54EA763921F67A8000A5C50C /* UPCarouselFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UPCarouselFlowLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				545CA46221F78B220034E23C /* UPCarouselFlowLayout.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,8 +88,10 @@
 		5419295021D7AB9F00A9277C /* Education */ = {
 			isa = PBXGroup;
 			children = (
+				545CA46521F78DB30034E23C /* FlowLayout */,
+				54EA763421F677BD00A5C50C /* EducationDetailCell.swift */,
 				5419295121D7ABE300A9277C /* EducationViewController.swift */,
-				5419295321D7AF7700A9277C /* CategoryCell.swift */,
+				5419295321D7AF7700A9277C /* EducationCell.swift */,
 				542912B721E295D700BF1FDD /* EducationDetailViewController.swift */,
 			);
 			path = Education;
@@ -89,6 +113,14 @@
 				543F199121DEA2AB00F08764 /* FavoritesViewController.swift */,
 			);
 			path = Favorites;
+			sourceTree = "<group>";
+		};
+		545CA46521F78DB30034E23C /* FlowLayout */ = {
+			isa = PBXGroup;
+			children = (
+				54EA763921F67A8000A5C50C /* UPCarouselFlowLayout.swift */,
+			);
+			path = FlowLayout;
 			sourceTree = "<group>";
 		};
 		549D9BEB21E6725B00E930AD /* AppLogic */ = {
@@ -119,6 +151,7 @@
 		54B12C6521D11FBC00A9E2C1 /* signLanguage */ = {
 			isa = PBXGroup;
 			children = (
+				54EA762F21F670C600A5C50C /* Library */,
 				549D9BEB21E6725B00E930AD /* AppLogic */,
 				54B12C7921D1200A00A9E2C1 /* UI */,
 				54B12C7821D11FE100A9E2C1 /* Asset */,
@@ -150,6 +183,14 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		54EA762F21F670C600A5C50C /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				54EA763021F670FB00A5C50C /* UPCarouselFlowLayout.framework */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -160,6 +201,7 @@
 				54B12C5F21D11FBC00A9E2C1 /* Sources */,
 				54B12C6021D11FBC00A9E2C1 /* Frameworks */,
 				54B12C6121D11FBC00A9E2C1 /* Resources */,
+				545CA46421F78B220034E23C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -227,12 +269,14 @@
 				5416D03D21D62134009E8D02 /* DictionaryCell.swift in Sources */,
 				543F199221DEA2AB00F08764 /* FavoritesViewController.swift in Sources */,
 				54B12C6721D11FBC00A9E2C1 /* AppDelegate.swift in Sources */,
+				54EA763A21F67A8000A5C50C /* UPCarouselFlowLayout.swift in Sources */,
 				542912B421E28CFC00BF1FDD /* SentenceCell.swift in Sources */,
-				5419295421D7AF7700A9277C /* CategoryCell.swift in Sources */,
+				5419295421D7AF7700A9277C /* EducationCell.swift in Sources */,
 				5419295221D7ABE300A9277C /* EducationViewController.swift in Sources */,
 				543F199521DEA30F00F08764 /* DictionaryDetailViewController.swift in Sources */,
 				542912B821E295D700BF1FDD /* EducationDetailViewController.swift in Sources */,
 				5485807A21E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld in Sources */,
+				54EA763521F677BD00A5C50C /* EducationDetailCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +425,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L67J32384J;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/signLanguage/Library",
+				);
 				INFOPLIST_FILE = signLanguage/Asset/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -399,6 +447,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L67J32384J;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/signLanguage/Library",
+				);
 				INFOPLIST_FILE = signLanguage/Asset/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

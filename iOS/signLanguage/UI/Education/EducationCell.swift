@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-class CategoryCell : UICollectionViewCell {
+class EducationCell : UICollectionViewCell {
     
-    static let reuseIdentifier = "CategoryCell"
+    static let reuseIdentifier = "EducationCell"
     
-    @IBOutlet weak var groupNameLabel: UILabel!
+    @IBOutlet weak var educationLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

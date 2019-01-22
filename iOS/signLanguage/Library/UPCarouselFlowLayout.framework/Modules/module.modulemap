@@ -1,0 +1,11 @@
+framework module UPCarouselFlowLayout {
+  umbrella header "UPCarouselFlowLayout.h"
+
+  export *
+  module * { export * }
+}
+
+module UPCarouselFlowLayout.Swift {
+    header "UPCarouselFlowLayout-Swift.h"
+    requires objc
+}

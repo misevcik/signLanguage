@@ -27,9 +27,9 @@ extension EducationViewController : UICollectionViewDataSource, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.reuseIdentifier, for: indexPath as IndexPath) as! CategoryCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EducationCell.reuseIdentifier, for: indexPath as IndexPath) as! EducationCell
         
-        cell.groupNameLabel.text = self.items[indexPath.item]
+        cell.educationLabel.text = self.items[indexPath.item]
         cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
         
         return cell

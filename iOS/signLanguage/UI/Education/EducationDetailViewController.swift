@@ -8,6 +8,7 @@
 
 import UIKit
 import UPCarouselFlowLayout
+import CoreData
 
 struct Character {
     let imageName: String!
@@ -22,8 +23,16 @@ class EducationDetailViewController : UIViewController{
     @IBOutlet weak var moveForward: UIButton!
     @IBOutlet weak var moveBackward: UIButton!
     @IBOutlet weak var pager: UILabel!
+    @IBOutlet weak var lessonName: UILabel!
+    @IBOutlet weak var selectedDictionary: UILabel!
+    
     
 
+    @IBAction func backAction(_ sender: Any) {
+        _ = navigationController?.popViewController(animated: true)
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
     @IBAction func nextClick(_ sender: Any) {
 
         self.currentPage = self.currentPage + 1
@@ -36,23 +45,24 @@ class EducationDetailViewController : UIViewController{
     }
     
     //Variables
-    fileprivate var items = [Character]()
+    fileprivate var dbLesson : DBLesson!
+    fileprivate var dbDictionaryItems = [DBDictionary]()
+    
     fileprivate var currentPage: Int = 0 {
         didSet {
-            let character = self.items[self.currentPage]
-            updatePager()
-            
-            //self.infoLabel.text = character.name.uppercased()
-            //self.detailLabel.text = character.movie.uppercased()
+            updatePageView()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setupLayout()
-        self.items = self.createItems()
+        loadLessonData()
         
+        self.setupLayout()
+        
+        // Set internal variables
+        self.lessonName.text = dbLesson.detail
         self.currentPage = 0
     }
     
@@ -65,11 +75,33 @@ class EducationDetailViewController : UIViewController{
 
 extension EducationDetailViewController {
     
-    fileprivate func updatePager() {
+    fileprivate func loadLessonData() {
+        
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        let context = appDelegate!.persistentContainer.viewContext
+        
+        do {
+            let fetchRequest: NSFetchRequest<DBLesson> = DBLesson.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "id == %d", 0)
+           
+            let records  = try context.fetch(fetchRequest)
+            
+            dbLesson = records.first!
+            for item in dbLesson.relDictionary! {
+                dbDictionaryItems.append(item as! DBDictionary)
+            }
+        }
+        catch {
+            print ("fetch task failed", error)
+        }
+    }
     
+    fileprivate func updatePageView() {
+    
+        selectedDictionary.text = self.dbDictionaryItems[self.currentPage].dictionary
+        
         let currentPage = String(self.currentPage + 1)
-        let sum = String(self.items.count)
-    
+        let sum = String(self.dbDictionaryItems.count)
         pager.text = currentPage + "/" + sum
     }
     
@@ -83,20 +115,6 @@ extension EducationDetailViewController {
     fileprivate var orientation: UIDeviceOrientation {
         return UIDevice.current.orientation
     }
-    
-    fileprivate func createItems() -> [Character] {
-        let characters = [
-            Character(imageName: "wall-e", name: "Wall-E", movie: "Wall-E"),
-            Character(imageName: "nemo", name: "Nemo", movie: "Finding Nemo"),
-            Character(imageName: "ratatouille", name: "Remy", movie: "Ratatouille"),
-            Character(imageName: "buzz", name: "Buzz Lightyear", movie: "Toy Story"),
-            Character(imageName: "monsters", name: "Mike & Sullivan", movie: "Monsters Inc."),
-            Character(imageName: "brave", name: "Merida", movie: "Brave")
-        ]
-        return characters
-    }
-    
-    
 }
 
 extension EducationDetailViewController : UICollectionViewDataSource, UICollectionViewDelegate {
@@ -106,27 +124,41 @@ extension EducationDetailViewController : UICollectionViewDataSource, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        return dbDictionaryItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EducationDetailCell.identifier, for: indexPath) as! EducationDetailCell
-        let character = items[(indexPath as NSIndexPath).row]
-        cell.image.image = UIImage(named: character.imageName)
+        let dbDictionary = dbDictionaryItems[(indexPath as NSIndexPath).row]
+        cell.image.image = UIImage(named: dbDictionary.image!)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let character = items[(indexPath as NSIndexPath).row]
-        let alert = UIAlertController(title: character.name, message: nil, preferredStyle: .alert)
+        let dbDictionary = dbDictionaryItems[(indexPath as NSIndexPath).row]
+        let alert = UIAlertController(title: dbDictionary.dictionary, message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-
+        scrollingFinished(scrollView: scrollView)
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if decelerate {
+            return
+        }
+        else {
+            scrollingFinished(scrollView: scrollView)
+        }
+    }
+    
+    func scrollingFinished(scrollView: UIScrollView) {
+        
         let pageSide = self.pageSize.width
         let offset = scrollView.contentOffset.x
         currentPage = Int(floor((offset - pageSide / 2) / pageSide) + 1)

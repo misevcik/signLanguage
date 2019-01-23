@@ -55,7 +55,7 @@ class DictionaryDetailViewController : UIViewController {
 
 extension DictionaryDetailViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dbDictionary.sentence!.count
+        return dbDictionary.relSentence!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -64,8 +64,8 @@ extension DictionaryDetailViewController: UITableViewDataSource, UITableViewDele
             fatalError("Unexpected Index Path")
         }
         
-        let sentence = dbDictionary.sentence!.allObjects[indexPath.row]
-        cell.sentence.text = (sentence as! DBSentence).data
+        let sentence = dbDictionary.relSentence!.allObjects[indexPath.row]
+        cell.sentence.text = (sentence as! DBSentence).detail
         
         return cell
     }

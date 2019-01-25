@@ -44,6 +44,11 @@ class EducationDetailViewController : UIViewController{
         self.collectionView.scrollToItem(at: IndexPath(item: self.currentPage, section: 0), at: .centeredHorizontally, animated: true)
     }
     
+    //Public functoin
+    func setLesson(_ lesson : DBLesson) {
+        dbLesson = lesson
+    }
+    
     //Variables
     fileprivate var dbLesson : DBLesson!
     fileprivate var dbDictionaryItems = [DBDictionary]()
@@ -77,22 +82,8 @@ extension EducationDetailViewController {
     
     fileprivate func loadLessonData() {
         
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        let context = appDelegate!.persistentContainer.viewContext
-        
-        do {
-            let fetchRequest: NSFetchRequest<DBLesson> = DBLesson.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "id == %d", 0)
-           
-            let records  = try context.fetch(fetchRequest)
-            
-            dbLesson = records.first!
-            for item in dbLesson.relDictionary! {
-                dbDictionaryItems.append(item as! DBDictionary)
-            }
-        }
-        catch {
-            print ("fetch task failed", error)
+        for item in dbLesson.relDictionary! {
+            dbDictionaryItems.append(item as! DBDictionary)
         }
     }
     

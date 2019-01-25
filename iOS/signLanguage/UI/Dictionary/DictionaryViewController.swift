@@ -16,6 +16,7 @@ class DictionaryViewController : UIViewController {
     @IBOutlet weak var dictionaryTable: UITableView!
         
     //MARK Persistence
+    //TODO - replace with persistence conatiner in AppDelegate
     fileprivate let persistentContainer = NSPersistentContainer(name: "DictionaryDatabase")
     fileprivate lazy var fetchedResultsController: NSFetchedResultsController<DBDictionary> = {
 
@@ -30,6 +31,7 @@ class DictionaryViewController : UIViewController {
         return fetchedResultsController
     }()
 
+    //TODO - replace with persistence conatiner in AppDelegate
     fileprivate func loadPersistenceContainer() {
 
         persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in

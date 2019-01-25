@@ -13,7 +13,8 @@ class EducationCell : UICollectionViewCell {
     
     static let reuseIdentifier = "EducationCell"
     
-    @IBOutlet weak var educationLabel: UILabel!
+    @IBOutlet weak var coverImage: UIImageView!
+    @IBOutlet weak var coverLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

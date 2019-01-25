@@ -6,21 +6,61 @@
 //  Copyright © 2018 Zdeno Bacik. All rights reserved.
 //
 
-import Foundation
 import UIKit
+import CoreData
+import os.log
 
 //simply guide https://www.youtube.com/watch?v=NSryf0YJHHk
+//simply guid https://www.youtube.com/watch?v=s9v0YkRwYvI - implement batch insertion
 
 class EducationViewController : UIViewController {
     
-    fileprivate var items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
+    //TODO - replace with persistence conatiner in AppDelegate
+    fileprivate let persistentContainer = NSPersistentContainer(name: "DictionaryDatabase")
+    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<DBLesson> = {
+        
+        let fetchRequest: NSFetchRequest<DBLesson> = DBLesson.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
+        
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        return fetchedResultsController
+    }()
+    
+    //TODO - replace with persistence conatiner in AppDelegate
+    fileprivate func loadPersistenceContainer() {
+        
+        persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
+            if error != nil {
+                os_log("Unable to Load Persistent Store", log: Log.general, type: .error)
+            } else {
+                
+                do {
+                    try self.fetchedResultsController.performFetch()
+                } catch {
+                    os_log("Unable to Perform Fetch Request", log: Log.general, type: .error)
+                }
+            }
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        loadPersistenceContainer()
+    }
+
+    
 }
 
 extension EducationViewController : UICollectionViewDataSource, UICollectionViewDelegate {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        if let count = fetchedResultsController.sections?[section].numberOfObjects {
+            return count
+        }
+        return 0
     }
     
 
@@ -28,17 +68,27 @@ extension EducationViewController : UICollectionViewDataSource, UICollectionView
         
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EducationCell.reuseIdentifier, for: indexPath as IndexPath) as! EducationCell
-        
-        cell.educationLabel.text = self.items[indexPath.item]
-        cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
+
+        let lesson = fetchedResultsController.object(at: indexPath)
+        if lesson.lock == false {
+            cell.coverLabel.text = lesson.detail
+            cell.coverImage.image = UIImage(named: lesson.image!)
+        }
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("You selected cell #\(indexPath.item)!")
+        
+        let lesson = fetchedResultsController.object(at: indexPath)
+        
+        if lesson.lock == true {
+            return
+        }
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "EducationDetailViewController") as! EducationDetailViewController
+        vc.setLesson(lesson)
+        
         self.show(vc, sender: true)
         
     }

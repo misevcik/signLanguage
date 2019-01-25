@@ -85,7 +85,9 @@ class FillCoreData {
  
         let dbLesson0 = DBLesson(context: context!)
         dbLesson0.id = 0
-        dbLesson0.detail = "Hlada sa nemo"
+        dbLesson0.lock = false
+        dbLesson0.detail = "Nemo"
+        dbLesson0.image = "nemo-top"
         fillLesson(0, dbLesson0)
         self.context!.insert(dbLesson0)
         
@@ -93,9 +95,19 @@ class FillCoreData {
         
         let dbLesson1 = DBLesson(context: context!)
         dbLesson1.id = 1
+        dbLesson1.lock = true
         dbLesson1.detail = "Predmety"
         fillLesson(1, dbLesson1)
         self.context!.insert(dbLesson1)
+        
+        appDelegate!.saveContext()
+        
+        let dbLesson2 = DBLesson(context: context!)
+        dbLesson2.id = 2
+        dbLesson2.lock = true
+        dbLesson2.detail = "Kuchyna"
+        fillLesson(2, dbLesson2)
+        self.context!.insert(dbLesson2)
         
         appDelegate!.saveContext()
     }

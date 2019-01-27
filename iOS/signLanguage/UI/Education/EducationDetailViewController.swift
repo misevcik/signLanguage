@@ -10,14 +10,11 @@ import UIKit
 import UPCarouselFlowLayout
 import CoreData
 
-struct Character {
-    let imageName: String!
-    let name: String!
-    let movie: String!
-}
-
 class EducationDetailViewController : UIViewController{
 
+    //Callback
+    var unlockNextLessonCallback: ((_ lesson : DBLesson)->())?
+    
     //IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var moveForward: UIButton!
@@ -27,7 +24,10 @@ class EducationDetailViewController : UIViewController{
     @IBOutlet weak var selectedDictionary: UILabel!
     
     
-
+    @IBAction func quizAction(_ sender: Any) {
+        unlockNextLessonCallback!(dbLesson)
+    }
+    
     @IBAction func backAction(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)
         self.navigationController?.isNavigationBarHidden = true

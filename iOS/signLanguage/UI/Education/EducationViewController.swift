@@ -15,6 +15,12 @@ import os.log
 
 class EducationViewController : UIViewController {
     
+    //IBOutlets
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    //Variables
+    fileprivate var blockOperations: [BlockOperation] = []
+    
     //TODO - replace with persistence conatiner in AppDelegate
     fileprivate let persistentContainer = NSPersistentContainer(name: "DictionaryDatabase")
     fileprivate lazy var fetchedResultsController: NSFetchedResultsController<DBLesson> = {
@@ -23,6 +29,8 @@ class EducationViewController : UIViewController {
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        fetchedResultsController.delegate = self
         
         return fetchedResultsController
     }()
@@ -49,7 +57,79 @@ class EducationViewController : UIViewController {
         
         loadPersistenceContainer()
     }
+    
+    fileprivate func unlockNextLesson(_ lesson : DBLesson) {
+        
+        let  indexPath = fetchedResultsController.indexPath(forObject: lesson)
+        let nextIndexPath = IndexPath(row: indexPath!.row + 1, section: indexPath!.section)
+        //TODO check index out-of-range
+        let nextLesson = fetchedResultsController.object(at: nextIndexPath)
+        
+        nextLesson.lock = false
+        
+        do {
+            try persistentContainer.viewContext.save()
+            return
+        } catch {
+            os_log("Unable to save changes", log: Log.general, type: .error)
+            persistentContainer.viewContext.reset()
+            return
+        }
+    }
+    
+    deinit {
+        for operation: BlockOperation in blockOperations {
+            operation.cancel()
+        }
+        blockOperations.removeAll(keepingCapacity: false)
+    }
+}
 
+extension EducationViewController: NSFetchedResultsControllerDelegate {
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        
+        DispatchQueue.main.async {
+            self.collectionView!.performBatchUpdates({ () -> Void in
+                for operation: BlockOperation in self.blockOperations {
+                    operation.start()
+                }
+            }, completion: { (finished) -> Void in
+                self.blockOperations.removeAll(keepingCapacity: false)
+            })
+        }
+    }
+        
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        if type == NSFetchedResultsChangeType.update {
+            blockOperations.append(
+                BlockOperation(block: { [weak self] in
+                    if let this = self {
+                        DispatchQueue.main.async {
+                            this.collectionView!.reloadItems(at: [indexPath!])
+                        }
+                    }
+                })
+            )
+        }
+    }
+    
+//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+//
+//        if type == NSFetchedResultsChangeType.update {
+//            blockOperations.append(
+//                BlockOperation(block: { [weak self] in
+//                    if let this = self {
+//                        DispatchQueue.main.async {
+//                            this.collectionView!.reloadSections(NSIndexSet(index: sectionIndex) as IndexSet)
+//                        }
+//                    }
+//                })
+//            )
+//        }
+//
+//    }
     
 }
 
@@ -88,6 +168,7 @@ extension EducationViewController : UICollectionViewDataSource, UICollectionView
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "EducationDetailViewController") as! EducationDetailViewController
         vc.setLesson(lesson)
+        vc.unlockNextLessonCallback = unlockNextLesson
         
         self.show(vc, sender: true)
         

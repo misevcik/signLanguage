@@ -97,6 +97,7 @@ class FillCoreData {
         dbLesson1.id = 1
         dbLesson1.lock = true
         dbLesson1.detail = "Predmety"
+        dbLesson1.image = "predmety-top"
         fillLesson(1, dbLesson1)
         self.context!.insert(dbLesson1)
         
@@ -106,6 +107,7 @@ class FillCoreData {
         dbLesson2.id = 2
         dbLesson2.lock = true
         dbLesson2.detail = "Kuchyna"
+        dbLesson2.image = "kitchen-top"
         fillLesson(2, dbLesson2)
         self.context!.insert(dbLesson2)
         

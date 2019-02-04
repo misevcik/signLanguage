@@ -102,28 +102,38 @@ class QuizViewController : UIViewController {
     
     fileprivate func loadQuizData() {
         
-        //1. item
-        do {
-            let item = QuizItem()
-            let path = Bundle.main.path(forResource: "SampleVideo", ofType: "mp4")
-            item.cellImage = Utils.getVideoFrame(url: URL(fileURLWithPath: path!), at: 1)!
-            item.answerList.append((answer: "Odpoved 1", isCorrect: false))
-            item.answerList.append((answer: "Odpoved 2", isCorrect: true))
-            item.answerList.append((answer: "Odpoved 3", isCorrect: false))
-            quizItems.append(item)
-        }
+        let maxQuizItems = dbDictionaryItems.count / 3
+        assert(maxQuizItems < radioButtons.count, "Count of quiz items is less than answers")
         
-        //2. item
-        do {
-            let item = QuizItem()
-            let path = Bundle.main.path(forResource: "SampleVideo", ofType: "mp4")
-            item.cellImage = Utils.getVideoFrame(url: URL(fileURLWithPath: path!), at: 1)!
-            item.answerList.append((answer: "Fuck 1", isCorrect: true))
-            item.answerList.append((answer: "Fuck 2", isCorrect: false))
-            item.answerList.append((answer: "Fuck 3", isCorrect: false))
-            quizItems.append(item)
+        for _ in 0...maxQuizItems {
+            
+            let quizItem = QuizItem()
+            let defineRightAnswerIndex = Int.random(in: 0..<2)
+            var dictionaryIndexList = Array<Int>()
+            
+            //generate always random number
+            for _ in 0...radioButtons.count - 1 {
+                var random: Int
+                repeat {
+                    random = Int.random(in: 0..<dbDictionaryItems.count - 1)
+                } while dictionaryIndexList.contains(random)
+                dictionaryIndexList.append(random)
+            }
+
+            for i in 0...radioButtons.count - 1 {
+            
+                let dictionaryItem = dbDictionaryItems[dictionaryIndexList[i]]
+            
+                if defineRightAnswerIndex == i {
+                    let path = Bundle.main.path(forResource: "SampleVideo", ofType: "mp4")
+                    quizItem.cellImage = Utils.getVideoFrame(url: URL(fileURLWithPath: path!), at: 1)!
+                    quizItem.answerList.append((answer: dictionaryItem.dictionary!, isCorrect: true))
+                } else {
+                    quizItem.answerList.append((answer: dictionaryItem.dictionary!, isCorrect: false))
+                }
+            }
+            quizItems.append(quizItem)
         }
-        
     }
     
     fileprivate func setupLayout() {

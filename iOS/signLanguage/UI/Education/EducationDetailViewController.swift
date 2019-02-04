@@ -25,7 +25,11 @@ class EducationDetailViewController : UIViewController{
     
     
     @IBAction func quizAction(_ sender: Any) {
-        unlockNextLessonCallback!(dbLesson)
+        //unlockNextLessonCallback!(dbLesson)
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "QuizViewController") as! QuizViewController
+        vc.setDictionaryItems(dbDictionaryItems)
+        self.show(vc, sender: true)
     }
     
     @IBAction func backAction(_ sender: Any) {
@@ -44,18 +48,18 @@ class EducationDetailViewController : UIViewController{
         self.collectionView.scrollToItem(at: IndexPath(item: self.currentPage, section: 0), at: .centeredHorizontally, animated: true)
     }
     
-    //Public functoin
+    //Public function
     func setLesson(_ lesson : DBLesson) {
         dbLesson = lesson
     }
     
     //Variables
     fileprivate var dbLesson : DBLesson!
-    fileprivate var dbDictionaryItems = [DBDictionary]()
+    fileprivate var dbDictionaryItems = Array<DBDictionary>()
     
     fileprivate var currentPage: Int = 0 {
         didSet {
-            updatePageView()
+            updatePager()
         }
     }
     
@@ -76,10 +80,6 @@ class EducationDetailViewController : UIViewController{
         layout.spacingMode = UPCarouselFlowLayoutSpacingMode.overlap(visibleOffset: 30)
     }
     
-}
-
-extension EducationDetailViewController {
-    
     fileprivate func loadLessonData() {
         
         for item in dbLesson.relDictionary! {
@@ -87,7 +87,7 @@ extension EducationDetailViewController {
         }
     }
     
-    fileprivate func updatePageView() {
+    fileprivate func updatePager() {
     
         selectedDictionary.text = self.dbDictionaryItems[self.currentPage].dictionary
         

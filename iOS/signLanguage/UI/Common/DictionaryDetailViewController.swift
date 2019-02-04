@@ -50,7 +50,6 @@ class DictionaryDetailViewController : UIViewController {
             })
         }
     }
-    
 }
 
 extension DictionaryDetailViewController: UITableViewDataSource, UITableViewDelegate {

@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="17G4015" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="DBDictionary" representedClassName="DBDictionary" syncable="YES" codeGenerationType="class">
+    <entity name="DBLesson" representedClassName="DBLesson" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locked" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="picture" optional="YES" attributeType="URI" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="relDictionary" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DBWord" inverseName="relLesson" inverseEntity="DBWord" syncable="YES"/>
+    </entity>
+    <entity name="DBSentence" representedClassName="DBSentence" syncable="YES" codeGenerationType="class">
+        <attribute name="sentence" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="relDictionary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBWord" inverseName="relSentence" inverseEntity="DBWord" syncable="YES"/>
+    </entity>
+    <entity name="DBWord" representedClassName="DBWord" syncable="YES" codeGenerationType="class">
         <attribute name="favorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lesson" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -16,20 +28,8 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="DBLesson" representedClassName="DBLesson" syncable="YES" codeGenerationType="class">
-        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="locked" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="picture" optional="YES" attributeType="URI" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="relDictionary" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DBDictionary" inverseName="relLesson" inverseEntity="DBDictionary" syncable="YES"/>
-    </entity>
-    <entity name="DBSentence" representedClassName="DBSentence" syncable="YES" codeGenerationType="class">
-        <attribute name="sentence" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="relDictionary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBDictionary" inverseName="relSentence" inverseEntity="DBDictionary" syncable="YES"/>
-    </entity>
     <elements>
-        <element name="DBDictionary" positionX="-305.83984375" positionY="-66.11328125" width="128" height="180"/>
+        <element name="DBWord" positionX="-305.83984375" positionY="-66.11328125" width="128" height="180"/>
         <element name="DBLesson" positionX="-572.1640625" positionY="-87.11328125" width="128" height="135"/>
         <element name="DBSentence" positionX="-104.91015625" positionY="44.95703125" width="128" height="75"/>
     </elements>

@@ -28,7 +28,7 @@ class EducationDetailViewController : UIViewController{
         //unlockNextLessonCallback!(dbLesson)
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "QuizViewController") as! QuizViewController
-        vc.setDictionaryItems(dbDictionaryItems)
+        vc.setWordArray(dbWordArray)
         self.show(vc, sender: true)
     }
     
@@ -55,7 +55,7 @@ class EducationDetailViewController : UIViewController{
     
     //Variables
     fileprivate var dbLesson : DBLesson!
-    fileprivate var dbDictionaryItems = Array<DBDictionary>()
+    fileprivate var dbWordArray = Array<DBWord>()
     
     fileprivate var currentPage: Int = 0 {
         didSet {
@@ -83,16 +83,16 @@ class EducationDetailViewController : UIViewController{
     fileprivate func loadLessonData() {
         
         for item in dbLesson.relDictionary! {
-            dbDictionaryItems.append(item as! DBDictionary)
+            dbWordArray.append(item as! DBWord)
         }
     }
     
     fileprivate func updatePager() {
     
-        selectedDictionary.text = self.dbDictionaryItems[self.currentPage].word
+        selectedDictionary.text = self.dbWordArray[self.currentPage].word
         
         let currentPage = String(self.currentPage + 1)
-        let sum = String(self.dbDictionaryItems.count)
+        let sum = String(self.dbWordArray.count)
         pager.text = currentPage + "/" + sum
     }
     
@@ -115,21 +115,21 @@ extension EducationDetailViewController : UICollectionViewDataSource, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dbDictionaryItems.count
+        return dbWordArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EducationDetailCell.identifier, for: indexPath) as! EducationDetailCell
-        let dbDictionary = dbDictionaryItems[(indexPath as NSIndexPath).row]
-        cell.image.image = UIImage(named: dbDictionary.image!)
+        let dbWord = dbWordArray[(indexPath as NSIndexPath).row]
+        cell.image.image = UIImage(named: dbWord.image!)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let dbDictionary = dbDictionaryItems[(indexPath as NSIndexPath).row]
-        let alert = UIAlertController(title: dbDictionary.word, message: nil, preferredStyle: .alert)
+        let dbWord = dbWordArray[(indexPath as NSIndexPath).row]
+        let alert = UIAlertController(title: dbWord.word, message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }

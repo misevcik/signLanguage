@@ -51,13 +51,13 @@ class QuizViewController : UIViewController {
     }
     
     //Public function
-    func setDictionaryItems(_ dictionaryItems : Array<DBDictionary>) {
-        dbDictionaryItems = dictionaryItems
+    func setWordArray(_ wordArray : Array<DBWord>) {
+        dbWordArray = wordArray
     }
     
     
     //Variables
-    fileprivate var dbDictionaryItems = Array<DBDictionary>()
+    fileprivate var dbWordArray = Array<DBWord>()
     fileprivate var quizItems = Array<QuizItem>()
     fileprivate var selectedRadioButton : Int = -1
     
@@ -102,7 +102,7 @@ class QuizViewController : UIViewController {
     
     fileprivate func loadQuizData() {
         
-        let maxQuizItems = dbDictionaryItems.count / 3
+        let maxQuizItems = dbWordArray.count / 3
         assert(maxQuizItems < radioButtons.count, "Count of quiz items is less than answers")
         
         for _ in 0...maxQuizItems {
@@ -115,14 +115,14 @@ class QuizViewController : UIViewController {
             for _ in 0...radioButtons.count - 1 {
                 var random: Int
                 repeat {
-                    random = Int.random(in: 0..<dbDictionaryItems.count - 1)
+                    random = Int.random(in: 0..<dbWordArray.count - 1)
                 } while dictionaryIndexList.contains(random)
                 dictionaryIndexList.append(random)
             }
 
             for i in 0...radioButtons.count - 1 {
             
-                let dictionaryItem = dbDictionaryItems[dictionaryIndexList[i]]
+                let dictionaryItem = dbWordArray[dictionaryIndexList[i]]
             
                 if defineRightAnswerIndex == i {
                     let path = Bundle.main.path(forResource: "SampleVideo", ofType: "mp4")

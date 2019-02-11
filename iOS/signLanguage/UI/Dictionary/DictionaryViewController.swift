@@ -18,9 +18,9 @@ class DictionaryViewController : UIViewController {
     //MARK Persistence
     //TODO - replace with persistence conatiner in AppDelegate
     fileprivate let persistentContainer = NSPersistentContainer(name: "DictionaryDatabase")
-    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<DBDictionary> = {
+    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<DBWord> = {
 
-        let fetchRequest: NSFetchRequest<DBDictionary> = DBDictionary.fetchRequest()
+        let fetchRequest: NSFetchRequest<DBWord> = DBWord.fetchRequest()
 
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true)]
 
@@ -104,10 +104,10 @@ extension DictionaryViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let dbDictionary = self.fetchedResultsController.object(at: indexPath)
+        let dbWord = self.fetchedResultsController.object(at: indexPath)
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "WordDetailViewController") as! WordDetailViewController
-        vc.dbDictionary = dbDictionary
+        vc.dbWord = dbWord
         self.show(vc, sender: true)
         
     }

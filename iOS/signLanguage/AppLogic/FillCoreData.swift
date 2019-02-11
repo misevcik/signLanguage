@@ -49,7 +49,7 @@ class FillCoreData {
         
         do {
             
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "DBDictionary")
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "DBWord")
             let count = try context!.count(for:fetchRequest)
             isEmpty =  (count == 0)
         } catch let error as NSError {
@@ -69,7 +69,7 @@ class FillCoreData {
     fileprivate func fillLesson(_ lesson : Int, _ dbLesson : DBLesson) {
     
         do {
-            let fetchRequest: NSFetchRequest<DBDictionary> = DBDictionary.fetchRequest()
+            let fetchRequest: NSFetchRequest<DBWord> = DBWord.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "lesson == %d", lesson)
             let records  = try context!.fetch(fetchRequest)
         
@@ -122,13 +122,13 @@ class FillCoreData {
         var addSentence = true
         for word in dictionaries {
             
-            let dbDictionary = DBDictionary(context: context!)
-            dbDictionary.word = word.name
-            dbDictionary.lesson = Int32(word.lesson)
-            dbDictionary.level = Int32(word.dificulty)
-            dbDictionary.favorite = word.favorite
-            dbDictionary.image = word.image
-            dbDictionary.videoFront = word.videoFront
+            let dbWord = DBWord(context: context!)
+            dbWord.word = word.name
+            dbWord.lesson = Int32(word.lesson)
+            dbWord.level = Int32(word.dificulty)
+            dbWord.favorite = word.favorite
+            dbWord.image = word.image
+            dbWord.videoFront = word.videoFront
             
             if addSentence == true {
                 let dbSentence1 = DBSentence(context: context!)
@@ -137,13 +137,13 @@ class FillCoreData {
                 dbSentence1.sentence = "Ja idem behat"
                 dbSentence2.sentence = "Beham vela"
                 
-                dbDictionary.addToRelSentence(dbSentence1)
-                dbDictionary.addToRelSentence(dbSentence2)
+                dbWord.addToRelSentence(dbSentence1)
+                dbWord.addToRelSentence(dbSentence2)
                 
                 addSentence = false
             }
             
-            self.context!.insert(dbDictionary)
+            self.context!.insert(dbWord)
             appDelegate!.saveContext()
         }
     }

@@ -27,23 +27,23 @@ class WordDetailViewController : UIViewController {
     @IBOutlet weak var wordLevel: UILabel!
     
     //MARK - local variables
-    var dbDictionary : DBDictionary!
+    var dbWord : DBWord!
     var dbSentences : Array<DBSentence>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-        word.text = dbDictionary.word
-        wordLevel.text = String(describing: dbDictionary.level)
+        word.text = dbWord.word
+        wordLevel.text = String(describing: dbWord.level)
     }
     
     fileprivate func playVideo() {
         
-        if dbDictionary.videoFront?.isEmpty == true {
+        if dbWord.videoFront?.isEmpty == true {
             return
         }
         
-        if let path = Bundle.main.path(forResource: dbDictionary.videoFront, ofType: "mp4") {
+        if let path = Bundle.main.path(forResource: dbWord.videoFront, ofType: "mp4") {
             let video = AVPlayer(url: URL(fileURLWithPath: path))
             let videoPlayer = AVPlayerViewController()
             videoPlayer.player = video
@@ -58,7 +58,7 @@ class WordDetailViewController : UIViewController {
 
 extension WordDetailViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dbDictionary.relSentence!.count
+        return dbWord.relSentence!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -67,7 +67,7 @@ extension WordDetailViewController: UITableViewDataSource, UITableViewDelegate {
             fatalError("Unexpected Index Path")
         }
         
-        let sentence = dbDictionary.relSentence!.allObjects[indexPath.row]
+        let sentence = dbWord.relSentence!.allObjects[indexPath.row]
         cell.sentence.text = (sentence as! DBSentence).sentence
         
         return cell

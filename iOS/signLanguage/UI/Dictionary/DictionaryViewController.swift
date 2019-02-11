@@ -22,7 +22,7 @@ class DictionaryViewController : UIViewController {
 
         let fetchRequest: NSFetchRequest<DBDictionary> = DBDictionary.fetchRequest()
 
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "dictionary", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true)]
 
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
 
@@ -92,12 +92,12 @@ extension DictionaryViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DictionaryCell.reuseIdentifier, for: indexPath) as? DictionaryCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: WordCell.reuseIdentifier, for: indexPath) as? WordCell else {
             fatalError("Unexpected Index Path")
         }
         
         let dictionary = fetchedResultsController.object(at: indexPath)
-        cell.wordLabel.text = dictionary.dictionary
+        cell.wordLabel.text = dictionary.word
 
         return cell
     }
@@ -106,7 +106,7 @@ extension DictionaryViewController: UITableViewDataSource, UITableViewDelegate {
         
         let dbDictionary = self.fetchedResultsController.object(at: indexPath)
         
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "DictionaryDetailViewController") as! DictionaryDetailViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "WordDetailViewController") as! WordDetailViewController
         vc.dbDictionary = dbDictionary
         self.show(vc, sender: true)
         

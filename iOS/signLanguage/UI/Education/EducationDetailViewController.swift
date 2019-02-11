@@ -71,7 +71,7 @@ class EducationDetailViewController : UIViewController{
         self.setupLayout()
         
         // Set internal variables
-        self.lessonName.text = dbLesson.detail
+        self.lessonName.text = dbLesson.title
         self.currentPage = 0
     }
     
@@ -89,7 +89,7 @@ class EducationDetailViewController : UIViewController{
     
     fileprivate func updatePager() {
     
-        selectedDictionary.text = self.dbDictionaryItems[self.currentPage].dictionary
+        selectedDictionary.text = self.dbDictionaryItems[self.currentPage].word
         
         let currentPage = String(self.currentPage + 1)
         let sum = String(self.dbDictionaryItems.count)
@@ -129,7 +129,7 @@ extension EducationDetailViewController : UICollectionViewDataSource, UICollecti
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let dbDictionary = dbDictionaryItems[(indexPath as NSIndexPath).row]
-        let alert = UIAlertController(title: dbDictionary.dictionary, message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: dbDictionary.word, message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }

@@ -65,7 +65,7 @@ class EducationViewController : UIViewController {
         //TODO check index out-of-range
         let nextLesson = fetchedResultsController.object(at: nextIndexPath)
         
-        nextLesson.lock = false
+        nextLesson.locked = false
         
         do {
             try persistentContainer.viewContext.save()
@@ -150,8 +150,8 @@ extension EducationViewController : UICollectionViewDataSource, UICollectionView
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EducationCell.reuseIdentifier, for: indexPath as IndexPath) as! EducationCell
 
         let lesson = fetchedResultsController.object(at: indexPath)
-        if lesson.lock == false {
-            cell.coverLabel.text = lesson.detail
+        if lesson.locked == false {
+            cell.coverLabel.text = lesson.title
             cell.coverImage.image = UIImage(named: lesson.image!)
         }
         
@@ -162,7 +162,7 @@ extension EducationViewController : UICollectionViewDataSource, UICollectionView
         
         let lesson = fetchedResultsController.object(at: indexPath)
         
-        if lesson.lock == true {
+        if lesson.locked == true {
             return
         }
         

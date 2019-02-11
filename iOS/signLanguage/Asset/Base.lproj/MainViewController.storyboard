@@ -50,7 +50,7 @@
                                         <rect key="frame" x="0.0" y="100" width="375" height="503"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DictionaryCell" rowHeight="45" id="Shf-pu-aec" userLabel="Dictionary Cell" customClass="DictionaryCell" customModule="signLanguage" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WordCell" rowHeight="45" id="Shf-pu-aec" userLabel="Word Cell" customClass="WordCell" customModule="signLanguage" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="45"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Shf-pu-aec" id="9tf-5S-xb4">
@@ -58,7 +58,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7Ry-sD-bYG">
-                                                            <rect key="frame" x="8" y="0.0" width="651" height="44.5"/>
+                                                            <rect key="frame" x="8" y="0.0" width="359" height="44.5"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dictionary-0" translatesAutoresizingMaskIntoConstraints="NO" id="sy2-2e-ZOa" userLabel="Image">
                                                                     <rect key="frame" x="8" y="8" width="28.5" height="28.5"/>
@@ -69,7 +69,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dictionary word" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXd-tb-Oxd" userLabel="Word">
-                                                                    <rect key="frame" x="46.5" y="12" width="596.5" height="20.5"/>
+                                                                    <rect key="frame" x="46.5" y="12" width="304.5" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -117,10 +117,10 @@
             </objects>
             <point key="canvasLocation" x="-281" y="33"/>
         </scene>
-        <!--Dictionary Detail-->
+        <!--Word Detail-->
         <scene sceneID="OmL-jo-vvJ">
             <objects>
-                <viewController storyboardIdentifier="DictionaryDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EIj-KK-mIE" userLabel="Dictionary Detail" customClass="DictionaryDetailViewController" customModule="signLanguage" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WordDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EIj-KK-mIE" userLabel="Word Detail" customClass="WordDetailViewController" customModule="signLanguage" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jqv-kI-NZU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -305,8 +305,8 @@
                         <viewLayoutGuide key="safeArea" id="H0t-fE-OfA"/>
                     </view>
                     <connections>
-                        <outlet property="dictionary" destination="aQm-QA-OxX" id="Ifv-dF-f3g"/>
-                        <outlet property="dictionaryLevel" destination="20I-ms-TYv" id="Cp8-HP-sRK"/>
+                        <outlet property="word" destination="aQm-QA-OxX" id="Ifv-dF-f3g"/>
+                        <outlet property="wordLevel" destination="20I-ms-TYv" id="Cp8-HP-sRK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5UD-Js-dPW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -691,7 +691,7 @@
                                         <rect key="frame" x="0.0" y="40" width="375" height="514"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DictionaryCell" rowHeight="45" id="Dm7-cs-2Fx" userLabel="Dictionary Cell" customClass="DictionaryCell" customModule="signLanguage" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DictionaryCell" rowHeight="45" id="Dm7-cs-2Fx" userLabel="Dictionary Cell" customClass="WordCell" customModule="signLanguage" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="45"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dm7-cs-2Fx" id="Cr6-50-tJ1">
@@ -699,7 +699,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xQj-RP-JbG">
-                                                            <rect key="frame" x="8" y="0.0" width="651" height="44.5"/>
+                                                            <rect key="frame" x="8" y="0.0" width="584" height="44.5"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dictionary-0" translatesAutoresizingMaskIntoConstraints="NO" id="o04-gF-yCp" userLabel="Image">
                                                                     <rect key="frame" x="8" y="8" width="28.5" height="28.5"/>
@@ -710,7 +710,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dictionary word" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1on-bN-Bth" userLabel="Word">
-                                                                    <rect key="frame" x="46.5" y="12" width="596.5" height="20.5"/>
+                                                                    <rect key="frame" x="46.5" y="12" width="529.5" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>

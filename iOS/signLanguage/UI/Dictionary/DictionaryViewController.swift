@@ -14,9 +14,9 @@ class DictionaryViewController : UIViewController {
     
     //MARK Outlets
     @IBOutlet weak var dictionaryTable: UITableView!
-        
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     //MARK Persistence
-    //TODO - replace with persistence conatiner in AppDelegate
     fileprivate let persistentContainer = NSPersistentContainer(name: "DictionaryDatabase")
     fileprivate lazy var fetchedResultsController: NSFetchedResultsController<DBWord> = {
 
@@ -31,7 +31,6 @@ class DictionaryViewController : UIViewController {
         return fetchedResultsController
     }()
 
-    //TODO - replace with persistence conatiner in AppDelegate
     fileprivate func loadPersistenceContainer() {
 
         persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
@@ -65,22 +64,8 @@ extension DictionaryViewController: NSFetchedResultsControllerDelegate {
         dictionaryTable.endUpdates()
     }
     
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch (type) {
-        case .insert:
-            if let indexPath = newIndexPath {
-                dictionaryTable.insertRows(at: [indexPath], with: .fade)
-            }
-            break
-        default:
-            os_log("...", log: Log.general, type: .info)
-        }
-    }
-    
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        
     }
-    
 }
 
 extension DictionaryViewController: UITableViewDataSource, UITableViewDelegate {
@@ -110,5 +95,51 @@ extension DictionaryViewController: UITableViewDataSource, UITableViewDelegate {
         vc.dbWord = dbWord
         self.show(vc, sender: true)
         
+    }
+}
+
+extension DictionaryViewController : UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        performSearch(searchText)
+        
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        self.searchBar.showsCancelButton = false
+        self.searchBar.endEditing(true)
+        self.searchBar.text = ""
+        performSearch(searchBar.text!)
+        
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.endEditing(true)
+    }
+    
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool{
+        self.searchBar.showsCancelButton = true
+        return true
+    }
+    
+    func performSearch(_ searchText : String) {
+    
+        if searchText.count > 0 {
+            self.fetchedResultsController.fetchRequest.predicate = NSPredicate(format:"word contains[cd] %@", searchText)
+        }
+        else {
+            self.fetchedResultsController.fetchRequest.predicate = nil
+        }
+        
+        do {
+            try self.fetchedResultsController.performFetch()
+        } catch {
+            os_log("Unable to Perform Fetch Request", log: Log.general, type: .error)
+        }
+        
+        self.dictionaryTable.reloadData()
     }
 }

@@ -100,6 +100,20 @@ class QuizViewController : UIViewController {
         
     }
     
+    fileprivate func getRandomIndexArray() ->Array<Int> {
+        
+        var indexArray = Array<Int>()
+        for _ in 0...radioButtons.count - 1 {
+            var random: Int
+            repeat {
+                random = Int.random(in: 0..<dbWordArray.count - 1)
+            } while indexArray.contains(random)
+            indexArray.append(random)
+        }
+        
+        return indexArray
+    }
+    
     fileprivate func loadQuizData() {
         
         let maxQuizItems = dbWordArray.count / 3
@@ -109,27 +123,18 @@ class QuizViewController : UIViewController {
             
             let quizItem = QuizItem()
             let defineRightAnswerIndex = Int.random(in: 0..<2)
-            var dictionaryIndexList = Array<Int>()
+            let indexArray = getRandomIndexArray()
             
-            //generate always random number
-            for _ in 0...radioButtons.count - 1 {
-                var random: Int
-                repeat {
-                    random = Int.random(in: 0..<dbWordArray.count - 1)
-                } while dictionaryIndexList.contains(random)
-                dictionaryIndexList.append(random)
-            }
-
             for i in 0...radioButtons.count - 1 {
             
-                let dictionaryItem = dbWordArray[dictionaryIndexList[i]]
+                let word = dbWordArray[indexArray[i]]
             
                 if defineRightAnswerIndex == i {
-                    let path = Bundle.main.path(forResource: "SampleVideo", ofType: "mp4")
+                    let path = Bundle.main.path(forResource: word.videoFront, ofType: "mp4")
                     quizItem.cellImage = Utils.getVideoFrame(url: URL(fileURLWithPath: path!), at: 1)!
-                    quizItem.answerList.append((answer: dictionaryItem.word!, isCorrect: true))
+                    quizItem.answerList.append((answer: word.word!, isCorrect: true))
                 } else {
-                    quizItem.answerList.append((answer: dictionaryItem.word!, isCorrect: false))
+                    quizItem.answerList.append((answer: word.word!, isCorrect: false))
                 }
             }
             quizItems.append(quizItem)

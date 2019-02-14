@@ -10,7 +10,19 @@ import CoreData
 import UIKit
 import os.log
 
+//https://stackoverflow.com/questions/48955468/how-can-i-set-nsfetchedresultscontrollers-section-sectionnamekeypath-to-be-the
+extension NSString{
+    @objc func firstUpperCaseChar() -> String{ // @objc is needed to avoid crash
+        if self.length == 0 {
+            return ""
+        }
+        return self.substring(to: 1).capitalized
+    }
+}
+
+
 class DictionaryViewController : UIViewController {
+    
     
     //MARK Outlets
     @IBOutlet weak var dictionaryTable: UITableView!
@@ -24,7 +36,7 @@ class DictionaryViewController : UIViewController {
 
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true)]
 
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: "word.firstUpperCaseChar", cacheName: nil)
 
         fetchedResultsController.delegate = self
 
@@ -51,6 +63,7 @@ class DictionaryViewController : UIViewController {
         super.viewDidLoad()
         
         loadPersistenceContainer()
+        
     }
 }
 
@@ -68,13 +81,38 @@ extension DictionaryViewController: NSFetchedResultsControllerDelegate {
     }
 }
 
+// https://developer.apple.com/documentation/coredata/nsfetchedresultscontroller
 extension DictionaryViewController: UITableViewDataSource, UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let dictionary = fetchedResultsController.fetchedObjects else { return 0 }
-        return dictionary.count
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
+        let numberOfSections = self.fetchedResultsController.sections?.count
+        return numberOfSections!
     }
     
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return self.fetchedResultsController.sectionIndexTitles
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        guard let sections = self.fetchedResultsController.sections else {
+            fatalError("No sections in fetchedResultsController")
+        }
+        let sectionInfo = sections[section]
+        return sectionInfo.numberOfObjects
+    }
+    
+    func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        return self.fetchedResultsController.section(forSectionIndexTitle: title, at: index)
+    }
+
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let sectionInfo = self.fetchedResultsController.sections![section]
+        return sectionInfo.indexTitle
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: WordCell.reuseIdentifier, for: indexPath) as? WordCell else {
@@ -128,7 +166,7 @@ extension DictionaryViewController : UISearchBarDelegate {
     func performSearch(_ searchText : String) {
     
         if searchText.count > 0 {
-            self.fetchedResultsController.fetchRequest.predicate = NSPredicate(format:"word contains[cd] %@", searchText)
+            self.fetchedResultsController.fetchRequest.predicate = NSPredicate(format:"word BEGINSWITH [cd] %@", searchText)
         }
         else {
             self.fetchedResultsController.fetchRequest.predicate = nil

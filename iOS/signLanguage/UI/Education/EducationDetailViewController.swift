@@ -26,15 +26,28 @@ class EducationDetailViewController : UIViewController{
     
     @IBAction func quizAction(_ sender: Any) {
         //unlockNextLessonCallback!(dbLesson)
-        
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "QuizViewController") as! QuizViewController
-        vc.setWordArray(dbWordArray)
-        self.show(vc, sender: true)
+        goToQuiz()
     }
     
     @IBAction func backAction(_ sender: Any) {
-        _ = navigationController?.popViewController(animated: true)
-        self.navigationController?.isNavigationBarHidden = true
+        
+        if dbLesson.locked == false {
+            
+            let alert = UIAlertController(title: "Quiz", message: "Do you want to fill quiz?", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { action in
+                self.goToQuiz()
+            }))
+            alert.addAction(UIAlertAction(title: "No", style: UIAlertAction.Style.cancel, handler: { action in
+                _ = self.navigationController?.popViewController(animated: true)
+                self.navigationController?.isNavigationBarHidden = true
+            }))
+            self.present(alert, animated: true, completion: nil)
+            
+        }
+        else {
+            _ = self.navigationController?.popViewController(animated: true)
+            self.navigationController?.isNavigationBarHidden = true
+        }
     }
     
     @IBAction func nextClick(_ sender: Any) {
@@ -60,6 +73,7 @@ class EducationDetailViewController : UIViewController{
     fileprivate var currentPage: Int = 0 {
         didSet {
             updatePager()
+            updateButtons()
         }
     }
     
@@ -73,6 +87,12 @@ class EducationDetailViewController : UIViewController{
         // Set internal variables
         self.lessonName.text = dbLesson.title
         self.currentPage = 0
+    }
+    
+    fileprivate func goToQuiz() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "QuizViewController") as! QuizViewController
+        vc.setWordArray(dbWordArray)
+        self.show(vc, sender: true)
     }
     
     fileprivate func setupLayout() {
@@ -94,6 +114,12 @@ class EducationDetailViewController : UIViewController{
         let currentPage = String(self.currentPage + 1)
         let sum = String(self.dbWordArray.count)
         pager.text = currentPage + "/" + sum
+    }
+    
+    fileprivate func updateButtons() {
+        
+        moveBackward.isHidden = self.currentPage == 0
+        moveForward.isHidden = self.currentPage == self.dbWordArray.count - 1
     }
     
     fileprivate var pageSize: CGSize {

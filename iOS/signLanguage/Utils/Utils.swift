@@ -29,5 +29,4 @@ class Utils {
         
         return UIImage(cgImage: image)
     }
-    
 }

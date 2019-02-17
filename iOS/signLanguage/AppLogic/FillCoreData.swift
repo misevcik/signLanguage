@@ -135,7 +135,9 @@ class FillCoreData {
                 let dbSentence2 = DBSentence(context: context!)
                 
                 dbSentence1.sentence = "Ja idem behat"
+                dbSentence1.video = "sample_1"
                 dbSentence2.sentence = "Beham vela"
+                dbSentence2.video = "sample_2"
                 
                 dbWord.addToRelSentence(dbSentence1)
                 dbWord.addToRelSentence(dbSentence2)

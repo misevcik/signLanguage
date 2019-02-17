@@ -15,7 +15,10 @@ class WordDetailViewController : UIViewController {
     
     //MARK Outlets
     @IBAction func actionPlay(_ sender: Any) {
-        playVideo()
+        
+        if dbWord.videoFront?.isEmpty == false {
+            playVideo(videoName: dbWord.videoFront!)
+        }
     }
     
     @IBAction func actionBack(_ sender: Any) {
@@ -37,13 +40,9 @@ class WordDetailViewController : UIViewController {
         wordLevel.text = String(describing: dbWord.level)
     }
     
-    fileprivate func playVideo() {
+    fileprivate func playVideo(videoName : String) {
         
-        if dbWord.videoFront?.isEmpty == true {
-            return
-        }
-        
-        if let path = Bundle.main.path(forResource: dbWord.videoFront, ofType: "mp4") {
+        if let path = Bundle.main.path(forResource: videoName, ofType: "mp4") {
             let video = AVPlayer(url: URL(fileURLWithPath: path))
             let videoPlayer = AVPlayerViewController()
             videoPlayer.player = video
@@ -67,10 +66,17 @@ extension WordDetailViewController: UITableViewDataSource, UITableViewDelegate {
             fatalError("Unexpected Index Path")
         }
         
-        let sentence = dbWord.relSentence!.allObjects[indexPath.row]
-        cell.sentence.text = (sentence as! DBSentence).sentence
+        let sentence = dbWord.relSentence!.allObjects[indexPath.row] as! DBSentence
+        cell.sentence.text = sentence.sentence
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let sentence = dbWord.relSentence!.allObjects[indexPath.row] as! DBSentence
+        playVideo(videoName: sentence.video!)
+        
     }
     
 

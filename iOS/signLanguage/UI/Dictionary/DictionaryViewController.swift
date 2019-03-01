@@ -62,6 +62,9 @@ class DictionaryViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchBar.layer.borderWidth = 1
+        searchBar.layer.borderColor = #colorLiteral(red: 0.9656763673, green: 0.965699017, blue: 0.9656868577, alpha: 1)
+        
         loadPersistenceContainer()
         
     }
@@ -106,13 +109,20 @@ extension DictionaryViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
         return self.fetchedResultsController.section(forSectionIndexTitle: title, at: index)
     }
-
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 45.0
+    }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let sectionInfo = self.fetchedResultsController.sections![section]
         return sectionInfo.indexTitle
     }
-
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = #colorLiteral(red: 0.9656763673, green: 0.965699017, blue: 0.9656868577, alpha: 1)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: WordCell.reuseIdentifier, for: indexPath) as? WordCell else {
@@ -121,7 +131,7 @@ extension DictionaryViewController: UITableViewDataSource, UITableViewDelegate {
         
         let dictionary = fetchedResultsController.object(at: indexPath)
         cell.wordLabel.text = dictionary.word
-
+        
         return cell
     }
     

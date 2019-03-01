@@ -69,16 +69,16 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7Ry-sD-bYG">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="44.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="44.5"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dictionary word" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXd-tb-Oxd" userLabel="Word">
-                                                                            <rect key="frame" x="16" y="10" width="293.5" height="24.5"/>
+                                                                            <rect key="frame" x="16" y="10" width="289.5" height="24.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconHeart" translatesAutoresizingMaskIntoConstraints="NO" id="GYV-ht-Txx" userLabel="Favorite">
-                                                                            <rect key="frame" x="319.5" y="10" width="24.5" height="24.5"/>
+                                                                            <rect key="frame" x="315.5" y="10" width="24.5" height="24.5"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="24.5" id="34t-i3-qT9"/>
                                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="24.5" id="MxC-89-7ko"/>
@@ -134,7 +134,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="U3B-jf-gN5"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="search" id="jsU-3b-DBM" userLabel="Dictionary"/>
+                    <tabBarItem key="tabBarItem" title="Slovník" image="iconDictionary-gray" selectedImage="iconDictionary-blue" id="jsU-3b-DBM" userLabel="Dictionary"/>
                     <connections>
                         <outlet property="dictionaryTable" destination="qaV-ot-vUw" id="ZlG-GC-MOu"/>
                         <outlet property="searchBar" destination="YL5-Wr-KYK" id="RrN-Vi-aTp"/>
@@ -1170,6 +1170,8 @@
     </scenes>
     <resources>
         <image name="dictionary-0" width="128" height="128"/>
+        <image name="iconDictionary-blue" width="16" height="20"/>
+        <image name="iconDictionary-gray" width="16" height="20"/>
         <image name="iconEducation-blue" width="17" height="17"/>
         <image name="iconEducation-gray" width="17" height="17"/>
         <image name="iconHeart" width="24" height="24"/>

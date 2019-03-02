@@ -13,10 +13,71 @@ import os.log
 //simply guide https://www.youtube.com/watch?v=NSryf0YJHHk
 //simply guid https://www.youtube.com/watch?v=s9v0YkRwYvI - implement batch insertion
 
-class EducationViewController : UIViewController {
+class EducationMainViewController : UIViewController, EducationMenuBarProtocol {
     
     //IBOutlets
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var educationMenuBar: EducationMenuBar!
+    @IBOutlet weak var containerView: UIView!
+    
+    
+    private lazy var lectionViewController: LectionViewController = {
+        
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "LectionViewController") as! LectionViewController
+  
+        self.add(asChildViewController: viewController)
+        
+        return viewController
+    }()
+    
+    private lazy var testViewController: TestViewController = {
+
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "TestViewController") as! TestViewController
+        
+        self.add(asChildViewController: viewController)
+        
+        return viewController
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        educationMenuBar.delegate = self
+        add(asChildViewController: lectionViewController)
+        //loadPersistenceContainer()
+    }
+    
+    func menuBarButtonClicked(_ type: EducationMenuBarType) {
+        
+        switch type {
+        case .LectionViewSection:
+            remove(asChildViewController: testViewController)
+            add(asChildViewController: lectionViewController)
+            break
+        case .TestViewSection:
+            remove(asChildViewController: lectionViewController)
+            add(asChildViewController: testViewController)
+            break
+        }
+    }
+    
+    private func add(asChildViewController viewController: UIViewController) {
+
+        addChild(viewController)
+        containerView.addSubview(viewController.view)
+        
+        viewController.view.frame = view.bounds
+        viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        viewController.didMove(toParent: self)
+    }
+    
+    private func remove(asChildViewController viewController: UIViewController) {
+        
+        viewController.willMove(toParent: nil)
+        viewController.view.removeFromSuperview()
+        viewController.removeFromParent()
+    }
+    
     
     //Variables
     fileprivate var blockOperations: [BlockOperation] = []
@@ -52,12 +113,6 @@ class EducationViewController : UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        loadPersistenceContainer()
-    }
-    
     fileprivate func unlockNextLesson(_ lesson : DBLesson) {
         
         let  indexPath = fetchedResultsController.indexPath(forObject: lesson)
@@ -85,7 +140,7 @@ class EducationViewController : UIViewController {
     }
 }
 
-extension EducationViewController: NSFetchedResultsControllerDelegate {
+extension EducationMainViewController: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         
@@ -133,7 +188,7 @@ extension EducationViewController: NSFetchedResultsControllerDelegate {
     
 }
 
-extension EducationViewController : UICollectionViewDataSource, UICollectionViewDelegate {
+extension EducationMainViewController : UICollectionViewDataSource, UICollectionViewDelegate {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -175,7 +230,7 @@ extension EducationViewController : UICollectionViewDataSource, UICollectionView
     }
 }
 
-extension EducationViewController : UICollectionViewDelegateFlowLayout {
+extension EducationMainViewController : UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         

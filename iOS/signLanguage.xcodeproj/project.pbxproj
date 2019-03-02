@@ -8,14 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		5416D03D21D62134009E8D02 /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5416D03C21D62134009E8D02 /* WordCell.swift */; };
-		5419295221D7ABE300A9277C /* EducationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5419295121D7ABE300A9277C /* EducationViewController.swift */; };
+		5419295221D7ABE300A9277C /* EducationMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5419295121D7ABE300A9277C /* EducationMainViewController.swift */; };
 		5419295421D7AF7700A9277C /* EducationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5419295321D7AF7700A9277C /* EducationCell.swift */; };
 		542912B421E28CFC00BF1FDD /* SentenceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542912B321E28CFC00BF1FDD /* SentenceCell.swift */; };
 		542912B821E295D700BF1FDD /* EducationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542912B721E295D700BF1FDD /* EducationDetailViewController.swift */; };
+		5432D3FB22295DB0003A7A9E /* EducationMenuBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5432D3FA22295DB0003A7A9E /* EducationMenuBar.xib */; };
+		5432D3FD22295E7F003A7A9E /* EducationMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5432D3FC22295E7F003A7A9E /* EducationMenuBar.swift */; };
 		543F199221DEA2AB00F08764 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543F199121DEA2AB00F08764 /* FavoritesViewController.swift */; };
 		543F199521DEA30F00F08764 /* WordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543F199421DEA30F00F08764 /* WordDetailViewController.swift */; };
 		5440C023220427D40077F6E5 /* QuizItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5440C022220427D40077F6E5 /* QuizItem.swift */; };
 		5440C026220435D90077F6E5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5440C025220435D90077F6E5 /* Utils.swift */; };
+		5465C00B222ABCBA009B628F /* LectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5465C00A222ABCBA009B628F /* LectionViewController.swift */; };
+		5465C00D222ABCFB009B628F /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5465C00C222ABCFB009B628F /* TestViewController.swift */; };
 		5485807A21E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5485807821E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld */; };
 		5498947B2212251600024E77 /* sample_1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 549894792212251600024E77 /* sample_1.mp4 */; };
 		5498947C2212251600024E77 /* sample_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5498947A2212251600024E77 /* sample_2.mp4 */; };
@@ -35,15 +39,19 @@
 
 /* Begin PBXFileReference section */
 		5416D03C21D62134009E8D02 /* WordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
-		5419295121D7ABE300A9277C /* EducationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationViewController.swift; sourceTree = "<group>"; };
+		5419295121D7ABE300A9277C /* EducationMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationMainViewController.swift; sourceTree = "<group>"; };
 		5419295321D7AF7700A9277C /* EducationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationCell.swift; sourceTree = "<group>"; };
 		542912B321E28CFC00BF1FDD /* SentenceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceCell.swift; sourceTree = "<group>"; };
 		542912B721E295D700BF1FDD /* EducationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationDetailViewController.swift; sourceTree = "<group>"; };
+		5432D3FA22295DB0003A7A9E /* EducationMenuBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EducationMenuBar.xib; sourceTree = "<group>"; };
+		5432D3FC22295E7F003A7A9E /* EducationMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationMenuBar.swift; sourceTree = "<group>"; };
 		543F199121DEA2AB00F08764 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		543F199421DEA30F00F08764 /* WordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailViewController.swift; sourceTree = "<group>"; };
 		5440C022220427D40077F6E5 /* QuizItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizItem.swift; sourceTree = "<group>"; };
 		5440C025220435D90077F6E5 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		5440C027220494D50077F6E5 /* DLRadioButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DLRadioButton.framework; sourceTree = "<group>"; };
+		5465C00A222ABCBA009B628F /* LectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectionViewController.swift; sourceTree = "<group>"; };
+		5465C00C222ABCFB009B628F /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		5485807921E7C6FA00440282 /* DictionaryDatabase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DictionaryDatabase.xcdatamodel; sourceTree = "<group>"; };
 		549894792212251600024E77 /* sample_1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample_1.mp4; sourceTree = "<group>"; };
 		5498947A2212251600024E77 /* sample_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample_2.mp4; sourceTree = "<group>"; };
@@ -86,11 +94,14 @@
 		5419295021D7AB9F00A9277C /* Education */ = {
 			isa = PBXGroup;
 			children = (
+				5465C009222AA389009B628F /* Components */,
 				545CA46521F78DB30034E23C /* FlowLayout */,
 				54EA763421F677BD00A5C50C /* EducationDetailCell.swift */,
-				5419295121D7ABE300A9277C /* EducationViewController.swift */,
+				5419295121D7ABE300A9277C /* EducationMainViewController.swift */,
 				5419295321D7AF7700A9277C /* EducationCell.swift */,
 				542912B721E295D700BF1FDD /* EducationDetailViewController.swift */,
+				5465C00A222ABCBA009B628F /* LectionViewController.swift */,
+				5465C00C222ABCFB009B628F /* TestViewController.swift */,
 			);
 			path = Education;
 			sourceTree = "<group>";
@@ -127,6 +138,15 @@
 				54EA763921F67A8000A5C50C /* UPCarouselFlowLayout.swift */,
 			);
 			path = FlowLayout;
+			sourceTree = "<group>";
+		};
+		5465C009222AA389009B628F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5432D3FA22295DB0003A7A9E /* EducationMenuBar.xib */,
+				5432D3FC22295E7F003A7A9E /* EducationMenuBar.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		549894782212234900024E77 /* Videos */ = {
@@ -289,6 +309,7 @@
 				54B12C7121D11FBD00A9E2C1 /* LaunchScreen.storyboard in Resources */,
 				5498947B2212251600024E77 /* sample_1.mp4 in Resources */,
 				54B12C6E21D11FBD00A9E2C1 /* Assets.xcassets in Resources */,
+				5432D3FB22295DB0003A7A9E /* EducationMenuBar.xib in Resources */,
 				54B12C6C21D11FBC00A9E2C1 /* MainViewController.storyboard in Resources */,
 				5498947C2212251600024E77 /* sample_2.mp4 in Resources */,
 			);
@@ -324,6 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				549D9BED21E6727A00E930AD /* FillCoreData.swift in Sources */,
+				5432D3FD22295E7F003A7A9E /* EducationMenuBar.swift in Sources */,
 				5440C023220427D40077F6E5 /* QuizItem.swift in Sources */,
 				54FE04FC2200F3C600A9CA00 /* QuizViewController.swift in Sources */,
 				54AAD6CA21DE8DCD00D9F303 /* DictionaryViewController.swift in Sources */,
@@ -332,11 +354,13 @@
 				543F199221DEA2AB00F08764 /* FavoritesViewController.swift in Sources */,
 				54B12C6721D11FBC00A9E2C1 /* AppDelegate.swift in Sources */,
 				54EA763A21F67A8000A5C50C /* UPCarouselFlowLayout.swift in Sources */,
+				5465C00D222ABCFB009B628F /* TestViewController.swift in Sources */,
 				5440C026220435D90077F6E5 /* Utils.swift in Sources */,
 				542912B421E28CFC00BF1FDD /* SentenceCell.swift in Sources */,
 				5419295421D7AF7700A9277C /* EducationCell.swift in Sources */,
-				5419295221D7ABE300A9277C /* EducationViewController.swift in Sources */,
+				5419295221D7ABE300A9277C /* EducationMainViewController.swift in Sources */,
 				543F199521DEA30F00F08764 /* WordDetailViewController.swift in Sources */,
+				5465C00B222ABCBA009B628F /* LectionViewController.swift in Sources */,
 				542912B821E295D700BF1FDD /* EducationDetailViewController.swift in Sources */,
 				5485807A21E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld in Sources */,
 				54EA763521F677BD00A5C50C /* EducationDetailCell.swift in Sources */,

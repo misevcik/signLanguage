@@ -113,6 +113,46 @@ class FillCoreData {
         self.context!.insert(dbLesson2)
         
         appDelegate!.saveContext()
+        
+        let dbLesson3 = DBLesson(context: context!)
+        dbLesson3.id = 3
+        dbLesson3.locked = true
+        dbLesson3.title = "Technika"
+        dbLesson3.image = "kitchen-top"
+        fillLesson(3, dbLesson3)
+        self.context!.insert(dbLesson3)
+        
+        appDelegate!.saveContext()
+        
+        let dbLesson4 = DBLesson(context: context!)
+        dbLesson4.id = 4
+        dbLesson4.locked = true
+        dbLesson4.title = "Dom"
+        dbLesson4.image = "kitchen-top"
+        fillLesson(4, dbLesson4)
+        self.context!.insert(dbLesson4)
+        
+        appDelegate!.saveContext()
+        
+        let dbLesson5 = DBLesson(context: context!)
+        dbLesson4.id = 5
+        dbLesson4.locked = true
+        dbLesson4.title = "Zviera"
+        dbLesson4.image = "kitchen-top"
+        fillLesson(5, dbLesson5)
+        self.context!.insert(dbLesson5)
+        
+        appDelegate!.saveContext()
+        
+        let dbLesson6 = DBLesson(context: context!)
+        dbLesson6.id = 6
+        dbLesson6.locked = true
+        dbLesson6.title = "Meno"
+        dbLesson6.image = "kitchen-top"
+        fillLesson(6, dbLesson6)
+        self.context!.insert(dbLesson6)
+        
+        appDelegate!.saveContext()
     }
     
     fileprivate func fillDictionary() {
@@ -168,10 +208,16 @@ class FillCoreData {
         dictionary.append(Word(name: "Stolicka", dificulty: 1, lesson: 1, favorite: false, image: "", videoFront: ""))
         dictionary.append(Word(name: "Obrus", dificulty: 2, lesson: 1, favorite: false, image: "", videoFront: ""))
         
-        //Lesson 3
+        //Lesson 2
         dictionary.append(Word(name: "Tanier", dificulty: 1, lesson: 2, favorite: false, image: "", videoFront: ""))
         dictionary.append(Word(name: "Pohar", dificulty: 2, lesson: 2, favorite: false, image: "", videoFront: ""))
         dictionary.append(Word(name: "Nozik", dificulty: 2, lesson: 2, favorite: false, image: "", videoFront: ""))
+        
+        //Lesson 3,4,5,6
+        dictionary.append(Word(name: "Mobil", dificulty: 1, lesson: 3, favorite: false, image: "", videoFront: ""))
+        dictionary.append(Word(name: "Okno", dificulty: 2, lesson: 4, favorite: false, image: "", videoFront: ""))
+        dictionary.append(Word(name: "Lama", dificulty: 2, lesson: 5, favorite: false, image: "", videoFront: ""))
+        dictionary.append(Word(name: "Dorotka", dificulty: 2, lesson: 6, favorite: false, image: "", videoFront: ""))
         
         return dictionary;
     }

@@ -1,5 +1,5 @@
 //
-//  EducationCell.swift
+//  LectionCell.swift
 //  signLanguage
 //
 //  Created by Zdeno Bacik on 29/12/2018.
@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-class EducationCell : UICollectionViewCell {
+class LectionCell : UICollectionViewCell {
     
-    static let reuseIdentifier = "EducationCell"
+    static let reuseIdentifier = "LectionCell"
     
     @IBOutlet weak var coverImage: UIImageView!
     @IBOutlet weak var coverLabel: UILabel!

@@ -18,6 +18,8 @@ class LectionViewController : UIViewController {
     
     //Variables
     fileprivate var blockOperations: [BlockOperation] = []
+    fileprivate var lockImage : UIImage = UIImage(named:"iconLock")!
+    fileprivate var unlockImage : UIImage = UIImage(named:"iconUnlock")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -144,11 +146,11 @@ extension LectionViewController : UICollectionViewDataSource, UICollectionViewDe
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LectionCell.reuseIdentifier, for: indexPath as IndexPath) as! LectionCell
         
         let lesson = fetchedResultsController.object(at: indexPath)
-        if lesson.locked == false {
-            cell.coverLabel.text = lesson.title
-            if lesson.image != nil {
-                cell.coverImage.image = UIImage(named: lesson.image!)
-            }
+        
+        cell.lockImage.image = lesson.locked ? unlockImage : lockImage
+        cell.lectionName.text = lesson.title
+        if lesson.image != nil {
+            cell.coverImage.image = UIImage(named: lesson.image!)
         }
         
         return cell

@@ -14,7 +14,9 @@ class LectionCell : UICollectionViewCell {
     static let reuseIdentifier = "LectionCell"
     
     @IBOutlet weak var coverImage: UIImageView!
-    @IBOutlet weak var coverLabel: UILabel!
+    @IBOutlet weak var lockImage: UIImageView!
+    @IBOutlet weak var lectionName: UILabel!
+    @IBOutlet weak var videoCount: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

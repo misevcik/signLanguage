@@ -20,6 +20,8 @@ class LectionViewController : UIViewController {
     fileprivate var blockOperations: [BlockOperation] = []
     fileprivate var lockImage : UIImage = UIImage(named:"iconLock")!
     fileprivate var unlockImage : UIImage = UIImage(named:"iconUnlock")!
+    fileprivate let sectionInsets = UIEdgeInsets(top: 1.0, left: 1.0, bottom: 1.0, right: 1.0)
+    fileprivate let itemsPerRow: CGFloat = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -140,6 +142,10 @@ extension LectionViewController : UICollectionViewDataSource, UICollectionViewDe
         return 0
     }
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return (fetchedResultsController.sections?.count)!
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -147,7 +153,7 @@ extension LectionViewController : UICollectionViewDataSource, UICollectionViewDe
         
         let lesson = fetchedResultsController.object(at: indexPath)
         
-        cell.lockImage.image = lesson.locked ? unlockImage : lockImage
+        cell.lockImage.image = lesson.locked ? lockImage : unlockImage
         cell.lectionName.text = lesson.title
         if lesson.image != nil {
             cell.coverImage.image = UIImage(named: lesson.image!)
@@ -174,12 +180,28 @@ extension LectionViewController : UICollectionViewDataSource, UICollectionViewDe
 }
 
 extension LectionViewController : UICollectionViewDelegateFlowLayout {
+ 
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / itemsPerRow
+        
+        return CGSize(width: widthPerItem, height: widthPerItem)
+    }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let width = collectionView.bounds.size.width / 2 - 0.5
-        let height = collectionView.bounds.size.height / 4
-        
-        return CGSize(width: width , height: height)
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
     }
 }

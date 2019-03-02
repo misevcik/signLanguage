@@ -64,6 +64,7 @@ class EducationMainViewController : UIViewController, EducationMenuBarProtocol {
         viewController.view.frame = view.bounds
         viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         viewController.didMove(toParent: self)
+        
     }
     
     private func remove(asChildViewController viewController: UIViewController) {

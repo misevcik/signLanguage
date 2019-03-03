@@ -12,7 +12,7 @@ import os.log
 
 //https://stackoverflow.com/questions/48955468/how-can-i-set-nsfetchedresultscontrollers-section-sectionnamekeypath-to-be-the
 extension NSString{
-    @objc func firstUpperCaseChar() -> String{ // @objc is needed to avoid crash
+    @objc func firstUpperCaseChar() -> String{
         if self.length == 0 {
             return ""
         }
@@ -81,6 +81,7 @@ extension DictionaryViewController: NSFetchedResultsControllerDelegate {
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        //Write update function
     }
 }
 

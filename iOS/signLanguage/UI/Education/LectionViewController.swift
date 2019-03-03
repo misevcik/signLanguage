@@ -48,7 +48,6 @@ class LectionViewController : UIViewController {
             if error != nil {
                 os_log("Unable to Load Persistent Store", log: Log.general, type: .error)
             } else {
-                
                 do {
                     try self.fetchedResultsController.performFetch()
                 } catch {
@@ -151,12 +150,13 @@ extension LectionViewController : UICollectionViewDataSource, UICollectionViewDe
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LectionCell.reuseIdentifier, for: indexPath as IndexPath) as! LectionCell
         
-        let lesson = fetchedResultsController.object(at: indexPath)
+        let lection = fetchedResultsController.object(at: indexPath)
         
-        cell.lockImage.image = lesson.locked ? lockImage : unlockImage
-        cell.lectionName.text = lesson.title
-        if lesson.image != nil {
-            cell.coverImage.image = UIImage(named: lesson.image!)
+        cell.lockImage.image = lection.locked ? lockImage : unlockImage
+        cell.lectionName.text = String(describing: indexPath.row + 1) + ". " + lection.title!
+        cell.videoCount.text = String(describing: lection.relDictionary!.count) + " " + Labels.LECTION_VIDEOS_LABEL
+        if lection.image != nil {
+            cell.coverImage.image = UIImage(named: lection.image!)
         }
         
         return cell

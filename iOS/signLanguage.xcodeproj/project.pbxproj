@@ -16,7 +16,7 @@
 		5432D3FB22295DB0003A7A9E /* EducationMenuBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5432D3FA22295DB0003A7A9E /* EducationMenuBar.xib */; };
 		5432D3FD22295E7F003A7A9E /* EducationMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5432D3FC22295E7F003A7A9E /* EducationMenuBar.swift */; };
 		543F199221DEA2AB00F08764 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543F199121DEA2AB00F08764 /* FavoritesViewController.swift */; };
-		543F199521DEA30F00F08764 /* WordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543F199421DEA30F00F08764 /* WordDetailViewController.swift */; };
+		543F199521DEA30F00F08764 /* OldWordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543F199421DEA30F00F08764 /* OldWordDetailViewController.swift */; };
 		5440C023220427D40077F6E5 /* QuizItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5440C022220427D40077F6E5 /* QuizItem.swift */; };
 		5440C026220435D90077F6E5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5440C025220435D90077F6E5 /* Utils.swift */; };
 		5465C00B222ABCBA009B628F /* LectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5465C00A222ABCBA009B628F /* LectionViewController.swift */; };
@@ -33,6 +33,7 @@
 		54B12C6C21D11FBC00A9E2C1 /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54B12C6A21D11FBC00A9E2C1 /* MainViewController.storyboard */; };
 		54B12C6E21D11FBD00A9E2C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54B12C6D21D11FBD00A9E2C1 /* Assets.xcassets */; };
 		54B12C7121D11FBD00A9E2C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54B12C6F21D11FBD00A9E2C1 /* LaunchScreen.storyboard */; };
+		54C4996A222DC1AF00DC3B99 /* WordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C49969222DC1AF00DC3B99 /* WordDetailViewController.swift */; };
 		54EA763521F677BD00A5C50C /* EducationDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EA763421F677BD00A5C50C /* EducationDetailCell.swift */; };
 		54EA763A21F67A8000A5C50C /* UPCarouselFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EA763921F67A8000A5C50C /* UPCarouselFlowLayout.swift */; };
 		54FE04FC2200F3C600A9CA00 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FE04FB2200F3C600A9CA00 /* QuizViewController.swift */; };
@@ -49,7 +50,7 @@
 		5432D3FA22295DB0003A7A9E /* EducationMenuBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EducationMenuBar.xib; sourceTree = "<group>"; };
 		5432D3FC22295E7F003A7A9E /* EducationMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationMenuBar.swift; sourceTree = "<group>"; };
 		543F199121DEA2AB00F08764 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
-		543F199421DEA30F00F08764 /* WordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailViewController.swift; sourceTree = "<group>"; };
+		543F199421DEA30F00F08764 /* OldWordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldWordDetailViewController.swift; sourceTree = "<group>"; };
 		5440C022220427D40077F6E5 /* QuizItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizItem.swift; sourceTree = "<group>"; };
 		5440C025220435D90077F6E5 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		5440C027220494D50077F6E5 /* DLRadioButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DLRadioButton.framework; sourceTree = "<group>"; };
@@ -67,6 +68,7 @@
 		54B12C6D21D11FBD00A9E2C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		54B12C7021D11FBD00A9E2C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		54B12C7221D11FBD00A9E2C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		54C49969222DC1AF00DC3B99 /* WordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailViewController.swift; sourceTree = "<group>"; };
 		54EA763021F670FB00A5C50C /* UPCarouselFlowLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UPCarouselFlowLayout.framework; sourceTree = "<group>"; };
 		54EA763421F677BD00A5C50C /* EducationDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EducationDetailCell.swift; sourceTree = "<group>"; };
 		54EA763921F67A8000A5C50C /* UPCarouselFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UPCarouselFlowLayout.swift; sourceTree = "<group>"; };
@@ -115,8 +117,9 @@
 			isa = PBXGroup;
 			children = (
 				5416D03C21D62134009E8D02 /* WordCell.swift */,
-				543F199421DEA30F00F08764 /* WordDetailViewController.swift */,
+				543F199421DEA30F00F08764 /* OldWordDetailViewController.swift */,
 				542912B321E28CFC00BF1FDD /* SentenceCell.swift */,
+				54C49969222DC1AF00DC3B99 /* WordDetailViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -365,8 +368,9 @@
 				5440C026220435D90077F6E5 /* Utils.swift in Sources */,
 				542912B421E28CFC00BF1FDD /* SentenceCell.swift in Sources */,
 				5419295421D7AF7700A9277C /* LectionCell.swift in Sources */,
+				54C4996A222DC1AF00DC3B99 /* WordDetailViewController.swift in Sources */,
 				5419295221D7ABE300A9277C /* EducationMainViewController.swift in Sources */,
-				543F199521DEA30F00F08764 /* WordDetailViewController.swift in Sources */,
+				543F199521DEA30F00F08764 /* OldWordDetailViewController.swift in Sources */,
 				5465C00B222ABCBA009B628F /* LectionViewController.swift in Sources */,
 				54A8FC27222BD356005CD643 /* Labels.swift in Sources */,
 				542912B821E295D700BF1FDD /* EducationDetailViewController.swift in Sources */,

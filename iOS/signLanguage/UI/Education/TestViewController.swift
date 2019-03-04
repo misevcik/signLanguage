@@ -90,7 +90,7 @@ extension TestViewController: UITableViewDataSource, UITableViewDelegate {
             cell.lockImage.image = lockImage
         } else {
             //TODO fill result
-            if lection.testScore == 0 {
+            if lection.score == 0 {
                 cell.lockImage.image = unlockImage
                 cell.detailLabel.text = Labels.TEST_NO_TEST_LABEL
             }

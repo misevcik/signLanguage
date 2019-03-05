@@ -56,7 +56,7 @@ class WordDetailViewController : UIViewController {
 
             let layer: AVPlayerLayer = AVPlayerLayer(player: player)
             layer.frame = self.videoFrame.bounds
-            layer.videoGravity = AVLayerVideoGravity.resize
+            layer.videoGravity = AVLayerVideoGravity.resizeAspectFill
             videoFrame.layer.addSublayer(layer)
             
             player.play()

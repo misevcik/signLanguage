@@ -100,17 +100,25 @@
 		5419295021D7AB9F00A9277C /* Education */ = {
 			isa = PBXGroup;
 			children = (
+				541F6547222F2F990022EECB /* Cell */,
 				5465C009222AA389009B628F /* Components */,
 				545CA46521F78DB30034E23C /* FlowLayout */,
-				54EA763421F677BD00A5C50C /* EducationDetailCell.swift */,
 				5419295121D7ABE300A9277C /* EducationMainViewController.swift */,
-				5419295321D7AF7700A9277C /* LectionCell.swift */,
 				542912B721E295D700BF1FDD /* EducationDetailViewController.swift */,
 				5465C00A222ABCBA009B628F /* LectionViewController.swift */,
 				5465C00C222ABCFB009B628F /* TestViewController.swift */,
-				54057755222C8AB600E3E227 /* TestCell.swift */,
 			);
 			path = Education;
+			sourceTree = "<group>";
+		};
+		541F6547222F2F990022EECB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				54EA763421F677BD00A5C50C /* EducationDetailCell.swift */,
+				5419295321D7AF7700A9277C /* LectionCell.swift */,
+				54057755222C8AB600E3E227 /* TestCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		542912B621E293B300BF1FDD /* Common */ = {

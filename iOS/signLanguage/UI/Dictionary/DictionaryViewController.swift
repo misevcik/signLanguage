@@ -62,11 +62,15 @@ class DictionaryViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchBar.layer.borderWidth = 1
-        searchBar.layer.borderColor = #colorLiteral(red: 0.9656763673, green: 0.965699017, blue: 0.9656868577, alpha: 1)
-        
+        setupLayout()
         loadPersistenceContainer()
         
+    }
+    
+    func setupLayout() {
+        
+        searchBar.layer.borderWidth = 1
+        searchBar.layer.borderColor = #colorLiteral(red: 0.9656763673, green: 0.965699017, blue: 0.9656868577, alpha: 1)
     }
 }
 

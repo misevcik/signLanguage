@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.isStatusBarHidden = false
         
         _ = sharedFillCoreData
-        
+                
         return true
     }
 

@@ -48,9 +48,9 @@ class VideoController : UIView {
     }
     
     private func commonInit() {
-        Bundle.main.loadNibNamed("EducationMenuBar", owner: self, options: nil)
-        addSubview(contentView)
+        Bundle.main.loadNibNamed("VideoController", owner: self, options: nil)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        addSubview(contentView)
     }
 }

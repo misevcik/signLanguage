@@ -12,8 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoController" customModule="signLanguage" customModuleProvider="target">
             <connections>
-                <outlet property="contentView" destination="sro-UU-U3l" id="9L5-XW-fWp"/>
-                <outlet property="slowDownClick" destination="Za2-Yf-osk" id="YUr-j9-ksE"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="XbO-NE-UD6"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -48,7 +47,6 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="pm4-K7-Nlu" firstAttribute="centerX" secondItem="79I-oo-aDK" secondAttribute="centerX" id="7eU-Tl-KIa"/>
                                         <constraint firstItem="UeW-vb-uAQ" firstAttribute="centerX" secondItem="79I-oo-aDK" secondAttribute="centerX" id="Lh6-Jl-CaJ"/>
@@ -67,7 +65,6 @@
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="Za2-Yf-osk" firstAttribute="centerY" secondItem="ERh-9q-kWJ" secondAttribute="centerY" id="IG7-ib-CGr"/>
                                         <constraint firstItem="Za2-Yf-osk" firstAttribute="centerX" secondItem="ERh-9q-kWJ" secondAttribute="centerX" id="nIR-8m-uMm"/>
@@ -84,7 +81,6 @@
                                             </constraints>
                                         </imageView>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="zaR-2F-Aa4" firstAttribute="centerX" secondItem="Jru-LB-xAL" secondAttribute="centerX" id="eqJ-sT-FDG"/>
                                         <constraint firstItem="zaR-2F-Aa4" firstAttribute="centerY" secondItem="Jru-LB-xAL" secondAttribute="centerY" id="lVj-Li-AiU"/>
@@ -101,7 +97,6 @@
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="ipq-8h-26k" firstAttribute="centerY" secondItem="BIc-Gi-20O" secondAttribute="centerY" id="AOc-cJ-P9Z"/>
                                         <constraint firstItem="ipq-8h-26k" firstAttribute="centerX" secondItem="BIc-Gi-20O" secondAttribute="centerX" id="J5b-wy-4vl"/>
@@ -128,7 +123,6 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="xQk-yw-8LT" firstAttribute="centerY" secondItem="Bht-C6-u2b" secondAttribute="centerY" constant="-5" id="9Xt-SC-du0"/>
                                         <constraint firstItem="TMq-IO-MXR" firstAttribute="centerX" secondItem="Bht-C6-u2b" secondAttribute="centerX" id="UdL-Bc-1Dm"/>
@@ -148,12 +142,11 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="sro-UU-U3l" secondAttribute="bottom" id="ALK-Ae-bLq"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="sro-UU-U3l" secondAttribute="trailing" id="GrM-Ym-1jh"/>
-                <constraint firstItem="sro-UU-U3l" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="L4m-DI-2NO"/>
-                <constraint firstItem="sro-UU-U3l" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="k9N-Zd-WGr"/>
+                <constraint firstItem="sro-UU-U3l" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="BWg-nX-ezN"/>
+                <constraint firstItem="sro-UU-U3l" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="P7A-hC-jmh"/>
+                <constraint firstItem="sro-UU-U3l" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="e1T-mE-mBw"/>
+                <constraint firstItem="sro-UU-U3l" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="g6T-JH-jNl"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

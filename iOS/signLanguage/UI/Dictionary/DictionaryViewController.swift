@@ -72,6 +72,27 @@ class DictionaryViewController : UIViewController {
         searchBar.layer.borderWidth = 1
         searchBar.layer.borderColor = #colorLiteral(red: 0.9656763673, green: 0.965699017, blue: 0.9656868577, alpha: 1)
     }
+    
+    func nextIndexPath(_ currentIndexPath: IndexPath) -> IndexPath? {
+        var nextRow = 0
+        var nextSection = 0
+        var iteration = 0
+        var startRow = currentIndexPath.row
+        for section in currentIndexPath.section ..< self.dictionaryTable.numberOfSections {
+            nextSection = section
+            for row in startRow ..< dictionaryTable.numberOfRows(inSection: section) {
+                nextRow = row
+                iteration += 1
+                if iteration == 2 {
+                    let nextIndexPath = IndexPath(row: nextRow, section: nextSection)
+                    return nextIndexPath
+                }
+            }
+            startRow = 0
+        }
+        
+        return IndexPath(row: 0, section: 0)
+    }
 }
 
 extension DictionaryViewController: NSFetchedResultsControllerDelegate {
@@ -133,7 +154,7 @@ extension DictionaryViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: WordCell.reuseIdentifier, for: indexPath) as? WordCell else {
             fatalError("Unexpected Index Path")
         }
-        
+
         let dictionary = fetchedResultsController.object(at: indexPath)
         cell.wordLabel.text = dictionary.word
         
@@ -145,7 +166,9 @@ extension DictionaryViewController: UITableViewDataSource, UITableViewDelegate {
         let dbWord = self.fetchedResultsController.object(at: indexPath)
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "WordDetailViewController") as! WordDetailViewController
-        vc.dbWord = dbWord
+        vc.setWord(dbWord)
+        vc.setFetchController(fetchedResultsController)
+        vc.callbackNextIndexPath = nextIndexPath
         self.show(vc, sender: true)
         
     }

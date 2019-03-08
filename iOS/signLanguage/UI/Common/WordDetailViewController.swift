@@ -14,39 +14,50 @@ import CoreData
 
 class WordDetailViewController : UIViewController {
     
+    //Callback
+    var callbackNextIndexPath: ((_ currentIndexPath: IndexPath) -> IndexPath?)?
+    
     @IBOutlet weak var lectionNameLabel: UILabel!
-    //@IBOutlet weak var wordLabel: UILabel!
+    @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var sentenceTable: UITableView!
     @IBOutlet weak var videoFrame: UIView!
+    @IBOutlet weak var videoController: VideoController!
     
     @IBAction func clickBack(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)
         self.navigationController?.isNavigationBarHidden = true
     }
     
-    var dbWord : DBWord!
-    var dbSentences : Array<DBSentence>!
-    var playerViewController = AVPlayerViewController()
+    func setWord(_ word : DBWord) {
+        dbWord = word
+    }
+    
+    func setFetchController(_ fetchController : NSFetchedResultsController<DBWord>) {
+            fetchedResultsController = fetchController
+    }
+    
+    fileprivate var dbWord : DBWord!
+    fileprivate var playerViewController = AVPlayerViewController()
+    fileprivate var fetchedResultsController: NSFetchedResultsController<DBWord>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupLabels()
+        videoController.delegate = self
+        sentenceTable.tableFooterView = UIView()
+        
+        loadLabel()
+        loadVideo()
+    }
+    
+    fileprivate func loadVideo() {
         if dbWord.videoFront?.isEmpty == false {
             showVideo(videoName: dbWord.videoFront!)
         }
-        
-        sentenceTable.tableFooterView = UIView()
-        
-        addVideoOverlay()
     }
     
-    fileprivate func addVideoOverlay() {
-        
-    }
-    
-    fileprivate func setupLabels() {
-        //wordLabel.text = dbWord.word
+    fileprivate func loadLabel() {
+        wordLabel.text = dbWord.word
     }
     
     fileprivate func showVideo(videoName : String) {
@@ -66,6 +77,34 @@ class WordDetailViewController : UIViewController {
         }
     }
     
+}
+
+extension WordDetailViewController : VideoControllerProtocol {
+
+    func clickForward() {
+        
+        let indexPath =  self.fetchedResultsController.indexPath(forObject: dbWord)
+        let nextIndexPath = callbackNextIndexPath!(indexPath!)
+
+        let nextDbWord = fetchedResultsController.object(at: nextIndexPath!)
+        dbWord = nextDbWord
+        
+        loadVideo()
+        loadLabel()
+        sentenceTable.reloadData()
+    }
+
+    func clickBackward() {
+
+    }
+
+    func clickSideVideo() {
+
+    }
+
+    func clickSlowDown() {
+
+    }
 }
 
 extension WordDetailViewController: UITableViewDataSource, UITableViewDelegate {

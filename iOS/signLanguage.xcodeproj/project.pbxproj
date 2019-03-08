@@ -19,6 +19,8 @@
 		543F199521DEA30F00F08764 /* OldWordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543F199421DEA30F00F08764 /* OldWordDetailViewController.swift */; };
 		5440C023220427D40077F6E5 /* QuizItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5440C022220427D40077F6E5 /* QuizItem.swift */; };
 		5440C026220435D90077F6E5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5440C025220435D90077F6E5 /* Utils.swift */; };
+		545F1B8E22327CFF0007B60C /* VideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F1B8D22327CFF0007B60C /* VideoController.swift */; };
+		545F1B9022327D0A0007B60C /* VideoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 545F1B8F22327D0A0007B60C /* VideoController.xib */; };
 		5465C00B222ABCBA009B628F /* LectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5465C00A222ABCBA009B628F /* LectionViewController.swift */; };
 		5465C00D222ABCFB009B628F /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5465C00C222ABCFB009B628F /* TestViewController.swift */; };
 		5485807A21E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5485807821E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld */; };
@@ -54,6 +56,8 @@
 		5440C022220427D40077F6E5 /* QuizItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizItem.swift; sourceTree = "<group>"; };
 		5440C025220435D90077F6E5 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		5440C027220494D50077F6E5 /* DLRadioButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DLRadioButton.framework; sourceTree = "<group>"; };
+		545F1B8D22327CFF0007B60C /* VideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoController.swift; sourceTree = "<group>"; };
+		545F1B8F22327D0A0007B60C /* VideoController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoController.xib; sourceTree = "<group>"; };
 		5465C00A222ABCBA009B628F /* LectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectionViewController.swift; sourceTree = "<group>"; };
 		5465C00C222ABCFB009B628F /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		5485807921E7C6FA00440282 /* DictionaryDatabase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DictionaryDatabase.xcdatamodel; sourceTree = "<group>"; };
@@ -128,6 +132,8 @@
 				543F199421DEA30F00F08764 /* OldWordDetailViewController.swift */,
 				542912B321E28CFC00BF1FDD /* SentenceCell.swift */,
 				54C49969222DC1AF00DC3B99 /* WordDetailViewController.swift */,
+				545F1B8D22327CFF0007B60C /* VideoController.swift */,
+				545F1B8F22327D0A0007B60C /* VideoController.xib */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -323,6 +329,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				545F1B9022327D0A0007B60C /* VideoController.xib in Resources */,
 				54B12C7121D11FBD00A9E2C1 /* LaunchScreen.storyboard in Resources */,
 				5498947B2212251600024E77 /* sample_1.mp4 in Resources */,
 				54B12C6E21D11FBD00A9E2C1 /* Assets.xcassets in Resources */,
@@ -380,6 +387,7 @@
 				5419295221D7ABE300A9277C /* EducationMainViewController.swift in Sources */,
 				543F199521DEA30F00F08764 /* OldWordDetailViewController.swift in Sources */,
 				5465C00B222ABCBA009B628F /* LectionViewController.swift in Sources */,
+				545F1B8E22327CFF0007B60C /* VideoController.swift in Sources */,
 				54A8FC27222BD356005CD643 /* Labels.swift in Sources */,
 				542912B821E295D700BF1FDD /* EducationDetailViewController.swift in Sources */,
 				5485807A21E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld in Sources */,

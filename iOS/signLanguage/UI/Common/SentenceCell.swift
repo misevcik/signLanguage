@@ -15,6 +15,7 @@ class SentenceCell : UITableViewCell {
     
     @IBOutlet weak var sentence: UILabel!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

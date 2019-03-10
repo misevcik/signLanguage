@@ -9,10 +9,11 @@
 import UIKit
 
 protocol VideoControllerProtocol {
+    func clickPlayVideo()
     func clickForward()
     func clickBackward()
-    func clickSideVideo()
-    func clickSlowDown()
+    func clickSideVideo(_ isSelected : Bool)
+    func clickSlowDown(_ isSelected : Bool)
 }
 
 class VideoController : UIView {
@@ -20,9 +21,17 @@ class VideoController : UIView {
     public var delegate : VideoControllerProtocol?
     
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var sideViewLabel: UILabel!
+    @IBOutlet weak var slowDownLabel: UILabel!
     
-    @IBAction func slowDownClick(_ sender: Any) {
-        delegate?.clickSlowDown()
+    @IBAction func playClick(_ sender: UIButton) {
+        delegate?.clickPlayVideo()
+    }
+    
+    
+    @IBAction func slowDownClick(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        delegate?.clickSlowDown(sender.isSelected)
     }
     
     @IBAction func goBackwardClick(_ sender: Any) {
@@ -33,8 +42,10 @@ class VideoController : UIView {
        delegate?.clickForward()
     }
     
-    @IBAction func sideVideoClick(_ sender: Any) {
-        delegate?.clickSideVideo()
+    @IBAction func sideVideoClick(_ sender: UIButton) {
+        
+        sender.isSelected = !sender.isSelected
+        delegate?.clickSideVideo(sender.isSelected)
     }
     
     override init(frame: CGRect) {

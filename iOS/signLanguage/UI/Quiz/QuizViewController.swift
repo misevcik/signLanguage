@@ -131,7 +131,7 @@ class QuizViewController : UIViewController {
             
                 if defineRightAnswerIndex == i {
                     let path = Bundle.main.path(forResource: word.videoFront, ofType: "mp4")
-                    quizItem.cellImage = Utils.getVideoFrame(url: URL(fileURLWithPath: path!), at: 1)!
+                    quizItem.cellImage = Utils.getVideoImage(url: URL(fileURLWithPath: path!), at: 1)!
                     quizItem.answerList.append((answer: word.word!, isCorrect: true))
                 } else {
                     quizItem.answerList.append((answer: word.word!, isCorrect: false))

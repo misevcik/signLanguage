@@ -93,6 +93,12 @@ class DictionaryViewController : UIViewController {
         
         return IndexPath(row: 0, section: 0)
     }
+    
+    func prevIndexPath(_ currentIndexPath: IndexPath) -> IndexPath? {
+   
+        //Todo Write previous index
+        return self.dictionaryTable.lastIndexpath()
+    }
 }
 
 extension DictionaryViewController: NSFetchedResultsControllerDelegate {
@@ -169,6 +175,7 @@ extension DictionaryViewController: UITableViewDataSource, UITableViewDelegate {
         vc.setWord(dbWord)
         vc.setFetchController(fetchedResultsController)
         vc.callbackNextIndexPath = nextIndexPath
+        vc.callbackPrevIndexPath = prevIndexPath
         self.show(vc, sender: true)
         
     }

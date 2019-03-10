@@ -11,7 +11,7 @@ import AVKit
 
 class Utils {
     
-    static func getVideoFrame(url: URL, at time: TimeInterval) -> UIImage? {
+    static func getVideoImage(url: URL, at time: TimeInterval) -> UIImage? {
         let asset = AVURLAsset(url: url)
         
         let assetIG = AVAssetImageGenerator(asset: asset)
@@ -39,5 +39,14 @@ extension UIImage {
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return image!
+    }
+}
+
+extension UITableView {
+    func lastIndexpath() -> IndexPath {
+        let section = max(numberOfSections - 1, 0)
+        let row = max(numberOfRows(inSection: section) - 1, 0)
+        
+        return IndexPath(row: row, section: section)
     }
 }

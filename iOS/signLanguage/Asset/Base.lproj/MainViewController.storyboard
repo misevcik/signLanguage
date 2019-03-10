@@ -1468,9 +1468,22 @@
                                             <constraint firstAttribute="trailing" secondItem="w2s-YS-WhB" secondAttribute="trailing" id="oRz-SU-yCR"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YWg-Vg-5xk" userLabel="Video Frame">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YWg-Vg-5xk" userLabel="Image View">
                                         <rect key="frame" x="0.0" y="44" width="375" height="329.5"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gDu-bw-i0W" userLabel="Video Image">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="329.5"/>
+                                            </imageView>
+                                        </subviews>
                                         <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="gDu-bw-i0W" firstAttribute="top" secondItem="YWg-Vg-5xk" secondAttribute="top" id="5td-f1-Mdh"/>
+                                            <constraint firstItem="gDu-bw-i0W" firstAttribute="centerX" secondItem="YWg-Vg-5xk" secondAttribute="centerX" id="ELH-e0-YJh"/>
+                                            <constraint firstAttribute="bottom" secondItem="gDu-bw-i0W" secondAttribute="bottom" id="EOv-ec-GAC"/>
+                                            <constraint firstAttribute="trailing" secondItem="gDu-bw-i0W" secondAttribute="trailing" id="Jzm-1v-ukb"/>
+                                            <constraint firstItem="gDu-bw-i0W" firstAttribute="centerY" secondItem="YWg-Vg-5xk" secondAttribute="centerY" id="KOp-ZL-chz"/>
+                                            <constraint firstItem="gDu-bw-i0W" firstAttribute="leading" secondItem="YWg-Vg-5xk" secondAttribute="leading" id="j9a-Qg-6QJ"/>
+                                        </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fOv-Yr-gE3" userLabel="Control">
                                         <rect key="frame" x="0.0" y="373.5" width="375" height="263.5"/>
@@ -1581,9 +1594,10 @@
                     </view>
                     <connections>
                         <outlet property="lectionNameLabel" destination="bCN-Ag-9Zu" id="4HT-K0-BdP"/>
+                        <outlet property="sentenceLabel" destination="wkM-A2-mLX" id="uTQ-KD-oQm"/>
                         <outlet property="sentenceTable" destination="38V-Pj-yfq" id="GGs-We-mu4"/>
                         <outlet property="videoController" destination="oRd-pI-ipj" id="umi-UP-LjL"/>
-                        <outlet property="videoFrame" destination="YWg-Vg-5xk" id="8pT-LH-GfP"/>
+                        <outlet property="videoImage" destination="gDu-bw-i0W" id="Kcq-UU-h6j"/>
                         <outlet property="wordLabel" destination="bCN-Ag-9Zu" id="Mza-46-ZFw"/>
                     </connections>
                 </viewController>

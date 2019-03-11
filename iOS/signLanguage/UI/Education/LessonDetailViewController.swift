@@ -12,6 +12,7 @@ import AVKit
 
 class LessonDetailViewController : UIViewController {
 
+    @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var sentenceTable: UITableView!
     @IBOutlet weak var sentenceLabel: UILabel!
     @IBOutlet weak var videoImage: UIImageView!
@@ -55,8 +56,10 @@ class LessonDetailViewController : UIViewController {
     fileprivate func fillViewData() {
         setTableLayout()
         setVideo()
+        
+        wordLabel.text = dbWord.word
     }
-    
+
     fileprivate func setTableLayout() {
         if dbWord.relSentence!.count == 0 {
             sentenceTable.isHidden = true

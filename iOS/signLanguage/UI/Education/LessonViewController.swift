@@ -12,7 +12,7 @@ import os.log
 
 //simply guide https://www.youtube.com/watch?v=NSryf0YJHHk, https://www.youtube.com/watch?v=s9v0YkRwYvI
 
-class LectionViewController : UIViewController {
+class LessonViewController : UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -83,7 +83,7 @@ class LectionViewController : UIViewController {
     
 }
 
-//extension LectionViewController: NSFetchedResultsControllerDelegate {
+//extension LessonViewController: NSFetchedResultsControllerDelegate {
 //
 //    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
 //
@@ -131,7 +131,7 @@ class LectionViewController : UIViewController {
 //
 //}
 
-extension LectionViewController : UICollectionViewDataSource, UICollectionViewDelegate {
+extension LessonViewController : UICollectionViewDataSource, UICollectionViewDelegate {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -170,16 +170,16 @@ extension LectionViewController : UICollectionViewDataSource, UICollectionViewDe
             return
         }
         
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "EducationDetailViewController") as! EducationDetailViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LessonDetailViewController") as! LessonDetailViewController
         vc.setLesson(lesson)
-        vc.unlockNextLessonCallback = unlockNextLesson
+        //vc.unlockNextLessonCallback = unlockNextLesson
         
         self.show(vc, sender: true)
         
     }
 }
 
-extension LectionViewController : UICollectionViewDelegateFlowLayout {
+extension LessonViewController : UICollectionViewDelegateFlowLayout {
  
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,

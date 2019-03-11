@@ -23,8 +23,13 @@ class WordDetailViewController : UIViewController {
     @IBOutlet weak var sentenceTable: UITableView!
     @IBOutlet weak var sentenceLabel: UILabel!
     @IBOutlet weak var videoImage: UIImageView!
-    
     @IBOutlet weak var videoController: VideoController!
+    
+    fileprivate var dbWord : DBWord!
+    fileprivate var fetchedResultsController: NSFetchedResultsController<DBWord>!
+    //Video player
+    fileprivate var  playerViewController = AVPlayerViewController()
+    fileprivate var videoRate : Float = 1.0
     
     @IBAction func clickBack(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)
@@ -39,12 +44,6 @@ class WordDetailViewController : UIViewController {
         fetchedResultsController = fetchController
     }
     
-    fileprivate var dbWord : DBWord!
-    fileprivate var fetchedResultsController: NSFetchedResultsController<DBWord>!
-    //Video player
-    fileprivate var  playerViewController = AVPlayerViewController()
-    fileprivate var videoRate : Float = 1.0
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,6 +51,10 @@ class WordDetailViewController : UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerViewController.player?.currentItem)
 
+        setLayout()
+    }
+    
+    fileprivate func setLayout() {
         setTableLayout()
         setWordLabel()
         setVideoData()
@@ -80,6 +83,8 @@ class WordDetailViewController : UIViewController {
             sentenceLabel.isHidden = false
             sentenceTable.tableFooterView = UIView()
         }
+        
+        sentenceTable.reloadData()
     }
     
     fileprivate func setWordLabel() {
@@ -108,7 +113,6 @@ class WordDetailViewController : UIViewController {
     
     fileprivate func playVideo() {
         self.present(playerViewController, animated: true) {
-            self.playerViewController.player!.rate = 0.5
             self.playerViewController.player!.seek(to: .zero)
             self.playerViewController.player!.play()
         }
@@ -129,10 +133,7 @@ extension WordDetailViewController : VideoControllerProtocol {
         let nextDbWord = fetchedResultsController.object(at: nextIndexPath!)
         dbWord = nextDbWord
         
-        setTableLayout()
-        setWordLabel()
-        setVideoData()
-        sentenceTable.reloadData()
+        setLayout()
     }
 
     func clickBackward() {
@@ -142,10 +143,7 @@ extension WordDetailViewController : VideoControllerProtocol {
         let nextDbWord = fetchedResultsController.object(at: nextIndexPath!)
         dbWord = nextDbWord
         
-        setTableLayout()
-        setWordLabel()
-        setVideoData()
-        sentenceTable.reloadData()
+        setLayout()
     }
     
     func clickPlayVideo() {
@@ -185,6 +183,4 @@ extension WordDetailViewController: UITableViewDataSource, UITableViewDelegate {
         //playVideo(videoName: sentence.video!)
         
     }
-    
-    
 }

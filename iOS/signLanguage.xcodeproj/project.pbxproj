@@ -12,17 +12,16 @@
 		5419295221D7ABE300A9277C /* EducationMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5419295121D7ABE300A9277C /* EducationMainViewController.swift */; };
 		5419295421D7AF7700A9277C /* LectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5419295321D7AF7700A9277C /* LectionCell.swift */; };
 		542912B421E28CFC00BF1FDD /* SentenceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542912B321E28CFC00BF1FDD /* SentenceCell.swift */; };
-		542912B821E295D700BF1FDD /* EducationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542912B721E295D700BF1FDD /* EducationDetailViewController.swift */; };
 		5432D3FB22295DB0003A7A9E /* EducationMenuBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5432D3FA22295DB0003A7A9E /* EducationMenuBar.xib */; };
 		5432D3FD22295E7F003A7A9E /* EducationMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5432D3FC22295E7F003A7A9E /* EducationMenuBar.swift */; };
 		543F199221DEA2AB00F08764 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543F199121DEA2AB00F08764 /* FavoritesViewController.swift */; };
-		543F199521DEA30F00F08764 /* OldWordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543F199421DEA30F00F08764 /* OldWordDetailViewController.swift */; };
 		5440C023220427D40077F6E5 /* QuizItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5440C022220427D40077F6E5 /* QuizItem.swift */; };
 		5440C026220435D90077F6E5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5440C025220435D90077F6E5 /* Utils.swift */; };
 		545F1B8E22327CFF0007B60C /* VideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F1B8D22327CFF0007B60C /* VideoController.swift */; };
 		545F1B9022327D0A0007B60C /* VideoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 545F1B8F22327D0A0007B60C /* VideoController.xib */; };
-		5465C00B222ABCBA009B628F /* LectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5465C00A222ABCBA009B628F /* LectionViewController.swift */; };
+		5465C00B222ABCBA009B628F /* LessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5465C00A222ABCBA009B628F /* LessonViewController.swift */; };
 		5465C00D222ABCFB009B628F /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5465C00C222ABCFB009B628F /* TestViewController.swift */; };
+		5470A93E2236C80700B99FB4 /* LessonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5470A93D2236C80700B99FB4 /* LessonDetailViewController.swift */; };
 		5485807A21E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5485807821E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld */; };
 		5498947B2212251600024E77 /* sample_1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 549894792212251600024E77 /* sample_1.mp4 */; };
 		5498947C2212251600024E77 /* sample_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5498947A2212251600024E77 /* sample_2.mp4 */; };
@@ -35,6 +34,7 @@
 		54B12C6C21D11FBC00A9E2C1 /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54B12C6A21D11FBC00A9E2C1 /* MainViewController.storyboard */; };
 		54B12C6E21D11FBD00A9E2C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54B12C6D21D11FBD00A9E2C1 /* Assets.xcassets */; };
 		54B12C7121D11FBD00A9E2C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54B12C6F21D11FBD00A9E2C1 /* LaunchScreen.storyboard */; };
+		54C2048E2236EE970081F63C /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C2048D2236EE970081F63C /* Video.swift */; };
 		54C4996A222DC1AF00DC3B99 /* WordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C49969222DC1AF00DC3B99 /* WordDetailViewController.swift */; };
 		54EA763521F677BD00A5C50C /* EducationDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EA763421F677BD00A5C50C /* EducationDetailCell.swift */; };
 		54EA763A21F67A8000A5C50C /* UPCarouselFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EA763921F67A8000A5C50C /* UPCarouselFlowLayout.swift */; };
@@ -48,18 +48,17 @@
 		5419295121D7ABE300A9277C /* EducationMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationMainViewController.swift; sourceTree = "<group>"; };
 		5419295321D7AF7700A9277C /* LectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectionCell.swift; sourceTree = "<group>"; };
 		542912B321E28CFC00BF1FDD /* SentenceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceCell.swift; sourceTree = "<group>"; };
-		542912B721E295D700BF1FDD /* EducationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationDetailViewController.swift; sourceTree = "<group>"; };
 		5432D3FA22295DB0003A7A9E /* EducationMenuBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EducationMenuBar.xib; sourceTree = "<group>"; };
 		5432D3FC22295E7F003A7A9E /* EducationMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationMenuBar.swift; sourceTree = "<group>"; };
 		543F199121DEA2AB00F08764 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
-		543F199421DEA30F00F08764 /* OldWordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldWordDetailViewController.swift; sourceTree = "<group>"; };
 		5440C022220427D40077F6E5 /* QuizItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizItem.swift; sourceTree = "<group>"; };
 		5440C025220435D90077F6E5 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		5440C027220494D50077F6E5 /* DLRadioButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DLRadioButton.framework; sourceTree = "<group>"; };
 		545F1B8D22327CFF0007B60C /* VideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoController.swift; sourceTree = "<group>"; };
 		545F1B8F22327D0A0007B60C /* VideoController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoController.xib; sourceTree = "<group>"; };
-		5465C00A222ABCBA009B628F /* LectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectionViewController.swift; sourceTree = "<group>"; };
+		5465C00A222ABCBA009B628F /* LessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewController.swift; sourceTree = "<group>"; };
 		5465C00C222ABCFB009B628F /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		5470A93D2236C80700B99FB4 /* LessonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDetailViewController.swift; sourceTree = "<group>"; };
 		5485807921E7C6FA00440282 /* DictionaryDatabase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DictionaryDatabase.xcdatamodel; sourceTree = "<group>"; };
 		549894792212251600024E77 /* sample_1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample_1.mp4; sourceTree = "<group>"; };
 		5498947A2212251600024E77 /* sample_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample_2.mp4; sourceTree = "<group>"; };
@@ -72,6 +71,7 @@
 		54B12C6D21D11FBD00A9E2C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		54B12C7021D11FBD00A9E2C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		54B12C7221D11FBD00A9E2C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		54C2048D2236EE970081F63C /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		54C49969222DC1AF00DC3B99 /* WordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailViewController.swift; sourceTree = "<group>"; };
 		54EA763021F670FB00A5C50C /* UPCarouselFlowLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UPCarouselFlowLayout.framework; sourceTree = "<group>"; };
 		54EA763421F677BD00A5C50C /* EducationDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EducationDetailCell.swift; sourceTree = "<group>"; };
@@ -108,9 +108,9 @@
 				5465C009222AA389009B628F /* Components */,
 				545CA46521F78DB30034E23C /* FlowLayout */,
 				5419295121D7ABE300A9277C /* EducationMainViewController.swift */,
-				542912B721E295D700BF1FDD /* EducationDetailViewController.swift */,
-				5465C00A222ABCBA009B628F /* LectionViewController.swift */,
+				5465C00A222ABCBA009B628F /* LessonViewController.swift */,
 				5465C00C222ABCFB009B628F /* TestViewController.swift */,
+				5470A93D2236C80700B99FB4 /* LessonDetailViewController.swift */,
 			);
 			path = Education;
 			sourceTree = "<group>";
@@ -129,7 +129,6 @@
 			isa = PBXGroup;
 			children = (
 				5416D03C21D62134009E8D02 /* WordCell.swift */,
-				543F199421DEA30F00F08764 /* OldWordDetailViewController.swift */,
 				542912B321E28CFC00BF1FDD /* SentenceCell.swift */,
 				54C49969222DC1AF00DC3B99 /* WordDetailViewController.swift */,
 				545F1B8D22327CFF0007B60C /* VideoController.swift */,
@@ -151,6 +150,7 @@
 			children = (
 				5440C025220435D90077F6E5 /* Utils.swift */,
 				54A8FC26222BD356005CD643 /* Labels.swift */,
+				54C2048D2236EE970081F63C /* Video.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -381,16 +381,16 @@
 				5465C00D222ABCFB009B628F /* TestViewController.swift in Sources */,
 				54057756222C8AB600E3E227 /* TestCell.swift in Sources */,
 				5440C026220435D90077F6E5 /* Utils.swift in Sources */,
+				54C2048E2236EE970081F63C /* Video.swift in Sources */,
 				542912B421E28CFC00BF1FDD /* SentenceCell.swift in Sources */,
 				5419295421D7AF7700A9277C /* LectionCell.swift in Sources */,
 				54C4996A222DC1AF00DC3B99 /* WordDetailViewController.swift in Sources */,
 				5419295221D7ABE300A9277C /* EducationMainViewController.swift in Sources */,
-				543F199521DEA30F00F08764 /* OldWordDetailViewController.swift in Sources */,
-				5465C00B222ABCBA009B628F /* LectionViewController.swift in Sources */,
+				5465C00B222ABCBA009B628F /* LessonViewController.swift in Sources */,
 				545F1B8E22327CFF0007B60C /* VideoController.swift in Sources */,
 				54A8FC27222BD356005CD643 /* Labels.swift in Sources */,
-				542912B821E295D700BF1FDD /* EducationDetailViewController.swift in Sources */,
 				5485807A21E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld in Sources */,
+				5470A93E2236C80700B99FB4 /* LessonDetailViewController.swift in Sources */,
 				54EA763521F677BD00A5C50C /* EducationDetailCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

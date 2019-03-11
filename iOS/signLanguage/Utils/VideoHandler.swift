@@ -9,15 +9,18 @@
 import AVKit
 import UIKit
 
-class Video {
+class VideoHandler {
     
     fileprivate var playerViewController = AVPlayerViewController()
-    fileprivate var videoPreview : UIImageView!
+    fileprivate var videoPreview = UIImageView()
     fileprivate var dbWord : DBWord!
+    fileprivate var parent : UIViewController!
     
-    init() {
-        NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerViewController.player?.currentItem)
+    init(_ parentController : UIViewController) {
         
+        parent = parentController
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerViewController.player?.currentItem)
     }
     
     func setWord(_ word : DBWord) {
@@ -26,14 +29,18 @@ class Video {
         setVideoData()
     }
     
-    func playVideo() {
-        //self.present(playerViewController, animated: true) {
-            self.playerViewController.player!.seek(to: .zero)
-            self.playerViewController.player!.play()
-        //}
+    func getPreviewImage() ->UIImage {
+        return videoPreview.image!
     }
     
-    fileprivate func changeVideoSpeed(_ speed : Float) {
+    func playVideo() {
+        parent.present(playerViewController, animated: true) {
+            self.playerViewController.player!.seek(to: .zero)
+            self.playerViewController.player!.play()
+        }
+    }
+    
+    func changeVideoSpeed(_ speed : Float) {
         
         guard let asset = self.playerViewController.player!.currentItem?.asset else {
             return

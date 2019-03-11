@@ -17,13 +17,11 @@ class LessonDetailViewController : UIViewController {
     @IBOutlet weak var videoImage: UIImageView!
     @IBOutlet weak var lessonName: UILabel!
     @IBOutlet weak var videoController: VideoController!
-
     
     fileprivate var dbLesson : DBLesson!
     fileprivate var dbWordArray = Array<DBWord>()
     fileprivate var dbWord : DBWord!
-    fileprivate var playerViewController = AVPlayerViewController()
-    fileprivate var videoRate : Float = 1.0
+    fileprivate var videoHandler : VideoHandler!
     
     func setLesson(_ lesson : DBLesson) {
         dbLesson = lesson
@@ -32,7 +30,6 @@ class LessonDetailViewController : UIViewController {
     @IBAction func clickBack(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)
         self.navigationController?.isNavigationBarHidden = true
-        
     }
     
     fileprivate var currentPage: Int = 0 {
@@ -47,17 +44,17 @@ class LessonDetailViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        videoHandler = VideoHandler(self)
+        
         videoController.delegate = self
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerViewController.player?.currentItem)
-        
+   
         loadLectionData()
-        setLayout()
+        fillViewData()
     }
     
-    fileprivate func setLayout() {
+    fileprivate func fillViewData() {
         setTableLayout()
-        setVideoData()
+        setVideo()
     }
     
     fileprivate func setTableLayout() {
@@ -71,18 +68,9 @@ class LessonDetailViewController : UIViewController {
         }
     }
     
-    fileprivate func setVideoData() {
-        if dbWord.videoFront?.isEmpty == false {
-            let videoPath = Bundle.main.path(forResource: dbWord.videoFront!, ofType: "mp4")!
-            let videoUrl = URL(fileURLWithPath: videoPath)
-            videoImage.image = Utils.getVideoImage(url: videoUrl, at: 0)
-            
-            playerViewController.player = AVPlayer(url: videoUrl)
-            
-        } else {
-            videoImage.image = UIImage()
-            playerViewController.player = AVPlayer()
-        }
+    fileprivate func setVideo() {
+        videoHandler.setWord(dbWord)
+        videoImage.image = videoHandler.getPreviewImage()
     }
     
     fileprivate func loadLectionData() {
@@ -111,34 +99,7 @@ class LessonDetailViewController : UIViewController {
     }
     
     fileprivate func playVideo() {
-        self.present(playerViewController, animated: true) {
-            self.playerViewController.player!.seek(to: .zero)
-            self.playerViewController.player!.play()
-        }
-    }
-    
-    @objc func playerDidFinishPlaying(note: NSNotification) {
-        playerViewController.dismiss(animated: true, completion: nil)
-    }
-    
-    fileprivate func changeVideoSpeed(_ speed : Float) {
-        
-        guard let asset = self.playerViewController.player!.currentItem?.asset else {
-            return
-        }
-        
-        let composition = AVMutableComposition()
-        let assetTimeRange = CMTimeRangeMake(start: CMTime.zero, duration: asset.duration)
-        
-        do {
-            try composition.insertTimeRange(assetTimeRange, of: asset, at: CMTime.zero)
-            let destinationTimeRange = CMTimeMultiplyByFloat64(asset.duration, multiplier: Float64(1 / speed))
-            composition.scaleTimeRange(assetTimeRange, toDuration: destinationTimeRange)
-            let item = AVPlayerItem(asset: composition)
-            self.playerViewController.player!.replaceCurrentItem(with: item)
-        } catch {
-            print("Inserting time range failed. ", error)
-        }
+        videoHandler.playVideo()
     }
 
 }
@@ -173,12 +134,12 @@ extension LessonDetailViewController : VideoControllerProtocol {
     
     func clickForward() {
         self.currentPage = self.currentPage + 1
-        setLayout()
+        fillViewData()
     }
     
     func clickBackward() {
         self.currentPage = self.currentPage - 1
-        setLayout()
+        fillViewData()
     }
     
     func clickPlayVideo() {
@@ -189,7 +150,7 @@ extension LessonDetailViewController : VideoControllerProtocol {
     }
     
     func clickSlowDown(_ isSelected : Bool) {
-        changeVideoSpeed(isSelected ? 0.5 : 1.0)
+        videoHandler.changeVideoSpeed(isSelected ? 0.5 : 1.0)
     }
 }
 

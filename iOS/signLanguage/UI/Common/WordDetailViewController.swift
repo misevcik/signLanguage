@@ -36,9 +36,8 @@ class WordDetailViewController : UIViewController {
     }
     
     @IBAction func clickToFavorite(_ sender: UIButton) {
-        let favorite = !dbWord.favorite
-        sender.isSelected = !sender.isSelected
-        setFavorite(favorite)
+        dbWord.favorite = !dbWord.favorite
+        setFavorite(dbWord.favorite)
     }
     
     func setWord(_ word : DBWord) {
@@ -67,7 +66,7 @@ class WordDetailViewController : UIViewController {
     }
     
     fileprivate func setFavorite(_ isFavorite : Bool) {
-        if isFavorite == false {
+        if isFavorite == true {
             let icon = #imageLiteral(resourceName: "iconHeart-red")
             favoriteButton.setImage(icon, for: UIControl.State.normal)
         } else {

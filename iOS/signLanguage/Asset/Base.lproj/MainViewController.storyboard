@@ -961,7 +961,6 @@
                                                                     <constraint firstAttribute="width" constant="28" id="yvZ-en-9Cl"/>
                                                                 </constraints>
                                                                 <state key="normal" image="iconHeart-black"/>
-                                                                <state key="highlighted" image="iconHeart-red"/>
                                                                 <connections>
                                                                     <action selector="clickToFavorite:" destination="foW-ar-cJd" eventType="touchUpInside" id="pKZ-EA-Hc4"/>
                                                                 </connections>
@@ -1359,7 +1358,6 @@
         <image name="iconEducation-blue" width="17" height="17"/>
         <image name="iconEducation-gray" width="17" height="17"/>
         <image name="iconHeart-black" width="24" height="24"/>
-        <image name="iconHeart-red" width="24" height="24"/>
         <image name="iconLock" width="24" height="24"/>
         <image name="iconRightArrow" width="14" height="14"/>
         <image name="lock-top" width="112" height="112"/>

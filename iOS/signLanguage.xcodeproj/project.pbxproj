@@ -27,7 +27,6 @@
 		5498947C2212251600024E77 /* sample_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5498947A2212251600024E77 /* sample_2.mp4 */; };
 		549D9BED21E6727A00E930AD /* FillCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549D9BEC21E6727A00E930AD /* FillCoreData.swift */; };
 		54A386B022199DDC00D35569 /* DLRadioButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5440C027220494D50077F6E5 /* DLRadioButton.framework */; };
-		54A386B222199F6900D35569 /* UPCarouselFlowLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54EA763021F670FB00A5C50C /* UPCarouselFlowLayout.framework */; };
 		54A8FC27222BD356005CD643 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A8FC26222BD356005CD643 /* Labels.swift */; };
 		54AAD6CA21DE8DCD00D9F303 /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AAD6C921DE8DCD00D9F303 /* DictionaryViewController.swift */; };
 		54B12C6721D11FBC00A9E2C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B12C6621D11FBC00A9E2C1 /* AppDelegate.swift */; };
@@ -37,7 +36,6 @@
 		54C2048E2236EE970081F63C /* VideoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C2048D2236EE970081F63C /* VideoHandler.swift */; };
 		54C4996A222DC1AF00DC3B99 /* WordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C49969222DC1AF00DC3B99 /* WordDetailViewController.swift */; };
 		54EA763521F677BD00A5C50C /* EducationDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EA763421F677BD00A5C50C /* EducationDetailCell.swift */; };
-		54EA763A21F67A8000A5C50C /* UPCarouselFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EA763921F67A8000A5C50C /* UPCarouselFlowLayout.swift */; };
 		54FE04FC2200F3C600A9CA00 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FE04FB2200F3C600A9CA00 /* QuizViewController.swift */; };
 		54FE04FE2200F5BB00A9CA00 /* QuizCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FE04FD2200F5BB00A9CA00 /* QuizCell.swift */; };
 /* End PBXBuildFile section */
@@ -75,7 +73,6 @@
 		54C49969222DC1AF00DC3B99 /* WordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailViewController.swift; sourceTree = "<group>"; };
 		54EA763021F670FB00A5C50C /* UPCarouselFlowLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UPCarouselFlowLayout.framework; sourceTree = "<group>"; };
 		54EA763421F677BD00A5C50C /* EducationDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EducationDetailCell.swift; sourceTree = "<group>"; };
-		54EA763921F67A8000A5C50C /* UPCarouselFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UPCarouselFlowLayout.swift; sourceTree = "<group>"; };
 		54FE04FB2200F3C600A9CA00 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		54FE04FD2200F5BB00A9CA00 /* QuizCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,7 +82,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54A386B222199F6900D35569 /* UPCarouselFlowLayout.framework in Frameworks */,
 				54A386B022199DDC00D35569 /* DLRadioButton.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,7 +102,6 @@
 			children = (
 				541F6547222F2F990022EECB /* Cell */,
 				5465C009222AA389009B628F /* Components */,
-				545CA46521F78DB30034E23C /* FlowLayout */,
 				5419295121D7ABE300A9277C /* EducationMainViewController.swift */,
 				5465C00A222ABCBA009B628F /* LessonViewController.swift */,
 				5465C00C222ABCFB009B628F /* TestViewController.swift */,
@@ -153,14 +148,6 @@
 				54C2048D2236EE970081F63C /* VideoHandler.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		545CA46521F78DB30034E23C /* FlowLayout */ = {
-			isa = PBXGroup;
-			children = (
-				54EA763921F67A8000A5C50C /* UPCarouselFlowLayout.swift */,
-			);
-			path = FlowLayout;
 			sourceTree = "<group>";
 		};
 		5465C009222AA389009B628F /* Components */ = {
@@ -377,7 +364,6 @@
 				5416D03D21D62134009E8D02 /* WordCell.swift in Sources */,
 				543F199221DEA2AB00F08764 /* FavoritesViewController.swift in Sources */,
 				54B12C6721D11FBC00A9E2C1 /* AppDelegate.swift in Sources */,
-				54EA763A21F67A8000A5C50C /* UPCarouselFlowLayout.swift in Sources */,
 				5465C00D222ABCFB009B628F /* TestViewController.swift in Sources */,
 				54057756222C8AB600E3E227 /* TestCell.swift in Sources */,
 				5440C026220435D90077F6E5 /* Utils.swift in Sources */,

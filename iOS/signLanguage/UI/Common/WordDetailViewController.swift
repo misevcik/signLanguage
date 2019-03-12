@@ -18,6 +18,7 @@ class WordDetailViewController : UIViewController {
     var callbackNextIndexPath: ((_ currentIndexPath: IndexPath) -> IndexPath?)?
     var callbackPrevIndexPath: ((_ currentIndexPath: IndexPath) -> IndexPath?)?
     
+    @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var lectionNameLabel: UILabel!
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var sentenceTable: UITableView!
@@ -32,6 +33,12 @@ class WordDetailViewController : UIViewController {
     @IBAction func clickBack(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)
         self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    @IBAction func clickToFavorite(_ sender: UIButton) {
+        let favorite = !dbWord.favorite
+        sender.isSelected = !sender.isSelected
+        setFavorite(favorite)
     }
     
     func setWord(_ word : DBWord) {
@@ -56,6 +63,17 @@ class WordDetailViewController : UIViewController {
         setTableLayout()
         setWordLabel()
         setVideo()
+        setFavorite(dbWord.favorite)
+    }
+    
+    fileprivate func setFavorite(_ isFavorite : Bool) {
+        if isFavorite == false {
+            let icon = #imageLiteral(resourceName: "iconHeart-red")
+            favoriteButton.setImage(icon, for: UIControl.State.normal)
+        } else {
+            let icon = #imageLiteral(resourceName: "iconHeart-black")
+            favoriteButton.setImage(icon, for: UIControl.State.normal)
+        }
     }
     
     fileprivate func setVideo() {

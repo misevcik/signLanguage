@@ -12,11 +12,11 @@ import AVKit
 
 class LessonDetailViewController : UIViewController {
 
-    @IBOutlet weak var wordLabel: UILabel!
+    @IBOutlet weak var pagerLabel: UILabel!
     @IBOutlet weak var sentenceTable: UITableView!
     @IBOutlet weak var sentenceLabel: UILabel!
     @IBOutlet weak var videoImage: UIImageView!
-    @IBOutlet weak var lessonName: UILabel!
+    @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var videoController: VideoController!
     
     fileprivate var dbLesson : DBLesson!
@@ -69,6 +69,8 @@ class LessonDetailViewController : UIViewController {
             sentenceLabel.isHidden = false
             sentenceTable.tableFooterView = UIView()
         }
+        
+        sentenceTable.reloadData()
     }
     
     fileprivate func setVideo() {
@@ -83,16 +85,14 @@ class LessonDetailViewController : UIViewController {
         }
         
         currentPage = 0
-        lessonName.text = dbLesson.title
+        wordLabel.text = dbLesson.title
     }
     
     fileprivate func updatePager() {
         
-//        selectedDictionary.text = self.dbWordArray[self.currentPage].word
-//
-//        let currentPage = String(self.currentPage + 1)
-//        let sum = String(self.dbWordArray.count)
-//        pager.text = currentPage + "/" + sum
+        let currentPage = String(self.currentPage + 1)
+        let sum = String(self.dbWordArray.count)
+        pagerLabel.text = currentPage + "/" + sum
     }
     
     fileprivate func updateButtons() {
@@ -136,12 +136,22 @@ extension LessonDetailViewController: UITableViewDataSource, UITableViewDelegate
 extension LessonDetailViewController : VideoControllerProtocol {
     
     func clickForward() {
-        self.currentPage = self.currentPage + 1
+        
+        if self.currentPage == dbWordArray.count - 1 {
+            self.currentPage = 0
+        } else {
+            self.currentPage = self.currentPage + 1
+        }
         fillViewData()
     }
     
     func clickBackward() {
-        self.currentPage = self.currentPage - 1
+        
+        if self.currentPage == 0 {
+            self.currentPage = dbWordArray.count - 1
+        } else {
+            self.currentPage = self.currentPage - 1
+        }
         fillViewData()
     }
     

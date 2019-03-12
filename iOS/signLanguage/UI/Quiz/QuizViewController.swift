@@ -142,16 +142,10 @@ class QuizViewController : UIViewController {
     }
     
     fileprivate func setupLayout() {
-        let layout = self.collectionView.collectionViewLayout as! UPCarouselFlowLayout
-        layout.spacingMode = UPCarouselFlowLayoutSpacingMode.overlap(visibleOffset: 30)
+//        let layout = self.collectionView.collectionViewLayout as! UPCarouselFlowLayout
+//        layout.spacingMode = UPCarouselFlowLayoutSpacingMode.overlap(visibleOffset: 30)
     }
     
-    fileprivate var pageSize: CGSize {
-        let layout = self.collectionView.collectionViewLayout as! UPCarouselFlowLayout
-        var pageSize = layout.itemSize
-        pageSize.width += layout.minimumLineSpacing
-        return pageSize
-    }
     
     fileprivate var orientation: UIDeviceOrientation {
         return UIDevice.current.orientation
@@ -196,8 +190,8 @@ extension QuizViewController : UICollectionViewDataSource, UICollectionViewDeleg
     
     func scrollingFinished(scrollView: UIScrollView) {
         
-        let pageSide = self.pageSize.width
-        let offset = scrollView.contentOffset.x
-        currentPage = Int(floor((offset - pageSide / 2) / pageSide) + 1)
+//        let pageSide = self.pageSize.width
+//        let offset = scrollView.contentOffset.x
+//        currentPage = Int(floor((offset - pageSide / 2) / pageSide) + 1)
     }
 }

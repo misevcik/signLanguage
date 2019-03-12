@@ -81,7 +81,7 @@
                                                                             <rect key="frame" x="146.5" y="10" width="162.5" height="21"/>
                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </view>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconHeart" translatesAutoresizingMaskIntoConstraints="NO" id="GYV-ht-Txx" userLabel="Favorite">
+                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconHeart-black" translatesAutoresizingMaskIntoConstraints="NO" id="GYV-ht-Txx" userLabel="Favorite">
                                                                             <rect key="frame" x="319" y="10" width="21" height="21"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="21" id="Gra-12-JlT"/>
@@ -960,7 +960,11 @@
                                                                     <constraint firstAttribute="height" constant="28" id="IIO-6M-BsA"/>
                                                                     <constraint firstAttribute="width" constant="28" id="yvZ-en-9Cl"/>
                                                                 </constraints>
-                                                                <state key="normal" image="iconHeart"/>
+                                                                <state key="normal" image="iconHeart-black"/>
+                                                                <state key="highlighted" image="iconHeart-red"/>
+                                                                <connections>
+                                                                    <action selector="clickToFavorite:" destination="foW-ar-cJd" eventType="touchUpInside" id="pKZ-EA-Hc4"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1110,6 +1114,7 @@
                         <viewLayoutGuide key="safeArea" id="t8c-XT-S9t"/>
                     </view>
                     <connections>
+                        <outlet property="favoriteButton" destination="mr0-1a-uOa" id="1gH-HE-drX"/>
                         <outlet property="lectionNameLabel" destination="bCN-Ag-9Zu" id="4HT-K0-BdP"/>
                         <outlet property="sentenceLabel" destination="wkM-A2-mLX" id="uTQ-KD-oQm"/>
                         <outlet property="sentenceTable" destination="38V-Pj-yfq" id="GGs-We-mu4"/>
@@ -1163,7 +1168,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gZv-Pt-pD4">
                                                         <rect key="frame" x="53.5" y="0.0" width="268" height="44"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meno lekcie" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2t-VA-oSD" userLabel="Lesson Name">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meno lekcie" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2t-VA-oSD" userLabel="Word Name">
                                                                 <rect key="frame" x="86" y="11.5" width="96.5" height="21.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                                 <nil key="textColor"/>
@@ -1178,7 +1183,19 @@
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wnf-m8-HXO">
                                                         <rect key="frame" x="321.5" y="0.0" width="53.5" height="44"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BYY-5Y-A9r" userLabel="Pager">
+                                                                <rect key="frame" x="19.5" y="11.5" width="30.5" height="21.5"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="BYY-5Y-A9r" firstAttribute="centerX" secondItem="Wnf-m8-HXO" secondAttribute="centerX" constant="8" id="UZE-eT-hGz"/>
+                                                            <constraint firstItem="BYY-5Y-A9r" firstAttribute="centerY" secondItem="Wnf-m8-HXO" secondAttribute="centerY" id="r62-CH-694"/>
+                                                        </constraints>
                                                     </view>
                                                 </subviews>
                                                 <constraints>
@@ -1202,12 +1219,6 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="27w-7f-R68" userLabel="Video Image">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="329.5"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="word" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BYY-5Y-A9r" userLabel="Word">
-                                                <rect key="frame" x="148" y="20" width="79" height="44.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -1215,10 +1226,8 @@
                                             <constraint firstAttribute="trailing" secondItem="27w-7f-R68" secondAttribute="trailing" id="G4I-kS-Wta"/>
                                             <constraint firstItem="27w-7f-R68" firstAttribute="centerY" secondItem="X2i-iL-zO4" secondAttribute="centerY" id="N9a-GH-8Cv"/>
                                             <constraint firstAttribute="bottom" secondItem="27w-7f-R68" secondAttribute="bottom" id="P3e-hM-vCl"/>
-                                            <constraint firstItem="BYY-5Y-A9r" firstAttribute="centerX" secondItem="X2i-iL-zO4" secondAttribute="centerX" id="ajt-CD-dfw"/>
                                             <constraint firstItem="27w-7f-R68" firstAttribute="leading" secondItem="X2i-iL-zO4" secondAttribute="leading" id="qzZ-h5-HMa"/>
                                             <constraint firstItem="27w-7f-R68" firstAttribute="top" secondItem="X2i-iL-zO4" secondAttribute="top" id="rUD-4D-ovr"/>
-                                            <constraint firstItem="BYY-5Y-A9r" firstAttribute="top" secondItem="X2i-iL-zO4" secondAttribute="top" constant="20" id="u1I-sk-r3N"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="atq-zx-ql2" userLabel="Control">
@@ -1329,12 +1338,12 @@
                         <viewLayoutGuide key="safeArea" id="zEH-xO-9kQ"/>
                     </view>
                     <connections>
-                        <outlet property="lessonName" destination="w2t-VA-oSD" id="g5S-EC-qj9"/>
+                        <outlet property="pagerLabel" destination="BYY-5Y-A9r" id="tHs-wn-AtP"/>
                         <outlet property="sentenceLabel" destination="eEH-ky-eJ0" id="obk-sb-0dv"/>
                         <outlet property="sentenceTable" destination="3BC-tQ-yBg" id="Vtl-bm-c7j"/>
                         <outlet property="videoController" destination="gZi-8q-QUm" id="AMG-Cl-D7z"/>
                         <outlet property="videoImage" destination="27w-7f-R68" id="3Fh-Ka-jte"/>
-                        <outlet property="wordLabel" destination="BYY-5Y-A9r" id="bKm-av-gld"/>
+                        <outlet property="wordLabel" destination="w2t-VA-oSD" id="g5S-EC-qj9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="grE-me-4EW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1349,7 +1358,8 @@
         <image name="iconDictionary-gray" width="16" height="20"/>
         <image name="iconEducation-blue" width="17" height="17"/>
         <image name="iconEducation-gray" width="17" height="17"/>
-        <image name="iconHeart" width="24" height="24"/>
+        <image name="iconHeart-black" width="24" height="24"/>
+        <image name="iconHeart-red" width="24" height="24"/>
         <image name="iconLock" width="24" height="24"/>
         <image name="iconRightArrow" width="14" height="14"/>
         <image name="lock-top" width="112" height="112"/>

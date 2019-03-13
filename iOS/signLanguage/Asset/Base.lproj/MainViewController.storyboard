@@ -101,6 +101,7 @@
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                         <connections>
+                                                            <outlet property="favoriteImage" destination="GYV-ht-Txx" id="e2J-es-Hju"/>
                                                             <outlet property="wordLabel" destination="fXd-tb-Oxd" id="RmV-3s-hwg"/>
                                                         </connections>
                                                     </tableViewCell>
@@ -137,7 +138,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="U3B-jf-gN5"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Slovník" image="iconDictionary-gray" selectedImage="iconDictionary-blue" id="jsU-3b-DBM" userLabel="Dictionary"/>
+                    <tabBarItem key="tabBarItem" title="Slovník" image="dictionary-gray" selectedImage="dictionary-blue" id="jsU-3b-DBM" userLabel="Dictionary"/>
                     <connections>
                         <outlet property="dictionaryTable" destination="qaV-ot-vUw" id="ZlG-GC-MOu"/>
                         <outlet property="searchBar" destination="YL5-Wr-KYK" id="RrN-Vi-aTp"/>
@@ -196,7 +197,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="x3e-zl-ntl"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Výučba" image="iconEducation-gray" selectedImage="iconEducation-blue" id="z9K-U4-TDD" userLabel="Category"/>
+                    <tabBarItem key="tabBarItem" title="Výučba" image="education-gray" selectedImage="education-blue" id="z9K-U4-TDD" userLabel="Category"/>
                     <connections>
                         <outlet property="collectionView" destination="Fvp-pr-Pjk" id="grq-05-jaE"/>
                         <outlet property="containerView" destination="rHj-5e-EBM" id="JjC-2O-K4n"/>
@@ -311,7 +312,7 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="knowImage" destination="o04-gF-yCp" id="Dnw-6A-6gi"/>
+                                                    <outlet property="favoriteImage" destination="o04-gF-yCp" id="Dnw-6A-6gi"/>
                                                     <outlet property="wordLabel" destination="1on-bN-Bth" id="LDr-Qi-BhO"/>
                                                 </connections>
                                             </tableViewCell>
@@ -329,7 +330,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sjR-be-bDv"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="featured" id="Bvv-gX-edn" userLabel="Favorites"/>
+                    <tabBarItem key="tabBarItem" title="Obľubené" image="favorite-gray" selectedImage="favorite-blue" id="Bvv-gX-edn" userLabel="Favorites"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Enx-Co-gLV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1351,12 +1352,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="dictionary-0" width="128" height="128"/>
+        <image name="dictionary-0" width="16" height="16"/>
+        <image name="dictionary-blue" width="16" height="20"/>
+        <image name="dictionary-gray" width="16" height="20"/>
+        <image name="education-blue" width="17" height="17"/>
+        <image name="education-gray" width="17" height="17"/>
+        <image name="favorite-blue" width="17" height="17"/>
+        <image name="favorite-gray" width="17" height="17"/>
         <image name="iconBack" width="24" height="24"/>
-        <image name="iconDictionary-blue" width="16" height="20"/>
-        <image name="iconDictionary-gray" width="16" height="20"/>
-        <image name="iconEducation-blue" width="17" height="17"/>
-        <image name="iconEducation-gray" width="17" height="17"/>
         <image name="iconHeart-black" width="24" height="24"/>
         <image name="iconLock" width="24" height="24"/>
         <image name="iconRightArrow" width="14" height="14"/>

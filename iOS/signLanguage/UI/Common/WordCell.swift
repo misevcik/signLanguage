@@ -15,7 +15,7 @@ class WordCell : UITableViewCell {
     static let reuseIdentifier = "WordCell"
     
     @IBOutlet weak var wordLabel: UILabel!
-    @IBOutlet weak var knowImage: UIImageView!
+    @IBOutlet weak var favoriteImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

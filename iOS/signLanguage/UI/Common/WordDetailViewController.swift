@@ -17,6 +17,7 @@ class WordDetailViewController : UIViewController {
     //Callback
     var callbackNextIndexPath: ((_ currentIndexPath: IndexPath) -> IndexPath?)?
     var callbackPrevIndexPath: ((_ currentIndexPath: IndexPath) -> IndexPath?)?
+    var callbackSaveCoreData: (()->())?
     
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var lectionNameLabel: UILabel!
@@ -38,6 +39,7 @@ class WordDetailViewController : UIViewController {
     @IBAction func clickToFavorite(_ sender: UIButton) {
         dbWord.favorite = !dbWord.favorite
         setFavorite(dbWord.favorite)
+        callbackSaveCoreData!()
     }
     
     func setWord(_ word : DBWord) {
@@ -67,11 +69,9 @@ class WordDetailViewController : UIViewController {
     
     fileprivate func setFavorite(_ isFavorite : Bool) {
         if isFavorite == true {
-            let icon = #imageLiteral(resourceName: "iconHeart-red")
-            favoriteButton.setImage(icon, for: UIControl.State.normal)
+            favoriteButton.setImage(#imageLiteral(resourceName: "iconHeart-red"), for: UIControl.State.normal)
         } else {
-            let icon = #imageLiteral(resourceName: "iconHeart-black")
-            favoriteButton.setImage(icon, for: UIControl.State.normal)
+            favoriteButton.setImage(#imageLiteral(resourceName: "iconHeart-black"), for: UIControl.State.normal)
         }
     }
     

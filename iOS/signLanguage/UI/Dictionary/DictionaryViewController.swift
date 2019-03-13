@@ -23,7 +23,6 @@ extension NSString{
 
 class DictionaryViewController : UIViewController {
     
-    
     //MARK Outlets
     @IBOutlet weak var dictionaryTable: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -57,6 +56,23 @@ class DictionaryViewController : UIViewController {
                 }
             }
         }
+    }
+    
+    fileprivate func saveData() {
+        do {
+            try persistentContainer.viewContext.save()
+        } catch {
+            os_log("Unable to save changes", log: Log.general, type: .error)
+            persistentContainer.viewContext.reset()
+        }
+    }
+    
+    fileprivate func configure(_ cell: WordCell, at indexPath: IndexPath) {
+        
+        let dictionary = fetchedResultsController.object(at: indexPath)
+        
+        cell.wordLabel.text = dictionary.word
+        cell.favoriteImage.image = dictionary.favorite ? #imageLiteral(resourceName: "iconHeart-red") : #imageLiteral(resourceName: "iconHeart-black")
     }
     
     override func viewDidLoad() {
@@ -111,8 +127,16 @@ extension DictionaryViewController: NSFetchedResultsControllerDelegate {
         dictionaryTable.endUpdates()
     }
     
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        //Write update function
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch (type) {
+        case .update:
+            if let indexPath = indexPath, let cell = dictionaryTable.cellForRow(at: indexPath) as? WordCell {
+                configure(cell, at: indexPath)
+            }
+            break
+        default:
+            os_log("...", log: Log.general, type: .info)
+        }
     }
 }
 
@@ -162,7 +186,9 @@ extension DictionaryViewController: UITableViewDataSource, UITableViewDelegate {
         }
 
         let dictionary = fetchedResultsController.object(at: indexPath)
+        
         cell.wordLabel.text = dictionary.word
+        cell.favoriteImage.image = dictionary.favorite ? #imageLiteral(resourceName: "iconHeart-red") : #imageLiteral(resourceName: "iconHeart-black")
         
         return cell
     }
@@ -176,6 +202,7 @@ extension DictionaryViewController: UITableViewDataSource, UITableViewDelegate {
         vc.setFetchController(fetchedResultsController)
         vc.callbackNextIndexPath = nextIndexPath
         vc.callbackPrevIndexPath = prevIndexPath
+        vc.callbackSaveCoreData = saveData
         self.show(vc, sender: true)
         
     }
@@ -184,9 +211,7 @@ extension DictionaryViewController: UITableViewDataSource, UITableViewDelegate {
 extension DictionaryViewController : UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
         performSearch(searchText)
-        
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -195,7 +220,6 @@ extension DictionaryViewController : UISearchBarDelegate {
         self.searchBar.endEditing(true)
         self.searchBar.text = ""
         performSearch(searchBar.text!)
-        
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

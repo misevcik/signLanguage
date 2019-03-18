@@ -88,11 +88,14 @@ extension TestViewController: UITableViewDataSource, UITableViewDelegate {
         
         if lection.locked == true {
             cell.lockImage.image = lockImage
+            cell.detailLabel.text = Labels.TEST_LOCKED
         } else {
-            //TODO fill result
             if lection.score == 0 {
+                // Test not done
                 cell.lockImage.image = unlockImage
-                cell.detailLabel.text = Labels.TEST_NO_TEST_LABEL
+                cell.detailLabel.text = Labels.TEST_UNLOCKED
+            } else {
+                // Show test result
             }
         }
 
@@ -100,7 +103,11 @@ extension TestViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let lection = fetchedResultsController.object(at: indexPath)
+        
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "TestDetailViewController") as! TestDetailViewController
+        vc.setLection(lection)
         self.show(vc, sender: true)
     }
 }

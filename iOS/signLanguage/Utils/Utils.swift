@@ -29,6 +29,22 @@ class Utils {
         
         return UIImage(cgImage: image)
     }
+    
+    static func gradeCalculator(_ result : Int) -> String {
+        if result < 50 {
+            return "F"
+        } else if 50 < result && result < 59 {
+            return "E"
+        } else if 60 < result && result < 69 {
+            return "D"
+        } else if 70 < result && result < 79 {
+            return "C"
+        } else if 80 < result && result < 89 {
+            return "B"
+        } else {
+            return "A"
+        }
+    }
 }
 
 extension UIImage {

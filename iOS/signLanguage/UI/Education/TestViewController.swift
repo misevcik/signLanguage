@@ -63,8 +63,46 @@ extension TestViewController: NSFetchedResultsControllerDelegate {
         testTable.endUpdates()
     }
     
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        //Write update function
+    fileprivate func configureTestCell(_ cell: TestCell, lection : DBLesson) {
+        
+        if lection.locked == true {
+            cell.lockImage.isHidden = false
+            cell.lockImage.image = lockImage
+            cell.detailLabel.text = "ZAMKNUTY TEST"
+        } else {
+            if lection.testDate == nil {
+                // Test not done
+                cell.lockImage.isHidden = false
+                cell.lockImage.image = unlockImage
+                cell.detailLabel.text = "ODOMKNUTY TEST"
+            } else {
+                // Test done
+                let testAnswersCount = (lection.relDictionary!.count / 3) + 1
+                let score = lection.testScore
+                let correctAnswers = Int((Float(testAnswersCount) / 100.0 * Float(score)).rounded())
+                let wrongAnswers = testAnswersCount - correctAnswers
+                let grade = Utils.gradeCalculator(Int(score))
+                
+                cell.scoreLabel.isHidden = false
+                cell.lockImage.isHidden = true
+                cell.detailLabel.text = "\(correctAnswers) SPRÁVNE / \(wrongAnswers) NESPRÁVNE"
+                cell.scoreLabel.text  = "\(score) % (\(grade))"
+            }
+        }
+    }
+    
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch (type) {
+        case .update:
+            if let indexPath = indexPath, let cell = testTable.cellForRow(at: indexPath) as? TestCell {
+                let lection = fetchedResultsController.object(at: indexPath)
+                configureTestCell(cell, lection: lection)
+            }
+            break
+        default:
+            os_log("...", log: Log.general, type: .info)
+        }
     }
 }
 
@@ -86,19 +124,8 @@ extension TestViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.nameLabel.text = String(describing: indexPath.row + 1) + ". Test - " + lection.title!
         
-        if lection.locked == true {
-            cell.lockImage.image = lockImage
-            cell.detailLabel.text = Labels.TEST_LOCKED
-        } else {
-            if lection.score == 0 {
-                // Test not done
-                cell.lockImage.image = unlockImage
-                cell.detailLabel.text = Labels.TEST_UNLOCKED
-            } else {
-                // Show test result
-            }
-        }
-
+        configureTestCell(cell, lection: lection)
+        
         return cell
     }
     
@@ -106,8 +133,34 @@ extension TestViewController: UITableViewDataSource, UITableViewDelegate {
         
         let lection = fetchedResultsController.object(at: indexPath)
         
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TestDetailViewController") as! TestDetailViewController
-        vc.setLection(lection)
-        self.show(vc, sender: true)
+        if lection.testDate == nil {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "TestDetailViewController") as! TestDetailViewController
+            vc.saveTestResult = saveTestResult
+            vc.setLection(lection)
+            self.show(vc, sender: true)
+        } else {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "TestResultViewController") as! TestResultViewController
+            
+            let score = lection.testScore
+            let testAnswersCount = (lection.relDictionary!.count / 3) + 1
+            let correctAnswers = Int((Float(testAnswersCount) / 100.0 * Float(score)).rounded())
+            let wrongAnswers = testAnswersCount - correctAnswers
+            
+            vc.setScore(Int(score))
+            vc.setTestDuration(Int(lection.testDuration))
+            vc.setAnswerCount(correctAnswers, wrongAnswers)
+            self.show(vc, sender: true)
+        }
     }
+    
+    private func saveTestResult() {
+        do {
+            
+            try persistentContainer.viewContext.save()
+        } catch {
+            os_log("Unable to save changes", log: Log.general, type: .error)
+            persistentContainer.viewContext.reset()
+        }
+    }
+
 }

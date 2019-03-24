@@ -154,7 +154,7 @@ extension LessonViewController : UICollectionViewDataSource, UICollectionViewDel
         
         cell.lockImage.image = lection.locked ? lockImage : unlockImage
         cell.lectionName.text = String(describing: indexPath.row + 1) + ". " + lection.title!
-        cell.videoCount.text = String(describing: lection.relDictionary!.count) + " " + Labels.LECTION_VIDEOS_LABEL
+        cell.videoCount.text = String(describing: lection.relDictionary!.count) + " " + "VIDEI"
         if lection.image != nil {
             cell.coverImage.image = UIImage(named: lection.image!)
         }

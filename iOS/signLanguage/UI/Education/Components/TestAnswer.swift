@@ -21,7 +21,7 @@ class TestAnswer : UIView {
     
     func rightAnswerSelected() {
         showRightnessSection(true)
-        rightnessLabel.text = Labels.TEST_RIGHT_ANSWER
+        rightnessLabel.text = "Správne"
         rightnessLabel.textColor = #colorLiteral(red: 0.6452309489, green: 0.7849538922, blue: 0.2988059223, alpha: 1)
         rightnessImage.image = #imageLiteral(resourceName: "iconTestOK")
         roundedView.backgroundColor = #colorLiteral(red: 0.8549019608, green: 0.9294117647, blue: 0.7098039216, alpha: 1)
@@ -29,7 +29,7 @@ class TestAnswer : UIView {
     
     func wrongAnswerSelected() {
         showRightnessSection(true)
-        rightnessLabel.text = Labels.TEST_WRONG_ANSWER
+        rightnessLabel.text = "Nesprávne"
         rightnessLabel.textColor = #colorLiteral(red: 0.8919349313, green: 0.3245626688, blue: 0.4429816008, alpha: 1)
         rightnessImage.image = #imageLiteral(resourceName: "iconTestCancel")
         roundedView.backgroundColor = #colorLiteral(red: 0.9960784314, green: 0.8862745098, blue: 0.9098039216, alpha: 1)

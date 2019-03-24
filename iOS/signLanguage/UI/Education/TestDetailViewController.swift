@@ -15,6 +15,8 @@ struct TestItem {
 
 class TestDetailViewController: UIViewController {
     
+    var saveTestResult: (() -> Void)?
+    
     @IBOutlet weak var pagerLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet var answerCollection: [TestAnswer]!
@@ -137,7 +139,7 @@ class TestDetailViewController: UIViewController {
         let wordArray = dbLection.relDictionary?.allObjects as! [DBWord]
         
         let maxQuizItems = wordArray.count / 3
-        assert(maxQuizItems < answerCollection.count, "Count of quiz items is less than answers")
+        assert(maxQuizItems < answerCollection.count || maxQuizItems <= 1, "Count of quiz items is less than answers")
         
         for _ in 0...maxQuizItems {
             
@@ -179,10 +181,20 @@ class TestDetailViewController: UIViewController {
     
     private func processResult() {
         
-        let testResult : Int = Int(Float(correctAnswerCount) / Float(testItemArray.count) * 100)
+        durationTimer.invalidate()
+        let score : Int = Int(Float(correctAnswerCount) / Float(testItemArray.count) * 100)
+        
+        dbLection.testScore = Int32(score)
+        dbLection.testDate = Date()
+        dbLection.testDuration = Int32(seconds)
+        
+        saveTestResult!()
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "TestResultViewController") as! TestResultViewController
-        vc.setTestResult(testResult)
+        vc.goFromTestDetailView()
+        vc.setScore(score)
+        vc.setTestDuration(seconds)
+        vc.setAnswerCount(correctAnswerCount, testItemArray.count - correctAnswerCount)
         self.show(vc, sender: true)
     }
 }

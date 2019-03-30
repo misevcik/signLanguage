@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import AVKit
 
-class LessonDetailViewController : UIViewController {
+class LectionDetailViewController : UIViewController {
 
     @IBOutlet weak var pagerLabel: UILabel!
     @IBOutlet weak var sentenceTable: UITableView!
@@ -19,13 +19,18 @@ class LessonDetailViewController : UIViewController {
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var videoController: VideoController!
     
-    fileprivate var dbLesson : DBLesson!
+    fileprivate var dbLection : DBLesson!
     fileprivate var dbWordArray = Array<DBWord>()
     fileprivate var dbWord : DBWord!
     fileprivate var videoHandler : VideoHandler!
+    fileprivate var goToPage : Int = 0
     
-    func setLesson(_ lesson : DBLesson) {
-        dbLesson = lesson
+    func setLection(_ lection : DBLesson) {
+        dbLection = lection
+    }
+    
+    func setPage(_ page : Int) {
+        goToPage = page
     }
     
     @IBAction func clickBack(_ sender: Any) {
@@ -42,6 +47,7 @@ class LessonDetailViewController : UIViewController {
         }
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,10 +56,10 @@ class LessonDetailViewController : UIViewController {
         videoController.delegate = self
    
         loadLectionData()
-        fillViewData()
+        setViewData()
     }
     
-    fileprivate func fillViewData() {
+    fileprivate func setViewData() {
         setTableLayout()
         setVideo()
         
@@ -80,12 +86,12 @@ class LessonDetailViewController : UIViewController {
     
     fileprivate func loadLectionData() {
         
-        for item in dbLesson.relDictionary! {
+        for item in dbLection.relDictionary! {
             dbWordArray.append(item as! DBWord)
         }
         
-        currentPage = 0
-        wordLabel.text = dbLesson.title
+        wordLabel.text = dbLection.title
+        currentPage = goToPage
     }
     
     fileprivate func updatePager() {
@@ -107,7 +113,7 @@ class LessonDetailViewController : UIViewController {
 
 }
 
-extension LessonDetailViewController: UITableViewDataSource, UITableViewDelegate {
+extension LectionDetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dbWord.relSentence!.count
@@ -133,7 +139,7 @@ extension LessonDetailViewController: UITableViewDataSource, UITableViewDelegate
     }
 }
 
-extension LessonDetailViewController : VideoControllerProtocol {
+extension LectionDetailViewController : VideoControllerProtocol {
     
     func clickForward() {
         
@@ -142,7 +148,7 @@ extension LessonDetailViewController : VideoControllerProtocol {
         } else {
             self.currentPage = self.currentPage + 1
         }
-        fillViewData()
+        setViewData()
     }
     
     func clickBackward() {
@@ -152,7 +158,7 @@ extension LessonDetailViewController : VideoControllerProtocol {
         } else {
             self.currentPage = self.currentPage - 1
         }
-        fillViewData()
+        setViewData()
     }
     
     func clickPlayVideo() {

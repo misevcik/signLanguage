@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		54057756222C8AB600E3E227 /* TestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54057755222C8AB600E3E227 /* TestCell.swift */; };
+		540CBEE8224DEEE700EEEBE1 /* LectionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540CBEE7224DEEE700EEEBE1 /* LectionListViewController.swift */; };
 		5410D830223B742B00C38452 /* TestAnswer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5410D82F223B742B00C38452 /* TestAnswer.xib */; };
 		5410D832223B764F00C38452 /* TestAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5410D831223B764F00C38452 /* TestAnswer.swift */; };
 		5416D03D21D62134009E8D02 /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5416D03C21D62134009E8D02 /* WordCell.swift */; };
@@ -21,9 +22,12 @@
 		5440C026220435D90077F6E5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5440C025220435D90077F6E5 /* Utils.swift */; };
 		545F1B8E22327CFF0007B60C /* VideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F1B8D22327CFF0007B60C /* VideoController.swift */; };
 		545F1B9022327D0A0007B60C /* VideoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 545F1B8F22327D0A0007B60C /* VideoController.xib */; };
-		5465C00B222ABCBA009B628F /* LessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5465C00A222ABCBA009B628F /* LessonViewController.swift */; };
+		5465C00B222ABCBA009B628F /* LectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5465C00A222ABCBA009B628F /* LectionViewController.swift */; };
 		5465C00D222ABCFB009B628F /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5465C00C222ABCFB009B628F /* TestViewController.swift */; };
-		5470A93E2236C80700B99FB4 /* LessonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5470A93D2236C80700B99FB4 /* LessonDetailViewController.swift */; };
+		5470A93E2236C80700B99FB4 /* LectionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5470A93D2236C80700B99FB4 /* LectionDetailViewController.swift */; };
+		5482DA03224E87C00044BA81 /* LectionListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5482DA02224E87C00044BA81 /* LectionListCell.swift */; };
+		5482DA0A224EA2A30044BA81 /* LockedPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5482DA08224EA2A30044BA81 /* LockedPopupView.swift */; };
+		5482DA0B224EA2A30044BA81 /* LockedPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5482DA09224EA2A30044BA81 /* LockedPopupView.xib */; };
 		5485807A21E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5485807821E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld */; };
 		5498947B2212251600024E77 /* sample_1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 549894792212251600024E77 /* sample_1.mp4 */; };
 		5498947C2212251600024E77 /* sample_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5498947A2212251600024E77 /* sample_2.mp4 */; };
@@ -43,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		54057755222C8AB600E3E227 /* TestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCell.swift; sourceTree = "<group>"; };
+		540CBEE7224DEEE700EEEBE1 /* LectionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectionListViewController.swift; sourceTree = "<group>"; };
 		5410D82F223B742B00C38452 /* TestAnswer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestAnswer.xib; sourceTree = "<group>"; };
 		5410D831223B764F00C38452 /* TestAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAnswer.swift; sourceTree = "<group>"; };
 		5416D03C21D62134009E8D02 /* WordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
@@ -57,9 +62,12 @@
 		5440C027220494D50077F6E5 /* DLRadioButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DLRadioButton.framework; sourceTree = "<group>"; };
 		545F1B8D22327CFF0007B60C /* VideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoController.swift; sourceTree = "<group>"; };
 		545F1B8F22327D0A0007B60C /* VideoController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoController.xib; sourceTree = "<group>"; };
-		5465C00A222ABCBA009B628F /* LessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewController.swift; sourceTree = "<group>"; };
+		5465C00A222ABCBA009B628F /* LectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectionViewController.swift; sourceTree = "<group>"; };
 		5465C00C222ABCFB009B628F /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
-		5470A93D2236C80700B99FB4 /* LessonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDetailViewController.swift; sourceTree = "<group>"; };
+		5470A93D2236C80700B99FB4 /* LectionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectionDetailViewController.swift; sourceTree = "<group>"; };
+		5482DA02224E87C00044BA81 /* LectionListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectionListCell.swift; sourceTree = "<group>"; };
+		5482DA08224EA2A30044BA81 /* LockedPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockedPopupView.swift; sourceTree = "<group>"; };
+		5482DA09224EA2A30044BA81 /* LockedPopupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LockedPopupView.xib; sourceTree = "<group>"; };
 		5485807921E7C6FA00440282 /* DictionaryDatabase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DictionaryDatabase.xcdatamodel; sourceTree = "<group>"; };
 		549894792212251600024E77 /* sample_1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample_1.mp4; sourceTree = "<group>"; };
 		5498947A2212251600024E77 /* sample_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample_2.mp4; sourceTree = "<group>"; };
@@ -105,11 +113,12 @@
 				541F6547222F2F990022EECB /* Cell */,
 				5465C009222AA389009B628F /* Components */,
 				5419295121D7ABE300A9277C /* EducationMainViewController.swift */,
-				5465C00A222ABCBA009B628F /* LessonViewController.swift */,
 				5465C00C222ABCFB009B628F /* TestViewController.swift */,
-				5470A93D2236C80700B99FB4 /* LessonDetailViewController.swift */,
 				54339FC2223AE505009F330B /* TestDetailViewController.swift */,
 				54CC9EAA22404967001F5030 /* TestResultViewController.swift */,
+				5465C00A222ABCBA009B628F /* LectionViewController.swift */,
+				540CBEE7224DEEE700EEEBE1 /* LectionListViewController.swift */,
+				5470A93D2236C80700B99FB4 /* LectionDetailViewController.swift */,
 			);
 			path = Education;
 			sourceTree = "<group>";
@@ -118,8 +127,9 @@
 			isa = PBXGroup;
 			children = (
 				54EA763421F677BD00A5C50C /* EducationDetailCell.swift */,
-				5419295321D7AF7700A9277C /* LectionCell.swift */,
 				54057755222C8AB600E3E227 /* TestCell.swift */,
+				5419295321D7AF7700A9277C /* LectionCell.swift */,
+				5482DA02224E87C00044BA81 /* LectionListCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -161,6 +171,8 @@
 				5432D3FC22295E7F003A7A9E /* EducationMenuBar.swift */,
 				5410D82F223B742B00C38452 /* TestAnswer.xib */,
 				5410D831223B764F00C38452 /* TestAnswer.swift */,
+				5482DA08224EA2A30044BA81 /* LockedPopupView.swift */,
+				5482DA09224EA2A30044BA81 /* LockedPopupView.xib */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -311,6 +323,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5482DA0B224EA2A30044BA81 /* LockedPopupView.xib in Resources */,
 				545F1B9022327D0A0007B60C /* VideoController.xib in Resources */,
 				54B12C7121D11FBD00A9E2C1 /* LaunchScreen.storyboard in Resources */,
 				5498947B2212251600024E77 /* sample_1.mp4 in Resources */,
@@ -354,6 +367,7 @@
 				54CC9EAB22404967001F5030 /* TestResultViewController.swift in Sources */,
 				549D9BED21E6727A00E930AD /* FillCoreData.swift in Sources */,
 				5432D3FD22295E7F003A7A9E /* EducationMenuBar.swift in Sources */,
+				540CBEE8224DEEE700EEEBE1 /* LectionListViewController.swift in Sources */,
 				54AAD6CA21DE8DCD00D9F303 /* DictionaryViewController.swift in Sources */,
 				5416D03D21D62134009E8D02 /* WordCell.swift in Sources */,
 				543F199221DEA2AB00F08764 /* FavoritesViewController.swift in Sources */,
@@ -361,18 +375,20 @@
 				5465C00D222ABCFB009B628F /* TestViewController.swift in Sources */,
 				54057756222C8AB600E3E227 /* TestCell.swift in Sources */,
 				54339FC3223AE505009F330B /* TestDetailViewController.swift in Sources */,
+				5482DA03224E87C00044BA81 /* LectionListCell.swift in Sources */,
 				5440C026220435D90077F6E5 /* Utils.swift in Sources */,
 				54C2048E2236EE970081F63C /* VideoHandler.swift in Sources */,
 				542912B421E28CFC00BF1FDD /* SentenceCell.swift in Sources */,
 				5419295421D7AF7700A9277C /* LectionCell.swift in Sources */,
 				54C4996A222DC1AF00DC3B99 /* WordDetailViewController.swift in Sources */,
+				5482DA0A224EA2A30044BA81 /* LockedPopupView.swift in Sources */,
 				5419295221D7ABE300A9277C /* EducationMainViewController.swift in Sources */,
-				5465C00B222ABCBA009B628F /* LessonViewController.swift in Sources */,
+				5465C00B222ABCBA009B628F /* LectionViewController.swift in Sources */,
 				545F1B8E22327CFF0007B60C /* VideoController.swift in Sources */,
 				54A8FC27222BD356005CD643 /* Labels.swift in Sources */,
 				5485807A21E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld in Sources */,
 				5410D832223B764F00C38452 /* TestAnswer.swift in Sources */,
-				5470A93E2236C80700B99FB4 /* LessonDetailViewController.swift in Sources */,
+				5470A93E2236C80700B99FB4 /* LectionDetailViewController.swift in Sources */,
 				54EA763521F677BD00A5C50C /* EducationDetailCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

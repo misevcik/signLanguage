@@ -83,6 +83,14 @@ class DictionaryViewController : UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        dictionaryTable.indexPathsForSelectedRows?.forEach {
+            dictionaryTable.deselectRow(at: $0, animated: true)
+        }
+    }
+    
     func setupLayout() {
         
         searchBar.layer.borderWidth = 1

@@ -17,9 +17,9 @@ class EducationMainViewController : UIViewController, EducationMenuBarProtocol {
     @IBOutlet weak var containerView: UIView!
     
     
-    private lazy var lessonViewController: LessonViewController = {
+    private lazy var lectionViewController: LectionViewController = {
         
-        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "LessonViewController") as! LessonViewController
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "LectionViewController") as! LectionViewController
   
         return viewController
     }()
@@ -37,7 +37,7 @@ class EducationMainViewController : UIViewController, EducationMenuBarProtocol {
         setupLayout()
         
         educationMenuBar.delegate = self
-        add(asChildViewController: lessonViewController)
+        add(asChildViewController: lectionViewController)
     }
     
     func setupLayout() {
@@ -52,10 +52,10 @@ class EducationMainViewController : UIViewController, EducationMenuBarProtocol {
         switch type {
         case .LectionViewSection:
             remove(asChildViewController: testViewController)
-            add(asChildViewController: lessonViewController)
+            add(asChildViewController: lectionViewController)
             break
         case .TestViewSection:
-            remove(asChildViewController: lessonViewController)
+            remove(asChildViewController: lectionViewController)
             add(asChildViewController: testViewController)
             break
         }

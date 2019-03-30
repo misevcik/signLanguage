@@ -12,7 +12,7 @@ import os.log
 
 //simply guide https://www.youtube.com/watch?v=NSryf0YJHHk, https://www.youtube.com/watch?v=s9v0YkRwYvI
 
-class LessonViewController : UIViewController {
+class LectionViewController : UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -83,7 +83,7 @@ class LessonViewController : UIViewController {
     
 }
 
-//extension LessonViewController: NSFetchedResultsControllerDelegate {
+//extension LectionViewController: NSFetchedResultsControllerDelegate {
 //
 //    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
 //
@@ -131,7 +131,7 @@ class LessonViewController : UIViewController {
 //
 //}
 
-extension LessonViewController : UICollectionViewDataSource, UICollectionViewDelegate {
+extension LectionViewController : UICollectionViewDataSource, UICollectionViewDelegate {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -167,11 +167,14 @@ extension LessonViewController : UICollectionViewDataSource, UICollectionViewDel
         let lesson = fetchedResultsController.object(at: indexPath)
         
         if lesson.locked == true {
-            return
+            let vc = LockedPopupView()
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .overCurrentContext
+            self.present(vc, animated: true, completion: nil)
         }
         
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LessonDetailViewController") as! LessonDetailViewController
-        vc.setLesson(lesson)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LectionListViewController") as! LectionListViewController
+        vc.setLection(lesson, indexPath.row + 1)
         //vc.unlockNextLessonCallback = unlockNextLesson
         
         self.show(vc, sender: true)
@@ -179,7 +182,7 @@ extension LessonViewController : UICollectionViewDataSource, UICollectionViewDel
     }
 }
 
-extension LessonViewController : UICollectionViewDelegateFlowLayout {
+extension LectionViewController : UICollectionViewDelegateFlowLayout {
  
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,

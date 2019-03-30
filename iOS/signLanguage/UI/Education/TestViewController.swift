@@ -23,6 +23,14 @@ class TestViewController : UIViewController {
         loadPersistenceContainer()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        testTable.indexPathsForSelectedRows?.forEach {
+            testTable.deselectRow(at: $0, animated: true)
+        }
+    }
+    
     fileprivate let persistentContainer = NSPersistentContainer(name: "DictionaryDatabase")
     fileprivate lazy var fetchedResultsController: NSFetchedResultsController<DBLesson> = {
         
@@ -72,6 +80,7 @@ extension TestViewController: NSFetchedResultsControllerDelegate {
         } else {
             if lection.testDate == nil {
                 // Test not done
+                cell.scoreLabel.isHidden = true
                 cell.lockImage.isHidden = false
                 cell.lockImage.image = unlockImage
                 cell.detailLabel.text = "ODOMKNUTY TEST"
@@ -133,27 +142,21 @@ extension TestViewController: UITableViewDataSource, UITableViewDelegate {
         
         let lection = fetchedResultsController.object(at: indexPath)
         
+        // Test wasn't passed
         if lection.testDate == nil {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "TestDetailViewController") as! TestDetailViewController
-            vc.saveTestResult = saveTestResult
+            vc.saveToCoreDataCallback = saveResultToCoreData
             vc.setLection(lection)
             self.show(vc, sender: true)
         } else {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "TestResultViewController") as! TestResultViewController
-            
-            let score = lection.testScore
-            let testAnswersCount = (lection.relDictionary!.count / 3) + 1
-            let correctAnswers = Int((Float(testAnswersCount) / 100.0 * Float(score)).rounded())
-            let wrongAnswers = testAnswersCount - correctAnswers
-            
-            vc.setScore(Int(score))
-            vc.setTestDuration(Int(lection.testDuration))
-            vc.setAnswerCount(correctAnswers, wrongAnswers)
+            vc.resetTestCallback = resetTest
+            vc.setLectionData(lection)
             self.show(vc, sender: true)
         }
     }
     
-    private func saveTestResult() {
+    private func saveResultToCoreData() {
         do {
             
             try persistentContainer.viewContext.save()
@@ -161,6 +164,21 @@ extension TestViewController: UITableViewDataSource, UITableViewDelegate {
             os_log("Unable to save changes", log: Log.general, type: .error)
             persistentContainer.viewContext.reset()
         }
+    }
+    
+    private func resetTest() {
+        
+        let lection = fetchedResultsController.object(at: testTable.indexPathForSelectedRow!)
+        lection.testDate = nil
+        saveResultToCoreData()
+        
+        _ = navigationController?.popViewController(animated: false)
+        self.navigationController?.isNavigationBarHidden = true
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TestDetailViewController") as! TestDetailViewController
+        vc.saveToCoreDataCallback = saveResultToCoreData
+        vc.setLection(lection)
+        self.show(vc, sender: true)
     }
 
 }

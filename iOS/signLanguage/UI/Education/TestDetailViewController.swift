@@ -15,7 +15,7 @@ struct TestItem {
 
 class TestDetailViewController: UIViewController {
     
-    var saveTestResult: (() -> Void)?
+    var saveToCoreDataCallback: (() -> Void)?
     
     @IBOutlet weak var pagerLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
@@ -188,14 +188,34 @@ class TestDetailViewController: UIViewController {
         dbLection.testDate = Date()
         dbLection.testDuration = Int32(seconds)
         
-        saveTestResult!()
+        saveToCoreDataCallback!()
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "TestResultViewController") as! TestResultViewController
+        vc.resetTestCallback = resetTest
         vc.goFromTestDetailView()
-        vc.setScore(score)
-        vc.setTestDuration(seconds)
-        vc.setAnswerCount(correctAnswerCount, testItemArray.count - correctAnswerCount)
+        vc.setLectionData(dbLection)
         self.show(vc, sender: true)
+    }
+    
+    private func resetTest() {
+    
+        //reset test result
+        dbLection.testDate = nil
+        saveToCoreDataCallback!()
+        
+        for index in 0..<testItemArray.count {
+            testItemArray[index].selectedAnswer = -1
+        }
+        
+        seconds = 0
+        correctAnswerCount = 0
+        runDurationTimer()
+        currentPage = 0
+        
+        //Remove Test Result View
+        _ = navigationController?.popViewController(animated: false)
+        self.navigationController?.isNavigationBarHidden = true
+        
     }
 }
 

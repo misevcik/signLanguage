@@ -10,6 +10,7 @@ import UIKit
 
 class TestResultViewController: UIViewController {
 
+    var resetTestCallback: (() -> Void)?
     
     @IBOutlet weak var testDate: UILabel!
     @IBOutlet weak var resultImage: UIImageView!
@@ -20,71 +21,106 @@ class TestResultViewController: UIViewController {
     @IBOutlet weak var countRightAnswers: UILabel!
     @IBOutlet weak var countWrongAnswers: UILabel!
     @IBOutlet weak var recomendationLabel: UILabel!
+    @IBOutlet weak var cancelIcon: UIButton!
+    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
-    @IBAction func repeatTestClick(_ sender: Any) {
+    @IBAction func resetButtonClick(_ sender: Any) {
+        
+        resetTestCallback!()
     }
     
-    @IBAction func cancelTestClick(_ sender: Any) {
+    @IBAction func cancelButtonClick(_ sender: Any) {
+        
+        popResultView()
     }
     
     @IBAction func cancelIconClick(_ sender: Any) {
         
-        if goFromTestDetail == true {
-            popViewControllerss(popViews: 2, animated: true)
-        } else {
-            popViewControllerss(popViews: 1, animated: true)
-        }
+        popResultView()
     }
     
+    private var date : Date = Date()
     private var score : Int = 0
     private var timeDuration : Int = 0
     private var rightAnswers = 0
     private var wrongAnswers = 0
     private var goFromTestDetail = false
+    private let cRecommendGood = "Test uspesny, mozete ist na dalsiu lekciu"
+    private let cRecommendWrong = "Mal by si este zopakovat lekciu aby si sa zdokonalil"
+    
+    func popResultView() {
+        
+        if goFromTestDetail == true {
+            popViewControllers(popViews: 2, animated: true)
+        } else {
+            popViewControllers(popViews: 1, animated: true)
+        }
+    }
     
     func goFromTestDetailView() {
         goFromTestDetail = true
     }
     
-    func setScore(_ scoreArg : Int) {
-        score = scoreArg
-    }
-    
-    func setTestDuration(_ timeDurationArg : Int) {
-        timeDuration = timeDurationArg
-    }
-    
-    func setAnswerCount(_ rightAnswersArg : Int, _ wrongAnswersArg: Int) {
-        rightAnswers = rightAnswersArg
-        wrongAnswers = wrongAnswersArg
+    func setLectionData(_ lection : DBLesson) {
+        
+        let answerCount = (lection.relDictionary!.count / 3) + 1
+        
+        timeDuration = Int(lection.testDuration)
+        rightAnswers = Int((Float(answerCount) / 100.0 * Float(lection.testScore)).rounded())
+        wrongAnswers = answerCount - rightAnswers
+        score = Int(lection.testScore)
+        date = lection.testDate!
     }
     
     @IBAction func clickCancel(_ sender: Any) {
+        popResultView()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        contentView.layer.cornerRadius = 20
+        contentView.layer.cornerRadius = 10
+        cancelButton.layer.cornerRadius = cancelButton.bounds.height / 2
+        resetButton.layer.cornerRadius = resetButton.bounds.height / 2
+        resetButton.layer.borderWidth = 2
+        resetButton.layer.borderColor = #colorLiteral(red: 0.5160872936, green: 0.8872948289, blue: 0.9788959622, alpha: 1)
         
-        fillResultData()
+        
+        setResultData()
+        
+        if goFromTestDetail == true {
+            testDate.isHidden = true
+            cancelIcon.imageView?.image = #imageLiteral(resourceName: "iconCancel")
+        } else {
+            cancelIcon.imageView?.image = #imageLiteral(resourceName: "iconBack")
+            testDate.isHidden = false
+        }
         
     }
     
-    private func fillResultData() {
+    private func setResultData() {
         
         let grade = Utils.gradeCalculator(score)
         let time = TimeInterval(timeDuration)
         let minutes = Int(time) / 60 % 60
         let seconds = Int(time) % 60
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
         
         timeLabel.text = String(format:"%02i:%02i", minutes, seconds)
         scoreLabel.text = "\(score) % (\(grade))"
+        testDate.text = dateFormatter.string(from: date)
         countRightAnswers.text = String(rightAnswers)
         countWrongAnswers.text = String(wrongAnswers)
+        if(score > 80) {
+            recomendationLabel.text = cRecommendGood
+        } else {
+            recomendationLabel.text = cRecommendWrong
+        }
     }
     
-    private func popViewControllerss(popViews: Int, animated: Bool = true) {
+    private func popViewControllers(popViews: Int, animated: Bool = true) {
         if self.navigationController!.viewControllers.count > popViews
         {
             let vc = self.navigationController!.viewControllers[self.navigationController!.viewControllers.count - popViews - 1]

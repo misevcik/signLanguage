@@ -30,6 +30,7 @@ class Utils {
         return UIImage(cgImage: image)
     }
     
+    
     static func gradeCalculator(_ result : Int) -> String {
         if result < 50 {
             return "F"

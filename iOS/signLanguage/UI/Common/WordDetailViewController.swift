@@ -38,7 +38,7 @@ class WordDetailViewController : UIViewController {
     
     @IBAction func clickToFavorite(_ sender: UIButton) {
         dbWord.favorite = !dbWord.favorite
-        setFavorite(dbWord.favorite)
+        updateFavoriteButton(dbWord.favorite)
         callbackSaveCoreData!()
     }
     
@@ -57,17 +57,17 @@ class WordDetailViewController : UIViewController {
         
         videoController.delegate = self
         
-        fillViewData()
+        updatePageData()
     }
     
-    fileprivate func fillViewData() {
-        setTableLayout()
-        setWordLabel()
-        setVideo()
-        setFavorite(dbWord.favorite)
+    fileprivate func updatePageData() {
+        updateTableLayout()
+        updateWordLabel()
+        updateVideoFrame()
+        updateFavoriteButton(dbWord.favorite)
     }
     
-    fileprivate func setFavorite(_ isFavorite : Bool) {
+    fileprivate func updateFavoriteButton(_ isFavorite : Bool) {
         if isFavorite == true {
             favoriteButton.setImage(#imageLiteral(resourceName: "iconHeart-red"), for: UIControl.State.normal)
         } else {
@@ -75,12 +75,14 @@ class WordDetailViewController : UIViewController {
         }
     }
     
-    fileprivate func setVideo() {
-        videoHandler.setWord(dbWord)
+    fileprivate func updateVideoFrame() {
+        videoHandler.setVideoPath(self.dbWord.videoFront!)
         videoImage.image = videoHandler.getPreviewImage()
+        videoImage.clipsToBounds = true
+        videoImage.contentMode = .scaleAspectFill
     }
     
-    fileprivate func setTableLayout() {
+    fileprivate func updateTableLayout() {
         if dbWord.relSentence!.count == 0 {
             sentenceTable.isHidden = true
             sentenceLabel.isHidden = true
@@ -93,7 +95,7 @@ class WordDetailViewController : UIViewController {
         sentenceTable.reloadData()
     }
     
-    fileprivate func setWordLabel() {
+    fileprivate func updateWordLabel() {
         wordLabel.text = dbWord.word
     }
 }
@@ -108,7 +110,7 @@ extension WordDetailViewController : VideoControllerProtocol {
         let nextDbWord = fetchedResultsController.object(at: nextIndexPath!)
         dbWord = nextDbWord
         
-        fillViewData()
+        updatePageData()
     }
 
     func clickBackward() {
@@ -118,7 +120,7 @@ extension WordDetailViewController : VideoControllerProtocol {
         let nextDbWord = fetchedResultsController.object(at: nextIndexPath!)
         dbWord = nextDbWord
         
-        fillViewData()
+        updatePageData()
     }
     
     func clickPlayVideo() {

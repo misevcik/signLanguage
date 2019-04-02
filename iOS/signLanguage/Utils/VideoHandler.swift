@@ -13,7 +13,7 @@ class VideoHandler {
     
     fileprivate var playerViewController = AVPlayerViewController()
     fileprivate var videoPreview = UIImageView()
-    fileprivate var dbWord : DBWord!
+    fileprivate var videoPath : String?
     fileprivate var parent : UIViewController!
     
     init(_ parentController : UIViewController) {
@@ -23,10 +23,9 @@ class VideoHandler {
         NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerViewController.player?.currentItem)
     }
     
-    func setWord(_ word : DBWord) {
-        dbWord = word
-        
-        setVideoData()
+    func setVideoPath(_ videoPathArg : String) {
+        videoPath = videoPathArg
+        loadVideoData()
     }
     
     func getPreviewImage() ->UIImage {
@@ -64,11 +63,11 @@ class VideoHandler {
         playerViewController.dismiss(animated: true, completion: nil)
     }
     
-    fileprivate func setVideoData() {
-        if dbWord.videoFront?.isEmpty == false {
-            let videoPath = Bundle.main.path(forResource: dbWord.videoFront!, ofType: "mp4")!
-            let videoUrl = URL(fileURLWithPath: videoPath)
-            videoPreview.image = Utils.getVideoImage(url: videoUrl, at: 0)
+    fileprivate func loadVideoData() {
+        if videoPath!.isEmpty == false {
+            let videoUrl = Bundle.main.url(forResource: self.videoPath, withExtension: "mp4")!
+            //let videoUrl = URL(fileURLWithPath: videoPath)
+            videoPreview.image = Utils.getVideoImage(url: videoUrl, at: 3)
             
             playerViewController.player = AVPlayer(url: videoUrl)
             

@@ -29,6 +29,11 @@ class LectionViewController : UIViewController {
         loadPersistenceContainer()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+    }
+    
     fileprivate let persistentContainer = NSPersistentContainer(name: "DictionaryDatabase")
     fileprivate lazy var fetchedResultsController: NSFetchedResultsController<DBLesson> = {
         
@@ -133,7 +138,6 @@ class LectionViewController : UIViewController {
 
 extension LectionViewController : UICollectionViewDataSource, UICollectionViewDelegate {
     
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let count = fetchedResultsController.sections?[section].numberOfObjects {
             return count
@@ -170,6 +174,7 @@ extension LectionViewController : UICollectionViewDataSource, UICollectionViewDe
             let vc = LockedPopupView()
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
+            vc.setPopupType(LockedPopupEnum.LECTION)
             self.present(vc, animated: true, completion: nil)
         }
         

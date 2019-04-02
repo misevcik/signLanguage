@@ -34,7 +34,8 @@ class LectionListViewController : UIViewController {
         for item in dbLection.relDictionary! {
             dbWordArray.append(item as! DBWord)
         }
-        
+        lectionTable.tableFooterView = UIView()
+
         lectionName.text = "Lekcia č: \(lectionOrder) - \(dbLection.title!)"
     }
     

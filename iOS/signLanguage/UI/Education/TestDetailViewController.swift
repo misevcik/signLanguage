@@ -11,6 +11,7 @@ import UIKit
 struct TestItem {
     var answerList : [(answer: String, isCorrect: Bool)] = []
     var selectedAnswer : Int = -1
+    var videoPath : String = ""
 }
 
 class TestDetailViewController: UIViewController {
@@ -19,17 +20,24 @@ class TestDetailViewController: UIViewController {
     
     @IBOutlet weak var pagerLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var videoImage: UIImageView!
+    @IBOutlet weak var playImage: UIImageView!
     @IBOutlet var answerCollection: [TestAnswer]!
     
     @IBAction func clickBack(_ sender: Any) {
-        _ = navigationController?.popViewController(animated: true)
-        self.navigationController?.isNavigationBarHidden = true
+        
+        let vc = CancelTestView()
+        vc.cancelTestCallback = cancelTest
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: true, completion: nil)
     }
     
     func setLection(_ lection : DBLesson) {
         dbLection = lection
     }
     
+    private var videoHandler : VideoHandler!
     private var dbLection : DBLesson!
     private var testItemArray = Array<TestItem>()
     private var durationTimer = Timer()
@@ -40,6 +48,7 @@ class TestDetailViewController: UIViewController {
         didSet {
             updateAnswers()
             updatePager()
+            updateVideoFrame()
         }
     }
     
@@ -48,7 +57,7 @@ class TestDetailViewController: UIViewController {
         
         var gesture = [UITapGestureRecognizer](repeating: UITapGestureRecognizer(), count: 3)
         
-        prepareTestData()
+        loadTestData()
         runDurationTimer()
         
         
@@ -57,8 +66,13 @@ class TestDetailViewController: UIViewController {
             answerCollection[i].addGestureRecognizer(gesture[i])
             answerCollection[i].setAnswerOrder(i)
         }
-    
+        
+        videoHandler = VideoHandler(self)
         currentPage = 0
+        
+        let tapVideoPlay = UITapGestureRecognizer(target: self, action: #selector(self.playVideo))
+        videoImage.isUserInteractionEnabled = true
+        videoImage.addGestureRecognizer(tapVideoPlay)
     }
     
     func runDurationTimer() {
@@ -88,8 +102,26 @@ class TestDetailViewController: UIViewController {
         })
     }
     
+    @objc func playVideo() {
+        videoHandler.playVideo()
+    }
+    
+    private func cancelTest() {
+        _ = navigationController?.popViewController(animated: true)
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
     private func updatePager() {
         pagerLabel.text = "\(currentPage + 1). otázka z \(testItemArray.count)"
+    }
+    
+    private func updateVideoFrame() {
+        videoHandler.setVideoPath(testItemArray[currentPage].videoPath)
+        videoImage.image = videoHandler.getPreviewImage()
+        videoImage.clipsToBounds = true
+        videoImage.contentMode = .scaleAspectFill
+    
+        videoImage.addSubview(playImage)
     }
     
     private func goNext() {
@@ -135,7 +167,7 @@ class TestDetailViewController: UIViewController {
         }
     }
     
-    private func prepareTestData() {
+    private func loadTestData() {
         let wordArray = dbLection.relDictionary?.allObjects as! [DBWord]
         
         let maxQuizItems = wordArray.count / 3
@@ -152,8 +184,7 @@ class TestDetailViewController: UIViewController {
                 let word = wordArray[indexArray[i]]
                 
                 if defineRightAnswerIndex == i {
-                    let path = Bundle.main.path(forResource: word.videoFront, ofType: "mp4")
-                    //testData.cellImage = Utils.getVideoImage(url: URL(fileURLWithPath: path!), at: 0)!
+                    testData.videoPath = word.videoFront!
                     testData.answerList.append((answer: word.word!, isCorrect: true))
                 } else {
                     testData.answerList.append((answer: word.word!, isCorrect: false))

@@ -33,7 +33,6 @@
 		5498947C2212251600024E77 /* sample_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5498947A2212251600024E77 /* sample_2.mp4 */; };
 		549D9BED21E6727A00E930AD /* FillCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549D9BEC21E6727A00E930AD /* FillCoreData.swift */; };
 		54A386B022199DDC00D35569 /* DLRadioButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5440C027220494D50077F6E5 /* DLRadioButton.framework */; };
-		54A8FC27222BD356005CD643 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A8FC26222BD356005CD643 /* Labels.swift */; };
 		54AAD6CA21DE8DCD00D9F303 /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AAD6C921DE8DCD00D9F303 /* DictionaryViewController.swift */; };
 		54B12C6721D11FBC00A9E2C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B12C6621D11FBC00A9E2C1 /* AppDelegate.swift */; };
 		54B12C6C21D11FBC00A9E2C1 /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54B12C6A21D11FBC00A9E2C1 /* MainViewController.storyboard */; };
@@ -42,6 +41,9 @@
 		54C2048E2236EE970081F63C /* VideoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C2048D2236EE970081F63C /* VideoHandler.swift */; };
 		54C4996A222DC1AF00DC3B99 /* WordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C49969222DC1AF00DC3B99 /* WordDetailViewController.swift */; };
 		54CC9EAB22404967001F5030 /* TestResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CC9EAA22404967001F5030 /* TestResultViewController.swift */; };
+		54CE808A22539DCE00D73B94 /* CancelTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CE808822539DCE00D73B94 /* CancelTestView.swift */; };
+		54CE808B22539DCE00D73B94 /* CancelTestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54CE808922539DCE00D73B94 /* CancelTestView.xib */; };
+		54CE808D2253EA5A00D73B94 /* sample_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 54CE808C2253EA5A00D73B94 /* sample_3.mp4 */; };
 		54EA763521F677BD00A5C50C /* EducationDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EA763421F677BD00A5C50C /* EducationDetailCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,7 +74,6 @@
 		549894792212251600024E77 /* sample_1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample_1.mp4; sourceTree = "<group>"; };
 		5498947A2212251600024E77 /* sample_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample_2.mp4; sourceTree = "<group>"; };
 		549D9BEC21E6727A00E930AD /* FillCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillCoreData.swift; sourceTree = "<group>"; };
-		54A8FC26222BD356005CD643 /* Labels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
 		54AAD6C921DE8DCD00D9F303 /* DictionaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewController.swift; sourceTree = "<group>"; };
 		54B12C6321D11FBC00A9E2C1 /* signLanguage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = signLanguage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B12C6621D11FBC00A9E2C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +84,9 @@
 		54C2048D2236EE970081F63C /* VideoHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoHandler.swift; sourceTree = "<group>"; };
 		54C49969222DC1AF00DC3B99 /* WordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailViewController.swift; sourceTree = "<group>"; };
 		54CC9EAA22404967001F5030 /* TestResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultViewController.swift; sourceTree = "<group>"; };
+		54CE808822539DCE00D73B94 /* CancelTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelTestView.swift; sourceTree = "<group>"; };
+		54CE808922539DCE00D73B94 /* CancelTestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CancelTestView.xib; sourceTree = "<group>"; };
+		54CE808C2253EA5A00D73B94 /* sample_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample_3.mp4; sourceTree = "<group>"; };
 		54EA763021F670FB00A5C50C /* UPCarouselFlowLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UPCarouselFlowLayout.framework; sourceTree = "<group>"; };
 		54EA763421F677BD00A5C50C /* EducationDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EducationDetailCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,7 +162,6 @@
 			isa = PBXGroup;
 			children = (
 				5440C025220435D90077F6E5 /* Utils.swift */,
-				54A8FC26222BD356005CD643 /* Labels.swift */,
 				54C2048D2236EE970081F63C /* VideoHandler.swift */,
 			);
 			path = Utils;
@@ -173,6 +176,8 @@
 				5410D831223B764F00C38452 /* TestAnswer.swift */,
 				5482DA08224EA2A30044BA81 /* LockedPopupView.swift */,
 				5482DA09224EA2A30044BA81 /* LockedPopupView.xib */,
+				54CE808822539DCE00D73B94 /* CancelTestView.swift */,
+				54CE808922539DCE00D73B94 /* CancelTestView.xib */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 		549894782212234900024E77 /* Videos */ = {
 			isa = PBXGroup;
 			children = (
+				54CE808C2253EA5A00D73B94 /* sample_3.mp4 */,
 				549894792212251600024E77 /* sample_1.mp4 */,
 				5498947A2212251600024E77 /* sample_2.mp4 */,
 			);
@@ -331,6 +337,8 @@
 				5432D3FB22295DB0003A7A9E /* EducationMenuBar.xib in Resources */,
 				54B12C6C21D11FBC00A9E2C1 /* MainViewController.storyboard in Resources */,
 				5498947C2212251600024E77 /* sample_2.mp4 in Resources */,
+				54CE808B22539DCE00D73B94 /* CancelTestView.xib in Resources */,
+				54CE808D2253EA5A00D73B94 /* sample_3.mp4 in Resources */,
 				5410D830223B742B00C38452 /* TestAnswer.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,6 +386,7 @@
 				5482DA03224E87C00044BA81 /* LectionListCell.swift in Sources */,
 				5440C026220435D90077F6E5 /* Utils.swift in Sources */,
 				54C2048E2236EE970081F63C /* VideoHandler.swift in Sources */,
+				54CE808A22539DCE00D73B94 /* CancelTestView.swift in Sources */,
 				542912B421E28CFC00BF1FDD /* SentenceCell.swift in Sources */,
 				5419295421D7AF7700A9277C /* LectionCell.swift in Sources */,
 				54C4996A222DC1AF00DC3B99 /* WordDetailViewController.swift in Sources */,
@@ -385,7 +394,6 @@
 				5419295221D7ABE300A9277C /* EducationMainViewController.swift in Sources */,
 				5465C00B222ABCBA009B628F /* LectionViewController.swift in Sources */,
 				545F1B8E22327CFF0007B60C /* VideoController.swift in Sources */,
-				54A8FC27222BD356005CD643 /* Labels.swift in Sources */,
 				5485807A21E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld in Sources */,
 				5410D832223B764F00C38452 /* TestAnswer.swift in Sources */,
 				5470A93E2236C80700B99FB4 /* LectionDetailViewController.swift in Sources */,

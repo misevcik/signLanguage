@@ -15,8 +15,8 @@ class LectionDetailViewController : UIViewController {
     @IBOutlet weak var pagerLabel: UILabel!
     @IBOutlet weak var sentenceTable: UITableView!
     @IBOutlet weak var sentenceLabel: UILabel!
-    @IBOutlet weak var videoImage: UIImageView!
     @IBOutlet weak var wordLabel: UILabel!
+    @IBOutlet weak var videoImage: UIImageView!
     @IBOutlet weak var videoController: VideoController!
     
     fileprivate var dbLection : DBLesson!
@@ -44,6 +44,7 @@ class LectionDetailViewController : UIViewController {
             
             updatePager()
             updateButtons()
+            updatePageData()
         }
     }
     
@@ -52,21 +53,19 @@ class LectionDetailViewController : UIViewController {
         super.viewDidLoad()
         
         videoHandler = VideoHandler(self)
-        
         videoController.delegate = self
    
         loadLectionData()
-        setViewData()
     }
     
-    fileprivate func setViewData() {
-        setTableLayout()
-        setVideo()
+    fileprivate func updatePageData() {
+        updateTableLayout()
+        updateVideoFrame()
         
         wordLabel.text = dbWord.word
     }
 
-    fileprivate func setTableLayout() {
+    fileprivate func updateTableLayout() {
         if dbWord.relSentence!.count == 0 {
             sentenceTable.isHidden = true
             sentenceLabel.isHidden = true
@@ -79,9 +78,11 @@ class LectionDetailViewController : UIViewController {
         sentenceTable.reloadData()
     }
     
-    fileprivate func setVideo() {
-        videoHandler.setWord(dbWord)
+    fileprivate func updateVideoFrame() {
+        videoHandler.setVideoPath(dbWord.videoFront!)
         videoImage.image = videoHandler.getPreviewImage()
+        videoImage.clipsToBounds = true
+        videoImage.contentMode = .scaleAspectFill
     }
     
     fileprivate func loadLectionData() {
@@ -148,7 +149,7 @@ extension LectionDetailViewController : VideoControllerProtocol {
         } else {
             self.currentPage = self.currentPage + 1
         }
-        setViewData()
+        
     }
     
     func clickBackward() {
@@ -158,7 +159,6 @@ extension LectionDetailViewController : VideoControllerProtocol {
         } else {
             self.currentPage = self.currentPage - 1
         }
-        setViewData()
     }
     
     func clickPlayVideo() {

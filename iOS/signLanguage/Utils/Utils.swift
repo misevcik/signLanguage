@@ -46,6 +46,7 @@ class Utils {
             return "A"
         }
     }
+    
 }
 
 extension UIImage {

@@ -13,6 +13,7 @@ class LectionCell : UICollectionViewCell {
     
     static let reuseIdentifier = "LectionCell"
     
+    @IBOutlet weak var content: UIView!
     @IBOutlet weak var coverImage: UIImageView!
     @IBOutlet weak var lockImage: UIImageView!
     @IBOutlet weak var lectionName: UILabel!

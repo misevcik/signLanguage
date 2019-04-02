@@ -142,7 +142,15 @@ extension TestViewController: UITableViewDataSource, UITableViewDelegate {
         
         let lection = fetchedResultsController.object(at: indexPath)
         
-        // Test wasn't passed
+        if lection.locked == true {
+            let vc = LockedPopupView()
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .overCurrentContext
+            vc.setPopupType(LockedPopupEnum.TEST)
+            self.present(vc, animated: true, completion: nil)
+        }
+        
+        // Date == nil - test wasn't tried yet
         if lection.testDate == nil {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "TestDetailViewController") as! TestDetailViewController
             vc.saveToCoreDataCallback = saveResultToCoreData

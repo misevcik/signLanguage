@@ -128,6 +128,4 @@ class TestResultViewController: UIViewController {
         }
         self.navigationController?.isNavigationBarHidden = true
     }
-
-
 }

@@ -68,3 +68,25 @@ extension UITableView {
         return IndexPath(row: row, section: section)
     }
 }
+
+//https://stackoverflow.com/questions/48955468/how-can-i-set-nsfetchedresultscontrollers-section-sectionnamekeypath-to-be-the
+extension NSString{
+    @objc func firstUpperCaseChar() -> String{
+        if self.length == 0 {
+            return ""
+        }
+        
+        let character = self.substring(to: 1)
+        if character >= "0" && character <= "9" {
+            return ""
+        }
+        
+        if character == "+" {
+            return ""
+        }
+        
+        return character.capitalized
+    }
+}
+
+

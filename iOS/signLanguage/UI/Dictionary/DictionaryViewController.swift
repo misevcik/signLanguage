@@ -10,17 +10,6 @@ import CoreData
 import UIKit
 import os.log
 
-//https://stackoverflow.com/questions/48955468/how-can-i-set-nsfetchedresultscontrollers-section-sectionnamekeypath-to-be-the
-extension NSString{
-    @objc func firstUpperCaseChar() -> String{
-        if self.length == 0 {
-            return ""
-        }
-        return self.substring(to: 1).capitalized
-    }
-}
-
-
 class DictionaryViewController : UIViewController {
     
     //MARK Outlets
@@ -43,7 +32,7 @@ class DictionaryViewController : UIViewController {
     }()
 
     fileprivate func loadPersistenceContainer() {
-
+        
         persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
             if error != nil {
                 os_log("Unable to Load Persistent Store", log: Log.general, type: .error)
@@ -65,14 +54,6 @@ class DictionaryViewController : UIViewController {
             os_log("Unable to save changes", log: Log.general, type: .error)
             persistentContainer.viewContext.reset()
         }
-    }
-    
-    fileprivate func configure(_ cell: WordCell, at indexPath: IndexPath) {
-        
-        let dictionary = fetchedResultsController.object(at: indexPath)
-        
-        cell.wordLabel.text = dictionary.word
-        cell.favoriteImage.image = dictionary.favorite ? #imageLiteral(resourceName: "iconHeart-red") : #imageLiteral(resourceName: "iconHeart-black")
     }
     
     override func viewDidLoad() {
@@ -126,6 +107,14 @@ class DictionaryViewController : UIViewController {
 }
 
 extension DictionaryViewController: NSFetchedResultsControllerDelegate {
+    
+    fileprivate func configure(_ cell: WordCell, at indexPath: IndexPath) {
+        
+        let dictionary = fetchedResultsController.object(at: indexPath)
+        
+        cell.wordLabel.text = dictionary.word
+        cell.favoriteImage.image = dictionary.favorite ? #imageLiteral(resourceName: "iconHeart-red") : #imageLiteral(resourceName: "iconHeart-black")
+    }
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         dictionaryTable.beginUpdates()

@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="XbO-NE-UD6"/>
                 <outlet property="sideViewLabel" destination="TMq-IO-MXR" id="sWh-FM-DM8"/>
+                <outlet property="slowDownButton" destination="UeW-vb-uAQ" id="t5c-rE-EtY"/>
                 <outlet property="slowDownLabel" destination="pm4-K7-Nlu" id="KFS-ED-XmM"/>
             </connections>
         </placeholder>
@@ -38,13 +39,12 @@
                                                 <constraint firstAttribute="width" constant="25" id="jZW-y1-tMa"/>
                                             </constraints>
                                             <state key="normal" image="iconClock"/>
-                                            <state key="selected" image="iconHeart-black"/>
                                             <connections>
                                                 <action selector="slowDownClick:" destination="-1" eventType="touchUpInside" id="Prk-U8-XWi"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spomaliť video" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pm4-K7-Nlu" userLabel="SlowDown">
-                                            <rect key="frame" x="5" y="48.5" width="65.5" height="11"/>
+                                            <rect key="frame" x="5" y="51.5" width="65.5" height="11"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -54,7 +54,7 @@
                                         <constraint firstItem="pm4-K7-Nlu" firstAttribute="centerX" secondItem="79I-oo-aDK" secondAttribute="centerX" id="7eU-Tl-KIa"/>
                                         <constraint firstItem="UeW-vb-uAQ" firstAttribute="centerX" secondItem="79I-oo-aDK" secondAttribute="centerX" id="Lh6-Jl-CaJ"/>
                                         <constraint firstItem="UeW-vb-uAQ" firstAttribute="centerY" secondItem="79I-oo-aDK" secondAttribute="centerY" constant="-5" id="YyB-Ms-mLh"/>
-                                        <constraint firstItem="pm4-K7-Nlu" firstAttribute="top" secondItem="UeW-vb-uAQ" secondAttribute="bottom" constant="-1" id="tu3-uG-Ydi"/>
+                                        <constraint firstItem="pm4-K7-Nlu" firstAttribute="top" secondItem="UeW-vb-uAQ" secondAttribute="bottom" constant="2" id="tu3-uG-Ydi"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ERh-9q-kWJ">
@@ -166,7 +166,6 @@
         <image name="iconBackward" width="24" height="24"/>
         <image name="iconClock" width="24" height="24"/>
         <image name="iconForward" width="24" height="24"/>
-        <image name="iconHeart-black" width="24" height="24"/>
         <image name="iconPlay" width="64" height="64"/>
         <image name="iconRotate" width="24" height="24"/>
     </resources>

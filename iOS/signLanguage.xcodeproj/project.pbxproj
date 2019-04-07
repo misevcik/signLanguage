@@ -106,6 +106,7 @@
 		5416D03E21D62167009E8D02 /* Dictionary */ = {
 			isa = PBXGroup;
 			children = (
+				54C49969222DC1AF00DC3B99 /* WordDetailViewController.swift */,
 				54AAD6C921DE8DCD00D9F303 /* DictionaryViewController.swift */,
 			);
 			path = Dictionary;
@@ -143,7 +144,6 @@
 			children = (
 				5416D03C21D62134009E8D02 /* WordCell.swift */,
 				542912B321E28CFC00BF1FDD /* SentenceCell.swift */,
-				54C49969222DC1AF00DC3B99 /* WordDetailViewController.swift */,
 				545F1B8D22327CFF0007B60C /* VideoController.swift */,
 				545F1B8F22327D0A0007B60C /* VideoController.xib */,
 			);

@@ -19,7 +19,6 @@
         <attribute name="favorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lesson" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="level" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="videoFront" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="videoSide" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="word" optional="YES" attributeType="String" syncable="YES"/>
@@ -34,6 +33,6 @@
     <elements>
         <element name="DBLesson" positionX="-572.1640625" positionY="-87.11328125" width="128" height="165"/>
         <element name="DBSentence" positionX="-104.91015625" positionY="44.95703125" width="128" height="90"/>
-        <element name="DBWord" positionX="-305.83984375" positionY="-66.11328125" width="128" height="180"/>
+        <element name="DBWord" positionX="-305.83984375" positionY="-66.11328125" width="128" height="165"/>
     </elements>
 </model>

@@ -23,6 +23,7 @@ class VideoController : UIView {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var sideViewLabel: UILabel!
     @IBOutlet weak var slowDownLabel: UILabel!
+    @IBOutlet weak var slowDownButton: UIButton!
     
     @IBAction func playClick(_ sender: UIButton) {
         delegate?.clickPlayVideo()

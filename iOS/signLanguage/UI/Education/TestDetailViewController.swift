@@ -171,7 +171,7 @@ class TestDetailViewController: UIViewController {
         let wordArray = dbLection.relDictionary?.allObjects as! [DBWord]
         
         let maxQuizItems = wordArray.count / 3
-        assert(maxQuizItems < answerCollection.count || maxQuizItems <= 1, "Count of quiz items is less than answers")
+        assert(maxQuizItems >= answerCollection.count || maxQuizItems <= 1, "Count of quiz items is less than answers")
         
         for _ in 0...maxQuizItems {
             

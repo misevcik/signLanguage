@@ -22,9 +22,11 @@ class DictionaryViewController : UIViewController {
 
         let fetchRequest: NSFetchRequest<DBWord> = DBWord.fetchRequest()
 
+        fetchRequest.predicate = NSPredicate(format: "inDictionary == %@", NSNumber(value: true))
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true)]
+        //fetchRequest.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true, selector: #selector(NSString.localizedCompare(_:)))]
 
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: "word.firstUpperCaseChar", cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: "word.firstUpperCaseChar", cacheName: "cache")
 
         fetchedResultsController.delegate = self
 
@@ -143,6 +145,7 @@ extension DictionaryViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         
         let numberOfSections = self.fetchedResultsController.sections?.count
+
         return numberOfSections!
     }
     

@@ -19,6 +19,7 @@ class LectionDetailViewController : UIViewController {
     @IBOutlet weak var videoImage: UIImageView!
     @IBOutlet weak var videoController: VideoController!
     
+    fileprivate var playerViewController = AVPlayerViewController()
     fileprivate var dbLection : DBLesson!
     fileprivate var dbWordArray = Array<DBWord>()
     fileprivate var dbWord : DBWord!
@@ -56,6 +57,20 @@ class LectionDetailViewController : UIViewController {
         videoController.delegate = self
    
         loadLectionData()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerViewController.player?.currentItem)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        sentenceTable.indexPathsForSelectedRows?.forEach {
+            sentenceTable.deselectRow(at: $0, animated: true)
+        }
+    }
+    
+    @objc func playerDidFinishPlaying(note: NSNotification) {
+        playerViewController.dismiss(animated: true, completion: nil)
     }
     
     fileprivate func updatePageData() {
@@ -135,7 +150,14 @@ extension LectionDetailViewController: UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let sentence = dbWord.relSentence!.allObjects[indexPath.row] as! DBSentence
-        //playVideo(videoName: sentence.video!)
+        let videoUrl = Bundle.main.url(forResource: sentence.video, withExtension: "mp4")!
+        
+        let player = AVPlayer(url: videoUrl)
+        playerViewController.player = player
+        
+        self.present(playerViewController, animated: true) {
+            self.playerViewController.player?.play()
+        }
         
     }
 }

@@ -76,15 +76,7 @@ extension NSString{
             return ""
         }
         
-        let character = self.substring(to: 1)
-        if character >= "0" && character <= "9" {
-            return ""
-        }
-        
-        if character == "+" {
-            return ""
-        }
-        
+        let character = self.substring(to: 1)        
         return character.capitalized
     }
 }

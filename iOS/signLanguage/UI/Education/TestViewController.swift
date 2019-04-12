@@ -73,17 +73,12 @@ extension TestViewController: NSFetchedResultsControllerDelegate {
     
     fileprivate func configureTestCell(_ cell: TestCell, lection : DBLesson) {
         
-        if lection.locked == true {
-            cell.lockImage.isHidden = false
-            cell.lockImage.image = lockImage
-            cell.detailLabel.text = "ZAMKNUTY TEST"
-        } else {
+        if lection.locked == false {
             if lection.testDate == nil {
                 // Test not done
                 cell.scoreLabel.isHidden = true
-                cell.lockImage.isHidden = false
                 cell.lockImage.image = unlockImage
-                cell.detailLabel.text = "ODOMKNUTY TEST"
+                cell.detailLabel.text = "SKUS SA OTESTOVAT"
             } else {
                 // Test done
                 let testAnswersCount = (lection.relDictionary!.count / 3) + 1
@@ -93,10 +88,13 @@ extension TestViewController: NSFetchedResultsControllerDelegate {
                 let grade = Utils.gradeCalculator(Int(score))
                 
                 cell.scoreLabel.isHidden = false
-                cell.lockImage.isHidden = true
                 cell.detailLabel.text = "\(correctAnswers) SPRÁVNE / \(wrongAnswers) NESPRÁVNE"
                 cell.scoreLabel.text  = "\(score) % (\(grade))"
             }
+        } else {
+            cell.lockImage.isHidden = false
+            cell.lockImage.image = lockImage
+            cell.detailLabel.text = "ZAMKNUTY TEST"
         }
     }
     

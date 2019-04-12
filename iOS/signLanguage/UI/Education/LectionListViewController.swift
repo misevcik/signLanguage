@@ -19,24 +19,22 @@ class LectionListViewController : UIViewController {
     
     }
     
-    fileprivate var lectionOrder : Int = 0
+    fileprivate var lectionOrderLabel : Int = 0
     fileprivate var dbLection : DBLesson!
     fileprivate var dbWordArray = Array<DBWord>()
     
-    func setLection(_ lectionArg : DBLesson, _ lectionOrderArg : Int) {
+    func setLection(_ lectionArg : DBLesson, _ lectionOrderLabelArg : Int) {
         dbLection = lectionArg
-        lectionOrder = lectionOrderArg
+        lectionOrderLabel = lectionOrderLabelArg
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for item in dbLection.relDictionary! {
-            dbWordArray.append(item as! DBWord)
-        }
+        dbWordArray = dbLection.relDictionary?.array as! [DBWord]
         lectionTable.tableFooterView = UIView()
 
-        lectionName.text = "Lekcia č: \(lectionOrder) - \(dbLection.title!)"
+        lectionName.text = "Lekcia č: \(lectionOrderLabel) - \(dbLection.title!)"
     }
     
     override func viewWillAppear(_ animated: Bool) {

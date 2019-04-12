@@ -149,13 +149,11 @@ class FillCoreData {
         
         let lections = getLection()
         
-        for i in 0...lections.count - 1 {
-            
-            let lection = lections[i]
+        for lection in lections {
             
             let dbLection = DBLesson(context: context!)
             dbLection.id = Int32(lection.id)
-            dbLection.locked = (i != 0)
+            dbLection.locked = false
             dbLection.title = lection.title
             dbLection.image = lection.image
             
@@ -201,8 +199,8 @@ class FillCoreData {
         lection.append(Lection(id: id.increment(), title: "Rodina II.", image: "nemo-top" ))
         lection.append(Lection(id: id.increment(), title: "Čísla I.", image: "nemo-top" ))
         lection.append(Lection(id: id.increment(), title: "Čísla II.", image: "nemo-top" ))
-        lection.append(Lection(id: id.increment(), title: "Materiály a farby I.", image: "nemo-top" ))
-        lection.append(Lection(id: id.increment(), title: "Materiály a farby I.", image: "nemo-top" ))
+        lection.append(Lection(id: id.increment(), title: "Farby I.", image: "nemo-top" ))
+        lection.append(Lection(id: id.increment(), title: "Farby II.", image: "nemo-top" ))
         
         return lection
     }

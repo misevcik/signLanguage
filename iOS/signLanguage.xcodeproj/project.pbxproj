@@ -14,6 +14,9 @@
 		5416D03D21D62134009E8D02 /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5416D03C21D62134009E8D02 /* WordCell.swift */; };
 		5419295221D7ABE300A9277C /* EducationMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5419295121D7ABE300A9277C /* EducationMainViewController.swift */; };
 		5419295421D7AF7700A9277C /* LectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5419295321D7AF7700A9277C /* LectionCell.swift */; };
+		5422583F22609A3300DB0758 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5422583E22609A3300DB0758 /* InfoViewController.swift */; };
+		5422584122609AD600DB0758 /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5422584022609AD600DB0758 /* InfoTableViewController.swift */; };
+		542258452260A34600DB0758 /* InfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542258442260A34600DB0758 /* InfoDetailViewController.swift */; };
 		542912B421E28CFC00BF1FDD /* SentenceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542912B321E28CFC00BF1FDD /* SentenceCell.swift */; };
 		5432D3FB22295DB0003A7A9E /* EducationMenuBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5432D3FA22295DB0003A7A9E /* EducationMenuBar.xib */; };
 		5432D3FD22295E7F003A7A9E /* EducationMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5432D3FC22295E7F003A7A9E /* EducationMenuBar.swift */; };
@@ -55,6 +58,9 @@
 		5416D03C21D62134009E8D02 /* WordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
 		5419295121D7ABE300A9277C /* EducationMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationMainViewController.swift; sourceTree = "<group>"; };
 		5419295321D7AF7700A9277C /* LectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectionCell.swift; sourceTree = "<group>"; };
+		5422583E22609A3300DB0758 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		5422584022609AD600DB0758 /* InfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
+		542258442260A34600DB0758 /* InfoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDetailViewController.swift; sourceTree = "<group>"; };
 		542912B321E28CFC00BF1FDD /* SentenceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceCell.swift; sourceTree = "<group>"; };
 		5432D3FA22295DB0003A7A9E /* EducationMenuBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EducationMenuBar.xib; sourceTree = "<group>"; };
 		5432D3FC22295E7F003A7A9E /* EducationMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationMenuBar.swift; sourceTree = "<group>"; };
@@ -139,6 +145,16 @@
 				5482DA02224E87C00044BA81 /* LectionListCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		5422583D22609A1B00DB0758 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				5422583E22609A3300DB0758 /* InfoViewController.swift */,
+				5422584022609AD600DB0758 /* InfoTableViewController.swift */,
+				542258442260A34600DB0758 /* InfoDetailViewController.swift */,
+			);
+			path = Info;
 			sourceTree = "<group>";
 		};
 		542912B621E293B300BF1FDD /* Common */ = {
@@ -255,6 +271,7 @@
 		54B12C7921D1200A00A9E2C1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				5422583D22609A1B00DB0758 /* Info */,
 				542912B621E293B300BF1FDD /* Common */,
 				543F199021DEA25300F08764 /* Favorites */,
 				5419295021D7AB9F00A9277C /* Education */,
@@ -380,16 +397,19 @@
 				54AAD6CA21DE8DCD00D9F303 /* DictionaryViewController.swift in Sources */,
 				5416D03D21D62134009E8D02 /* WordCell.swift in Sources */,
 				543F199221DEA2AB00F08764 /* FavoritesViewController.swift in Sources */,
+				5422584122609AD600DB0758 /* InfoTableViewController.swift in Sources */,
 				54B12C6721D11FBC00A9E2C1 /* AppDelegate.swift in Sources */,
 				5465C00D222ABCFB009B628F /* TestViewController.swift in Sources */,
 				54057756222C8AB600E3E227 /* TestCell.swift in Sources */,
 				54339FC3223AE505009F330B /* TestDetailViewController.swift in Sources */,
 				5482DA03224E87C00044BA81 /* LectionListCell.swift in Sources */,
 				5440C026220435D90077F6E5 /* Utils.swift in Sources */,
+				5422583F22609A3300DB0758 /* InfoViewController.swift in Sources */,
 				54C2048E2236EE970081F63C /* VideoHandler.swift in Sources */,
 				54CE808A22539DCE00D73B94 /* CancelTestView.swift in Sources */,
 				542912B421E28CFC00BF1FDD /* SentenceCell.swift in Sources */,
 				5419295421D7AF7700A9277C /* LectionCell.swift in Sources */,
+				542258452260A34600DB0758 /* InfoDetailViewController.swift in Sources */,
 				54C4996A222DC1AF00DC3B99 /* WordDetailViewController.swift in Sources */,
 				5482DA0A224EA2A30044BA81 /* LockedPopupView.swift in Sources */,
 				5419295221D7ABE300A9277C /* EducationMainViewController.swift in Sources */,

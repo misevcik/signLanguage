@@ -8,7 +8,7 @@
         <attribute name="testDuration" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="testScore" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="relDictionary" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DBWord" inverseName="relLesson" inverseEntity="DBWord" syncable="YES"/>
+        <relationship name="relDictionary" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="DBWord" inverseName="relLesson" inverseEntity="DBWord" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>

@@ -168,7 +168,8 @@ class TestDetailViewController: UIViewController {
     }
     
     private func loadTestData() {
-        let wordArray = dbLection.relDictionary?.allObjects as! [DBWord]
+        
+        let wordArray = dbLection.relDictionary?.array as! [DBWord]
         
         let maxQuizItems = wordArray.count / 3
         assert(maxQuizItems >= answerCollection.count || maxQuizItems <= 1, "Count of quiz items is less than answers")

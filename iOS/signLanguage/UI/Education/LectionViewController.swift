@@ -180,7 +180,6 @@ extension LectionViewController : UICollectionViewDataSource, UICollectionViewDe
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "LectionListViewController") as! LectionListViewController
         vc.setLection(lesson, indexPath.row + 1)
-        //vc.unlockNextLessonCallback = unlockNextLesson
         
         self.show(vc, sender: true)
         

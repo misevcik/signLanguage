@@ -80,7 +80,7 @@ class TestResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        contentView.layer.cornerRadius = 10
+        contentView.layer.cornerRadius = 15
         cancelButton.layer.cornerRadius = cancelButton.bounds.height / 2
         resetButton.layer.cornerRadius = resetButton.bounds.height / 2
         resetButton.layer.borderWidth = 2
@@ -91,9 +91,9 @@ class TestResultViewController: UIViewController {
         
         if goFromTestDetail == true {
             testDate.isHidden = true
-            cancelIcon.imageView?.image = #imageLiteral(resourceName: "iconCancel")
+            cancelIcon.imageView?.image = #imageLiteral(resourceName: "iconCancelWhite")
         } else {
-            cancelIcon.imageView?.image = #imageLiteral(resourceName: "iconBack")
+            cancelIcon.imageView?.image = #imageLiteral(resourceName: "iconBackWhite")
             testDate.isHidden = false
         }
         

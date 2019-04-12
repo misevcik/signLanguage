@@ -77,7 +77,10 @@ extension NSString{
         }
         
         let character = self.substring(to: 1)        
-        return character.capitalized
+        //return character.capitalized
+        
+        return character
+
     }
 }
 

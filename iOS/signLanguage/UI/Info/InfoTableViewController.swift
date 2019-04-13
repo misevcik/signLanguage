@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import StoreKit
+import MessageUI
 
-class InfoTableViewController: UITableViewController {
+class InfoTableViewController: UITableViewController, MFMailComposeViewControllerDelegate {
 
     @IBOutlet var infoTableView: UITableView!
     
@@ -28,7 +30,7 @@ class InfoTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -36,8 +38,30 @@ class InfoTableViewController: UITableViewController {
         if indexPath.row == 0 {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "InfoDetailViewController") as! InfoDetailViewController
             self.show(vc, sender: true)
+            
+        } else if indexPath.row == 1 {
+            SKStoreReviewController.requestReview()
+            
+        } else if indexPath.row == 2 {
+            
+            if MFMailComposeViewController.canSendMail() == true {
+            
+                let composeVC = MFMailComposeViewController()
+                composeVC.mailComposeDelegate = self
+                
+                composeVC.setToRecipients(["info@dorteo.sk"])
+                composeVC.setSubject("Message Subject")
+                composeVC.setMessageBody("...", isHTML: false)
+                
+                // Present the view controller modally.
+                self.present(composeVC, animated: true, completion: nil)
+            }
         }
-        
     }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+
     
 }

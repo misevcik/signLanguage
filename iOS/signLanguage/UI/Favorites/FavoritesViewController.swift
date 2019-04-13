@@ -13,7 +13,7 @@ import os.log
 class FavoritesViewController : UIViewController {
     
     @IBOutlet weak var dictionaryTable: UITableView!
-    
+        
     fileprivate let persistentContainer = NSPersistentContainer(name: "DictionaryDatabase")
     fileprivate lazy var fetchedResultsController: NSFetchedResultsController<DBWord> = {
         
@@ -60,6 +60,11 @@ class FavoritesViewController : UIViewController {
         super.viewDidLoad()
         
         loadPersistenceContainer()
+    }
+
+    
+    @objc func managedObjectContextObjectsDidChange(notification: NSNotification) {
+        print("Notification")
     }
     
     override func viewWillAppear(_ animated: Bool) {

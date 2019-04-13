@@ -37,7 +37,6 @@ class WordDetailViewController : UIViewController {
     }
     
     @IBAction func clickToFavorite(_ sender: UIButton) {
-        print(dbWord.favorite)
         dbWord.favorite = !dbWord.favorite
         updateFavoriteButton(dbWord.favorite)
         callbackSaveCoreData!()

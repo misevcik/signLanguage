@@ -23,8 +23,8 @@ class DictionaryViewController : UIViewController {
         let fetchRequest: NSFetchRequest<DBWord> = DBWord.fetchRequest()
 
         fetchRequest.predicate = NSPredicate(format: "inDictionary == %@", NSNumber(value: true))
-        //fetchRequest.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true)]
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true)]
+        //fetchRequest.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))]
 
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: "word.firstUpperCaseChar", cacheName: "cache")
 

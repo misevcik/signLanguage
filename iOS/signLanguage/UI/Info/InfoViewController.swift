@@ -7,12 +7,12 @@
 //
 
 import UIKit
+import MessageUI
 
 class InfoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
 }

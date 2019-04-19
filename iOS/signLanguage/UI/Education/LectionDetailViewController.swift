@@ -11,6 +11,8 @@ import CoreData
 import AVKit
 
 class LectionDetailViewController : UIViewController {
+    
+    var callbackSaveCoreData: (()->())?
 
     @IBOutlet weak var pagerLabel: UILabel!
     @IBOutlet weak var sentenceTable: UITableView!
@@ -19,12 +21,15 @@ class LectionDetailViewController : UIViewController {
     @IBOutlet weak var videoImage: UIImageView!
     @IBOutlet weak var videoController: VideoController!
     
-    fileprivate var playerViewController = AVPlayerViewController()
-    fileprivate var dbLection : DBLesson!
-    fileprivate var dbWordArray = Array<DBWord>()
-    fileprivate var dbWord : DBWord!
-    fileprivate var videoHandler : VideoHandler!
-    fileprivate var goToPage : Int = 0
+    private var playerViewController = AVPlayerViewController()
+    private var dbLection : DBLesson!
+    private var dbWordArray = Array<DBWord>()
+    private var dbWord : DBWord!
+    private var videoHandler : VideoHandler!
+    private var goToPage : Int = 0
+    
+    //Variable used for progress bar
+    private var wordVisitUpdate = false
     
     func setLection(_ lection : DBLesson) {
         dbLection = lection
@@ -35,17 +40,53 @@ class LectionDetailViewController : UIViewController {
     }
     
     @IBAction func clickBack(_ sender: Any) {
+        
+        if lectionVisitor() == true {
+            callbackSaveCoreData!()
+        }
+
         _ = navigationController?.popViewController(animated: true)
         self.navigationController?.isNavigationBarHidden = true
     }
     
-    fileprivate var currentPage: Int = 0 {
+    private var currentPage: Int = 0 {
         didSet {
             dbWord = dbWordArray[currentPage]
+            
+            wordVisitor(dbWord)
             
             updatePager()
             updateButtons()
             updatePageData()
+        }
+    }
+    
+    private func lectionVisitor() -> Bool {
+        
+        if wordVisitUpdate == true {
+            
+            var count : Int = 0
+            for dbWord in dbWordArray {
+                if dbWord.visited == true {
+                    count += 1
+                }
+            }
+            
+            if dbLection.visitedWord < count {
+                dbLection.visitedWord = Int32(count)
+            }
+            
+            return true
+        }
+        
+        return false
+    }
+    
+    private func wordVisitor(_ word : DBWord) {
+        
+        if dbWord.visited == false {
+            dbWord.visited = true
+            wordVisitUpdate = true
         }
     }
     
@@ -73,14 +114,14 @@ class LectionDetailViewController : UIViewController {
         playerViewController.dismiss(animated: true, completion: nil)
     }
     
-    fileprivate func updatePageData() {
+    private func updatePageData() {
         updateTableLayout()
         updateVideoFrame()
         
         wordLabel.text = dbWord.word
     }
 
-    fileprivate func updateTableLayout() {
+    private func updateTableLayout() {
         if dbWord.relSentence!.count == 0 {
             sentenceTable.isHidden = true
             sentenceLabel.isHidden = true
@@ -93,14 +134,14 @@ class LectionDetailViewController : UIViewController {
         sentenceTable.reloadData()
     }
     
-    fileprivate func updateVideoFrame() {
+    private func updateVideoFrame() {
         videoHandler.setVideoPath(dbWord.videoFront!)
         videoImage.image = videoHandler.getPreviewImage()
         videoImage.clipsToBounds = true
         videoImage.contentMode = .scaleAspectFill
     }
     
-    fileprivate func loadLectionData() {
+    private func loadLectionData() {
         
         for item in dbLection.relDictionary! {
             dbWordArray.append(item as! DBWord)
@@ -110,20 +151,20 @@ class LectionDetailViewController : UIViewController {
         currentPage = goToPage
     }
     
-    fileprivate func updatePager() {
+    private func updatePager() {
         
         let currentPage = String(self.currentPage + 1)
         let sum = String(self.dbWordArray.count)
         pagerLabel.text = currentPage + "/" + sum
     }
     
-    fileprivate func updateButtons() {
+    private func updateButtons() {
         
 //        moveBackward.isHidden = self.currentPage == 0
 //        moveForward.isHidden = self.currentPage == self.dbWordArray.count - 1
     }
     
-    fileprivate func playVideo() {
+    private func playVideo() {
         videoHandler.playVideo()
     }
 

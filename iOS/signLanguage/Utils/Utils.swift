@@ -34,13 +34,13 @@ class Utils {
     static func gradeCalculator(_ result : Int) -> String {
         if result < 50 {
             return "F"
-        } else if 50 < result && result < 59 {
+        } else if 50 <= result && result < 60 {
             return "E"
-        } else if 60 < result && result < 69 {
+        } else if 60 <= result && result < 70 {
             return "D"
-        } else if 70 < result && result < 79 {
+        } else if 70 <= result && result < 80 {
             return "C"
-        } else if 80 < result && result < 89 {
+        } else if 80 <= result && result < 90 {
             return "B"
         } else {
             return "A"

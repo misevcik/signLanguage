@@ -18,6 +18,7 @@ class LectionCell : UICollectionViewCell {
     @IBOutlet weak var lockImage: UIImageView!
     @IBOutlet weak var lectionName: UILabel!
     @IBOutlet weak var videoCount: UILabel!
+    @IBOutlet weak var progressBar: UIProgressView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -10,6 +10,8 @@ import UIKit
 
 class LectionListViewController : UIViewController {
     
+    var callbackSaveCoreData: (()->())?
+    
     @IBOutlet weak var lectionName: UILabel!
     @IBOutlet weak var lectionTable: UITableView!
     
@@ -74,6 +76,7 @@ extension LectionListViewController: UITableViewDataSource, UITableViewDelegate 
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "LectionDetailViewController") as! LectionDetailViewController
         vc.setLection(dbLection)
         vc.setPage(indexPath.row)
+        vc.callbackSaveCoreData = callbackSaveCoreData
         self.show(vc, sender: true)
         
     }

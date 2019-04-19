@@ -8,6 +8,7 @@
         <attribute name="testDuration" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="testScore" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="visitedWord" optional="YES" attributeType="Integer 32" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="relDictionary" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="DBWord" inverseName="relLesson" inverseEntity="DBWord" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -33,6 +34,7 @@
         <attribute name="lesson" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="videoFront" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="videoSide" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="visited" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="word" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="relLesson" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBLesson" inverseName="relDictionary" inverseEntity="DBLesson" syncable="YES"/>
         <relationship name="relSentence" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DBSentence" inverseName="relDictionary" inverseEntity="DBSentence" syncable="YES"/>
@@ -43,8 +45,8 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="DBLesson" positionX="-572.1640625" positionY="-87.11328125" width="128" height="165"/>
+        <element name="DBLesson" positionX="-572.1640625" positionY="-87.11328125" width="128" height="180"/>
         <element name="DBSentence" positionX="-104.91015625" positionY="44.95703125" width="128" height="105"/>
-        <element name="DBWord" positionX="-305.83984375" positionY="-66.11328125" width="128" height="180"/>
+        <element name="DBWord" positionX="-305.83984375" positionY="-66.11328125" width="128" height="195"/>
     </elements>
 </model>

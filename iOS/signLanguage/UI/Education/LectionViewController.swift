@@ -17,11 +17,11 @@ class LectionViewController : UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     //Variables
-    fileprivate var blockOperations: [BlockOperation] = []
-    fileprivate var lockImage : UIImage = UIImage(named:"iconLock")!
-    fileprivate var unlockImage : UIImage = UIImage(named:"iconUnlock")!
-    fileprivate let sectionInsets = UIEdgeInsets(top: 1.0, left: 1.0, bottom: 1.0, right: 1.0)
-    fileprivate let itemsPerRow: CGFloat = 2
+    private var blockOperations: [BlockOperation] = []
+    private var lockImage : UIImage = UIImage(named:"iconLock")!
+    private var unlockImage : UIImage = UIImage(named:"iconUnlock")!
+    private let sectionInsets = UIEdgeInsets(top: 1.0, left: 1.0, bottom: 1.0, right: 1.0)
+    private let itemsPerRow: CGFloat = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +34,8 @@ class LectionViewController : UIViewController {
         
     }
     
-    fileprivate let persistentContainer = NSPersistentContainer(name: "DictionaryDatabase")
-    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<DBLesson> = {
+    private let persistentContainer = NSPersistentContainer(name: "DictionaryDatabase")
+    private lazy var fetchedResultsController: NSFetchedResultsController<DBLesson> = {
         
         let fetchRequest: NSFetchRequest<DBLesson> = DBLesson.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
@@ -47,7 +47,7 @@ class LectionViewController : UIViewController {
         return fetchedResultsController
     }()
     
-    fileprivate func loadPersistenceContainer() {
+    private func loadPersistenceContainer() {
         
         persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
             if error != nil {
@@ -62,7 +62,17 @@ class LectionViewController : UIViewController {
         }
     }
     
-    fileprivate func unlockNextLesson(_ lesson : DBLesson) {
+    private func saveData() {
+        do {
+            try persistentContainer.viewContext.save()
+        } catch {
+            os_log("Unable to save changes", log: Log.general, type: .error)
+            persistentContainer.viewContext.reset()
+        }
+    }
+    
+    
+    private func unlockNextLesson(_ lesson : DBLesson) {
         
         let  indexPath = fetchedResultsController.indexPath(forObject: lesson)
         let nextIndexPath = IndexPath(row: indexPath!.row + 1, section: indexPath!.section)
@@ -77,6 +87,21 @@ class LectionViewController : UIViewController {
             os_log("Unable to save changes", log: Log.general, type: .error)
             persistentContainer.viewContext.reset()
         }
+    }
+    
+    private func setLectionProgressBar(_ dbLection : DBLesson, _ cell : LectionCell) {
+        
+        if dbLection.visitedWord > 0 {
+            
+            let max = dbLection.relDictionary?.array.count
+            let visitedWord = dbLection.visitedWord
+            let ratio = Float(visitedWord) / Float(max!)
+            
+            cell.progressBar.isHidden = false
+            cell.progressBar.progress = Float(ratio)
+            
+        }
+        
     }
     
     deinit {
@@ -156,6 +181,8 @@ extension LectionViewController : UICollectionViewDataSource, UICollectionViewDe
         
         let lection = fetchedResultsController.object(at: indexPath)
         
+        setLectionProgressBar(lection, cell)
+        
         cell.lockImage.image = lection.locked ? lockImage : unlockImage
         cell.lectionName.text = String(describing: indexPath.row + 1) + ". " + lection.title!
         cell.videoCount.text = String(describing: lection.relDictionary!.count) + " " + "VIDEI"
@@ -180,7 +207,7 @@ extension LectionViewController : UICollectionViewDataSource, UICollectionViewDe
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "LectionListViewController") as! LectionListViewController
         vc.setLection(lesson, indexPath.row + 1)
-        
+        vc.callbackSaveCoreData = saveData
         self.show(vc, sender: true)
         
     }

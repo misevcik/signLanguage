@@ -34,7 +34,7 @@
 		5485807A21E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5485807821E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld */; };
 		5498947B2212251600024E77 /* sample_1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 549894792212251600024E77 /* sample_1.mp4 */; };
 		5498947C2212251600024E77 /* sample_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5498947A2212251600024E77 /* sample_2.mp4 */; };
-		549D9BED21E6727A00E930AD /* FillCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549D9BEC21E6727A00E930AD /* FillCoreData.swift */; };
+		549D9BED21E6727A00E930AD /* PreloadCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549D9BEC21E6727A00E930AD /* PreloadCoreData.swift */; };
 		54A386B022199DDC00D35569 /* DLRadioButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5440C027220494D50077F6E5 /* DLRadioButton.framework */; };
 		54AAD6CA21DE8DCD00D9F303 /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AAD6C921DE8DCD00D9F303 /* DictionaryViewController.swift */; };
 		54B12C6721D11FBC00A9E2C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B12C6621D11FBC00A9E2C1 /* AppDelegate.swift */; };
@@ -81,7 +81,7 @@
 		5498947A2212251600024E77 /* sample_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample_2.mp4; sourceTree = "<group>"; };
 		549D93CC225BEC0B005E71A5 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/MainViewController.strings; sourceTree = "<group>"; };
 		549D93CD225BEC0B005E71A5 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		549D9BEC21E6727A00E930AD /* FillCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillCoreData.swift; sourceTree = "<group>"; };
+		549D9BEC21E6727A00E930AD /* PreloadCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadCoreData.swift; sourceTree = "<group>"; };
 		54AAD6C921DE8DCD00D9F303 /* DictionaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewController.swift; sourceTree = "<group>"; };
 		54B12C6321D11FBC00A9E2C1 /* signLanguage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = signLanguage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B12C6621D11FBC00A9E2C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -213,7 +213,7 @@
 		549D9BEB21E6725B00E930AD /* AppLogic */ = {
 			isa = PBXGroup;
 			children = (
-				549D9BEC21E6727A00E930AD /* FillCoreData.swift */,
+				549D9BEC21E6727A00E930AD /* PreloadCoreData.swift */,
 			);
 			path = AppLogic;
 			sourceTree = "<group>";
@@ -391,7 +391,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54CC9EAB22404967001F5030 /* TestResultViewController.swift in Sources */,
-				549D9BED21E6727A00E930AD /* FillCoreData.swift in Sources */,
+				549D9BED21E6727A00E930AD /* PreloadCoreData.swift in Sources */,
 				5432D3FD22295E7F003A7A9E /* EducationMenuBar.swift in Sources */,
 				540CBEE8224DEEE700EEEBE1 /* LectionListViewController.swift in Sources */,
 				54AAD6CA21DE8DCD00D9F303 /* DictionaryViewController.swift in Sources */,

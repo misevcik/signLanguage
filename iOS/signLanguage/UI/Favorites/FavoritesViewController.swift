@@ -43,14 +43,18 @@ class FavoritesViewController : UIViewController {
                 }
             }
         }
+        persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
+        persistentContainer.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
     }
 
     fileprivate func saveData() {
-        do {
-            try persistentContainer.viewContext.save()
-        } catch {
-            os_log("Unable to save changes", log: Log.general, type: .error)
-            persistentContainer.viewContext.reset()
+        if persistentContainer.viewContext.hasChanges {
+            do {
+                try persistentContainer.viewContext.save()
+            } catch {
+                os_log("FavoritesViewController - unable to save changes", log: Log.general, type: .error)
+                persistentContainer.viewContext.reset()
+            }
         }
     }
     

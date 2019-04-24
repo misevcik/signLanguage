@@ -42,7 +42,7 @@ class LectionViewController : UIViewController {
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         
-        //fetchedResultsController.delegate = self
+        fetchedResultsController.delegate = self
         
         return fetchedResultsController
     }()
@@ -113,53 +113,53 @@ class LectionViewController : UIViewController {
     
 }
 
-//extension LectionViewController: NSFetchedResultsControllerDelegate {
-//
-//    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//
-//        DispatchQueue.main.async {
-//            self.collectionView!.performBatchUpdates({ () -> Void in
-//                for operation: BlockOperation in self.blockOperations {
-//                    operation.start()
-//                }
-//            }, completion: { (finished) -> Void in
-//                self.blockOperations.removeAll(keepingCapacity: false)
-//            })
-//        }
-//    }
-//
-//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-//
-//        if type == NSFetchedResultsChangeType.update {
-//            blockOperations.append(
-//                BlockOperation(block: { [weak self] in
-//                    if let this = self {
-//                        DispatchQueue.main.async {
-//                            this.collectionView!.reloadItems(at: [indexPath!])
-//                        }
-//                    }
-//                })
-//            )
-//        }
-//    }
-//
-//        func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-//
-//            if type == NSFetchedResultsChangeType.update {
-//                blockOperations.append(
-//                    BlockOperation(block: { [weak self] in
-//                        if let this = self {
-//                            DispatchQueue.main.async {
-//                                this.collectionView!.reloadSections(NSIndexSet(index: sectionIndex) as IndexSet)
-//                            }
-//                        }
-//                    })
-//                )
-//            }
-//    
-//        }
-//
-//}
+extension LectionViewController: NSFetchedResultsControllerDelegate {
+
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+
+        DispatchQueue.main.async {
+            self.collectionView!.performBatchUpdates({ () -> Void in
+                for operation: BlockOperation in self.blockOperations {
+                    operation.start()
+                }
+            }, completion: { (finished) -> Void in
+                self.blockOperations.removeAll(keepingCapacity: false)
+            })
+        }
+    }
+
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+
+        if type == NSFetchedResultsChangeType.update {
+            blockOperations.append(
+                BlockOperation(block: { [weak self] in
+                    if let this = self {
+                        DispatchQueue.main.async {
+                            this.collectionView!.reloadItems(at: [indexPath!])
+                        }
+                    }
+                })
+            )
+        }
+    }
+
+        func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+
+            if type == NSFetchedResultsChangeType.update {
+                blockOperations.append(
+                    BlockOperation(block: { [weak self] in
+                        if let this = self {
+                            DispatchQueue.main.async {
+                                this.collectionView!.reloadSections(NSIndexSet(index: sectionIndex) as IndexSet)
+                            }
+                        }
+                    })
+                )
+            }
+    
+        }
+
+}
 
 extension LectionViewController : UICollectionViewDataSource, UICollectionViewDelegate {
     

@@ -17,7 +17,10 @@ class DictionaryViewController : UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     //MARK Persistence
-    fileprivate let persistentContainer = NSPersistentContainer(name: "DictionaryDatabase")
+
+    
+    fileprivate var persistentContainer = NSPersistentContainer(name: "DictionaryDatabase")
+    
     fileprivate lazy var fetchedResultsController: NSFetchedResultsController<DBWord> = {
 
         let fetchRequest: NSFetchRequest<DBWord> = DBWord.fetchRequest()
@@ -47,14 +50,18 @@ class DictionaryViewController : UIViewController {
                 }
             }
         }
+        persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
+        persistentContainer.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
     }
     
     fileprivate func saveData() {
-        do {
-            try persistentContainer.viewContext.save()
-        } catch {
-            os_log("Unable to save changes", log: Log.general, type: .error)
-            persistentContainer.viewContext.reset()
+        if persistentContainer.viewContext.hasChanges {
+            do {
+                try persistentContainer.viewContext.save()
+            } catch {
+                os_log("DictionaryViewController - unable to save changes", log: Log.general, type: .error)
+                persistentContainer.viewContext.reset()
+            }
         }
     }
     
@@ -103,7 +110,23 @@ class DictionaryViewController : UIViewController {
     
     func prevIndexPath(_ currentIndexPath: IndexPath) -> IndexPath? {
    
-        //Todo Write previous index
+        var row = currentIndexPath.row
+        var section = currentIndexPath.section
+        
+        // Keep in same section
+        if row > 0 {
+            row -= 1
+            return IndexPath(row : row, section: section)
+        }
+        
+        //Go to previoius section
+        if section > 0 {
+            section -= 1
+            row = max(dictionaryTable.numberOfRows(inSection: section) - 1, 0)
+            return IndexPath(row : row, section: section)
+        }
+
+        //Last section, last row
         return self.dictionaryTable.lastIndexpath()
     }
 }
@@ -133,6 +156,11 @@ extension DictionaryViewController: NSFetchedResultsControllerDelegate {
                 configure(cell, at: indexPath)
             }
             break
+        case .insert:
+            if let indexPath = newIndexPath {
+                dictionaryTable.insertRows(at: [indexPath], with: .fade)
+            }
+            break;
         default:
             os_log("...", log: Log.general, type: .info)
         }

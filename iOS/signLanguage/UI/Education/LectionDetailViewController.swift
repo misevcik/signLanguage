@@ -100,6 +100,7 @@ class LectionDetailViewController : UIViewController {
         loadLectionData()
         
         NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerViewController.player?.currentItem)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

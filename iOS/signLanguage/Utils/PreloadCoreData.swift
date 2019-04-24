@@ -57,117 +57,58 @@ class PreloadCoreData {
     
     private var backgroudnContext : NSManagedObjectContext? = nil
     
-    init() {
+    init(coreDataStack : CoreDataStack) {
         
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        backgroudnContext = appDelegate.persistentContainer.newBackgroundContext()
-        appDelegate.persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
-        
-    }
-    
-    func preloadCoreData() {
-        
-        preloadSentences()
-        preloadDictionary()
-        preloadLections()
-    }
-    
-    private func isCoreDataEmpty() -> Bool {
-        
-        var isEmpty = true
-        
-        do {
+        coreDataStack.storeContainer.performBackgroundTask { context in
             
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "DBWord")
-            let count = try backgroudnContext!.count(for:fetchRequest)
-            isEmpty =  (count == 0)
-        } catch let error as NSError {
-            os_log("Unable to count core data. Error: %{public}@", log: Log.general, type: .error, error.localizedDescription)
-            isEmpty  = true
-        }
-        
-        return isEmpty
-    }
-    
-    private func addWordsToLection(_ lessonId : Int, _ dbLesson : DBLesson) {
-    
-        do {
-            let fetchRequest: NSFetchRequest<DBWord> = DBWord.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "lesson == %d", lessonId)
-            let records  = try backgroudnContext!.fetch(fetchRequest)
-        
-            for record in records {
-                dbLesson.addToRelDictionary(record)
-            }
-        }
-        catch {
-            print ("fetch task failed", error)
+            self.preloadSentences(context: context)
+            self.preloadDictionary(context: context)
+            self.preloadLections(context: context)
         }
     }
+
+    private func preloadSentences(context : NSManagedObjectContext) {
+        
+        let sentences = getSentences()
+        
+        for sentence in sentences {
+            
+            let dbSentence = DBSentence(context: context)
+            dbSentence.id = Int32(sentence.id)
+            dbSentence.sentence = sentence.sentence
+            dbSentence.video = sentence.video
+            
+            context.insert(dbSentence)
+        }
+        
+        self.saveContext(context: context)
+    }
     
-    private func addSentenceToWord(_ sentences : [Int], _ dbWord : DBWord) {
+    private func addSentenceToWord(sentences : [Int], dbWord : DBWord, context : NSManagedObjectContext) {
         
         do {
             let fetchRequest: NSFetchRequest<DBSentence> = DBSentence.fetchRequest()
             
             fetchRequest.predicate = NSPredicate(format: "id IN %@", sentences)
-            let records  = try backgroudnContext!.fetch(fetchRequest)
+            let records  = try context.fetch(fetchRequest)
             
             for record in records {
                 dbWord.addToRelSentence(record)
             }
         }
         catch {
-            print ("fetch task failed", error)
+            print ("addSentenceToWord - fetch task failed", error)
         }
     }
     
-    private func preloadSentences() {
-        
-        let sentences = getSentences()
-        
-        for sentence in sentences {
-            
-            let dbSentence = DBSentence(context: backgroudnContext!)
-            dbSentence.id = Int32(sentence.id)
-            dbSentence.sentence = sentence.sentence
-            dbSentence.video = sentence.video
-            
-            backgroudnContext!.insert(dbSentence)
-        }
-        
-        saveContext()
-    }
     
-    private func preloadLections() {
-        
-        let lections = getLection()
-        
-        for lection in lections {
-            
-            let dbLection = DBLesson(context: backgroudnContext!)
-            dbLection.id = Int32(lection.id)
-            dbLection.locked = false
-            dbLection.title = lection.title
-            dbLection.image = lection.image
-            
-            addWordsToLection(lection.id, dbLection)
-            backgroudnContext!.insert(dbLection)
-            
-        }
-        
-        saveContext()
-    }
-    
-    private func preloadDictionary() {
+    private func preloadDictionary(context : NSManagedObjectContext) {
         
         let dictionaries = getDictionary()
         
         for word in dictionaries {
             
-            let dbWord = DBWord(context: backgroudnContext!)
+            let dbWord = DBWord(context: context)
             dbWord.inDictionary = word.inDictionary
             dbWord.word = word.name
             dbWord.lesson = Int32(word.lection)
@@ -175,17 +116,54 @@ class PreloadCoreData {
             dbWord.videoFront = word.videoFront
             
             if word.sentence!.count != 0 {
-                addSentenceToWord(word.sentence!, dbWord)
+                addSentenceToWord(sentences: word.sentence!, dbWord: dbWord, context: context)
             }
             
-            backgroudnContext!.insert(dbWord)
+            context.insert(dbWord)
         }
-        saveContext()
+        self.saveContext(context: context)
     }
     
-    private func saveContext() {
+    private func addWordsToLection(lessonId : Int, dbLesson : DBLesson, context : NSManagedObjectContext) {
+        
         do {
-            try backgroudnContext!.save()
+            let fetchRequest: NSFetchRequest<DBWord> = DBWord.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "lesson == %d", lessonId)
+            let records  = try context.fetch(fetchRequest)
+            
+            for record in records {
+                dbLesson.addToRelDictionary(record)
+            }
+        }
+        catch {
+            print ("addWordsToLection - fetch task failed", error)
+        }
+    }
+    
+    private func preloadLections(context : NSManagedObjectContext) {
+        
+        let lections = getLection()
+        
+        for lection in lections {
+            
+            let dbLection = DBLesson(context: context)
+            dbLection.id = Int32(lection.id)
+            dbLection.locked = false
+            dbLection.title = lection.title
+            dbLection.image = lection.image
+            
+            addWordsToLection(lessonId: lection.id, dbLesson: dbLection, context: context)
+            context.insert(dbLection)
+            
+        }
+        
+        self.saveContext(context: context)
+    }
+    
+    
+    private func saveContext(context : NSManagedObjectContext) {
+        do {
+            try context.save()
         } catch {
             print("backgroudnContext.save() ", error)
         }

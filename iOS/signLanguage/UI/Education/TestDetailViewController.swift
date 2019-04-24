@@ -16,7 +16,7 @@ struct TestItem {
 
 class TestDetailViewController: UIViewController {
     
-    var saveToCoreDataCallback: (() -> Void)?
+    var callbackSaveCoreData: (() -> Void)?
     
     @IBOutlet weak var pagerLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
@@ -220,7 +220,7 @@ class TestDetailViewController: UIViewController {
         dbLection.testDate = Date()
         dbLection.testDuration = Int32(seconds)
         
-        saveToCoreDataCallback!()
+        callbackSaveCoreData!()
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "TestResultViewController") as! TestResultViewController
         vc.resetTestCallback = resetTest
@@ -233,7 +233,7 @@ class TestDetailViewController: UIViewController {
     
         //reset test result
         dbLection.testDate = nil
-        saveToCoreDataCallback!()
+        callbackSaveCoreData!()
         
         for index in 0..<testItemArray.count {
             testItemArray[index].selectedAnswer = -1

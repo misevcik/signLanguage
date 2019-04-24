@@ -26,67 +26,73 @@ class LectionViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadPersistenceContainer()
+        setupManagedContext()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        
     }
     
-    private let persistentContainer = NSPersistentContainer(name: "DictionaryDatabase")
+    private var coreDataStack : CoreDataStack!
+    private var context : NSManagedObjectContext!
+    
     private lazy var fetchedResultsController: NSFetchedResultsController<DBLesson> = {
         
         let fetchRequest: NSFetchRequest<DBLesson> = DBLesson.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
         
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.context, sectionNameKeyPath: nil, cacheName: nil)
         
         fetchedResultsController.delegate = self
         
         return fetchedResultsController
     }()
     
-    private func loadPersistenceContainer() {
+    fileprivate func setupManagedContext() {
         
-        persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
-            if error != nil {
-                os_log("Unable to Load Persistent Store", log: Log.general, type: .error)
-            } else {
-                do {
-                    try self.fetchedResultsController.performFetch()
-                } catch {
-                    os_log("Unable to Perform Fetch Request", log: Log.general, type: .error)
-                }
-            }
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        self.coreDataStack = appDelegate.coreDataStack
+        self.context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        self.context.parent = coreDataStack.mainContext
+        
+        do {
+            try self.fetchedResultsController.performFetch()
+        } catch {
+            os_log("Unable to Perform Fetch Request", log: Log.general, type: .error)
         }
     }
     
-    private func saveData() {
-        do {
-            try persistentContainer.viewContext.save()
-        } catch {
-            os_log("Unable to save changes", log: Log.general, type: .error)
-            persistentContainer.viewContext.reset()
+    fileprivate func saveCoreData() {
+        
+        guard context.hasChanges else { return }
+        
+        self.context.perform {
+            do {
+                try self.context.save()
+            } catch  {
+                os_log("LectionView: saveCoreData fail", log: Log.general, type: .error)
+                self.context.reset()
+                return
+            }
+            
+            self.coreDataStack.saveContext()
         }
     }
     
     
     private func unlockNextLesson(_ lesson : DBLesson) {
-        
+
         let  indexPath = fetchedResultsController.indexPath(forObject: lesson)
         let nextIndexPath = IndexPath(row: indexPath!.row + 1, section: indexPath!.section)
         //TODO check index out-of-range
-        let nextLesson = fetchedResultsController.object(at: nextIndexPath)
-        
-        nextLesson.locked = false
-        
-        do {
-            try persistentContainer.viewContext.save()
-        } catch {
-            os_log("Unable to save changes", log: Log.general, type: .error)
-            persistentContainer.viewContext.reset()
-        }
+        let nextLection = fetchedResultsController.object(at: nextIndexPath)
+
+        nextLection.locked = false
+
+        saveCoreData()
     }
     
     private func setLectionProgressBar(_ dbLection : DBLesson, _ cell : LectionCell) {
@@ -207,7 +213,7 @@ extension LectionViewController : UICollectionViewDataSource, UICollectionViewDe
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "LectionListViewController") as! LectionListViewController
         vc.setLection(lesson, indexPath.row + 1)
-        vc.callbackSaveCoreData = saveData
+        vc.callbackSaveCoreData = saveCoreData
         self.show(vc, sender: true)
         
     }

@@ -20,7 +20,8 @@ class TestViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadPersistenceContainer()
+        
+        setupManagedContext()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,31 +32,35 @@ class TestViewController : UIViewController {
         }
     }
     
-    fileprivate let persistentContainer = NSPersistentContainer(name: "DictionaryDatabase")
+    private var coreDataStack : CoreDataStack!
+    private var context : NSManagedObjectContext!
+    
     fileprivate lazy var fetchedResultsController: NSFetchedResultsController<DBLesson> = {
         
         let fetchRequest: NSFetchRequest<DBLesson> = DBLesson.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
         
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.context, sectionNameKeyPath: nil, cacheName: nil)
         
         fetchedResultsController.delegate = self
         
         return fetchedResultsController
     }()
     
-    fileprivate func loadPersistenceContainer() {
+    fileprivate func setupManagedContext() {
         
-        persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
-            if error != nil {
-                os_log("Unable to Load Persistent Store", log: Log.general, type: .error)
-            } else {
-                do {
-                    try self.fetchedResultsController.performFetch()
-                } catch {
-                    os_log("Unable to Perform Fetch Request", log: Log.general, type: .error)
-                }
-            }
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        self.coreDataStack = appDelegate.coreDataStack
+        self.context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        self.context.parent = coreDataStack.mainContext
+        
+        do {
+            try self.fetchedResultsController.performFetch()
+        } catch {
+            os_log("Unable to Perform Fetch Request", log: Log.general, type: .error)
         }
     }
     
@@ -151,7 +156,7 @@ extension TestViewController: UITableViewDataSource, UITableViewDelegate {
         // Date == nil - test wasn't tried yet
         if lection.testDate == nil {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "TestDetailViewController") as! TestDetailViewController
-            vc.saveToCoreDataCallback = saveResultToCoreData
+            vc.callbackSaveCoreData = saveCoreData
             vc.setLection(lection)
             self.show(vc, sender: true)
         } else {
@@ -162,13 +167,20 @@ extension TestViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    private func saveResultToCoreData() {
-        do {
+    fileprivate func saveCoreData() {
+        
+        guard context.hasChanges else { return }
+        
+        self.context.perform {
+            do {
+                try self.context.save()
+            } catch  {
+                os_log("TestView: saveCoreData fail", log: Log.general, type: .error)
+                self.context.reset()
+                return
+            }
             
-            try persistentContainer.viewContext.save()
-        } catch {
-            os_log("Unable to save changes", log: Log.general, type: .error)
-            persistentContainer.viewContext.reset()
+            self.coreDataStack.saveContext()
         }
     }
     
@@ -176,13 +188,13 @@ extension TestViewController: UITableViewDataSource, UITableViewDelegate {
         
         let lection = fetchedResultsController.object(at: testTable.indexPathForSelectedRow!)
         lection.testDate = nil
-        saveResultToCoreData()
+        saveCoreData()
         
         _ = navigationController?.popViewController(animated: false)
         self.navigationController?.isNavigationBarHidden = true
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "TestDetailViewController") as! TestDetailViewController
-        vc.saveToCoreDataCallback = saveResultToCoreData
+        vc.callbackSaveCoreData = saveCoreData
         vc.setLection(lection)
         self.show(vc, sender: true)
     }

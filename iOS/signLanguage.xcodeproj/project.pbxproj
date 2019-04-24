@@ -48,6 +48,7 @@
 		54CE808B22539DCE00D73B94 /* CancelTestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54CE808922539DCE00D73B94 /* CancelTestView.xib */; };
 		54CE808D2253EA5A00D73B94 /* sample_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 54CE808C2253EA5A00D73B94 /* sample_3.mp4 */; };
 		54EA763521F677BD00A5C50C /* EducationDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EA763421F677BD00A5C50C /* EducationDetailCell.swift */; };
+		54EF9ED522708FD200BF4A03 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EF9ED422708FD200BF4A03 /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +98,7 @@
 		54CE808C2253EA5A00D73B94 /* sample_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample_3.mp4; sourceTree = "<group>"; };
 		54EA763021F670FB00A5C50C /* UPCarouselFlowLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UPCarouselFlowLayout.framework; sourceTree = "<group>"; };
 		54EA763421F677BD00A5C50C /* EducationDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EducationDetailCell.swift; sourceTree = "<group>"; };
+		54EF9ED422708FD200BF4A03 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,8 @@
 			children = (
 				5440C025220435D90077F6E5 /* Utils.swift */,
 				54C2048D2236EE970081F63C /* VideoHandler.swift */,
+				54EF9ED422708FD200BF4A03 /* CoreDataStack.swift */,
+				549D9BEC21E6727A00E930AD /* PreloadCoreData.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -213,7 +217,6 @@
 		549D9BEB21E6725B00E930AD /* AppLogic */ = {
 			isa = PBXGroup;
 			children = (
-				549D9BEC21E6727A00E930AD /* PreloadCoreData.swift */,
 			);
 			path = AppLogic;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				5482DA03224E87C00044BA81 /* LectionListCell.swift in Sources */,
 				5440C026220435D90077F6E5 /* Utils.swift in Sources */,
 				5422583F22609A3300DB0758 /* InfoViewController.swift in Sources */,
+				54EF9ED522708FD200BF4A03 /* CoreDataStack.swift in Sources */,
 				54C2048E2236EE970081F63C /* VideoHandler.swift in Sources */,
 				54CE808A22539DCE00D73B94 /* CancelTestView.swift in Sources */,
 				542912B421E28CFC00BF1FDD /* SentenceCell.swift in Sources */,

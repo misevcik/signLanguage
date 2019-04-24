@@ -12,14 +12,14 @@ import os.log
 
 class DictionaryViewController : UIViewController {
     
+    
+
     //MARK Outlets
     @IBOutlet weak var dictionaryTable: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    //MARK Persistence
-
-    
-    fileprivate var persistentContainer = NSPersistentContainer(name: "DictionaryDatabase")
+    private var coreDataStack : CoreDataStack!
+    private var context : NSManagedObjectContext!
     
     fileprivate lazy var fetchedResultsController: NSFetchedResultsController<DBWord> = {
 
@@ -29,48 +29,54 @@ class DictionaryViewController : UIViewController {
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true)]
         //fetchRequest.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))]
 
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: "word.firstUpperCaseChar", cacheName: "cache")
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.context, sectionNameKeyPath: "word.firstUpperCaseChar", cacheName: "cache")
 
         fetchedResultsController.delegate = self
-
+        
         return fetchedResultsController
     }()
 
-    fileprivate func loadPersistenceContainer() {
+    fileprivate func setupManagedContext() {
         
-        persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
-            if error != nil {
-                os_log("Unable to Load Persistent Store", log: Log.general, type: .error)
-            } else {
-
-                do {
-                    try self.fetchedResultsController.performFetch()
-                } catch {
-                    os_log("Unable to Perform Fetch Request", log: Log.general, type: .error)
-                }
-            }
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
         }
-        persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
-        persistentContainer.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+        
+        self.coreDataStack = appDelegate.coreDataStack
+        self.context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        self.context.parent = coreDataStack.mainContext
+        
+        do {
+            try self.fetchedResultsController.performFetch()
+        } catch {
+            os_log("Unable to Perform Fetch Request", log: Log.general, type: .error)
+        }
     }
     
-    fileprivate func saveData() {
-        if persistentContainer.viewContext.hasChanges {
+    fileprivate func savCoreeData() {
+        
+        guard context.hasChanges else { return }
+        
+        self.context.perform {
             do {
-                try persistentContainer.viewContext.save()
+                try self.context.save()
             } catch {
-                os_log("DictionaryViewController - unable to save changes", log: Log.general, type: .error)
-                persistentContainer.viewContext.reset()
+                os_log("DictionaryView: saveCoreData fail", log: Log.general, type: .error)
+                self.context.reset()
+                return
             }
+
+            self.coreDataStack.saveContext()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupLayout()
-        loadPersistenceContainer()
+        sleep(1) // Hack untill find the solutin
         
+        setupManagedContext()
+        setupLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -230,7 +236,7 @@ extension DictionaryViewController: UITableViewDataSource, UITableViewDelegate {
         vc.setFetchController(fetchedResultsController)
         vc.callbackNextIndexPath = nextIndexPath
         vc.callbackPrevIndexPath = prevIndexPath
-        vc.callbackSaveCoreData = saveData
+        vc.callbackSaveCoreData = savCoreeData
         self.show(vc, sender: true)
         
     }

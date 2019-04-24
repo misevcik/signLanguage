@@ -14,7 +14,9 @@ class FavoritesViewController : UIViewController {
     
     @IBOutlet weak var dictionaryTable: UITableView!
         
-    fileprivate let persistentContainer = NSPersistentContainer(name: "DictionaryDatabase")
+    private var coreDataStack : CoreDataStack!
+    private var context : NSManagedObjectContext!
+    
     fileprivate lazy var fetchedResultsController: NSFetchedResultsController<DBWord> = {
         
         let fetchRequest: NSFetchRequest<DBWord> = DBWord.fetchRequest()
@@ -22,55 +24,59 @@ class FavoritesViewController : UIViewController {
         fetchRequest.predicate = NSPredicate(format: "favorite == %@", NSNumber(value: true))
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true)]
         
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: "word.firstUpperCaseChar", cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: "word.firstUpperCaseChar", cacheName: nil)
         
         fetchedResultsController.delegate = self
         
         return fetchedResultsController
     }()
     
-    fileprivate func loadPersistenceContainer() {
+    fileprivate func setupManagedContext() {
         
-        persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
-            if error != nil {
-                os_log("Unable to Load Persistent Store", log: Log.general, type: .error)
-            } else {
-                
-                do {
-                    try self.fetchedResultsController.performFetch()
-                } catch {
-                    os_log("Unable to Perform Fetch Request", log: Log.general, type: .error)
-                }
-            }
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
         }
-        persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
-        persistentContainer.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+        
+        self.coreDataStack = appDelegate.coreDataStack
+        self.context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        self.context.parent = coreDataStack.mainContext
+        
+        do {
+            try self.fetchedResultsController.performFetch()
+        } catch {
+            os_log("Unable to Perform Fetch Request", log: Log.general, type: .error)
+        }
     }
 
-    fileprivate func saveData() {
-        if persistentContainer.viewContext.hasChanges {
+    fileprivate func saveCoreData() {
+        
+        guard context.hasChanges else { return }
+        
+        self.context.perform {
             do {
-                try persistentContainer.viewContext.save()
-            } catch {
-                os_log("FavoritesViewController - unable to save changes", log: Log.general, type: .error)
-                persistentContainer.viewContext.reset()
+                try self.context.save()
+            } catch  {
+                os_log("FavoriteView: saveCoreData fail", log: Log.general, type: .error)
+                self.context.reset()
+                return
             }
+            
+            self.coreDataStack.saveContext()
         }
     }
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadPersistenceContainer()
+        setupManagedContext()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(contextDidSave(_:)), name: Notification.Name.NSManagedObjectContextDidSave, object: coreDataStack.mainContext)
+    }
+    
+    @objc func contextDidSave(_ notification: Notification) {
+        print(notification)
     }
 
-    
-    @objc func managedObjectContextObjectsDidChange(notification: NSNotification) {
-        print("Notification")
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -182,7 +188,7 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "WordDetailViewController") as! WordDetailViewController
         vc.setWord(dbWord)
         vc.setFetchController(fetchedResultsController)
-        vc.callbackSaveCoreData = saveData
+        vc.callbackSaveCoreData = saveCoreData
         self.show(vc, sender: true)
         
     }

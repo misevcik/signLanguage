@@ -12,12 +12,18 @@ import AVFoundation
 import AVKit
 import CoreData
 
+protocol WordDetailDelegate {
+    func saveCoreData(viewController: WordDetailViewController)
+    func nextWord(word : DBWord, forward: Bool, context: NSManagedObjectContext) ->DBWord
+}
+
 class WordDetailViewController : UIViewController {
     
-    //Callback
-    var callbackNextIndexPath: ((_ currentIndexPath: IndexPath) -> IndexPath?)?
-    var callbackPrevIndexPath: ((_ currentIndexPath: IndexPath) -> IndexPath?)?
-    var callbackSaveCoreData: (()->())?
+
+    var dbWord : DBWord!
+    var indexPath : IndexPath!
+    var context: NSManagedObjectContext!
+    var delegate: WordDetailDelegate?
     
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var lectionNameLabel: UILabel!
@@ -27,8 +33,6 @@ class WordDetailViewController : UIViewController {
     @IBOutlet weak var videoImage: UIImageView!
     @IBOutlet weak var videoController: VideoController!
     
-    fileprivate var dbWord : DBWord!
-    fileprivate var fetchedResultsController: NSFetchedResultsController<DBWord>!
     fileprivate var videoHandler : VideoHandler!
     
     @IBAction func clickBack(_ sender: Any) {
@@ -39,16 +43,9 @@ class WordDetailViewController : UIViewController {
     @IBAction func clickToFavorite(_ sender: UIButton) {
         dbWord.favorite = !dbWord.favorite
         updateFavoriteButton(dbWord.favorite)
-        callbackSaveCoreData!()
+        delegate?.saveCoreData(viewController: self)
     }
     
-    func setWord(_ word : DBWord) {
-        dbWord = word
-    }
-    
-    func setFetchController(_ fetchController : NSFetchedResultsController<DBWord>) {
-        fetchedResultsController = fetchController
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,22 +101,12 @@ extension WordDetailViewController : VideoControllerProtocol {
 
     func clickForward() {
         
-        let indexPath =  self.fetchedResultsController.indexPath(forObject: dbWord)
-        let nextIndexPath = callbackNextIndexPath!(indexPath!)
-
-        let nextDbWord = fetchedResultsController.object(at: nextIndexPath!)
-        dbWord = nextDbWord
-        
+        dbWord = delegate?.nextWord(word : dbWord, forward: true, context: context)
         updatePageData()
     }
 
     func clickBackward() {
-        let indexPath =  self.fetchedResultsController.indexPath(forObject: dbWord)
-        let nextIndexPath = callbackPrevIndexPath!(indexPath!)
-        
-        let nextDbWord = fetchedResultsController.object(at: nextIndexPath!)
-        dbWord = nextDbWord
-        
+        dbWord = delegate?.nextWord(word : dbWord, forward: false, context: context)
         updatePageData()
     }
     

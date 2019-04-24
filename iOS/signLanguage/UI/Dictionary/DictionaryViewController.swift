@@ -12,63 +12,26 @@ import os.log
 
 class DictionaryViewController : UIViewController {
     
-    
-
     //MARK Outlets
     @IBOutlet weak var dictionaryTable: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
     private var coreDataStack : CoreDataStack!
-    private var context : NSManagedObjectContext!
     
-    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<DBWord> = {
-
+    private lazy var fetchedResultsController: NSFetchedResultsController<DBWord> = {
+        
         let fetchRequest: NSFetchRequest<DBWord> = DBWord.fetchRequest()
-
+        
         fetchRequest.predicate = NSPredicate(format: "inDictionary == %@", NSNumber(value: true))
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true)]
         //fetchRequest.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))]
-
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.context, sectionNameKeyPath: "word.firstUpperCaseChar", cacheName: "cache")
-
+        
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.mainContext, sectionNameKeyPath: "word.firstUpperCaseChar", cacheName: nil)
+        
         fetchedResultsController.delegate = self
         
         return fetchedResultsController
     }()
-
-    fileprivate func setupManagedContext() {
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        self.coreDataStack = appDelegate.coreDataStack
-        self.context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-        self.context.parent = coreDataStack.mainContext
-        
-        do {
-            try self.fetchedResultsController.performFetch()
-        } catch {
-            os_log("Unable to Perform Fetch Request", log: Log.general, type: .error)
-        }
-    }
-    
-    fileprivate func savCoreeData() {
-        
-        guard context.hasChanges else { return }
-        
-        self.context.perform {
-            do {
-                try self.context.save()
-            } catch {
-                os_log("DictionaryView: saveCoreData fail", log: Log.general, type: .error)
-                self.context.reset()
-                return
-            }
-
-            self.coreDataStack.saveContext()
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,7 +56,28 @@ class DictionaryViewController : UIViewController {
         searchBar.layer.borderColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
     }
     
-    func nextIndexPath(_ currentIndexPath: IndexPath) -> IndexPath? {
+
+}
+
+private extension DictionaryViewController {
+    
+    private func setupManagedContext() {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        self.coreDataStack = appDelegate.coreDataStack
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            os_log("Unable to Perform Fetch Request", log: Log.general, type: .error)
+        }
+    }
+    
+
+    private func nextIndexPath(_ currentIndexPath: IndexPath) -> IndexPath? {
         var nextRow = 0
         var nextSection = 0
         var iteration = 0
@@ -114,8 +98,8 @@ class DictionaryViewController : UIViewController {
         return IndexPath(row: 0, section: 0)
     }
     
-    func prevIndexPath(_ currentIndexPath: IndexPath) -> IndexPath? {
-   
+    private func prevIndexPath(_ currentIndexPath: IndexPath) -> IndexPath? {
+        
         var row = currentIndexPath.row
         var section = currentIndexPath.section
         
@@ -131,11 +115,53 @@ class DictionaryViewController : UIViewController {
             row = max(dictionaryTable.numberOfRows(inSection: section) - 1, 0)
             return IndexPath(row : row, section: section)
         }
-
+        
         //Last section, last row
         return self.dictionaryTable.lastIndexpath()
     }
+    
 }
+
+
+extension DictionaryViewController: WordDetailDelegate {
+
+    func saveCoreData(viewController: WordDetailViewController) {
+        
+        guard let context = viewController.context, context.hasChanges else { return }
+        
+        context.perform {
+            do {
+                try context.save()
+            } catch {
+                os_log("DictionaryView: saveCoreData fail", log: Log.general, type: .error)
+                context.reset()
+                return
+            }
+            
+            self.coreDataStack.saveContext()
+        }
+    }
+    
+    func nextWord(word : DBWord, forward: Bool, context : NSManagedObjectContext) -> DBWord {
+        
+        let parentWord = coreDataStack.mainContext.object(with: word.objectID) as? DBWord
+        
+        let currentIndexPath =  self.fetchedResultsController.indexPath(forObject: parentWord!)
+        var nextIndexPath = IndexPath(row: 0, section: 0)
+        
+        if forward == true {
+            nextIndexPath = self.nextIndexPath(currentIndexPath!)!
+        } else {
+            nextIndexPath = self.prevIndexPath(currentIndexPath!)!
+        }
+        
+        let nextWord = fetchedResultsController.object(at: nextIndexPath)
+        let childWord = context.object(with: nextWord.objectID) as? DBWord
+        
+        return childWord!
+    }
+}
+
 
 extension DictionaryViewController: NSFetchedResultsControllerDelegate {
     
@@ -227,18 +253,22 @@ extension DictionaryViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let dbWord = self.fetchedResultsController.object(at: indexPath)
+        let word = self.fetchedResultsController.object(at: indexPath)
+        
+        let childContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        childContext.parent = coreDataStack.mainContext
+        let childWord = childContext.object(with: word.objectID) as? DBWord
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "WordDetailViewController") as! WordDetailViewController
-        vc.setWord(dbWord)
-        vc.setFetchController(fetchedResultsController)
-        vc.callbackNextIndexPath = nextIndexPath
-        vc.callbackPrevIndexPath = prevIndexPath
-        vc.callbackSaveCoreData = savCoreeData
-        self.show(vc, sender: true)
+        vc.dbWord = childWord
+        vc.indexPath = indexPath
+        vc.context = childContext
+        vc.delegate = self
         
+        self.show(vc, sender: true)
     }
 }
 
@@ -274,13 +304,14 @@ extension DictionaryViewController : UISearchBarDelegate {
         else {
             self.fetchedResultsController.fetchRequest.predicate = nil
         }
-        
+
         do {
             try self.fetchedResultsController.performFetch()
         } catch {
             os_log("Unable to Perform Fetch Request", log: Log.general, type: .error)
         }
         
+        //fetchedResultsController = getFetchedResultsController(xx: false)
         self.dictionaryTable.reloadData()
     }
 }

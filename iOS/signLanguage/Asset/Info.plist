@@ -5,7 +5,7 @@
 	<key>UIStatusBarHidden</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<string>Slovak</string>
 	<key>CFBundleDisplayName</key>
 	<string>Posunkuj s nami</string>
 	<key>CFBundleExecutable</key>
@@ -50,6 +50,10 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>Slovak</string>
 	</array>
 </dict>
 </plist>

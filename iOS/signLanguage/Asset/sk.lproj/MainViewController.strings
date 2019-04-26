@@ -1,0 +1,159 @@
+
+/* Class = "UILabel"; text = "Obľubene"; ObjectID = "13B-7v-TO2"; */
+"13B-7v-TO2.text" = "Obľubene";
+
+/* Class = "UITabBarItem"; title = "Info"; ObjectID = "2Fv-DJ-gf6"; */
+"2Fv-DJ-gf6.title" = "Info";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "3Rv-3u-J79"; */
+"3Rv-3u-J79.text" = "Label";
+
+/* Class = "UILabel"; text = "s nami"; ObjectID = "5JW-7C-ReY"; */
+"5JW-7C-ReY.text" = "s nami";
+
+/* Class = "UILabel"; text = "5"; ObjectID = "75G-gX-NHX"; */
+"75G-gX-NHX.text" = "5";
+
+/* Class = "UILabel"; text = "Výučba"; ObjectID = "7dS-7X-5kY"; */
+"7dS-7X-5kY.text" = "Výučba";
+
+/* Class = "UIButton"; normalTitle = "ZOPAKOVAŤ TEST"; ObjectID = "8Vd-Ze-ffi"; */
+"8Vd-Ze-ffi.normalTitle" = "ZOPAKOVAŤ TEST";
+
+/* Class = "UILabel"; text = "Kontaktovať nás"; ObjectID = "8ql-5p-GE9"; */
+"8ql-5p-GE9.text" = "Kontaktovať nás";
+
+/* Class = "UILabel"; text = "VERZIA 1.0.0"; ObjectID = "8z5-jZ-O13"; */
+"8z5-jZ-O13.text" = "VERZIA 1.0.0";
+
+/* Class = "UILabel"; text = "Ohodnotiť applikáciu"; ObjectID = "9qJ-6k-bd7"; */
+"9qJ-6k-bd7.text" = "Ohodnotiť applikáciu";
+
+/* Class = "UILabel"; text = "ZAMKNUTY TEST"; ObjectID = "AJr-13-8rj"; */
+"AJr-13-8rj.text" = "ZAMKNUTY TEST";
+
+/* Class = "UILabel"; text = "Nesprávne odpovede:"; ObjectID = "Add-gb-Oh6"; */
+"Add-gb-Oh6.text" = "Nesprávne odpovede:";
+
+/* Class = "UILabel"; text = "0/0"; ObjectID = "BYY-5Y-A9r"; */
+"BYY-5Y-A9r.text" = "0/0";
+
+/* Class = "UITabBarItem"; title = "Obľubené"; ObjectID = "Bvv-gX-edn"; */
+"Bvv-gX-edn.title" = "Obľubené";
+
+/* Class = "UILabel"; text = "O projekte"; ObjectID = "Bxa-rx-L8S"; */
+"Bxa-rx-L8S.text" = "O projekte";
+
+/* Class = "UILabel"; text = "3"; ObjectID = "Diu-e1-HiG"; */
+"Diu-e1-HiG.text" = "3";
+
+/* Class = "UILabel"; text = "85 % (B)"; ObjectID = "Dlx-Cb-Jj1"; */
+"Dlx-Cb-Jj1.text" = "85 % (B)";
+
+/* Class = "UILabel"; text = "00:00"; ObjectID = "LBm-8j-qKr"; */
+"LBm-8j-qKr.text" = "00:00";
+
+/* Class = "UILabel"; text = "Meno Lekcie"; ObjectID = "Ms2-zv-oyF"; */
+"Ms2-zv-oyF.text" = "Meno Lekcie";
+
+/* Class = "UILabel"; text = "O aplikácii"; ObjectID = "OOc-gL-oSA"; */
+"OOc-gL-oSA.text" = "O aplikácii";
+
+/* Class = "UILabel"; text = "O aplikácii"; ObjectID = "P6j-KM-moa"; */
+"P6j-KM-moa.text" = "O aplikácii";
+
+/* Class = "UILabel"; text = "Pertneri"; ObjectID = "PtN-z6-KzT"; */
+"PtN-z6-KzT.text" = "Pertneri";
+
+/* Class = "UILabel"; text = "Dictionary label"; ObjectID = "Qwe-Rf-vJ7"; */
+"Qwe-Rf-vJ7.text" = "Dictionary label";
+
+/* Class = "UILabel"; text = "1. Test - Cislovky"; ObjectID = "R9Y-eE-S7u"; */
+"R9Y-eE-S7u.text" = "1. Test - Cislovky";
+
+/* Class = "UILabel"; text = "1. otazka z 8"; ObjectID = "RIf-6Q-MYY"; */
+"RIf-6Q-MYY.text" = "1. otazka z 8";
+
+/* Class = "UILabel"; text = "Quisque enim eros,sollicitudin eget rutrum a, luctus semper turpis. Vivamus risus elit, convallis a sollicitudin sed, pretium id tortor. Aliquam venenatis quam mauris, vel porttitor erat dignissim id."; ObjectID = "Uzr-Zv-SVI"; */
+"Uzr-Zv-SVI.text" = "Quisque enim eros,sollicitudin eget rutrum a, luctus semper turpis. Vivamus risus elit, convallis a sollicitudin sed, pretium id tortor. Aliquam venenatis quam mauris, vel porttitor erat dignissim id.";
+
+/* Class = "UILabel"; text = "ZOZNAM VIDEII"; ObjectID = "VoL-pB-811"; */
+"VoL-pB-811.text" = "ZOZNAM VIDEII";
+
+/* Class = "UILabel"; text = "Tento projekt je spolufinancovaný Európskou úniou z prostriedkov Európskeho fondu."; ObjectID = "X4G-DE-wbt"; */
+"X4G-DE-wbt.text" = "Tento projekt je spolufinancovaný Európskou úniou z prostriedkov Európskeho fondu.";
+
+/* Class = "UILabel"; text = "posunkuj"; ObjectID = "Xni-OY-NoS"; */
+"Xni-OY-NoS.text" = "posunkuj";
+
+/* Class = "UILabel"; text = "Video count"; ObjectID = "aKA-QK-WOC"; */
+"aKA-QK-WOC.text" = "Video count";
+
+/* Class = "UILabel"; text = "Slovo"; ObjectID = "bCN-Ag-9Zu"; */
+"bCN-Ag-9Zu.text" = "Slovo";
+
+/* Class = "UILabel"; text = "Slovník"; ObjectID = "cfy-09-y2Y"; */
+"cfy-09-y2Y.text" = "Slovník";
+
+/* Class = "UILabel"; text = "Vysledok"; ObjectID = "d5V-gV-dzL"; */
+"d5V-gV-dzL.text" = "Vysledok";
+
+/* Class = "UILabel"; text = "POUŽITIE VO VETÁCH"; ObjectID = "eEH-ky-eJ0"; */
+"eEH-ky-eJ0.text" = "POUŽITIE VO VETÁCH";
+
+/* Class = "UILabel"; text = "ODPORUČANIE"; ObjectID = "fFQ-kR-qoT"; */
+"fFQ-kR-qoT.text" = "ODPORUČANIE";
+
+/* Class = "UILabel"; text = "Dictionary word"; ObjectID = "fXd-tb-Oxd"; */
+"fXd-tb-Oxd.text" = "Dictionary word";
+
+/* Class = "UILabel"; text = "Výsledok testu"; ObjectID = "gma-gX-hTe"; */
+"gma-gX-hTe.text" = "Výsledok testu";
+
+/* Class = "UITabBarItem"; title = "Slovník"; ObjectID = "jsU-3b-DBM"; */
+"jsU-3b-DBM.title" = "Slovník";
+
+/* Class = "UILabel"; text = "Test"; ObjectID = "kcT-8z-h7Z"; */
+"kcT-8z-h7Z.text" = "Test";
+
+/* Class = "UILabel"; text = "Aké slovo je znázoré na videu?"; ObjectID = "kok-sc-lEj"; */
+"kok-sc-lEj.text" = "Aké slovo je znázoré na videu?";
+
+/* Class = "UILabel"; text = "Info"; ObjectID = "kp6-SZ-D1g"; */
+"kp6-SZ-D1g.text" = "Info";
+
+/* Class = "UILabel"; text = "Správne odpovede:"; ObjectID = "p9A-U3-NRX"; */
+"p9A-U3-NRX.text" = "Správne odpovede:";
+
+/* Class = "UILabel"; text = "24.12.2019"; ObjectID = "pMP-xm-QQO"; */
+"pMP-xm-QQO.text" = "24.12.2019";
+
+/* Class = "UILabel"; text = "Mal by si este zopakovat lekciu  aby si sa zdokonalil"; ObjectID = "twI-wh-uvR"; */
+"twI-wh-uvR.text" = "Mal by si este zopakovat lekciu  aby si sa zdokonalil";
+
+/* Class = "UILabel"; text = "VERZIA 1.0.0"; ObjectID = "uNl-R4-4Y1"; */
+"uNl-R4-4Y1.text" = "VERZIA 1.0.0";
+
+/* Class = "UILabel"; text = "1. Biela farba"; ObjectID = "vBg-gG-kd6"; */
+"vBg-gG-kd6.text" = "1. Biela farba";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "vhO-yN-0UB"; */
+"vhO-yN-0UB.text" = "Label";
+
+/* Class = "UILabel"; text = "Meno lekcie"; ObjectID = "w2t-VA-oSD"; */
+"w2t-VA-oSD.text" = "Meno lekcie";
+
+/* Class = "UILabel"; text = "Čas:  1:30"; ObjectID = "wF6-Xa-OAz"; */
+"wF6-Xa-OAz.text" = "Čas:  1:30";
+
+/* Class = "UILabel"; text = "POUŽITIE VO VETÁCH"; ObjectID = "wkM-A2-mLX"; */
+"wkM-A2-mLX.text" = "POUŽITIE VO VETÁCH";
+
+/* Class = "UIButton"; normalTitle = "ZATVORIŤ"; ObjectID = "wt0-Lt-t8z"; */
+"wt0-Lt-t8z.normalTitle" = "ZATVORIŤ";
+
+/* Class = "UILabel"; text = "Lection Name"; ObjectID = "yhX-hv-jBA"; */
+"yhX-hv-jBA.text" = "Lection Name";
+
+/* Class = "UITabBarItem"; title = "Výučba"; ObjectID = "z9K-U4-TDD"; */
+"z9K-U4-TDD.title" = "Výučba";

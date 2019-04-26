@@ -36,9 +36,7 @@ class DictionaryViewController : UIViewController {
         super.viewDidLoad()
         
         sleep(1) // Hack untill find the solution
-        
-        let preferredLanguage0 = NSLocale.preferredLanguages[0]
-        
+                
         setupManagedContext()
         setupLayout()
     }

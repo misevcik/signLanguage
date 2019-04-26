@@ -82,8 +82,6 @@
 		5498010A2272D2180046D8C0 /* HighlightUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightUIButton.swift; sourceTree = "<group>"; };
 		549894792212251600024E77 /* sample_1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample_1.mp4; sourceTree = "<group>"; };
 		5498947A2212251600024E77 /* sample_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample_2.mp4; sourceTree = "<group>"; };
-		549D93CC225BEC0B005E71A5 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/MainViewController.strings; sourceTree = "<group>"; };
-		549D93CD225BEC0B005E71A5 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		549D9BEC21E6727A00E930AD /* PreloadCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadCoreData.swift; sourceTree = "<group>"; };
 		54AAD6C921DE8DCD00D9F303 /* DictionaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewController.swift; sourceTree = "<group>"; };
 		54B12C6321D11FBC00A9E2C1 /* signLanguage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = signLanguage.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,13 +215,6 @@
 			path = Videos;
 			sourceTree = "<group>";
 		};
-		549D9BEB21E6725B00E930AD /* AppLogic */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AppLogic;
-			sourceTree = "<group>";
-		};
 		54A386AF22199DDC00D35569 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,7 +245,6 @@
 			children = (
 				5440C024220435C10077F6E5 /* Utils */,
 				54EA762F21F670C600A5C50C /* Library */,
-				549D9BEB21E6725B00E930AD /* AppLogic */,
 				54B12C7921D1200A00A9E2C1 /* UI */,
 				54B12C7821D11FE100A9E2C1 /* Asset */,
 				54B12C6621D11FBC00A9E2C1 /* AppDelegate.swift */,
@@ -437,7 +427,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				54B12C6B21D11FBC00A9E2C1 /* Base */,
-				549D93CC225BEC0B005E71A5 /* sk */,
 			);
 			name = MainViewController.storyboard;
 			sourceTree = "<group>";
@@ -447,7 +436,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				54B12C7021D11FBD00A9E2C1 /* Base */,
-				549D93CD225BEC0B005E71A5 /* sk */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

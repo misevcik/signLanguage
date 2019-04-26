@@ -76,7 +76,13 @@ extension NSString{
             return ""
         }
         
-        let character = self.substring(to: 1)        
+        
+        let character = self.substring(to: 1)
+        
+        if character == "C" && self.substring(to: 2 ) == "Ch" {
+            return "CH"
+        }
+        
         return character.capitalized
     }
 }

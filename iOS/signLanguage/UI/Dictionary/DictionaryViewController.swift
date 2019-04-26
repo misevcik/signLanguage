@@ -23,8 +23,7 @@ class DictionaryViewController : UIViewController {
         let fetchRequest: NSFetchRequest<DBWord> = DBWord.fetchRequest()
         
         fetchRequest.predicate = NSPredicate(format: "inDictionary == %@", NSNumber(value: true))
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true)]
-        //fetchRequest.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true, selector: #selector(NSString.localizedCompare(_:)))]
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.mainContext, sectionNameKeyPath: "word.firstUpperCaseChar", cacheName: nil)
         
@@ -37,6 +36,8 @@ class DictionaryViewController : UIViewController {
         super.viewDidLoad()
         
         sleep(1) // Hack untill find the solution
+        
+        let preferredLanguage0 = NSLocale.preferredLanguages[0]
         
         setupManagedContext()
         setupLayout()
@@ -217,6 +218,14 @@ extension DictionaryViewController: UITableViewDataSource, UITableViewDelegate {
         return self.fetchedResultsController.sectionIndexTitles
     }
     
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, sectionIndexTitleForSectionName sectionName: String) -> String? {
+        return sectionName
+    }
+    
+    func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        return self.fetchedResultsController.section(forSectionIndexTitle: title, at: index)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         guard let sections = self.fetchedResultsController.sections else {
@@ -226,17 +235,13 @@ extension DictionaryViewController: UITableViewDataSource, UITableViewDelegate {
         return sectionInfo.numberOfObjects
     }
     
-    func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
-        return self.fetchedResultsController.section(forSectionIndexTitle: title, at: index)
-    }
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 45.0
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let sectionInfo = self.fetchedResultsController.sections![section]
-        return sectionInfo.indexTitle
+        return sectionInfo.name
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -306,7 +311,7 @@ extension DictionaryViewController : UISearchBarDelegate {
             self.fetchedResultsController.fetchRequest.predicate = NSPredicate(format:"word BEGINSWITH [cd] %@", searchText)
         }
         else {
-            self.fetchedResultsController.fetchRequest.predicate = nil
+            self.fetchedResultsController.fetchRequest.predicate = NSPredicate(format: "inDictionary == %@", NSNumber(value: true))
         }
 
         do {

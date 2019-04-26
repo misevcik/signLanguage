@@ -22,7 +22,7 @@ class FavoritesViewController : UIViewController {
         let fetchRequest: NSFetchRequest<DBWord> = DBWord.fetchRequest()
         
         fetchRequest.predicate = NSPredicate(format: "favorite == %@", NSNumber(value: true))
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true, selector: #selector(NSString.localizedCompare(_:)))]
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.coreDataStack.mainContext, sectionNameKeyPath: "word.firstUpperCaseChar", cacheName: nil)
         
@@ -209,6 +209,15 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
         return self.fetchedResultsController.sectionIndexTitles
     }
     
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, sectionIndexTitleForSectionName sectionName: String) -> String? {
+        return sectionName
+    }
+    
+    
+    func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        return self.fetchedResultsController.section(forSectionIndexTitle: title, at: index)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         guard let sections = self.fetchedResultsController.sections else {
@@ -218,17 +227,13 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
         return sectionInfo.numberOfObjects
     }
     
-    func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
-        return self.fetchedResultsController.section(forSectionIndexTitle: title, at: index)
-    }
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 45.0
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let sectionInfo = self.fetchedResultsController.sections![section]
-        return sectionInfo.indexTitle
+        return sectionInfo.name
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {

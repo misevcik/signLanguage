@@ -10,9 +10,16 @@ import UIKit
 import CoreData
 import AVKit
 
+protocol LectionDetailDelegate {
+    func saveCoreData(viewController: LectionDetailViewController)
+}
+
+
 class LectionDetailViewController : UIViewController {
     
-    var callbackSaveCoreData: (()->())?
+    var context: NSManagedObjectContext!
+    var delegate : LectionDetailDelegate?
+    var dbLection : DBLesson!
 
     @IBOutlet weak var pagerLabel: UILabel!
     @IBOutlet weak var sentenceTable: UITableView!
@@ -21,20 +28,15 @@ class LectionDetailViewController : UIViewController {
     @IBOutlet weak var videoImage: UIImageView!
     @IBOutlet weak var videoController: VideoController!
     
-    private var playerViewController = AVPlayerViewController()
-    private var dbLection : DBLesson!
+    private var sentenceVideoPlayer = AVPlayerViewController()
     private var dbWordArray = Array<DBWord>()
     private var dbWord : DBWord!
     private var videoHandler : VideoHandler!
     private var goToPage : Int = 0
-    
-    //Variable used for progress bar
+    private var isSideVideo : Bool = false
+    private var isSlowDownVideo : Bool = false
     private var wordVisitUpdate = false
-    
-    func setLection(_ lection : DBLesson) {
-        dbLection = lection
-    }
-    
+        
     func setPage(_ page : Int) {
         goToPage = page
     }
@@ -42,7 +44,7 @@ class LectionDetailViewController : UIViewController {
     @IBAction func clickBack(_ sender: Any) {
         
         if lectionVisitor() == true {
-            callbackSaveCoreData!()
+            delegate?.saveCoreData(viewController: self)
         }
 
         _ = navigationController?.popViewController(animated: true)
@@ -56,7 +58,6 @@ class LectionDetailViewController : UIViewController {
             wordVisitor(dbWord)
             
             updatePager()
-            updateButtons()
             updatePageData()
         }
     }
@@ -99,7 +100,7 @@ class LectionDetailViewController : UIViewController {
    
         loadLectionData()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerViewController.player?.currentItem)
+        NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: sentenceVideoPlayer.player?.currentItem)
         
     }
     
@@ -112,63 +113,9 @@ class LectionDetailViewController : UIViewController {
     }
     
     @objc func playerDidFinishPlaying(note: NSNotification) {
-        playerViewController.dismiss(animated: true, completion: nil)
+        sentenceVideoPlayer.dismiss(animated: true, completion: nil)
     }
     
-    private func updatePageData() {
-        updateTableLayout()
-        updateVideoFrame()
-        
-        wordLabel.text = dbWord.word
-    }
-
-    private func updateTableLayout() {
-        if dbWord.relSentence!.count == 0 {
-            sentenceTable.isHidden = true
-            sentenceLabel.isHidden = true
-        } else {
-            sentenceTable.isHidden = false
-            sentenceLabel.isHidden = false
-            sentenceTable.tableFooterView = UIView()
-        }
-        
-        sentenceTable.reloadData()
-    }
-    
-    private func updateVideoFrame() {
-        videoHandler.setVideoPath(dbWord.videoFront!)
-        videoImage.image = videoHandler.getPreviewImage()
-        videoImage.clipsToBounds = true
-        videoImage.contentMode = .scaleAspectFill
-    }
-    
-    private func loadLectionData() {
-        
-        for item in dbLection.relDictionary! {
-            dbWordArray.append(item as! DBWord)
-        }
-        
-        wordLabel.text = dbLection.title
-        currentPage = goToPage
-    }
-    
-    private func updatePager() {
-        
-        let currentPage = String(self.currentPage + 1)
-        let sum = String(self.dbWordArray.count)
-        pagerLabel.text = currentPage + "/" + sum
-    }
-    
-    private func updateButtons() {
-        
-//        moveBackward.isHidden = self.currentPage == 0
-//        moveForward.isHidden = self.currentPage == self.dbWordArray.count - 1
-    }
-    
-    private func playVideo() {
-        videoHandler.playVideo()
-    }
-
 }
 
 extension LectionDetailViewController: UITableViewDataSource, UITableViewDelegate {
@@ -195,10 +142,10 @@ extension LectionDetailViewController: UITableViewDataSource, UITableViewDelegat
         let videoUrl = Bundle.main.url(forResource: sentence.video, withExtension: "mp4")!
         
         let player = AVPlayer(url: videoUrl)
-        playerViewController.player = player
+        sentenceVideoPlayer.player = player
         
-        self.present(playerViewController, animated: true) {
-            self.playerViewController.player?.play()
+        self.present(sentenceVideoPlayer, animated: true) {
+            self.sentenceVideoPlayer.player?.play()
         }
         
     }
@@ -230,10 +177,68 @@ extension LectionDetailViewController : VideoControllerProtocol {
     }
     
     func clickSideVideo(_ isSelected : Bool) {
+        isSideVideo = isSelected
     }
     
     func clickSlowDown(_ isSelected : Bool) {
-        videoHandler.changeVideoSpeed(isSelected ? 0.5 : 1.0)
+        isSlowDownVideo = isSelected
+        videoHandler.changeVideoSpeed(isSlowDownVideo ? 0.5 : 1.0)
+    }
+}
+
+private extension LectionDetailViewController {
+    private func updatePageData() {
+        updateTableLayout()
+        updateVideoFrame()
+        
+        wordLabel.text = dbWord.word
+    }
+    
+    private func updateTableLayout() {
+        if dbWord.relSentence!.count == 0 {
+            sentenceTable.isHidden = true
+            sentenceLabel.isHidden = true
+        } else {
+            sentenceTable.isHidden = false
+            sentenceLabel.isHidden = false
+            sentenceTable.tableFooterView = UIView()
+        }
+        
+        sentenceTable.reloadData()
+    }
+    
+    private func updateVideoFrame() {
+        let videoPath = isSideVideo ? self.dbWord.videoSide! : self.dbWord.videoFront!
+        
+        if isSlowDownVideo == true {
+            videoHandler.changeVideoSpeed(0.5)
+        }
+        videoHandler.setVideoPath(videoPath)
+        videoImage.image = videoHandler.getPreviewImage()
+        videoImage.clipsToBounds = true
+        videoImage.contentMode = .scaleAspectFill
+    }
+    
+    private func loadLectionData() {
+        
+        for item in dbLection.relDictionary! {
+            dbWordArray.append(item as! DBWord)
+        }
+        
+        wordLabel.text = dbLection.title
+        currentPage = goToPage
+    }
+    
+    private func updatePager() {
+        
+        let currentPage = String(self.currentPage + 1)
+        let sum = String(self.dbWordArray.count)
+        pagerLabel.text = currentPage + "/" + sum
+    }
+    
+    
+    private func playVideo() {
+        videoHandler.playVideo()
     }
 }
 

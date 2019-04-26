@@ -34,14 +34,13 @@ class LectionViewController : UIViewController {
     }
     
     private var coreDataStack : CoreDataStack!
-    private var context : NSManagedObjectContext!
     
     private lazy var fetchedResultsController: NSFetchedResultsController<DBLesson> = {
         
         let fetchRequest: NSFetchRequest<DBLesson> = DBLesson.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
         
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.context, sectionNameKeyPath: nil, cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.coreDataStack.mainContext, sectionNameKeyPath: nil, cacheName: nil)
         
         fetchedResultsController.delegate = self
         
@@ -55,8 +54,6 @@ class LectionViewController : UIViewController {
         }
         
         self.coreDataStack = appDelegate.coreDataStack
-        self.context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-        self.context.parent = coreDataStack.mainContext
         
         do {
             try self.fetchedResultsController.performFetch()
@@ -64,37 +61,7 @@ class LectionViewController : UIViewController {
             os_log("Unable to Perform Fetch Request", log: Log.general, type: .error)
         }
     }
-    
-    fileprivate func saveCoreData() {
         
-        guard context.hasChanges else { return }
-        
-        self.context.perform {
-            do {
-                try self.context.save()
-            } catch  {
-                os_log("LectionView: saveCoreData fail", log: Log.general, type: .error)
-                self.context.reset()
-                return
-            }
-            
-            self.coreDataStack.saveContext()
-        }
-    }
-    
-    
-    private func unlockNextLesson(_ lesson : DBLesson) {
-
-        let  indexPath = fetchedResultsController.indexPath(forObject: lesson)
-        let nextIndexPath = IndexPath(row: indexPath!.row + 1, section: indexPath!.section)
-        //TODO check index out-of-range
-        let nextLection = fetchedResultsController.object(at: nextIndexPath)
-
-        nextLection.locked = false
-
-        saveCoreData()
-    }
-    
     private func setLectionProgressBar(_ dbLection : DBLesson, _ cell : LectionCell) {
         
         if dbLection.visitedWord > 0 {
@@ -167,6 +134,27 @@ extension LectionViewController: NSFetchedResultsControllerDelegate {
 
 }
 
+extension LectionViewController : LectionListDelegate {
+    
+    func saveCoreData(viewController: LectionDetailViewController) {
+        
+        guard let context = viewController.context, context.hasChanges else { return }
+        
+        context.perform {
+            do {
+                try context.save()
+            } catch {
+                os_log("DictionaryView: saveCoreData fail", log: Log.general, type: .error)
+                context.reset()
+                return
+            }
+            
+            self.coreDataStack.saveContext()
+        }
+    }
+    
+}
+
 extension LectionViewController : UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -201,19 +189,26 @@ extension LectionViewController : UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let lesson = fetchedResultsController.object(at: indexPath)
+        let lection = fetchedResultsController.object(at: indexPath)
         
-        if lesson.locked == true {
+        if lection.locked == true {
             let vc = LockedPopupView()
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
             vc.setPopupType(LockedPopupEnum.LECTION)
             self.present(vc, animated: true, completion: nil)
+            return
         }
         
+        let childContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        childContext.parent = coreDataStack.mainContext
+        let childLection = childContext.object(with: lection.objectID) as? DBLesson
+        
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "LectionListViewController") as! LectionListViewController
-        vc.setLection(lesson, indexPath.row + 1)
-        vc.callbackSaveCoreData = saveCoreData
+        vc.lectionOrder = indexPath.row + 1
+        vc.context = childContext
+        vc.dbLection = childLection
+        vc.delegate = self
         self.show(vc, sender: true)
         
     }

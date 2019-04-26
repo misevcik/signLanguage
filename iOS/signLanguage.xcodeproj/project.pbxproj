@@ -32,6 +32,7 @@
 		5482DA0A224EA2A30044BA81 /* LockedPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5482DA08224EA2A30044BA81 /* LockedPopupView.swift */; };
 		5482DA0B224EA2A30044BA81 /* LockedPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5482DA09224EA2A30044BA81 /* LockedPopupView.xib */; };
 		5485807A21E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5485807821E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld */; };
+		5498010B2272D2180046D8C0 /* HighlightUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5498010A2272D2180046D8C0 /* HighlightUIButton.swift */; };
 		5498947B2212251600024E77 /* sample_1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 549894792212251600024E77 /* sample_1.mp4 */; };
 		5498947C2212251600024E77 /* sample_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5498947A2212251600024E77 /* sample_2.mp4 */; };
 		549D9BED21E6727A00E930AD /* PreloadCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549D9BEC21E6727A00E930AD /* PreloadCoreData.swift */; };
@@ -78,6 +79,7 @@
 		5482DA08224EA2A30044BA81 /* LockedPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockedPopupView.swift; sourceTree = "<group>"; };
 		5482DA09224EA2A30044BA81 /* LockedPopupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LockedPopupView.xib; sourceTree = "<group>"; };
 		5485807921E7C6FA00440282 /* DictionaryDatabase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DictionaryDatabase.xcdatamodel; sourceTree = "<group>"; };
+		5498010A2272D2180046D8C0 /* HighlightUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightUIButton.swift; sourceTree = "<group>"; };
 		549894792212251600024E77 /* sample_1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample_1.mp4; sourceTree = "<group>"; };
 		5498947A2212251600024E77 /* sample_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample_2.mp4; sourceTree = "<group>"; };
 		549D93CC225BEC0B005E71A5 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/MainViewController.strings; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				54C2048D2236EE970081F63C /* VideoHandler.swift */,
 				54EF9ED422708FD200BF4A03 /* CoreDataStack.swift */,
 				549D9BEC21E6727A00E930AD /* PreloadCoreData.swift */,
+				5498010A2272D2180046D8C0 /* HighlightUIButton.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				54CC9EAB22404967001F5030 /* TestResultViewController.swift in Sources */,
 				549D9BED21E6727A00E930AD /* PreloadCoreData.swift in Sources */,
 				5432D3FD22295E7F003A7A9E /* EducationMenuBar.swift in Sources */,
+				5498010B2272D2180046D8C0 /* HighlightUIButton.swift in Sources */,
 				540CBEE8224DEEE700EEEBE1 /* LectionListViewController.swift in Sources */,
 				54AAD6CA21DE8DCD00D9F303 /* DictionaryViewController.swift in Sources */,
 				5416D03D21D62134009E8D02 /* WordCell.swift in Sources */,

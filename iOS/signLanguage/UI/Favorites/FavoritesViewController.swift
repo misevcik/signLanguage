@@ -13,7 +13,8 @@ import os.log
 class FavoritesViewController : UIViewController {
     
     @IBOutlet weak var dictionaryTable: UITableView!
-        
+    @IBOutlet weak var dictionaryTableTrailing: NSLayoutConstraint!
+    
     private var coreDataStack : CoreDataStack!
     
     fileprivate lazy var fetchedResultsController: NSFetchedResultsController<DBWord> = {
@@ -42,6 +43,12 @@ class FavoritesViewController : UIViewController {
         
         dictionaryTable.indexPathsForSelectedRows?.forEach {
             dictionaryTable.deselectRow(at: $0, animated: true)
+        }
+        
+        if (self.fetchedResultsController.sections?.count)! > 0 {
+            dictionaryTableTrailing.constant = 4
+        } else {
+            dictionaryTableTrailing.constant = 16
         }
     }
 }

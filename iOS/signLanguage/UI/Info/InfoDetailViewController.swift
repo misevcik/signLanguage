@@ -11,6 +11,7 @@ import UIKit
 class InfoDetailViewController: UIViewController {
 
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var appVersionLabel: UILabel!
     
     @IBAction func clickBack(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)
@@ -21,6 +22,7 @@ class InfoDetailViewController: UIViewController {
         super.viewDidLoad()
         
         contentView.layer.cornerRadius = 15
+        appVersionLabel.text = "VERZIA \(Bundle.main.releaseVersionNumber!)"
 
     }
     

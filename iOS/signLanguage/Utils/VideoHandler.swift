@@ -45,6 +45,13 @@ class VideoHandler {
             return
         }
         
+        if speed == 1.0 {
+            let videoUrl = Bundle.main.url(forResource: self.videoPath, withExtension: "mp4")!
+            let item = AVPlayerItem(url: videoUrl)
+            self.playerViewController.player!.replaceCurrentItem(with: item)
+            return
+        }
+        
         let composition = AVMutableComposition()
         let assetTimeRange = CMTimeRangeMake(start: CMTime.zero, duration: asset.duration)
         

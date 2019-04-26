@@ -319,6 +319,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Info" image="info-gray" selectedImage="info-blue" id="2Fv-DJ-gf6"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="appVersionLabel" destination="uNl-R4-4Y1" id="3D5-Ro-GCB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j5f-oE-pJ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -433,11 +436,12 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="dictionaryTable" destination="RL7-hA-qXI" id="RHn-c5-JVr"/>
+                        <outlet property="dictionaryTableTrailing" destination="rJU-92-UQe" id="WKm-OM-bnm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Enx-Co-gLV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-417" y="33"/>
+            <point key="canvasLocation" x="-418.39999999999998" y="32.833583208395808"/>
         </scene>
         <!--Lection-->
         <scene sceneID="Mdi-2N-K0c">
@@ -730,13 +734,19 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ax-8I-N8r">
                                                         <rect key="frame" x="0.0" y="0.0" width="53.5" height="44"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EkC-kl-8Fl" userLabel="Back Button">
-                                                                <rect key="frame" x="5" y="6" width="32" height="32"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EkC-kl-8Fl" userLabel="Back Button" customClass="HighlightUIButton" customModule="signLanguage" customModuleProvider="target">
+                                                                <rect key="frame" x="5" y="4" width="36" height="36"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="32" id="5iv-FX-h0F"/>
-                                                                    <constraint firstAttribute="height" constant="32" id="8Xl-0o-9zo"/>
+                                                                    <constraint firstAttribute="width" constant="36" id="5iv-FX-h0F"/>
+                                                                    <constraint firstAttribute="height" constant="36" id="8Xl-0o-9zo"/>
                                                                 </constraints>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="2" maxX="4" maxY="2"/>
                                                                 <state key="normal" image="iconBack"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
+                                                                        <color key="value" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="clickBack:" destination="foW-ar-cJd" eventType="touchUpInside" id="GLi-iu-767"/>
                                                                 </connections>
@@ -959,13 +969,19 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yX3-Gq-VAU">
                                                         <rect key="frame" x="0.0" y="0.0" width="53.5" height="44"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wpa-Yh-lEp" userLabel="Back Button">
-                                                                <rect key="frame" x="5" y="8" width="28" height="28"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wpa-Yh-lEp" userLabel="Back Button" customClass="HighlightUIButton" customModule="signLanguage" customModuleProvider="target">
+                                                                <rect key="frame" x="5" y="4" width="36" height="36"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="28" id="mgh-DK-w8E"/>
-                                                                    <constraint firstAttribute="width" constant="28" id="zPi-Eh-nc3"/>
+                                                                    <constraint firstAttribute="height" constant="36" id="mgh-DK-w8E"/>
+                                                                    <constraint firstAttribute="width" constant="36" id="zPi-Eh-nc3"/>
                                                                 </constraints>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="2" maxX="4" maxY="2"/>
                                                                 <state key="normal" image="iconBack"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
+                                                                        <color key="value" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="clickBack:" destination="sz9-gk-IAh" eventType="touchUpInside" id="XYa-Dk-kK2"/>
                                                                 </connections>
@@ -1183,13 +1199,19 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEW-F3-xGf">
                                                         <rect key="frame" x="0.0" y="0.0" width="187.5" height="44"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wEx-Vi-0YM" userLabel="Back Button">
-                                                                <rect key="frame" x="5" y="6" width="32" height="32"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wEx-Vi-0YM" userLabel="Back Button" customClass="HighlightUIButton" customModule="signLanguage" customModuleProvider="target">
+                                                                <rect key="frame" x="5" y="4" width="36" height="36"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="32" id="GOn-Yq-Sy6"/>
-                                                                    <constraint firstAttribute="height" constant="32" id="uR0-um-0Uh"/>
+                                                                    <constraint firstAttribute="width" constant="36" id="GOn-Yq-Sy6"/>
+                                                                    <constraint firstAttribute="height" constant="36" id="uR0-um-0Uh"/>
                                                                 </constraints>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="2" maxX="4" maxY="2"/>
                                                                 <state key="normal" image="iconBack"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
+                                                                        <color key="value" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="clickBack:" destination="Jh9-Zc-daZ" eventType="touchUpInside" id="gGA-Cz-1qo"/>
                                                                 </connections>
@@ -1368,11 +1390,12 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="62.5" height="44"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xJA-yJ-e5c" userLabel="Cancel Button">
-                                                                <rect key="frame" x="12.5" y="8" width="28" height="28"/>
+                                                                <rect key="frame" x="8.5" y="4" width="36" height="36"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="28" id="1bQ-LB-XwU"/>
-                                                                    <constraint firstAttribute="width" constant="28" id="qX4-fx-2ZE"/>
+                                                                    <constraint firstAttribute="height" constant="36" id="1bQ-LB-XwU"/>
+                                                                    <constraint firstAttribute="width" constant="36" id="qX4-fx-2ZE"/>
                                                                 </constraints>
+                                                                <inset key="imageEdgeInsets" minX="2" minY="2" maxX="2" maxY="2"/>
                                                                 <state key="normal" image="iconCancelWhite"/>
                                                                 <connections>
                                                                     <action selector="cancelIconClick:" destination="FUw-9h-8e6" eventType="touchUpInside" id="PfX-ll-4h2"/>
@@ -1825,13 +1848,19 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rsq-NO-T72">
                                                         <rect key="frame" x="0.0" y="0.0" width="53.5" height="44"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAX-oQ-H46" userLabel="Back Button">
-                                                                <rect key="frame" x="5" y="6" width="32" height="32"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAX-oQ-H46" userLabel="Back Button" customClass="HighlightUIButton" customModule="signLanguage" customModuleProvider="target">
+                                                                <rect key="frame" x="5" y="4" width="36" height="36"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="32" id="1ia-zO-eEP"/>
-                                                                    <constraint firstAttribute="width" constant="32" id="xcJ-RR-yN2"/>
+                                                                    <constraint firstAttribute="height" constant="36" id="1ia-zO-eEP"/>
+                                                                    <constraint firstAttribute="width" constant="36" id="xcJ-RR-yN2"/>
                                                                 </constraints>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="2" maxX="4" maxY="2"/>
                                                                 <state key="normal" image="iconBack"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
+                                                                        <color key="value" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="clickBack:" destination="7rf-9B-1I8" eventType="touchUpInside" id="wN5-v7-YBo"/>
                                                                 </connections>
@@ -2137,11 +2166,12 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="53.5" height="44"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w18-FV-AuO" userLabel="Back Button">
-                                                                <rect key="frame" x="5" y="6" width="32" height="32"/>
+                                                                <rect key="frame" x="5" y="4" width="36" height="36"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="32" id="EpA-cz-YPr"/>
-                                                                    <constraint firstAttribute="height" constant="32" id="Zat-I7-eGV"/>
+                                                                    <constraint firstAttribute="width" constant="36" id="EpA-cz-YPr"/>
+                                                                    <constraint firstAttribute="height" constant="36" id="Zat-I7-eGV"/>
                                                                 </constraints>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="2" maxX="4" maxY="2"/>
                                                                 <state key="normal" image="iconBack"/>
                                                                 <connections>
                                                                     <action selector="clickBack:" destination="cKE-Ij-1TH" eventType="touchUpInside" id="WdT-r9-Jje"/>
@@ -2437,6 +2467,7 @@
                         <viewLayoutGuide key="safeArea" id="mXE-Kf-fUU"/>
                     </view>
                     <connections>
+                        <outlet property="appVersionLabel" destination="8z5-jZ-O13" id="lME-ZG-qgs"/>
                         <outlet property="contentView" destination="2Ue-Zg-Cvk" id="I0K-l0-HM6"/>
                     </connections>
                 </viewController>

@@ -36,7 +36,7 @@ class DictionaryViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        sleep(1) // Hack untill find the solutin
+        sleep(1) // Hack untill find the solution
         
         setupManagedContext()
         setupLayout()
@@ -147,6 +147,10 @@ extension DictionaryViewController: WordDetailDelegate {
         let parentWord = coreDataStack.mainContext.object(with: word.objectID) as? DBWord
         
         let currentIndexPath =  self.fetchedResultsController.indexPath(forObject: parentWord!)
+        if currentIndexPath == nil {
+            return word
+        }
+        
         var nextIndexPath = IndexPath(row: 0, section: 0)
         
         if forward == true {
@@ -311,7 +315,6 @@ extension DictionaryViewController : UISearchBarDelegate {
             os_log("Unable to Perform Fetch Request", log: Log.general, type: .error)
         }
         
-        //fetchedResultsController = getFetchedResultsController(xx: false)
         self.dictionaryTable.reloadData()
     }
 }

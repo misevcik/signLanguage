@@ -33,7 +33,10 @@ class WordDetailViewController : UIViewController {
     @IBOutlet weak var videoImage: UIImageView!
     @IBOutlet weak var videoController: VideoController!
     
-    fileprivate var videoHandler : VideoHandler!
+    private var sentenceVideoPlayer = AVPlayerViewController()
+    private var videoHandler : VideoHandler!
+    private var isSideVideo : Bool = false
+    private var isSlowDownVideo : Bool = false
     
     @IBAction func clickBack(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)
@@ -55,46 +58,22 @@ class WordDetailViewController : UIViewController {
         videoController.delegate = self
         
         updatePageData()
-    }
-    
-    fileprivate func updatePageData() {
-        updateTableLayout()
-        updateWordLabel()
-        updateVideoFrame()
-        updateFavoriteButton(dbWord.favorite)
-    }
-    
-    fileprivate func updateFavoriteButton(_ isFavorite : Bool) {
-        if isFavorite == true {
-            favoriteButton.setImage(#imageLiteral(resourceName: "iconHeart-red"), for: UIControl.State.normal)
-        } else {
-            favoriteButton.setImage(#imageLiteral(resourceName: "iconHeart-black"), for: UIControl.State.normal)
-        }
-    }
-    
-    fileprivate func updateVideoFrame() {
-        videoHandler.setVideoPath(self.dbWord.videoFront!)
-        videoImage.image = videoHandler.getPreviewImage()
-        videoImage.clipsToBounds = true
-        videoImage.contentMode = .scaleAspectFill
-    }
-    
-    fileprivate func updateTableLayout() {
-        if dbWord.relSentence!.count == 0 {
-            sentenceTable.isHidden = true
-            sentenceLabel.isHidden = true
-        } else {
-            sentenceTable.isHidden = false
-            sentenceLabel.isHidden = false
-            sentenceTable.tableFooterView = UIView()
-        }
         
-        sentenceTable.reloadData()
+        NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: sentenceVideoPlayer.player?.currentItem)
     }
     
-    fileprivate func updateWordLabel() {
-        wordLabel.text = dbWord.word
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        sentenceTable.indexPathsForSelectedRows?.forEach {
+            sentenceTable.deselectRow(at: $0, animated: true)
+        }
     }
+    
+    @objc func playerDidFinishPlaying(note: NSNotification) {
+        sentenceVideoPlayer.dismiss(animated: true, completion: nil)
+    }
+
 }
 
 extension WordDetailViewController : VideoControllerProtocol {
@@ -115,11 +94,13 @@ extension WordDetailViewController : VideoControllerProtocol {
     }
 
     func clickSideVideo(_ isSelected : Bool) {
+        isSideVideo = isSelected
+        updateVideoFrame()
     }
 
     func clickSlowDown(_ isSelected : Bool) {
-        
-        videoHandler.changeVideoSpeed(isSelected ? 0.5 : 1.0)
+        isSlowDownVideo = isSelected
+        videoHandler.changeVideoSpeed(isSlowDownVideo ? 0.5 : 1.0)
     }
 }
 
@@ -143,8 +124,61 @@ extension WordDetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let sentence = dbWord.relSentence!.allObjects[indexPath.row] as! DBSentence
-        //playVideo(videoName: sentence.video!)
+         let sentence = dbWord.relSentence!.allObjects[indexPath.row] as! DBSentence
+        let videoUrl = Bundle.main.url(forResource: sentence.video, withExtension: "mp4")!
         
+        let player = AVPlayer(url: videoUrl)
+        sentenceVideoPlayer.player = player
+        
+        self.present(sentenceVideoPlayer, animated: true) {
+            self.sentenceVideoPlayer.player?.play()
+        }        
     }
 }
+
+private extension WordDetailViewController {
+    private func updatePageData() {
+        updateTableLayout()
+        updateWordLabel()
+        updateVideoFrame()
+        updateFavoriteButton(dbWord.favorite)
+    }
+    
+    private func updateFavoriteButton(_ isFavorite : Bool) {
+        if isFavorite == true {
+            favoriteButton.setImage(#imageLiteral(resourceName: "iconHeart-red"), for: UIControl.State.normal)
+        } else {
+            favoriteButton.setImage(#imageLiteral(resourceName: "iconHeart-black"), for: UIControl.State.normal)
+        }
+    }
+    
+    private func updateVideoFrame() {
+        let videoPath = isSideVideo ? self.dbWord.videoSide! : self.dbWord.videoFront!
+        
+        videoHandler.setVideoPath(videoPath)
+        if isSlowDownVideo == true {
+            videoHandler.changeVideoSpeed(0.5)
+        }
+        videoImage.image = videoHandler.getPreviewImage()
+        videoImage.clipsToBounds = true
+        videoImage.contentMode = .scaleAspectFill
+    }
+    
+    private func updateTableLayout() {
+        if dbWord.relSentence!.count == 0 {
+            sentenceTable.isHidden = true
+            sentenceLabel.isHidden = true
+        } else {
+            sentenceTable.isHidden = false
+            sentenceLabel.isHidden = false
+            sentenceTable.tableFooterView = UIView()
+        }
+        
+        sentenceTable.reloadData()
+    }
+    
+    private func updateWordLabel() {
+        wordLabel.text = dbWord.word
+    }
+}
+

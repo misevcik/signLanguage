@@ -23,7 +23,7 @@ class VideoController : UIView {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var sideViewLabel: UILabel!
     @IBOutlet weak var slowDownLabel: UILabel!
-    @IBOutlet weak var slowDownButton: UIButton!
+    @IBOutlet weak var forwardButton: UIButton!
     
     @IBAction func playClick(_ sender: UIButton) {
         delegate?.clickPlayVideo()
@@ -32,6 +32,7 @@ class VideoController : UIView {
     
     @IBAction func slowDownClick(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
+        slowDownLabel.textColor = sender.isSelected ? #colorLiteral(red: 0.8919349313, green: 0.3245626688, blue: 0.4429816008, alpha: 1) : #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
         delegate?.clickSlowDown(sender.isSelected)
     }
     
@@ -46,6 +47,7 @@ class VideoController : UIView {
     @IBAction func sideVideoClick(_ sender: UIButton) {
         
         sender.isSelected = !sender.isSelected
+        sideViewLabel.textColor = sender.isSelected ? #colorLiteral(red: 0.8919349313, green: 0.3245626688, blue: 0.4429816008, alpha: 1) : #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
         delegate?.clickSideVideo(sender.isSelected)
     }
     
@@ -64,5 +66,6 @@ class VideoController : UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         addSubview(contentView)
+        
     }
 }

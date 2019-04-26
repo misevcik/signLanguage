@@ -7,10 +7,18 @@
 //
 
 import UIKit
+import CoreData
+
+protocol LectionListDelegate {
+    func saveCoreData(viewController: LectionDetailViewController)
+}
 
 class LectionListViewController : UIViewController {
     
-    var callbackSaveCoreData: (()->())?
+    var lectionOrder : Int = 0
+    var dbLection : DBLesson!
+    var context: NSManagedObjectContext!
+    var delegate : LectionListDelegate?
     
     @IBOutlet weak var lectionName: UILabel!
     @IBOutlet weak var lectionTable: UITableView!
@@ -21,14 +29,7 @@ class LectionListViewController : UIViewController {
     
     }
     
-    fileprivate var lectionOrderLabel : Int = 0
-    fileprivate var dbLection : DBLesson!
-    fileprivate var dbWordArray = Array<DBWord>()
-    
-    func setLection(_ lectionArg : DBLesson, _ lectionOrderLabelArg : Int) {
-        dbLection = lectionArg
-        lectionOrderLabel = lectionOrderLabelArg
-    }
+    private var dbWordArray = Array<DBWord>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +37,7 @@ class LectionListViewController : UIViewController {
         dbWordArray = dbLection.relDictionary?.array as! [DBWord]
         lectionTable.tableFooterView = UIView()
 
-        lectionName.text = "Lekcia č: \(lectionOrderLabel) - \(dbLection.title!)"
+        lectionName.text = "Lekcia č: \(lectionOrder) - \(dbLection.title!)"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,11 +75,19 @@ extension LectionListViewController: UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "LectionDetailViewController") as! LectionDetailViewController
-        vc.setLection(dbLection)
+        vc.dbLection = dbLection
+        vc.context = context
+        vc.delegate = self
         vc.setPage(indexPath.row)
-        vc.callbackSaveCoreData = callbackSaveCoreData
         self.show(vc, sender: true)
         
     }
     
+}
+
+extension LectionListViewController : LectionDetailDelegate {
+    
+    func saveCoreData(viewController: LectionDetailViewController) {
+        self.delegate!.saveCoreData(viewController: viewController)
+    }
 }

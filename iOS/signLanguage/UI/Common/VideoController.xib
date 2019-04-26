@@ -13,8 +13,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoController" customModule="signLanguage" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="XbO-NE-UD6"/>
+                <outlet property="forwardButton" destination="ipq-8h-26k" id="XvR-3e-tB8"/>
                 <outlet property="sideViewLabel" destination="TMq-IO-MXR" id="sWh-FM-DM8"/>
-                <outlet property="slowDownButton" destination="UeW-vb-uAQ" id="t5c-rE-EtY"/>
                 <outlet property="slowDownLabel" destination="pm4-K7-Nlu" id="KFS-ED-XmM"/>
             </connections>
         </placeholder>
@@ -33,18 +33,20 @@
                                     <rect key="frame" x="0.0" y="0.0" width="75" height="84"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UeW-vb-uAQ" userLabel="Slowdown Button">
-                                            <rect key="frame" x="25" y="24.5" width="25" height="25"/>
+                                            <rect key="frame" x="22.5" y="22" width="30" height="30"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="25" id="ET3-kj-otI"/>
-                                                <constraint firstAttribute="width" constant="25" id="jZW-y1-tMa"/>
+                                                <constraint firstAttribute="height" constant="30" id="ET3-kj-otI"/>
+                                                <constraint firstAttribute="width" constant="30" id="jZW-y1-tMa"/>
                                             </constraints>
+                                            <inset key="imageEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                             <state key="normal" image="iconClock"/>
+                                            <state key="selected" image="iconClockSelected"/>
                                             <connections>
                                                 <action selector="slowDownClick:" destination="-1" eventType="touchUpInside" id="Prk-U8-XWi"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spomaliť video" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pm4-K7-Nlu" userLabel="SlowDown">
-                                            <rect key="frame" x="5" y="51.5" width="65.5" height="11"/>
+                                            <rect key="frame" x="5" y="54" width="65.5" height="11"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -60,9 +62,22 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ERh-9q-kWJ">
                                     <rect key="frame" x="75" y="0.0" width="75" height="84"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Za2-Yf-osk" userLabel="Backward Button">
-                                            <rect key="frame" x="25.5" y="30" width="24" height="24"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Za2-Yf-osk" userLabel="Backward Button" customClass="HighlightUIButton" customModule="signLanguage" customModuleProvider="target">
+                                            <rect key="frame" x="22.5" y="27" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="Yl9-U7-UOd"/>
+                                                <constraint firstAttribute="height" constant="30" id="rcw-k1-laF"/>
+                                            </constraints>
+                                            <inset key="imageEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                             <state key="normal" image="iconBackward"/>
+                                            <state key="highlighted">
+                                                <color key="titleShadowColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
+                                                    <color key="value" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="goBackwardClick:" destination="-1" eventType="touchUpInside" id="F9b-lF-mJH"/>
                                             </connections>
@@ -96,10 +111,20 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BIc-Gi-20O">
                                     <rect key="frame" x="225" y="0.0" width="75" height="84"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ipq-8h-26k" userLabel="Forward Button">
-                                            <rect key="frame" x="25.5" y="30" width="24" height="24"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ipq-8h-26k" userLabel="Forward Button" customClass="HighlightUIButton" customModule="signLanguage" customModuleProvider="target">
+                                            <rect key="frame" x="22.5" y="27" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="03g-IW-k0p"/>
+                                                <constraint firstAttribute="height" constant="30" id="HUA-tj-l0y"/>
+                                            </constraints>
+                                            <inset key="imageEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                             <state key="normal" image="iconForward"/>
                                             <state key="selected" image="iconBack"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
+                                                    <color key="value" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="goForwardClick:" destination="-1" eventType="touchUpInside" id="aph-nj-2Pv"/>
                                             </connections>
@@ -114,18 +139,20 @@
                                     <rect key="frame" x="300" y="0.0" width="75" height="84"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xQk-yw-8LT" userLabel="Side Video">
-                                            <rect key="frame" x="25" y="24.5" width="25" height="25"/>
+                                            <rect key="frame" x="22.5" y="22" width="30" height="30"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="25" id="LTi-Vk-mDs"/>
-                                                <constraint firstAttribute="height" constant="25" id="Myc-To-0hT"/>
+                                                <constraint firstAttribute="width" constant="30" id="LTi-Vk-mDs"/>
+                                                <constraint firstAttribute="height" constant="30" id="Myc-To-0hT"/>
                                             </constraints>
+                                            <inset key="imageEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                             <state key="normal" image="iconRotate"/>
+                                            <state key="selected" image="iconRotateSelected"/>
                                             <connections>
                                                 <action selector="sideVideoClick:" destination="-1" eventType="touchUpInside" id="e3o-2Q-EJx"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bočný pohľad" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMq-IO-MXR">
-                                            <rect key="frame" x="7.5" y="50.5" width="60.5" height="11"/>
+                                            <rect key="frame" x="7.5" y="53" width="60.5" height="11"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -165,8 +192,10 @@
         <image name="iconBack" width="24" height="24"/>
         <image name="iconBackward" width="24" height="24"/>
         <image name="iconClock" width="24" height="24"/>
+        <image name="iconClockSelected" width="35" height="36"/>
         <image name="iconForward" width="24" height="24"/>
         <image name="iconPlay" width="64" height="64"/>
-        <image name="iconRotate" width="24" height="24"/>
+        <image name="iconRotate" width="35" height="35"/>
+        <image name="iconRotateSelected" width="24" height="24"/>
     </resources>
 </document>

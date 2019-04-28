@@ -182,6 +182,10 @@ extension FavoritesViewController: WordDetailDelegate {
         let parentWord = coreDataStack.mainContext.object(with: word.objectID) as? DBWord
         
         let currentIndexPath =  self.fetchedResultsController.indexPath(forObject: parentWord!)
+        if currentIndexPath == nil {
+            return word
+        }
+        
         var nextIndexPath = IndexPath(row: 0, section: 0)
         
         if forward == true {

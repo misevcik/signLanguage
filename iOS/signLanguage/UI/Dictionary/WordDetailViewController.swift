@@ -39,6 +39,9 @@ class WordDetailViewController : UIViewController {
     private var isSlowDownVideo : Bool = false
     
     @IBAction func clickBack(_ sender: Any) {
+        
+        delegate?.saveCoreData(viewController: self)
+        
         _ = navigationController?.popViewController(animated: true)
         self.navigationController?.isNavigationBarHidden = true
     }
@@ -46,7 +49,6 @@ class WordDetailViewController : UIViewController {
     @IBAction func clickToFavorite(_ sender: UIButton) {
         dbWord.favorite = !dbWord.favorite
         updateFavoriteButton(dbWord.favorite)
-        delegate?.saveCoreData(viewController: self)
     }
     
     

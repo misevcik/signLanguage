@@ -178,6 +178,7 @@ extension LectionDetailViewController : VideoControllerProtocol {
     
     func clickSideVideo(_ isSelected : Bool) {
         isSideVideo = isSelected
+        updateVideoFrame()
     }
     
     func clickSlowDown(_ isSelected : Bool) {

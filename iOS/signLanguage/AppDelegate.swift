@@ -14,25 +14,39 @@ struct Log {
     static var general = OSLog(subsystem: "sk.dorteo.signLanguage", category: "dorteo")
 }
 
-@UIApplicationMain
+//@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
+    var isFullScreen = false
     var coreDataStack = CoreDataStack(modelName: "DictionaryDatabase")
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
-        let arr = NSArray(objects: "Slovak")
-        UserDefaults.standard.set(arr, forKey: "AppleLanguages")
         
         preloadData()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterFullScreen), name: NSNotification.Name(rawValue: "MediaEnterFullScreen"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willExitFullScreen), name: NSNotification.Name(rawValue: "MediaExitFullScreen"), object: nil)
+        
 
-        UIApplication.shared.isStatusBarHidden = false
+        //UIApplication.shared.isStatusBarHidden = false
         
         return true
     }
     
-    func preloadData() {
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return isFullScreen == true ? UIInterfaceOrientationMask.all : UIInterfaceOrientationMask.portrait
+    }
+    
+    @objc func willEnterFullScreen (notification: NSNotification) {
+        isFullScreen = true
+    }
+    
+    @objc func willExitFullScreen (notification: NSNotification) {
+        isFullScreen = false
+    }
+    
+    private func preloadData() {
         
         let previouslyLaunched = UserDefaults.standard.bool(forKey: "previouslyLaunched")
         if !previouslyLaunched {

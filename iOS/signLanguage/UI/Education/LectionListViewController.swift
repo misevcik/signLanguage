@@ -64,10 +64,13 @@ extension LectionListViewController: UITableViewDataSource, UITableViewDelegate 
             fatalError("Unexpected Index Path")
         }
         
+        let dbWord = dbWordArray[indexPath.row]
+        
         let order = indexPath.row + 1
-        let word = dbWordArray[indexPath.row].word!
+        let word = dbWord.word!
         
         cell.wordLabel.text = "\(order). \(word)"
+        cell.arrowImage.image = dbWord.visited == true ? #imageLiteral(resourceName: "iconRightArrowRed") : #imageLiteral(resourceName: "iconRightArrow")
         
         return cell
     }
@@ -88,6 +91,7 @@ extension LectionListViewController: UITableViewDataSource, UITableViewDelegate 
 extension LectionListViewController : LectionDetailDelegate {
     
     func saveCoreData(viewController: LectionDetailViewController) {
+        lectionTable.reloadData()
         self.delegate!.saveCoreData(viewController: viewController)
     }
 }

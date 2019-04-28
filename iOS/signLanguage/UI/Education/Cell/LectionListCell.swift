@@ -13,6 +13,8 @@ class LectionListCell : UITableViewCell {
     
     static let reuseIdentifier = "LectionListCell"
     
+    @IBOutlet weak var arrowImage: UIImageView!
+    
     @IBOutlet weak var wordLabel: UILabel!
     
     override func awakeFromNib() {

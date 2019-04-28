@@ -1949,6 +1949,7 @@
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                         <connections>
+                                                            <outlet property="arrowImage" destination="h79-5W-pSG" id="MH4-Fz-Tkp"/>
                                                             <outlet property="wordLabel" destination="vBg-gG-kd6" id="BjQ-ZF-1Tt"/>
                                                         </connections>
                                                     </tableViewCell>
@@ -2491,7 +2492,7 @@
         <image name="iconHeart-red" width="24" height="24"/>
         <image name="iconInfo" width="24" height="24"/>
         <image name="iconLock" width="24" height="24"/>
-        <image name="iconRightArrow" width="14" height="14"/>
+        <image name="iconRightArrow" width="24" height="24"/>
         <image name="iconStar" width="24" height="24"/>
         <image name="info-blue" width="17" height="17"/>
         <image name="info-gray" width="17" height="17"/>

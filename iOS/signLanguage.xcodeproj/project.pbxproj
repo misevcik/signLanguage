@@ -37,7 +37,6 @@
 		5498947B2212251600024E77 /* sample_1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 549894792212251600024E77 /* sample_1.mp4 */; };
 		5498947C2212251600024E77 /* sample_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5498947A2212251600024E77 /* sample_2.mp4 */; };
 		549D9BED21E6727A00E930AD /* PreloadCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549D9BEC21E6727A00E930AD /* PreloadCoreData.swift */; };
-		54A386B022199DDC00D35569 /* DLRadioButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5440C027220494D50077F6E5 /* DLRadioButton.framework */; };
 		54AAD6CA21DE8DCD00D9F303 /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AAD6C921DE8DCD00D9F303 /* DictionaryViewController.swift */; };
 		54B12C6721D11FBC00A9E2C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B12C6621D11FBC00A9E2C1 /* AppDelegate.swift */; };
 		54B12C6C21D11FBC00A9E2C1 /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54B12C6A21D11FBC00A9E2C1 /* MainViewController.storyboard */; };
@@ -70,7 +69,6 @@
 		54339FC2223AE505009F330B /* TestDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDetailViewController.swift; sourceTree = "<group>"; };
 		543F199121DEA2AB00F08764 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		5440C025220435D90077F6E5 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		5440C027220494D50077F6E5 /* DLRadioButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DLRadioButton.framework; sourceTree = "<group>"; };
 		545F1B8D22327CFF0007B60C /* VideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoController.swift; sourceTree = "<group>"; };
 		545F1B8F22327D0A0007B60C /* VideoController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoController.xib; sourceTree = "<group>"; };
 		5465C00A222ABCBA009B628F /* LectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectionViewController.swift; sourceTree = "<group>"; };
@@ -98,7 +96,6 @@
 		54CE808822539DCE00D73B94 /* CancelTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelTestView.swift; sourceTree = "<group>"; };
 		54CE808922539DCE00D73B94 /* CancelTestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CancelTestView.xib; sourceTree = "<group>"; };
 		54CE808C2253EA5A00D73B94 /* sample_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample_3.mp4; sourceTree = "<group>"; };
-		54EA763021F670FB00A5C50C /* UPCarouselFlowLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UPCarouselFlowLayout.framework; sourceTree = "<group>"; };
 		54EA763421F677BD00A5C50C /* EducationDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EducationDetailCell.swift; sourceTree = "<group>"; };
 		54EF9ED422708FD200BF4A03 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,7 +105,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54A386B022199DDC00D35569 /* DLRadioButton.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,8 +278,6 @@
 		54EA762F21F670C600A5C50C /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				5440C027220494D50077F6E5 /* DLRadioButton.framework */,
-				54EA763021F670FB00A5C50C /* UPCarouselFlowLayout.framework */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -326,10 +320,10 @@
 			};
 			buildConfigurationList = 54B12C5E21D11FBC00A9E2C1 /* Build configuration list for PBXProject "signLanguage" */;
 			compatibilityVersion = "Xcode 9.3";
-			developmentRegion = en;
+			developmentRegion = Slovak;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				Base,
+				Slovak,
 			);
 			mainGroup = 54B12C5A21D11FBC00A9E2C1;
 			productRefGroup = 54B12C6421D11FBC00A9E2C1 /* Products */;
@@ -371,8 +365,6 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/signLanguage/Library/DLRadioButton.framework",
-				"$(SRCROOT)/signLanguage/Library/UPCarouselFlowLayout.framework",
 			);
 			outputFileListPaths = (
 			);

@@ -21,10 +21,15 @@ class LectionViewController : UIViewController {
     private var lockImage : UIImage = UIImage(named:"iconLock")!
     private var unlockImage : UIImage = UIImage(named:"iconUnlock")!
     private let sectionInsets = UIEdgeInsets(top: 1.0, left: 1.0, bottom: 1.0, right: 1.0)
-    private let itemsPerRow: CGFloat = 2
+    private var itemsPerRow: CGFloat = 2
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            itemsPerRow = CGFloat(3)
+        }
         
         setupManagedContext()
     }

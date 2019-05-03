@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,28 +31,28 @@
                             <rect key="frame" x="10" y="10" width="325" height="40"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="a) Odpoved" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Htq-Us-NgM" userLabel="Answer Text">
-                                    <rect key="frame" x="0.0" y="0.0" width="232" height="40"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="216.5" height="40"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OnJ-cA-pSa" userLabel="Result">
-                                    <rect key="frame" x="232" y="0.0" width="93" height="40"/>
+                                    <rect key="frame" x="216.5" y="0.0" width="108.5" height="40"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="myK-9m-Fzr">
-                                            <rect key="frame" x="0.0" y="0.0" width="93" height="40"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="108.5" height="40"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nesprávne" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FmH-Q3-rXC" userLabel="Result">
-                                                    <rect key="frame" x="0.0" y="0.0" width="66.5" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="77.5" height="40"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.85490196078431369" green="0.22745098039215686" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELp-1N-iSx">
-                                                    <rect key="frame" x="66.5" y="0.0" width="26.5" height="40"/>
+                                                    <rect key="frame" x="77.5" y="0.0" width="31" height="40"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconTestCancel" translatesAutoresizingMaskIntoConstraints="NO" id="XFd-Jh-2NA">
-                                                            <rect key="frame" x="5.5" y="12.5" width="15" height="15"/>
+                                                            <rect key="frame" x="8" y="12.5" width="15" height="15"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="15" id="G7k-sS-PzW"/>
                                                                 <constraint firstAttribute="width" constant="15" id="c1Z-hq-38o"/>
@@ -79,7 +79,7 @@
                                 </view>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="OnJ-cA-pSa" firstAttribute="width" secondItem="Htq-Us-NgM" secondAttribute="width" multiplier="0.4" id="WAT-lg-107"/>
+                                <constraint firstItem="OnJ-cA-pSa" firstAttribute="width" secondItem="Htq-Us-NgM" secondAttribute="width" multiplier="0.5" id="WAT-lg-107"/>
                             </constraints>
                         </stackView>
                     </subviews>

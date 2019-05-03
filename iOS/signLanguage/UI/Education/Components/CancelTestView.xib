@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,28 +15,33 @@
                 <outlet property="cancelButton" destination="Pp5-tr-T8S" id="5d4-na-bK7"/>
                 <outlet property="contentView" destination="HZ6-si-Ezy" id="noZ-Ru-lgz"/>
                 <outlet property="continuteButton" destination="p8s-BF-XIQ" id="Jfq-fm-9iv"/>
+                <outlet property="headLabel" destination="yTI-BJ-csa" id="yNV-0D-WKr"/>
+                <outlet property="infoLabel" destination="FY0-LC-vxu" id="I43-uY-sla"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="I">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HZ6-si-Ezy">
-                    <rect key="frame" x="36" y="270" width="303" height="317"/>
+                    <rect key="frame" x="36" y="270" width="696" height="674"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gfa-r3-dIG">
-                            <rect key="frame" x="25" y="30" width="253" height="287"/>
+                            <rect key="frame" x="25" y="30" width="646" height="644"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FKD-BL-bzA" userLabel="Placeholder">
-                                    <rect key="frame" x="0.0" y="0.0" width="253" height="72"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="646" height="161"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naozaj chcete ukončiť test?" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTI-BJ-csa" userLabel="Text">
-                                            <rect key="frame" x="0.0" y="9.5" width="253" height="53"/>
+                                            <rect key="frame" x="0.0" y="35" width="646" height="91"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
+                                            <variation key="heightClass=regular-widthClass=regular">
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="38"/>
+                                            </variation>
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -48,13 +53,16 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NgC-vL-HYc" userLabel="Placeholder">
-                                    <rect key="frame" x="0.0" y="72" width="253" height="71.5"/>
+                                    <rect key="frame" x="0.0" y="161" width="646" height="161"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Predcasnym ukoncenim testu sa nedozviete vyseledky testy" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FY0-LC-vxu" userLabel="Text">
-                                            <rect key="frame" x="0.0" y="17.5" width="253" height="36"/>
+                                            <rect key="frame" x="0.0" y="54" width="646" height="53"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
+                                            <variation key="heightClass=regular-widthClass=regular">
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            </variation>
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -70,20 +78,23 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="otP-XF-zxI" userLabel="Placeholder">
-                                    <rect key="frame" x="0.0" y="143.5" width="253" height="143.5"/>
+                                    <rect key="frame" x="0.0" y="322" width="646" height="322"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="FdJ-YS-nji">
-                                            <rect key="frame" x="0.0" y="0.0" width="253" height="143.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="646" height="322"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pyo-QA-omj" userLabel="Placeholder">
-                                                    <rect key="frame" x="0.0" y="0.0" width="253" height="72"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="646" height="161"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pp5-tr-T8S" userLabel="Cancel">
-                                                            <rect key="frame" x="0.0" y="16" width="253" height="40"/>
+                                                            <rect key="frame" x="0.0" y="36" width="646" height="89"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                             <state key="normal" title="Ano, ukoncit test">
                                                                 <color key="titleColor" red="0.4549019608" green="0.86274509799999999" blue="0.96862745289999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
+                                                            <variation key="heightClass=regular-widthClass=regular">
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                            </variation>
                                                             <connections>
                                                                 <action selector="cancelClick:" destination="-1" eventType="touchUpInside" id="Lyb-v4-Skc"/>
                                                             </connections>
@@ -96,15 +107,18 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dnZ-rj-xQd" userLabel="Placeholder">
-                                                    <rect key="frame" x="0.0" y="72" width="253" height="71.5"/>
+                                                    <rect key="frame" x="0.0" y="161" width="646" height="161"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p8s-BF-XIQ" userLabel="Continue">
-                                                            <rect key="frame" x="0.0" y="15.5" width="253" height="40"/>
+                                                            <rect key="frame" x="0.0" y="36" width="646" height="89"/>
                                                             <color key="backgroundColor" red="0.4549019608" green="0.86274509799999999" blue="0.96862745289999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                             <state key="normal" title="Nie pokracovat">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
+                                                            <variation key="heightClass=regular-widthClass=regular">
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                            </variation>
                                                             <connections>
                                                                 <action selector="continueClick:" destination="-1" eventType="touchUpInside" id="LAa-pG-Acx"/>
                                                             </connections>

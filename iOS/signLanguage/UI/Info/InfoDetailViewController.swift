@@ -12,6 +12,8 @@ class InfoDetailViewController: UIViewController {
 
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var appVersionLabel: UILabel!
+    @IBOutlet weak var aboutText: UILabel!
+    @IBOutlet weak var euText: UILabel!
     
     @IBAction func clickBack(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)
@@ -23,6 +25,11 @@ class InfoDetailViewController: UIViewController {
         
         contentView.layer.cornerRadius = 15
         appVersionLabel.text = "VERZIA \(Bundle.main.releaseVersionNumber!)"
+        
+        if Utils.getDeviceSize() == .small {
+            aboutText.adjustsFontSizeToFitWidth = true
+            euText.adjustsFontSizeToFitWidth = true
+        }
 
     }
     

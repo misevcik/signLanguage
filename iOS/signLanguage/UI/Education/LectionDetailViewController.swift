@@ -209,12 +209,13 @@ private extension LectionDetailViewController {
     }
     
     private func updateVideoFrame() {
+        
         let videoPath = isSideVideo ? self.dbWord.videoSide! : self.dbWord.videoFront!
+        videoHandler.setVideoPath(videoPath)
         
         if isSlowDownVideo == true {
             videoHandler.changeVideoSpeed(0.5)
         }
-        videoHandler.setVideoPath(videoPath)
         videoImage.image = videoHandler.getPreviewImage()
         videoImage.clipsToBounds = true
         videoImage.contentMode = .scaleAspectFill

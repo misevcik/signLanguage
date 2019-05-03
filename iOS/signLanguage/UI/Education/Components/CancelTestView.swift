@@ -15,6 +15,8 @@ class CancelTestView: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var continuteButton: UIButton!
+    @IBOutlet weak var headLabel: UILabel!
+    @IBOutlet weak var infoLabel: UILabel!
     
     @IBAction func cancelClick(_ sender: Any) {
         cancelTestCallback!()
@@ -29,10 +31,15 @@ class CancelTestView: UIViewController {
         super.viewDidLoad()
         
         contentView.layer.cornerRadius = 10
-        continuteButton.layer.cornerRadius = continuteButton.bounds.height / 2
-        cancelButton.layer.cornerRadius = cancelButton.bounds.height / 2
+        continuteButton.layer.cornerRadius = continuteButton.bounds.height / 3
+        cancelButton.layer.cornerRadius = cancelButton.bounds.height / 3
         cancelButton.layer.borderWidth = 2
         cancelButton.layer.borderColor = #colorLiteral(red: 0.5160872936, green: 0.8872948289, blue: 0.9788959622, alpha: 1)
+        
+        if Utils.getDeviceSize() == .small {
+            headLabel.adjustsFontSizeToFitWidth = true
+            infoLabel.adjustsFontSizeToFitWidth = true
+        }
     }
 
 

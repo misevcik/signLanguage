@@ -101,6 +101,12 @@ extension TestViewController: NSFetchedResultsControllerDelegate {
             cell.lockImage.image = lockImage
             cell.detailLabel.text = "ZAMKNUTY TEST"
         }
+        
+        //adjust font to small resolution
+        if Utils.getDeviceSize() == .small {
+            cell.nameLabel.adjustsFontSizeToFitWidth = true
+            cell.scoreLabel.adjustsFontSizeToFitWidth = true
+        }
     }
     
     

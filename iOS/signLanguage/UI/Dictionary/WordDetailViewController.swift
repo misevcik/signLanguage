@@ -155,9 +155,10 @@ private extension WordDetailViewController {
     }
     
     private func updateVideoFrame() {
-        let videoPath = isSideVideo ? self.dbWord.videoSide! : self.dbWord.videoFront!
         
+        let videoPath = isSideVideo ? self.dbWord.videoSide! : self.dbWord.videoFront!
         videoHandler.setVideoPath(videoPath)
+        
         if isSlowDownVideo == true {
             videoHandler.changeVideoSpeed(0.5)
         }

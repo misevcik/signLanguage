@@ -9,6 +9,10 @@
 import UIKit
 import AVKit
 
+enum DeviceSize {
+    case big, medium, small
+}
+
 class Utils {
     
     static func getVideoImage(url: URL, at time: TimeInterval) -> UIImage? {
@@ -45,6 +49,27 @@ class Utils {
         } else {
             return "A"
         }
+    }
+    
+    static func getDeviceSize() -> DeviceSize {
+        
+        var devicetype: DeviceSize {
+            
+            switch UIScreen.main.nativeBounds.height {
+            case 1136:
+                return .small
+            case 1334:
+                return .medium
+            case 2208:
+                return .big
+            case 2436:
+                return .big
+            default:
+                return .big
+            }
+        }
+        
+        return devicetype
     }
     
 }
@@ -95,5 +120,6 @@ extension Bundle {
         return infoDictionary?["CFBundleVersion"] as? String
     }
 }
+
 
 

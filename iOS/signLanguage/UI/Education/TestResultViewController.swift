@@ -81,8 +81,8 @@ class TestResultViewController: UIViewController {
         super.viewDidLoad()
         
         contentView.layer.cornerRadius = 15
-        cancelButton.layer.cornerRadius = cancelButton.bounds.height / 2
-        resetButton.layer.cornerRadius = resetButton.bounds.height / 2
+        cancelButton.layer.cornerRadius = cancelButton.bounds.height / 3
+        resetButton.layer.cornerRadius = resetButton.bounds.height / 3
         resetButton.layer.borderWidth = 2
         resetButton.layer.borderColor = #colorLiteral(red: 0.5160872936, green: 0.8872948289, blue: 0.9788959622, alpha: 1)
         

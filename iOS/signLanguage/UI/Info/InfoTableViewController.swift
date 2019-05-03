@@ -10,6 +10,7 @@ import UIKit
 import StoreKit
 import MessageUI
 
+@available(iOS 10.3, *)
 class InfoTableViewController: UITableViewController, MFMailComposeViewControllerDelegate {
 
     @IBOutlet var infoTableView: UITableView!

@@ -37,7 +37,7 @@ class LectionListViewController : UIViewController {
         dbWordArray = dbLection.relDictionary?.array as! [DBWord]
         lectionTable.tableFooterView = UIView()
 
-        lectionName.text = "Lekcia č: \(lectionOrder) - \(dbLection.title!)"
+        lectionName.text = "\(lectionOrder). \(dbLection.title!)"
     }
     
     override func viewWillAppear(_ animated: Bool) {

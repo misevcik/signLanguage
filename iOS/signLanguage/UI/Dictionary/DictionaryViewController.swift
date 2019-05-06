@@ -38,6 +38,7 @@ class DictionaryViewController : UIViewController {
         sleep(1) // Hack untill find the solution
                 
         setupManagedContext()
+        setupTabBarSelection()
         setupLayout()
     }
     
@@ -53,8 +54,14 @@ class DictionaryViewController : UIViewController {
         
         searchBar.layer.borderWidth = 1
         searchBar.layer.borderColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
+        
     }
     
+    func setupTabBarSelection() {
+        
+        let tabBar = self.tabBarController!.tabBar
+        tabBar.selectionIndicatorImage = UIImage().createSelectionIndicator(color: #colorLiteral(red: 0.4549019608, green: 0.862745098, blue: 0.9686274529, alpha: 1), size: CGSize(width: tabBar.frame.width/CGFloat(tabBar.items!.count), height:  tabBar.frame.height), lineWidth: 3.0)
+    }
 
 }
 

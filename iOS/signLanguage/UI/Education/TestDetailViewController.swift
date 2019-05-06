@@ -151,6 +151,11 @@ class TestDetailViewController: UIViewController {
         
         //Has answer
         if data.selectedAnswer != -1 {
+            
+            for i in 0 ..< answerCollection.count {
+                answerCollection[i].disableUserInteraction()
+            }
+            
             let isAnswerCorrect = data.answerList[data.selectedAnswer].isCorrect
             
             if isAnswerCorrect == true {
@@ -159,10 +164,6 @@ class TestDetailViewController: UIViewController {
             } else {
                 answerCollection[data.selectedAnswer].wrongAnswerSelected()
                 answerCollection[indexOfRightAnswer].markRighAnswer()
-            }
-    
-            for i in 0 ..< answerCollection.count {
-                answerCollection[i].disableUserInteraction()
             }
         }
     }

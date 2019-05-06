@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,8 +35,12 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UeW-vb-uAQ" userLabel="Slowdown Button">
                                             <rect key="frame" x="22.5" y="22" width="30" height="30"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="ET3-kj-otI"/>
-                                                <constraint firstAttribute="width" constant="30" id="jZW-y1-tMa"/>
+                                                <constraint firstAttribute="height" constant="30" id="ET3-kj-otI">
+                                                    <variation key="heightClass=regular-widthClass=regular" constant="45"/>
+                                                </constraint>
+                                                <constraint firstAttribute="width" constant="30" id="jZW-y1-tMa">
+                                                    <variation key="heightClass=regular-widthClass=regular" constant="45"/>
+                                                </constraint>
                                             </constraints>
                                             <inset key="imageEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                             <state key="normal" image="iconClock"/>
@@ -50,6 +54,9 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
+                                            <variation key="heightClass=regular-widthClass=regular">
+                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            </variation>
                                         </label>
                                     </subviews>
                                     <constraints>
@@ -65,8 +72,12 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Za2-Yf-osk" userLabel="Backward Button" customClass="HighlightUIButton" customModule="signLanguage" customModuleProvider="target">
                                             <rect key="frame" x="22.5" y="27" width="30" height="30"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="30" id="Yl9-U7-UOd"/>
-                                                <constraint firstAttribute="height" constant="30" id="rcw-k1-laF"/>
+                                                <constraint firstAttribute="width" constant="30" id="Yl9-U7-UOd">
+                                                    <variation key="heightClass=regular-widthClass=regular" constant="45"/>
+                                                </constraint>
+                                                <constraint firstAttribute="height" constant="30" id="rcw-k1-laF">
+                                                    <variation key="heightClass=regular-widthClass=regular" constant="45"/>
+                                                </constraint>
                                             </constraints>
                                             <inset key="imageEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                             <state key="normal" image="iconBackward"/>
@@ -94,8 +105,12 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tGe-Wz-XLY">
                                             <rect key="frame" x="17.5" y="22" width="40" height="40"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="40" id="Xdf-PI-eOp"/>
-                                                <constraint firstAttribute="height" constant="40" id="iU3-mT-4MI"/>
+                                                <constraint firstAttribute="width" constant="40" id="Xdf-PI-eOp">
+                                                    <variation key="heightClass=regular-widthClass=regular" constant="55"/>
+                                                </constraint>
+                                                <constraint firstAttribute="height" constant="40" id="iU3-mT-4MI">
+                                                    <variation key="heightClass=regular-widthClass=regular" constant="55"/>
+                                                </constraint>
                                             </constraints>
                                             <state key="normal" image="iconPlay"/>
                                             <connections>
@@ -114,8 +129,12 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ipq-8h-26k" userLabel="Forward Button" customClass="HighlightUIButton" customModule="signLanguage" customModuleProvider="target">
                                             <rect key="frame" x="22.5" y="27" width="30" height="30"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="30" id="03g-IW-k0p"/>
-                                                <constraint firstAttribute="height" constant="30" id="HUA-tj-l0y"/>
+                                                <constraint firstAttribute="width" constant="30" id="03g-IW-k0p">
+                                                    <variation key="heightClass=regular-widthClass=regular" constant="45"/>
+                                                </constraint>
+                                                <constraint firstAttribute="height" constant="30" id="HUA-tj-l0y">
+                                                    <variation key="heightClass=regular-widthClass=regular" constant="45"/>
+                                                </constraint>
                                             </constraints>
                                             <inset key="imageEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                             <state key="normal" image="iconForward"/>
@@ -141,8 +160,12 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xQk-yw-8LT" userLabel="Side Video">
                                             <rect key="frame" x="22.5" y="22" width="30" height="30"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="30" id="LTi-Vk-mDs"/>
-                                                <constraint firstAttribute="height" constant="30" id="Myc-To-0hT"/>
+                                                <constraint firstAttribute="width" constant="30" id="LTi-Vk-mDs">
+                                                    <variation key="heightClass=regular-widthClass=regular" constant="45"/>
+                                                </constraint>
+                                                <constraint firstAttribute="height" constant="30" id="Myc-To-0hT">
+                                                    <variation key="heightClass=regular-widthClass=regular" constant="45"/>
+                                                </constraint>
                                             </constraints>
                                             <inset key="imageEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                             <state key="normal" image="iconRotate"/>
@@ -190,12 +213,12 @@
     </objects>
     <resources>
         <image name="iconBack" width="24" height="24"/>
-        <image name="iconBackward" width="24" height="24"/>
-        <image name="iconClock" width="24" height="24"/>
-        <image name="iconClockSelected" width="35" height="36"/>
-        <image name="iconForward" width="24" height="24"/>
+        <image name="iconBackward" width="32" height="32"/>
+        <image name="iconClock" width="36" height="36"/>
+        <image name="iconClockSelected" width="35.5" height="36"/>
+        <image name="iconForward" width="32" height="32"/>
         <image name="iconPlay" width="64" height="64"/>
-        <image name="iconRotate" width="35" height="35"/>
-        <image name="iconRotateSelected" width="24" height="24"/>
+        <image name="iconRotate" width="35.5" height="35.5"/>
+        <image name="iconRotateSelected" width="36" height="36"/>
     </resources>
 </document>

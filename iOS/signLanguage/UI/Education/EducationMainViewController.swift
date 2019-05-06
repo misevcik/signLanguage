@@ -34,18 +34,11 @@ class EducationMainViewController : UIViewController, EducationMenuBarProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupLayout()
-        
+    
         educationMenuBar.delegate = self
         add(asChildViewController: lectionViewController)
     }
     
-    func setupLayout() {
-        
-        let tabBar = self.tabBarController!.tabBar
-        tabBar.selectionIndicatorImage = UIImage().createSelectionIndicator(color: #colorLiteral(red: 0.4549019608, green: 0.862745098, blue: 0.9686274529, alpha: 1), size: CGSize(width: tabBar.frame.width/CGFloat(tabBar.items!.count), height:  tabBar.frame.height), lineWidth: 3.0)
-        
-    }
     
     func menuBarButtonClicked(_ type: EducationMenuBarType) {
         

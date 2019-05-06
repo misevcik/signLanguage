@@ -13,7 +13,7 @@ class TestResultViewController: UIViewController {
     var resetTestCallback: (() -> Void)?
     
     @IBOutlet weak var testDate: UILabel!
-    @IBOutlet weak var resultImage: UIImageView!
+    @IBOutlet weak var thumbsImage: UIImageView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
@@ -46,8 +46,10 @@ class TestResultViewController: UIViewController {
     private var rightAnswers = 0
     private var wrongAnswers = 0
     private var goFromTestDetail = false
-    private let cRecommendGood = "Test uspesny, mozete ist na dalsiu lekciu"
-    private let cRecommendWrong = "Mal by si este zopakovat lekciu aby si sa zdokonalil"
+    private let cRecommendGood = "Test úspešny, možete isť na dalšiu lekciu"
+    private let cRecommendWrong = "Mal by ste si ešte zopakovať lekciu aby ste sa zdokonalili"
+    private let cRecommendBad = "Test neúspešny. Zopakujte si lekciu."
+
     
     func popResultView() {
         
@@ -113,10 +115,18 @@ class TestResultViewController: UIViewController {
         testDate.text = dateFormatter.string(from: date)
         countRightAnswers.text = String(rightAnswers)
         countWrongAnswers.text = String(wrongAnswers)
-        if(score > 80) {
+        if(score >= 80) {
             recomendationLabel.text = cRecommendGood
-        } else {
+        } else if (score >= 50 && score < 80){
             recomendationLabel.text = cRecommendWrong
+        } else {
+            recomendationLabel.text = cRecommendBad
+        }
+        
+        if(score >= 50) {
+            thumbsImage.image = #imageLiteral(resourceName: "thumbsUp")
+        } else {
+            thumbsImage.image = #imageLiteral(resourceName: "thumbsDown")
         }
     }
     

@@ -27,10 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterFullScreen), name: NSNotification.Name(rawValue: "MediaEnterFullScreen"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(willExitFullScreen), name: NSNotification.Name(rawValue: "MediaExitFullScreen"), object: nil)
-        
-
-        //UIApplication.shared.isStatusBarHidden = false
-        
+                
         return true
     }
     

@@ -187,6 +187,7 @@ extension LectionViewController : UICollectionViewDataSource, UICollectionViewDe
         cell.videoCount.text = String(describing: lection.relDictionary!.count) + " " + "VIDEI"
         if lection.image != nil {
             cell.coverImage.image = UIImage(named: lection.image!)
+            cell.coverImage.setRounded()
         }
         
         return cell

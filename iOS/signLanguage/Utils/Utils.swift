@@ -85,6 +85,15 @@ extension UIImage {
     }
 }
 
+extension UIImageView {
+    
+    func setRounded() {
+        self.layer.cornerRadius = (self.frame.width / 2) //instead of let radius = CGRectGetWidth(self.frame) / 2
+        self.layer.masksToBounds = true
+    }
+}
+
+
 extension UITableView {
     func lastIndexpath() -> IndexPath {
         let section = max(numberOfSections - 1, 0)
@@ -108,6 +117,14 @@ extension NSString{
             return "CH"
         }
         
+        if character == "Ú" {
+            return "U"
+        }
+        
+        if character == "Á" {
+            return "A"
+        }
+        
         return character.capitalized
     }
 }
@@ -120,6 +137,7 @@ extension Bundle {
         return infoDictionary?["CFBundleVersion"] as? String
     }
 }
+
 
 
 

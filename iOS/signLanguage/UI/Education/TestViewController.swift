@@ -94,7 +94,7 @@ extension TestViewController: NSFetchedResultsControllerDelegate {
                 
                 cell.scoreLabel.isHidden = false
                 cell.detailLabel.text = "\(correctAnswers) SPRÁVNE / \(wrongAnswers) NESPRÁVNE"
-                cell.scoreLabel.text  = "\(score) % (\(grade))"
+                cell.scoreLabel.text  = "\(score)% (\(grade))"
             }
         } else {
             cell.lockImage.isHidden = false

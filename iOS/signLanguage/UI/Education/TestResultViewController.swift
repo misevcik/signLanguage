@@ -12,7 +12,7 @@ class TestResultViewController: UIViewController {
 
     var resetTestCallback: (() -> Void)?
     
-    @IBOutlet weak var testDate: UILabel!
+    @IBOutlet weak var timeResultLabel: UILabel!
     @IBOutlet weak var thumbsImage: UIImageView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -91,14 +91,6 @@ class TestResultViewController: UIViewController {
         
         setResultData()
         
-        if goFromTestDetail == true {
-            testDate.isHidden = true
-            cancelIcon.imageView?.image = #imageLiteral(resourceName: "iconCancelWhite")
-        } else {
-            cancelIcon.imageView?.image = #imageLiteral(resourceName: "iconBackWhite")
-            testDate.isHidden = false
-        }
-        
     }
     
     private func setResultData() {
@@ -110,9 +102,17 @@ class TestResultViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
         
-        timeLabel.text = String(format:"%02i:%02i", minutes, seconds)
+        if goFromTestDetail == true {
+            timeLabel.text = "Čas"
+            timeResultLabel.text = String(format:"%02i:%02i", minutes, seconds)
+            cancelIcon.imageView?.image = #imageLiteral(resourceName: "iconCancelWhite")
+        } else {
+            timeLabel.text = "Dátum"
+            timeResultLabel.text = dateFormatter.string(from: date)
+            cancelIcon.imageView?.image = #imageLiteral(resourceName: "iconBackWhite")
+        }
+        
         scoreLabel.text = "\(score) % (\(grade))"
-        testDate.text = dateFormatter.string(from: date)
         countRightAnswers.text = String(rightAnswers)
         countWrongAnswers.text = String(wrongAnswers)
         if(score >= 80) {

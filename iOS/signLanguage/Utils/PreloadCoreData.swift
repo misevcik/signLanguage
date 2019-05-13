@@ -179,7 +179,7 @@ class PreloadCoreData {
         
         lection.append(Lection(id: id.increment(), title: "Prvý kontakt I.", image: "firstContact_I" ))
         lection.append(Lection(id: id.increment(), title: "Prvý kontakt II.", image: "firstContact_II" ))
-        lection.append(Lection(id: id.increment(), title: "Prvý kontakt III.", image: "nemo-top" ))
+        lection.append(Lection(id: id.increment(), title: "Prvý kontakt III.", image: "firstContact_III" ))
         lection.append(Lection(id: id.increment(), title: "Rodina I.", image: "nemo-top" ))
         lection.append(Lection(id: id.increment(), title: "Rodina II.", image: "nemo-top" ))
         lection.append(Lection(id: id.increment(), title: "Čísla I.", image: "nemo-top" ))
@@ -242,9 +242,60 @@ class PreloadCoreData {
         sentence.append(Sentence(id: id.increment(), sentence: "Moja kolegyňa je nedoslýchavá.", video: "sample_2"))
         
         //Lesson 4 - Rodina I
+        //ID = 17
+        sentence.append(Sentence(id: id.increment(), sentence: "Mám počujúcu sestru.", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "Poznám jeho rodičov.", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "Môj brat je ženatý.", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "On má nepočujúcu dcéru.", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "Nemám súrodencov.", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "Moje dieťa v noci spí.", video: "sample_2"))
+        
+        //Lesson 5 - Rodina I
+        //ID = 23
+        sentence.append(Sentence(id: id.increment(), sentence: "Mám priateľa.", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "Jej babka má vnučku?", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "Moja mama je rozvedená.", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "Druh a družka majú deti.", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "Ako sa volá tvoj druh?", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "Manželia nemajú deti.", video: "sample_2"))
+        
+        //Lesson 6 - Cisla I
+        //ID = 29
+        sentence.append(Sentence(id: id.increment(), sentence: "Mám tri kamarátky.", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "Mám štyroch bratov.", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "Môj otec má 37 rokov.", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "Moja kolegyňa je vydatá a má 4 deti.", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "Manželia sú spolu už 19 rokov.", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "Chlapec má 12 rokov.", video: "sample_2"))
+        
+        //Lesson 7 - Cisla II
+        //ID = 35
+        sentence.append(Sentence(id: id.increment(), sentence: "Koľko máš rokov?", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "67 – 12 = ?", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "Chlapec má 12 rokov.", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "Starý muž má 70 rokov.", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "30 + 50 = 80. Je to správne?", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "Mladá žena má 27 rokov.", video: "sample_2"))
+        
+        //Lesson 8 - Meterialy a farby I
+        //ID = 41
+        sentence.append(Sentence(id: id.increment(), sentence: "Oranžové, fialové a červené farby sú pekné.", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "Otec má rád tmavé farby.", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "Milujem žltú farbu a neznášam čiernu farbu.", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "Milujem svetlú červenú farbu.", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "Nemám rád hnedú a čiernu farbu.", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "Tá žena je škaredá.", video: "sample_2"))
+        
+        //Lesson 9 - Meterialy a farby II
+        //ID = 47
+        sentence.append(Sentence(id: id.increment(), sentence: "Modrá keramika je pekná.", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "Mám rád tmavé drevo.", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "Jeho žena má rada zelenú farbu.", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "Neznášam tvrdú kožu.", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "Tmavo sivý kov je pekný a moderný.", video: "sample_2"))
+        sentence.append(Sentence(id: id.increment(), sentence: "Milujem moderné sklá.", video: "sample_2"))
         
         return sentence
-        
     }
     
     private func getDictionary() -> Array<Word>{
@@ -263,16 +314,16 @@ class PreloadCoreData {
         dictionary.append(Word(name: "Rozumieť", lection: 0, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [3]))
         dictionary.append(Word(name: "Nerozumieť", lection: 0, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [5, 11]))
         dictionary.append(Word(name: "Nedoslýchaví", lection: 0, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [17]))
-        dictionary.append(Word(name: "Muž", lection: 0, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [16]))
-        dictionary.append(Word(name: "Žena", lection: 0, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [4, 10]))
-        dictionary.append(Word(name: "Chlapec", lection: 0, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [1]))
+        dictionary.append(Word(name: "Muž", lection: 0, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [16, 38]))
+        dictionary.append(Word(name: "Žena", lection: 0, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [4, 10, 40]))
+        dictionary.append(Word(name: "Chlapec", lection: 0, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [1, 37]))
         dictionary.append(Word(name: "Dievča", lection: 0, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [2]))
         
         //Lesson 2 - - Prvy kontakt II
         dictionary.append(Word(name: "Meno", lection: 1, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [6]))
         dictionary.append(Word(name: "Moje", lection: 1, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [6, 17]))
         dictionary.append(Word(name: "Tvoje", lection: 1, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [15]))
-        dictionary.append(Word(name: "Jeho/Jej", lection: 1, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
+        dictionary.append(Word(name: "Jeho/Jej", lection: 1, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [49, 18]))
         dictionary.append(Word(name: "Kto", lection: 1, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [7]))
         dictionary.append(Word(name: "My", lection: 1, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [9]))
         dictionary.append(Word(name: "Vy", lection: 1, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
@@ -298,37 +349,38 @@ class PreloadCoreData {
         dictionary.append(Word(name: "Kolega/Kolegyňa", lection: 2, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [17]))
         dictionary.append(Word(name: "Ďakujem", lection: 2, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
         dictionary.append(Word(name: "Pozdraviť", lection: 2, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Poznať", lection: 2, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [16]))
+        dictionary.append(Word(name: "Poznať", lection: 2, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [16, 18]))
         dictionary.append(Word(name: "Tešiť sa", lection: 2, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
         dictionary.append(Word(name: "Stretnúť", lection: 2, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
         dictionary.append(Word(name: "Opakovať", lection: 2, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
 
         //Lesson 4 - Rodina I
-        dictionary.append(Word(name: "Mama", lection: 3, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Otec", lection: 3,  videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Dcéra", lection: 3,  videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
+        dictionary.append(Word(name: "Mama", lection: 3, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [25]))
+        dictionary.append(Word(name: "Otec", lection: 3,  videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [31]))
+        dictionary.append(Word(name: "Dcéra", lection: 3,  videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [20]))
         dictionary.append(Word(name: "Syn", lection: 3,   videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
         dictionary.append(Word(name: "Rodina", lection: 3, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Brat", lection: 3, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Sestra", lection: 3, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Deti", lection: 3, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Mám", lection: 3, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Nemám", lection: 3, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Babka", lection: 3, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
+        dictionary.append(Word(name: "Brat", lection: 3, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [19, 30]))
+        dictionary.append(Word(name: "Sestra", lection: 3, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [17]))
+        dictionary.append(Word(name: "Deti", lection: 3, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [22, 26, 28]))
+        dictionary.append(Word(name: "Mám", lection: 3, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [17]))
+        dictionary.append(Word(name: "Nemám", lection: 3, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [21, 28]))
+        dictionary.append(Word(name: "Babka", lection: 3, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [24]))
         dictionary.append(Word(name: "Dedko", lection: 3, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
         dictionary.append(Word(name: "Dieťa", lection: 3, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Ženatý/Vydatá", lection: 3, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
+        dictionary.append(Word(name: "Ženatý/Vydatá", lection: 3, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [19, 32]))
         dictionary.append(Word(name: "Slobodný/á", lection: 3, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
         
+
         //Lesson 5 - Rodina II
         dictionary.append(Word(name: "Vnuk", lection: 4, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Vnučka", lection: 4, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Manžel/ka", lection: 4, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Rozvedený/á", lection: 4, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
+        dictionary.append(Word(name: "Vnučka", lection: 4, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [24]))
+        dictionary.append(Word(name: "Manžel/ka", lection: 4, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [28, 33]))
+        dictionary.append(Word(name: "Rozvedený/á", lection: 4, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [25]))
         dictionary.append(Word(name: "Manželia", lection: 4, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
         dictionary.append(Word(name: "Frajer/ka", lection: 4, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Priateľ/ka", lection: 4, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Druh/Družka", lection: 4, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
+        dictionary.append(Word(name: "Priateľ/ka", lection: 4, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [23, 29]))
+        dictionary.append(Word(name: "Druh/Družka", lection: 4, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [26, 27]))
         dictionary.append(Word(name: "Teta", lection: 4, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
         dictionary.append(Word(name: "Ujo", lection: 4, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
         dictionary.append(Word(name: "Žiť", lection: 4, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
@@ -338,21 +390,21 @@ class PreloadCoreData {
         dictionary.append(Word(name: "Láska", lection: 4, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
 
         //Lesson 6 - Čísla I.
-        dictionary.append(Word(name: "0-5", lection: 5, videoFront: "sample_2", videoSide: "", inDictionary: false, sentence: []))
+        dictionary.append(Word(name: "0-5", lection: 5, videoFront: "sample_2", videoSide: "", inDictionary: false, sentence: [29, 30, 32]))
         dictionary.append(Word(name: "6-10", lection: 5, videoFront: "sample_2", videoSide: "", inDictionary: false, sentence: []))
-        dictionary.append(Word(name: "11-15", lection: 5, videoFront: "sample_2", videoSide: "", inDictionary: false, sentence: []))
-        dictionary.append(Word(name: "16-20", lection: 5, videoFront: "sample_2", videoSide: "", inDictionary: false, sentence: []))
+        dictionary.append(Word(name: "11-15", lection: 5, videoFront: "sample_2", videoSide: "", inDictionary: false, sentence: [34]))
+        dictionary.append(Word(name: "16-20", lection: 5, videoFront: "sample_2", videoSide: "", inDictionary: false, sentence: [33]))
         dictionary.append(Word(name: "21-25", lection: 5, videoFront: "sample_2", videoSide: "", inDictionary: false, sentence: []))
         dictionary.append(Word(name: "26-30", lection: 5, videoFront: "sample_2", videoSide: "", inDictionary: false, sentence: []))
-        dictionary.append(Word(name: "31-35", lection: 5, videoFront: "sample_2", videoSide: "", inDictionary: false, sentence: []))
+        dictionary.append(Word(name: "31-35", lection: 5, videoFront: "sample_2", videoSide: "", inDictionary: false, sentence: [31]))
         dictionary.append(Word(name: "46-50", lection: 5, videoFront: "sample_2", videoSide: "", inDictionary: false, sentence: []))
         dictionary.append(Word(name: "51-55", lection: 5, videoFront: "sample_2", videoSide: "", inDictionary: false, sentence: []))
         dictionary.append(Word(name: "66-80", lection: 5, videoFront: "sample_2", videoSide: "", inDictionary: false, sentence: []))
         dictionary.append(Word(name: "81-85", lection: 5, videoFront: "sample_2", videoSide: "", inDictionary: false, sentence: []))
         dictionary.append(Word(name: "96-99", lection: 5, videoFront: "sample_2", videoSide: "", inDictionary: false, sentence: []))
         dictionary.append(Word(name: "Číslo", lection: 5, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "+/-/*/:/=", lection: 5, videoFront: "sample_2", videoSide: "", inDictionary: false, sentence: []))
-        dictionary.append(Word(name: "Rokov", lection: 5, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
+        dictionary.append(Word(name: "+/-/*/:/=", lection: 5, videoFront: "sample_2", videoSide: "", inDictionary: false, sentence: [36, 39]))
+        dictionary.append(Word(name: "Rokov", lection: 5, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [35, 37, 38]))
 
         //Lesson 7 - Čísla II.
         dictionary.append(Word(name: "100 - 500", lection: 6, videoFront: "sample_2", videoSide: "", inDictionary: false, sentence: []))
@@ -365,47 +417,47 @@ class PreloadCoreData {
         dictionary.append(Word(name: "700 000", lection: 6, videoFront: "sample_2", videoSide: "", inDictionary: false, sentence: []))
         dictionary.append(Word(name: "1 000 000", lection: 6, videoFront: "sample_2", videoSide: "", inDictionary: false, sentence: []))
         dictionary.append(Word(name: "10 000 000", lection: 6, videoFront: "sample_2", videoSide: "", inDictionary: false, sentence: []))
-        dictionary.append(Word(name: "Starý", lection: 6, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Mladý", lection: 6, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Koľko", lection: 6, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Správne", lection: 6, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
+        dictionary.append(Word(name: "Starý", lection: 6, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [38]))
+        dictionary.append(Word(name: "Mladý", lection: 6, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [40]))
+        dictionary.append(Word(name: "Koľko", lection: 6, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [35]))
+        dictionary.append(Word(name: "Správne", lection: 6, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [39]))
         dictionary.append(Word(name: "Nesprávne", lection: 6, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-
+   
         //Lesson 8 - Materiály a farby I.
-        dictionary.append(Word(name: "Farba", lection: 7, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
+        dictionary.append(Word(name: "Farba", lection: 7, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [41, 42]))
         dictionary.append(Word(name: "Biela", lection: 7, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Žltá", lection: 7, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
+        dictionary.append(Word(name: "Žltá", lection: 7, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [43]))
         dictionary.append(Word(name: "Ružová", lection: 7, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Oranžová", lection: 7, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Červená", lection: 7, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Fialová", lection: 7, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Svetlá", lection: 7, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Tmavá", lection: 7, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
+        dictionary.append(Word(name: "Oranžová", lection: 7, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [41]))
+        dictionary.append(Word(name: "Červená", lection: 7, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [41, 44]))
+        dictionary.append(Word(name: "Fialová", lection: 7, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [41]))
+        dictionary.append(Word(name: "Svetlá", lection: 7, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [44]))
+        dictionary.append(Word(name: "Tmavá", lection: 7, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [42, 48, 51]))
         dictionary.append(Word(name: "Farebná", lection: 7, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Milovať", lection: 7, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Neznášať", lection: 7, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Pekná", lection: 7, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Škaredá", lection: 7, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Moderná", lection: 7, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
+        dictionary.append(Word(name: "Milovať", lection: 7, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [43, 44]))
+        dictionary.append(Word(name: "Neznášať", lection: 7, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [43]))
+        dictionary.append(Word(name: "Pekná", lection: 7, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [41]))
+        dictionary.append(Word(name: "Škaredá", lection: 7, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [46]))
+        dictionary.append(Word(name: "Moderná", lection: 7, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [51, 52]))
         
         //Lesson 9 - Materiály a farby II.
-        dictionary.append(Word(name: "Modrá", lection: 8, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Hnedá", lection: 8, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Zelená", lection: 8, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Sivá", lection: 8, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Čierna", lection: 8, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
+        dictionary.append(Word(name: "Modrá", lection: 8, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [47]))
+        dictionary.append(Word(name: "Hnedá", lection: 8, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [45]))
+        dictionary.append(Word(name: "Zelená", lection: 8, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [49]))
+        dictionary.append(Word(name: "Sivá", lection: 8, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [51]))
+        dictionary.append(Word(name: "Čierna", lection: 8, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [43, 45]))
         dictionary.append(Word(name: "Materiál", lection: 8, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
         dictionary.append(Word(name: "Papier", lection: 8, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Drevo", lection: 8, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Železo/Kov", lection: 8, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Sklo", lection: 8, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Keramika", lection: 8, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
+        dictionary.append(Word(name: "Drevo", lection: 8, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [48]))
+        dictionary.append(Word(name: "Železo/Kov", lection: 8, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [51]))
+        dictionary.append(Word(name: "Sklo", lection: 8, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [52]))
+        dictionary.append(Word(name: "Keramika", lection: 8, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [47]))
         dictionary.append(Word(name: "Látka", lection: 8, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Koža", lection: 8, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Tvrdá", lection: 8, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
+        dictionary.append(Word(name: "Koža", lection: 8, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [50]))
+        dictionary.append(Word(name: "Tvrdá", lection: 8, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: [50]))
         dictionary.append(Word(name: "Mäkká", lection: 8, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
     
-        
+        //-------- VETY pokracovat ----------
         //Lesson 10 - Bývanie I.
         dictionary.append(Word(name: "Byt", lection: 9, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))
         dictionary.append(Word(name: "Dom", lection: 9, videoFront: "sample_2", videoSide: "", inDictionary: true, sentence: []))

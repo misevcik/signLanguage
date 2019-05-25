@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="17G5019" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18E2034" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="DBLesson" representedClassName="DBLesson" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
@@ -32,6 +32,7 @@
         <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="inDictionary" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lesson" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="videoFront" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="videoSide" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="visited" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -47,6 +48,6 @@
     <elements>
         <element name="DBLesson" positionX="-572.1640625" positionY="-87.11328125" width="128" height="180"/>
         <element name="DBSentence" positionX="-104.91015625" positionY="44.95703125" width="128" height="105"/>
-        <element name="DBWord" positionX="-305.83984375" positionY="-66.11328125" width="128" height="195"/>
+        <element name="DBWord" positionX="-305.83984375" positionY="-66.11328125" width="128" height="210"/>
     </elements>
 </model>

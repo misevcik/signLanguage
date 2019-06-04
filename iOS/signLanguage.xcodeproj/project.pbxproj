@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38F5517922A6F5E7000CC1C1 /* 1 in Resources */ = {isa = PBXBuildFile; fileRef = 38F5517822A6F5E7000CC1C1 /* 1 */; };
+		38F5517B22A6F991000CC1C1 /* 2 in Resources */ = {isa = PBXBuildFile; fileRef = 38F5517A22A6F991000CC1C1 /* 2 */; };
+		38F5517D22A6FBDB000CC1C1 /* 3 in Resources */ = {isa = PBXBuildFile; fileRef = 38F5517C22A6FBDA000CC1C1 /* 3 */; };
+		38F5517F22A700D2000CC1C1 /* 4 in Resources */ = {isa = PBXBuildFile; fileRef = 38F5517E22A700D2000CC1C1 /* 4 */; };
 		54057756222C8AB600E3E227 /* TestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54057755222C8AB600E3E227 /* TestCell.swift */; };
 		540CBEE8224DEEE700EEEBE1 /* LectionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540CBEE7224DEEE700EEEBE1 /* LectionListViewController.swift */; };
 		5410D830223B742B00C38452 /* TestAnswer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5410D82F223B742B00C38452 /* TestAnswer.xib */; };
@@ -53,6 +57,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		38F5517822A6F5E7000CC1C1 /* 1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 1; sourceTree = "<group>"; };
+		38F5517A22A6F991000CC1C1 /* 2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 2; sourceTree = "<group>"; };
+		38F5517C22A6FBDA000CC1C1 /* 3 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 3; sourceTree = "<group>"; };
+		38F5517E22A700D2000CC1C1 /* 4 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 4; sourceTree = "<group>"; };
 		54057755222C8AB600E3E227 /* TestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCell.swift; sourceTree = "<group>"; };
 		540CBEE7224DEEE700EEEBE1 /* LectionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectionListViewController.swift; sourceTree = "<group>"; };
 		5410D82F223B742B00C38452 /* TestAnswer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestAnswer.xib; sourceTree = "<group>"; };
@@ -206,6 +214,10 @@
 		549894782212234900024E77 /* Videos */ = {
 			isa = PBXGroup;
 			children = (
+				38F5517E22A700D2000CC1C1 /* 4 */,
+				38F5517C22A6FBDA000CC1C1 /* 3 */,
+				38F5517A22A6F991000CC1C1 /* 2 */,
+				38F5517822A6F5E7000CC1C1 /* 1 */,
 				54CE808C2253EA5A00D73B94 /* sample_3.mp4 */,
 				549894792212251600024E77 /* sample_1.mp4 */,
 				5498947A2212251600024E77 /* sample_2.mp4 */,
@@ -334,16 +346,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38F5517D22A6FBDB000CC1C1 /* 3 in Resources */,
 				5482DA0B224EA2A30044BA81 /* LockedPopupView.xib in Resources */,
 				545F1B9022327D0A0007B60C /* VideoController.xib in Resources */,
 				54B12C7121D11FBD00A9E2C1 /* LaunchScreen.storyboard in Resources */,
 				5498947B2212251600024E77 /* sample_1.mp4 in Resources */,
 				54B12C6E21D11FBD00A9E2C1 /* Assets.xcassets in Resources */,
 				5432D3FB22295DB0003A7A9E /* EducationMenuBar.xib in Resources */,
+				38F5517922A6F5E7000CC1C1 /* 1 in Resources */,
 				54B12C6C21D11FBC00A9E2C1 /* MainViewController.storyboard in Resources */,
 				5498947C2212251600024E77 /* sample_2.mp4 in Resources */,
 				54CE808B22539DCE00D73B94 /* CancelTestView.xib in Resources */,
 				54CE808D2253EA5A00D73B94 /* sample_3.mp4 in Resources */,
+				38F5517F22A700D2000CC1C1 /* 4 in Resources */,
+				38F5517B22A6F991000CC1C1 /* 2 in Resources */,
 				5410D830223B742B00C38452 /* TestAnswer.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -556,7 +572,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2HJ5E28S9G;
+				DEVELOPMENT_TEAM = CNLAU86YUN;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/signLanguage/Library",
@@ -566,7 +582,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "sk.dorteo.sign-language";
+				PRODUCT_BUNDLE_IDENTIFIER = "sk.dorteo.sign-language1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -578,7 +594,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2HJ5E28S9G;
+				DEVELOPMENT_TEAM = CNLAU86YUN;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/signLanguage/Library",
@@ -588,7 +604,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "sk.dorteo.sign-language";
+				PRODUCT_BUNDLE_IDENTIFIER = "sk.dorteo.sign-language1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -17,6 +17,7 @@ class DictionaryViewController : UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     private var coreDataStack : CoreDataStack!
+    private var keyPath : String!
     
     private lazy var fetchedResultsController: NSFetchedResultsController<DBWord> = {
         
@@ -25,7 +26,7 @@ class DictionaryViewController : UIViewController {
         fetchRequest.predicate = NSPredicate(format: "inDictionary == %@", NSNumber(value: true))
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true, selector: #selector(NSString.localizedCompare(_:)))]
         
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.mainContext, sectionNameKeyPath: "word.firstUpperCaseChar", cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.mainContext, sectionNameKeyPath: keyPath, cacheName: nil)
         
         fetchedResultsController.delegate = self
         
@@ -71,6 +72,12 @@ private extension DictionaryViewController {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
+        }
+        
+        if appDelegate.previouslyLaunched == true {
+           keyPath = "word.firstUpperCaseChar"
+        } else {
+            keyPath = "word.ENfirstUpperCaseChar"
         }
         
         self.coreDataStack = appDelegate.coreDataStack

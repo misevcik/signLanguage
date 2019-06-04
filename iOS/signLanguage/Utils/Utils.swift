@@ -103,9 +103,10 @@ extension UITableView {
     }
 }
 
-//https://stackoverflow.com/questions/48955468/how-can-i-set-nsfetchedresultscontrollers-section-sectionnamekeypath-to-be-the
+
 extension NSString{
     @objc func firstUpperCaseChar() -> String{
+        
         if self.length == 0 {
             return ""
         }
@@ -126,6 +127,33 @@ extension NSString{
         }
         
         return character.capitalized
+    }
+
+    @objc func ENfirstUpperCaseChar() -> String{
+        
+        if self.length == 0 {
+            return ""
+        }
+        
+        
+        let character = self.substring(to: 1)
+        
+        switch character {
+        case "Á":
+            return "A"
+        case "Č":
+            return "C"
+        case "Ď":
+            return "D"
+        case "Š":
+            return "S"
+        case "Ú":
+            return "U"
+        case "Ž":
+            return "Z"
+        default:
+            return character.capitalized
+        }
     }
 }
 

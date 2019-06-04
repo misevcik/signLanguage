@@ -18,6 +18,7 @@ struct Log {
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var isFullScreen = false
+    var previouslyLaunched = false
     var coreDataStack = CoreDataStack(modelName: "DictionaryDatabase")
     var window: UIWindow?
 
@@ -45,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func preloadData() {
         
-        let previouslyLaunched = UserDefaults.standard.bool(forKey: "previouslyLaunched")
+        previouslyLaunched = UserDefaults.standard.bool(forKey: "previouslyLaunched")
         if !previouslyLaunched {
             _ = PreloadCoreData(coreDataStack: coreDataStack)
             UserDefaults.standard.set(true, forKey: "previouslyLaunched")

@@ -71,7 +71,7 @@ class LectionViewController : UIViewController {
         
         if dbLection.visitedWord > 0 {
             
-            let max = dbLection.relDictionary?.array.count
+            let max = dbLection.relDictionary?.count
             let visitedWord = dbLection.visitedWord
             let ratio = Float(visitedWord) / Float(max!)
             

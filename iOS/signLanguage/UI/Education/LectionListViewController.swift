@@ -35,6 +35,7 @@ class LectionListViewController : UIViewController {
         super.viewDidLoad()
         
         dbWordArray = dbLection.relDictionary?.array as! [DBWord]
+        
         lectionTable.tableFooterView = UIView()
 
         lectionName.text = "\(lectionOrder). \(dbLection.title!)"

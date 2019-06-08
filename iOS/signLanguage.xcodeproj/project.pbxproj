@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3858C5BD22ABE10C00501DB6 /* 8 in Resources */ = {isa = PBXBuildFile; fileRef = 3858C5BC22ABE10B00501DB6 /* 8 */; };
+		3858C5BF22ABE3D100501DB6 /* 9 in Resources */ = {isa = PBXBuildFile; fileRef = 3858C5BE22ABE3D100501DB6 /* 9 */; };
+		3858C5C122ABE5BA00501DB6 /* 10 in Resources */ = {isa = PBXBuildFile; fileRef = 3858C5C022ABE5BA00501DB6 /* 10 */; };
+		3858C5C322ABE7F400501DB6 /* 11 in Resources */ = {isa = PBXBuildFile; fileRef = 3858C5C222ABE7F400501DB6 /* 11 */; };
+		3858C5C522ABEA6700501DB6 /* 12 in Resources */ = {isa = PBXBuildFile; fileRef = 3858C5C422ABEA6700501DB6 /* 12 */; };
+		3858C5C722ABEEBF00501DB6 /* 13 in Resources */ = {isa = PBXBuildFile; fileRef = 3858C5C622ABEEBF00501DB6 /* 13 */; };
+		3858C5C922ABF18300501DB6 /* 14 in Resources */ = {isa = PBXBuildFile; fileRef = 3858C5C822ABF18300501DB6 /* 14 */; };
+		3858C5CB22ABFB9A00501DB6 /* 15 in Resources */ = {isa = PBXBuildFile; fileRef = 3858C5CA22ABFB9A00501DB6 /* 15 */; };
+		3858C5CD22ABFBA400501DB6 /* 16 in Resources */ = {isa = PBXBuildFile; fileRef = 3858C5CC22ABFBA400501DB6 /* 16 */; };
+		38BFB00C22ABA92A00D47E91 /* 5 in Resources */ = {isa = PBXBuildFile; fileRef = 38BFB00B22ABA92900D47E91 /* 5 */; };
+		38BFB00E22ABB44900D47E91 /* 6 in Resources */ = {isa = PBXBuildFile; fileRef = 38BFB00D22ABB44800D47E91 /* 6 */; };
+		38BFB01022ABB66400D47E91 /* 7 in Resources */ = {isa = PBXBuildFile; fileRef = 38BFB00F22ABB66400D47E91 /* 7 */; };
 		38F5517922A6F5E7000CC1C1 /* 1 in Resources */ = {isa = PBXBuildFile; fileRef = 38F5517822A6F5E7000CC1C1 /* 1 */; };
 		38F5517B22A6F991000CC1C1 /* 2 in Resources */ = {isa = PBXBuildFile; fileRef = 38F5517A22A6F991000CC1C1 /* 2 */; };
 		38F5517D22A6FBDB000CC1C1 /* 3 in Resources */ = {isa = PBXBuildFile; fileRef = 38F5517C22A6FBDA000CC1C1 /* 3 */; };
@@ -57,6 +69,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3858C5BC22ABE10B00501DB6 /* 8 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 8; sourceTree = "<group>"; };
+		3858C5BE22ABE3D100501DB6 /* 9 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 9; sourceTree = "<group>"; };
+		3858C5C022ABE5BA00501DB6 /* 10 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 10; sourceTree = "<group>"; };
+		3858C5C222ABE7F400501DB6 /* 11 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 11; sourceTree = "<group>"; };
+		3858C5C422ABEA6700501DB6 /* 12 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 12; sourceTree = "<group>"; };
+		3858C5C622ABEEBF00501DB6 /* 13 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 13; sourceTree = "<group>"; };
+		3858C5C822ABF18300501DB6 /* 14 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 14; sourceTree = "<group>"; };
+		3858C5CA22ABFB9A00501DB6 /* 15 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 15; sourceTree = "<group>"; };
+		3858C5CC22ABFBA400501DB6 /* 16 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 16; sourceTree = "<group>"; };
+		38BFB00B22ABA92900D47E91 /* 5 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 5; sourceTree = "<group>"; };
+		38BFB00D22ABB44800D47E91 /* 6 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 6; sourceTree = "<group>"; };
+		38BFB00F22ABB66400D47E91 /* 7 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 7; sourceTree = "<group>"; };
 		38F5517822A6F5E7000CC1C1 /* 1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 1; sourceTree = "<group>"; };
 		38F5517A22A6F991000CC1C1 /* 2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 2; sourceTree = "<group>"; };
 		38F5517C22A6FBDA000CC1C1 /* 3 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 3; sourceTree = "<group>"; };
@@ -214,6 +238,18 @@
 		549894782212234900024E77 /* Videos */ = {
 			isa = PBXGroup;
 			children = (
+				3858C5CC22ABFBA400501DB6 /* 16 */,
+				3858C5CA22ABFB9A00501DB6 /* 15 */,
+				3858C5C822ABF18300501DB6 /* 14 */,
+				3858C5C622ABEEBF00501DB6 /* 13 */,
+				3858C5C422ABEA6700501DB6 /* 12 */,
+				3858C5C222ABE7F400501DB6 /* 11 */,
+				3858C5C022ABE5BA00501DB6 /* 10 */,
+				3858C5BE22ABE3D100501DB6 /* 9 */,
+				3858C5BC22ABE10B00501DB6 /* 8 */,
+				38BFB00F22ABB66400D47E91 /* 7 */,
+				38BFB00D22ABB44800D47E91 /* 6 */,
+				38BFB00B22ABA92900D47E91 /* 5 */,
 				38F5517E22A700D2000CC1C1 /* 4 */,
 				38F5517C22A6FBDA000CC1C1 /* 3 */,
 				38F5517A22A6F991000CC1C1 /* 2 */,
@@ -346,20 +382,32 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38BFB01022ABB66400D47E91 /* 7 in Resources */,
 				38F5517D22A6FBDB000CC1C1 /* 3 in Resources */,
+				3858C5BF22ABE3D100501DB6 /* 9 in Resources */,
 				5482DA0B224EA2A30044BA81 /* LockedPopupView.xib in Resources */,
+				38BFB00C22ABA92A00D47E91 /* 5 in Resources */,
 				545F1B9022327D0A0007B60C /* VideoController.xib in Resources */,
 				54B12C7121D11FBD00A9E2C1 /* LaunchScreen.storyboard in Resources */,
 				5498947B2212251600024E77 /* sample_1.mp4 in Resources */,
 				54B12C6E21D11FBD00A9E2C1 /* Assets.xcassets in Resources */,
+				3858C5BD22ABE10C00501DB6 /* 8 in Resources */,
+				3858C5CB22ABFB9A00501DB6 /* 15 in Resources */,
+				3858C5C522ABEA6700501DB6 /* 12 in Resources */,
+				3858C5C322ABE7F400501DB6 /* 11 in Resources */,
 				5432D3FB22295DB0003A7A9E /* EducationMenuBar.xib in Resources */,
 				38F5517922A6F5E7000CC1C1 /* 1 in Resources */,
+				3858C5C722ABEEBF00501DB6 /* 13 in Resources */,
+				3858C5C922ABF18300501DB6 /* 14 in Resources */,
+				3858C5CD22ABFBA400501DB6 /* 16 in Resources */,
 				54B12C6C21D11FBC00A9E2C1 /* MainViewController.storyboard in Resources */,
 				5498947C2212251600024E77 /* sample_2.mp4 in Resources */,
+				3858C5C122ABE5BA00501DB6 /* 10 in Resources */,
 				54CE808B22539DCE00D73B94 /* CancelTestView.xib in Resources */,
 				54CE808D2253EA5A00D73B94 /* sample_3.mp4 in Resources */,
 				38F5517F22A700D2000CC1C1 /* 4 in Resources */,
 				38F5517B22A6F991000CC1C1 /* 2 in Resources */,
+				38BFB00E22ABB44900D47E91 /* 6 in Resources */,
 				5410D830223B742B00C38452 /* TestAnswer.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

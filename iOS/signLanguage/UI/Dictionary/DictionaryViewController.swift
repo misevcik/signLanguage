@@ -61,7 +61,14 @@ class DictionaryViewController : UIViewController {
     func setupTabBarSelection() {
         
         let tabBar = self.tabBarController!.tabBar
-        tabBar.selectionIndicatorImage = UIImage().createSelectionIndicator(color: #colorLiteral(red: 0.4549019608, green: 0.862745098, blue: 0.9686274529, alpha: 1), size: CGSize(width: tabBar.frame.width/CGFloat(tabBar.items!.count), height:  tabBar.frame.height), lineWidth: 3.0)
+
+                
+        if UIDevice.current.hasNotch  {
+            tabBar.selectionIndicatorImage = UIImage().createSelectionIndicator(color: #colorLiteral(red: 0.4549019608, green: 0.862745098, blue: 0.9686274529, alpha: 1), size: CGSize(width: tabBar.frame.width/CGFloat(tabBar.items!.count), height:  tabBar.frame.height), lineWidth: 3.0).resizableImage(withCapInsets: UIEdgeInsets(top: 1, left: 0, bottom: 0, right: 0))
+        } else {
+            tabBar.selectionIndicatorImage = UIImage().createSelectionIndicator(color: #colorLiteral(red: 0.4549019608, green: 0.862745098, blue: 0.9686274529, alpha: 1), size: CGSize(width: tabBar.frame.width/CGFloat(tabBar.items!.count), height:  tabBar.frame.height), lineWidth: 3.0)
+        }
+        
     }
 
 }

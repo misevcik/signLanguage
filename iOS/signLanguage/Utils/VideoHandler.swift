@@ -72,10 +72,9 @@ class VideoHandler {
     
     fileprivate func loadVideoData() {
         if videoPath!.isEmpty == false {
-            let videoUrl = Bundle.main.url(forResource: self.videoPath, withExtension: "mp4")!
-            //let videoUrl = URL(fileURLWithPath: videoPath)
-            videoPreview.image = Utils.getVideoImage(url: videoUrl, at: 2)
             
+            let videoUrl = Bundle.main.url(forResource: self.videoPath, withExtension: "mp4")!
+            videoPreview.image = Utils.getVideoImage(url: videoUrl, at: 2)
             playerViewController.player = AVPlayer(url: videoUrl)
             
         } else {

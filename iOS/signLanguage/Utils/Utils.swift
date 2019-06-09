@@ -16,16 +16,20 @@ enum DeviceSize {
 class Utils {
     
     static func getVideoImage(url: URL, at time: TimeInterval) -> UIImage? {
+        
         let asset = AVURLAsset(url: url)
+        let frame = asset.duration.seconds / 2
         
         let assetIG = AVAssetImageGenerator(asset: asset)
         assetIG.appliesPreferredTrackTransform = true
         assetIG.apertureMode = AVAssetImageGenerator.ApertureMode.encodedPixels
-        
-        let cmTime = CMTime(seconds: time, preferredTimescale: 60)
+        assetIG.requestedTimeToleranceAfter = CMTime.zero;
+        assetIG.requestedTimeToleranceBefore = CMTime.zero;
+        assetIG.maximumSize = CGSize(width: 842, height: 480)
+
         let image: CGImage
         do {
-            image = try assetIG.copyCGImage(at: cmTime, actualTime: nil)
+            image = try assetIG.copyCGImage(at: CMTimeMake(value: Int64(frame) , timescale: 1), actualTime: nil)
         } catch let error {
             print("Error: \(error)")
             return nil
@@ -166,6 +170,16 @@ extension Bundle {
     }
 }
 
+extension UIDevice {
+    var hasNotch: Bool {
+        if #available(iOS 11.0, *) {
+            let bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
+            return bottom > 0
+        } else {
+            return false
+        }
+    }
+}
 
 
 

@@ -16,6 +16,7 @@
 		3858C5C922ABF18300501DB6 /* 14 in Resources */ = {isa = PBXBuildFile; fileRef = 3858C5C822ABF18300501DB6 /* 14 */; };
 		3858C5CB22ABFB9A00501DB6 /* 15 in Resources */ = {isa = PBXBuildFile; fileRef = 3858C5CA22ABFB9A00501DB6 /* 15 */; };
 		3858C5CD22ABFBA400501DB6 /* 16 in Resources */ = {isa = PBXBuildFile; fileRef = 3858C5CC22ABFBA400501DB6 /* 16 */; };
+		38A3240222B0443000DACDCD /* 29 in Resources */ = {isa = PBXBuildFile; fileRef = 38A3240122B0443000DACDCD /* 29 */; };
 		38BFB00C22ABA92A00D47E91 /* 5 in Resources */ = {isa = PBXBuildFile; fileRef = 38BFB00B22ABA92900D47E91 /* 5 */; };
 		38BFB00E22ABB44900D47E91 /* 6 in Resources */ = {isa = PBXBuildFile; fileRef = 38BFB00D22ABB44800D47E91 /* 6 */; };
 		38BFB01022ABB66400D47E91 /* 7 in Resources */ = {isa = PBXBuildFile; fileRef = 38BFB00F22ABB66400D47E91 /* 7 */; };
@@ -29,6 +30,8 @@
 		38F029B122AEF35C0030F247 /* 24 in Resources */ = {isa = PBXBuildFile; fileRef = 38F029B022AEF35C0030F247 /* 24 */; };
 		38F029B322AEF7200030F247 /* 25 in Resources */ = {isa = PBXBuildFile; fileRef = 38F029B222AEF7200030F247 /* 25 */; };
 		38F029B522AEF7270030F247 /* 26 in Resources */ = {isa = PBXBuildFile; fileRef = 38F029B422AEF7260030F247 /* 26 */; };
+		38F029B722AEFB070030F247 /* 27 in Resources */ = {isa = PBXBuildFile; fileRef = 38F029B622AEFB060030F247 /* 27 */; };
+		38F029B922AEFB0E0030F247 /* 28 in Resources */ = {isa = PBXBuildFile; fileRef = 38F029B822AEFB0D0030F247 /* 28 */; };
 		38F5517922A6F5E7000CC1C1 /* 1 in Resources */ = {isa = PBXBuildFile; fileRef = 38F5517822A6F5E7000CC1C1 /* 1 */; };
 		38F5517B22A6F991000CC1C1 /* 2 in Resources */ = {isa = PBXBuildFile; fileRef = 38F5517A22A6F991000CC1C1 /* 2 */; };
 		38F5517D22A6FBDB000CC1C1 /* 3 in Resources */ = {isa = PBXBuildFile; fileRef = 38F5517C22A6FBDA000CC1C1 /* 3 */; };
@@ -60,8 +63,6 @@
 		5485807A21E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5485807821E7C6FA00440282 /* DictionaryDatabase.xcdatamodeld */; };
 		5498010B2272D2180046D8C0 /* HighlightUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5498010A2272D2180046D8C0 /* HighlightUIButton.swift */; };
 		5498012322732F680046D8C0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5498012222732F680046D8C0 /* main.swift */; };
-		5498947B2212251600024E77 /* sample_1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 549894792212251600024E77 /* sample_1.mp4 */; };
-		5498947C2212251600024E77 /* sample_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5498947A2212251600024E77 /* sample_2.mp4 */; };
 		549D9BED21E6727A00E930AD /* PreloadCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549D9BEC21E6727A00E930AD /* PreloadCoreData.swift */; };
 		54AAD6CA21DE8DCD00D9F303 /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AAD6C921DE8DCD00D9F303 /* DictionaryViewController.swift */; };
 		54B12C6721D11FBC00A9E2C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B12C6621D11FBC00A9E2C1 /* AppDelegate.swift */; };
@@ -73,7 +74,6 @@
 		54CC9EAB22404967001F5030 /* TestResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CC9EAA22404967001F5030 /* TestResultViewController.swift */; };
 		54CE808A22539DCE00D73B94 /* CancelTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CE808822539DCE00D73B94 /* CancelTestView.swift */; };
 		54CE808B22539DCE00D73B94 /* CancelTestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54CE808922539DCE00D73B94 /* CancelTestView.xib */; };
-		54CE808D2253EA5A00D73B94 /* sample_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 54CE808C2253EA5A00D73B94 /* sample_3.mp4 */; };
 		54EA763521F677BD00A5C50C /* EducationDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EA763421F677BD00A5C50C /* EducationDetailCell.swift */; };
 		54EF9ED522708FD200BF4A03 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EF9ED422708FD200BF4A03 /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
@@ -88,6 +88,7 @@
 		3858C5C822ABF18300501DB6 /* 14 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 14; sourceTree = "<group>"; };
 		3858C5CA22ABFB9A00501DB6 /* 15 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 15; sourceTree = "<group>"; };
 		3858C5CC22ABFBA400501DB6 /* 16 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 16; sourceTree = "<group>"; };
+		38A3240122B0443000DACDCD /* 29 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 29; sourceTree = "<group>"; };
 		38BFB00B22ABA92900D47E91 /* 5 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 5; sourceTree = "<group>"; };
 		38BFB00D22ABB44800D47E91 /* 6 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 6; sourceTree = "<group>"; };
 		38BFB00F22ABB66400D47E91 /* 7 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 7; sourceTree = "<group>"; };
@@ -101,6 +102,8 @@
 		38F029B022AEF35C0030F247 /* 24 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 24; sourceTree = "<group>"; };
 		38F029B222AEF7200030F247 /* 25 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 25; sourceTree = "<group>"; };
 		38F029B422AEF7260030F247 /* 26 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 26; sourceTree = "<group>"; };
+		38F029B622AEFB060030F247 /* 27 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 27; sourceTree = "<group>"; };
+		38F029B822AEFB0D0030F247 /* 28 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 28; sourceTree = "<group>"; };
 		38F5517822A6F5E7000CC1C1 /* 1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 1; sourceTree = "<group>"; };
 		38F5517A22A6F991000CC1C1 /* 2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 2; sourceTree = "<group>"; };
 		38F5517C22A6FBDA000CC1C1 /* 3 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 3; sourceTree = "<group>"; };
@@ -132,8 +135,6 @@
 		5485807921E7C6FA00440282 /* DictionaryDatabase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DictionaryDatabase.xcdatamodel; sourceTree = "<group>"; };
 		5498010A2272D2180046D8C0 /* HighlightUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightUIButton.swift; sourceTree = "<group>"; };
 		5498012222732F680046D8C0 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		549894792212251600024E77 /* sample_1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample_1.mp4; sourceTree = "<group>"; };
-		5498947A2212251600024E77 /* sample_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample_2.mp4; sourceTree = "<group>"; };
 		549D9BEC21E6727A00E930AD /* PreloadCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadCoreData.swift; sourceTree = "<group>"; };
 		54AAD6C921DE8DCD00D9F303 /* DictionaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewController.swift; sourceTree = "<group>"; };
 		54B12C6321D11FBC00A9E2C1 /* signLanguage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = signLanguage.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,7 +148,6 @@
 		54CC9EAA22404967001F5030 /* TestResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultViewController.swift; sourceTree = "<group>"; };
 		54CE808822539DCE00D73B94 /* CancelTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelTestView.swift; sourceTree = "<group>"; };
 		54CE808922539DCE00D73B94 /* CancelTestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CancelTestView.xib; sourceTree = "<group>"; };
-		54CE808C2253EA5A00D73B94 /* sample_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample_3.mp4; sourceTree = "<group>"; };
 		54EA763421F677BD00A5C50C /* EducationDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EducationDetailCell.swift; sourceTree = "<group>"; };
 		54EF9ED422708FD200BF4A03 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -258,6 +258,9 @@
 		549894782212234900024E77 /* Videos */ = {
 			isa = PBXGroup;
 			children = (
+				38A3240122B0443000DACDCD /* 29 */,
+				38F029B822AEFB0D0030F247 /* 28 */,
+				38F029B622AEFB060030F247 /* 27 */,
 				38F029B422AEF7260030F247 /* 26 */,
 				38F029B222AEF7200030F247 /* 25 */,
 				38F029B022AEF35C0030F247 /* 24 */,
@@ -284,9 +287,6 @@
 				38F5517C22A6FBDA000CC1C1 /* 3 */,
 				38F5517A22A6F991000CC1C1 /* 2 */,
 				38F5517822A6F5E7000CC1C1 /* 1 */,
-				54CE808C2253EA5A00D73B94 /* sample_3.mp4 */,
-				549894792212251600024E77 /* sample_1.mp4 */,
-				5498947A2212251600024E77 /* sample_2.mp4 */,
 			);
 			path = Videos;
 			sourceTree = "<group>";
@@ -421,10 +421,12 @@
 				38BFB00C22ABA92A00D47E91 /* 5 in Resources */,
 				545F1B9022327D0A0007B60C /* VideoController.xib in Resources */,
 				54B12C7121D11FBD00A9E2C1 /* LaunchScreen.storyboard in Resources */,
-				5498947B2212251600024E77 /* sample_1.mp4 in Resources */,
+				38F029B922AEFB0E0030F247 /* 28 in Resources */,
+				38A3240222B0443000DACDCD /* 29 in Resources */,
 				54B12C6E21D11FBD00A9E2C1 /* Assets.xcassets in Resources */,
 				38F029B122AEF35C0030F247 /* 24 in Resources */,
 				3858C5BD22ABE10C00501DB6 /* 8 in Resources */,
+				38F029B722AEFB070030F247 /* 27 in Resources */,
 				3858C5CB22ABFB9A00501DB6 /* 15 in Resources */,
 				38E4638522ADA628002394A2 /* 18 in Resources */,
 				38F029AF22AEF1EB0030F247 /* 23 in Resources */,
@@ -439,11 +441,9 @@
 				3858C5C922ABF18300501DB6 /* 14 in Resources */,
 				3858C5CD22ABFBA400501DB6 /* 16 in Resources */,
 				54B12C6C21D11FBC00A9E2C1 /* MainViewController.storyboard in Resources */,
-				5498947C2212251600024E77 /* sample_2.mp4 in Resources */,
 				3858C5C122ABE5BA00501DB6 /* 10 in Resources */,
 				38F029AC22AEEFDE0030F247 /* 21 in Resources */,
 				54CE808B22539DCE00D73B94 /* CancelTestView.xib in Resources */,
-				54CE808D2253EA5A00D73B94 /* sample_3.mp4 in Resources */,
 				38F029B522AEF7270030F247 /* 26 in Resources */,
 				38F5517F22A700D2000CC1C1 /* 4 in Resources */,
 				38F5517B22A6F991000CC1C1 /* 2 in Resources */,

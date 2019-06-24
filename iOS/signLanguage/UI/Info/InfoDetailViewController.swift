@@ -15,6 +15,7 @@ class InfoDetailViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
     }
     
+
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var appVersionLabel: UILabel!
     @IBOutlet weak var aboutText: UILabel!
@@ -26,12 +27,6 @@ class InfoDetailViewController: UIViewController {
         
         contentView.layer.cornerRadius = 15
         appVersionLabel.text = "VERZIA \(Bundle.main.releaseVersionNumber!)"
-        
-        if Utils.getDeviceSize() == .small {
-            aboutText.adjustsFontSizeToFitWidth = true
-            euText.adjustsFontSizeToFitWidth = true
-            authorText.adjustsFontSizeToFitWidth = true
-        }
         
     }
     

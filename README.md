@@ -9,7 +9,7 @@ Application which help to teach & learn Slovak sign language.
 
 
 # Author
-Copyright © 2019 [Dorteo s.r.o.](www.dorteo.sk)
+Copyright © 2019 [Dorteo s.r.o.](http://www.dorteo.sk/)
 
 - Zdenko Bacik (zdeno.bacik@gmail.com) - developer
 - Hefty (email) - gestures actor, vocabulary author

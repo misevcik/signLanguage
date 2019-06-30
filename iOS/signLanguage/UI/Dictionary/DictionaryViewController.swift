@@ -332,7 +332,7 @@ extension DictionaryViewController : UISearchBarDelegate {
         else {
             self.fetchedResultsController.fetchRequest.predicate = NSPredicate(format: "inDictionary == %@", NSNumber(value: true))
         }
-
+        
         do {
             try self.fetchedResultsController.performFetch()
         } catch {

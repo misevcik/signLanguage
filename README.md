@@ -12,6 +12,7 @@ Application which help to teach & learn Slovak sign language.
 Copyright © 2019 [Dorteo s.r.o.](http://www.dorteo.sk/)
 
 - Zdenko Bacik (zdeno.bacik@gmail.com) - developer
+- Michal Sevcik (msevcik@gmail.com - devloper
 - Hefty (heftym@gmail.com) - gestures actor, vocabulary author
 - Adam Kovac (admiko17@gmail.com) - camera
 

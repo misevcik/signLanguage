@@ -11,9 +11,6 @@ import CoreData
 import UIKit
 import os.log
 
-/*
- Testing propose - fill core datas
-*/
 
 struct Sentence {
     var id : Int
@@ -29,16 +26,6 @@ struct Word {
     var videoSide : String
     var inDictionary : Bool
     var sentence : [Int]?
-    
-//    init(_ name : String, _ lection: Int, _ order :Int, _ videoFront: String, _ videoSide: String, _ inDictionary : Bool, _ sentence: [Int]) {
-//        self.name = name
-//        self.lection = lection
-//        self.order = order
-//        self.videoFront = videoFront
-//        self.videoSide = videoSide
-//        self.inDictionary = inDictionary
-//        self.sentence = sentence
-//    }
 }
 
 struct Lection {
@@ -47,24 +34,11 @@ struct Lection {
     var image : String
 }
 
-class ID {
-    private var id = 0
-    
-    init() {
-    }
-    
-    func increment() -> Int {
-        id += 1
-        return id
-    }
-    
-    func reset() {
-        id = 0
-    }
-}
-
 
 class PreloadCoreData {
+    
+    private static let DB_VERSION_MAJOR : Int32 = 1
+    private static let DB_VERSION_MINOR : Int32 = 0
     
     private var backgroudnContext : NSManagedObjectContext? = nil
     
@@ -72,10 +46,20 @@ class PreloadCoreData {
         
         coreDataStack.storeContainer.performBackgroundTask { context in
             
+            self.preloadVersion(context: context)
             self.preloadSentences(context: context)
             self.preloadDictionary(context: context)
             self.preloadLections(context: context)
         }
+    }
+    
+    private func preloadVersion(context : NSManagedObjectContext) {
+        
+        let dbVersion = DBVersion(context: context)
+        dbVersion.major = PreloadCoreData.DB_VERSION_MAJOR
+        dbVersion.minor = PreloadCoreData.DB_VERSION_MINOR
+        
+        context.insert(dbVersion)
     }
 
     private func preloadSentences(context : NSManagedObjectContext) {

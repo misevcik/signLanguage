@@ -27,6 +27,10 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="DBVersion" representedClassName="DBVersion" syncable="YES" codeGenerationType="class">
+        <attribute name="major" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="minor" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
     <entity name="DBWord" representedClassName="DBWord" syncable="YES" codeGenerationType="class">
         <attribute name="favorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
@@ -48,6 +52,7 @@
     <elements>
         <element name="DBLesson" positionX="-572.1640625" positionY="-87.11328125" width="128" height="180"/>
         <element name="DBSentence" positionX="-104.91015625" positionY="44.95703125" width="128" height="105"/>
-        <element name="DBWord" positionX="-305.83984375" positionY="-66.11328125" width="128" height="210"/>
+        <element name="DBWord" positionX="-305.83984375" positionY="-66.11328125" width="128" height="208"/>
+        <element name="DBVersion" positionX="-369" positionY="18" width="128" height="75"/>
     </elements>
 </model>

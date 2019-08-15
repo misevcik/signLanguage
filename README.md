@@ -11,10 +11,10 @@ Application which help to teach & learn Slovak sign language.
 # Author
 Copyright © 2019 [Dorteo s.r.o.](http://www.dorteo.sk/)
 
-- Zdenko Bacik (zdeno.bacik@gmail.com) - developer
-- Michal Sevcik (msevcik@gmail.com - devloper
-- Hefty (heftym@gmail.com) - gestures actor, vocabulary author
-- Adam Kovac (admiko17@gmail.com) - camera
+- Zdenko Bacik zdeno.bacik@gmail.com - developer
+- Michal Sevcik msevcik@gmail.com - devloper
+- Michal Hefty heftym@gmail.com - gestures actor, vocabulary author
+- Adam Kovac admiko17@gmail.com - camera
 
 # License
 Distributed under the MIT license. See [LICENSE](https://github.com/misevcik/signLanguage/blob/master/LICENSE) for more information.

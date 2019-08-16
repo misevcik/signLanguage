@@ -109,7 +109,7 @@ extension UITableView {
 
 
 extension NSString{
-    @objc func firstUpperCaseChar() -> String{
+    @objc func SKfirstUpperCaseChar() -> String{
         
         if self.length == 0 {
             return ""
@@ -141,7 +141,7 @@ extension NSString{
         return character.capitalized
     }
 
-    @objc func ENfirstUpperCaseChar() -> String{
+    @objc func UniversalfirstUpperCaseChar() -> String{
         
         if self.length == 0 {
             return ""

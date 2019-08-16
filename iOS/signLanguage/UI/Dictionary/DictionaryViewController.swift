@@ -82,9 +82,10 @@ private extension DictionaryViewController {
         }
         
         if appDelegate.previouslyLaunched == true {
-           keyPath = "word.firstUpperCaseChar"
+            keyPath = "word.SKfirstUpperCaseChar"
         } else {
-            keyPath = "word.ENfirstUpperCaseChar"
+            let localization = Locale.current.languageCode
+            keyPath = localization == "sk" ? "word.SKfirstUpperCaseChar" : "word.UniversalfirstUpperCaseChar"
         }
         
         self.coreDataStack = appDelegate.coreDataStack

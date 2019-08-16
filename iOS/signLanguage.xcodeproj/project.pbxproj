@@ -400,11 +400,11 @@
 			};
 			buildConfigurationList = 54B12C5E21D11FBC00A9E2C1 /* Build configuration list for PBXProject "signLanguage" */;
 			compatibilityVersion = "Xcode 9.3";
-			developmentRegion = sk;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				Base,
-				sk,
+				en,
+				Base
 			);
 			mainGroup = 54B12C5A21D11FBC00A9E2C1;
 			productRefGroup = 54B12C6421D11FBC00A9E2C1 /* Products */;

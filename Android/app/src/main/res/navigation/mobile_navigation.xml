@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_dictionary">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="sk.doreto.signlanguage.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_dictionary"
+        android:name="sk.doreto.signlanguage.ui.Dictionary.DictionaryFragment"
+        android:label="@string/title_dictionary"
+        tools:layout="@layout/fragment_dictionary" />
 
     <fragment
         android:id="@+id/navigation_dashboard"

@@ -1,4 +1,4 @@
-package sk.doreto.signlanguage.Database;
+package sk.doreto.signlanguage.database;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 
@@ -43,9 +44,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
     }
 
-    public ArrayList<DbWord> getWrods() {
+    public List<DbWord> getWrods() {
 
-        ArrayList<DbWord> wordArray = new ArrayList<DbWord>();
+        List<DbWord> wordArray = new ArrayList<DbWord>();
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + DbWord.TABLE_NAME, null);

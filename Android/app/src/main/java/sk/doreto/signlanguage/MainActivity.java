@@ -1,26 +1,20 @@
 package sk.doreto.signlanguage;
-
-import android.os.AsyncTask;
 import android.os.Bundle;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import sk.doreto.signlanguage.Database.DatabaseHandler;
+import sk.doreto.signlanguage.database.AppDatabase;
+import com.nagarro.persistence.utils.DatabaseInitializer;
 
 public class MainActivity extends AppCompatActivity {
 
-    private DatabaseHandler mDatabaseHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        mDatabaseHandler = new DatabaseHandler(getBaseContext());
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -34,9 +28,16 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
-        //TODO - fill database asynchron
-        mDatabaseHandler.populateDatabase();
-        mDatabaseHandler.getWrods();
+
+        //TODO Call only once
+        //DatabaseInitializer.populateAsync(AppDatabase.getAppDatabase(this));
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        AppDatabase.destroyInstance();
+        super.onDestroy();
     }
 
 

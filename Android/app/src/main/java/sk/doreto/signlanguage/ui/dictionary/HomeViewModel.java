@@ -1,4 +1,4 @@
-package sk.doreto.signlanguage.ui.Dictionary;
+package sk.doreto.signlanguage.ui.dictionary;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

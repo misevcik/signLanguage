@@ -1,4 +1,4 @@
-package sk.doreto.signlanguage.Database;
+package sk.doreto.signlanguage.database;
 
 public class DbWord {
 

@@ -4,10 +4,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.util.List;
 
@@ -29,8 +31,21 @@ public class DictionaryFragment extends Fragment{
         List<Word> wordList = AppDatabase.getAppDatabase(getContext()).wordDao().getAll();
         mAdapter = new DictionaryAdapter(wordList, getContext());
 
-        mListView = (ListView) rootView.findViewById(R.id.dictionary_list);
+        mListView = rootView.findViewById(R.id.dictionary_list);
         mListView.setAdapter(mAdapter);
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                DetailDictionaryFragment fragment = new DetailDictionaryFragment();
+                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                //FragmentTransaction ft = getFragmentManager().beginTransaction();
+                //ft.add(fragment, "Detail").commit();
+                ft.add(R.id.fragment, fragment);
+                ft.commit();
+            }
+        });
 
 
         return rootView;

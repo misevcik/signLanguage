@@ -8,18 +8,18 @@ import androidx.room.Query;
 import java.util.List;
 
 @Dao
-public interface WordDao {
+public interface SentenceDao {
 
-    @Query("SELECT * FROM WordTable")
+    @Query("SELECT * FROM SentenceTable")
     List<Word> getAll();
 
-    @Query("SELECT COUNT(*) from WordTable")
-    int countWord();
+    @Query("SELECT COUNT(*) from SentenceTable")
+    int countSentences();
 
     @Insert
-    void insertAll(Word... words);
+    void insertAll(Sentence... words);
 
     @Delete
-    void delete(Word word);
+    void delete(Sentence word);
 
 }

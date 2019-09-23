@@ -2,13 +2,15 @@ package sk.doreto.signlanguage.database;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 
-@Entity(tableName = "WordTable")
+@Entity(tableName = "WordTable", indices = {@Index(value = "word", unique = true)})
 public class Word {
 
     @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "wid")
     private int uid;
 
     @ColumnInfo(name = "word")

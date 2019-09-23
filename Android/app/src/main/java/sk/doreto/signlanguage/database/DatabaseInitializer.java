@@ -2,11 +2,9 @@ package com.nagarro.persistence.utils;
 
 
 import android.os.AsyncTask;
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 
-import java.util.List;
+
 
 import sk.doreto.signlanguage.database.AppDatabase;
 import sk.doreto.signlanguage.database.Word;
@@ -34,7 +32,15 @@ public class DatabaseInitializer {
 
         Word wordArray [] = {
                 new Word("Ahoj", 0, false, "ahoj.mp3", "ahojSide.mp3"),
-                new Word("Test", 0, false, "test.mp3", "testSide.mp3")
+                new Word("Test", 0, true, "test.mp3", "testSide.mp3"),
+                new Word("Cau", 0, false, "ahoj.mp3", "ahojSide.mp3"),
+                new Word("Dorotka", 0, false, "test.mp3", "testSide.mp3"),
+                new Word("Adamko", 0, true, "ahoj.mp3", "ahojSide.mp3"),
+                new Word("Dom", 0, false, "test.mp3", "testSide.mp3"),
+                new Word("Strom", 0, false, "ahoj.mp3", "ahojSide.mp3"),
+                new Word("Cesta", 0, false, "test.mp3", "testSide.mp3"),
+                new Word("Kotva", 0, false, "ahoj.mp3", "ahojSide.mp3"),
+                new Word("Jablko", 0, false, "test.mp3", "testSide.mp3")
         };
 
 

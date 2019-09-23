@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class DictionaryAdapter extends ArrayAdapter<Word> {
 
     private static class ViewHolder {
         TextView word;
+        ImageView image;
     }
 
     public DictionaryAdapter(List<Word> data, Context context) {
@@ -56,7 +58,8 @@ public class DictionaryAdapter extends ArrayAdapter<Word> {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.dictionary_row_item, parent, false);
-            viewHolder.word = (TextView) convertView.findViewById(R.id.dictionary_row_word);
+            viewHolder.word = convertView.findViewById(R.id.dictionary_row_word);
+            viewHolder.image = convertView.findViewById(R.id.favorite_image);
             convertView.setTag(viewHolder);
 
         } else {
@@ -66,6 +69,7 @@ public class DictionaryAdapter extends ArrayAdapter<Word> {
 
 
         viewHolder.word.setText(word.getWord());
+        viewHolder.image.setImageResource(word.getFavorite() ? R.mipmap.icon_heart_red : R.mipmap.icon_heart_black);
 
         return convertView;
     }

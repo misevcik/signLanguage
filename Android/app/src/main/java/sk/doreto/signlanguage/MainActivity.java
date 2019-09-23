@@ -2,12 +2,15 @@ package sk.doreto.signlanguage;
 import android.os.Bundle;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import sk.doreto.signlanguage.database.AppDatabase;
+import sk.doreto.signlanguage.ui.dictionary.DetailDictionaryFragment;
+
 import com.nagarro.persistence.utils.DatabaseInitializer;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
         //TODO Call only once
         //DatabaseInitializer.populateAsync(AppDatabase.getAppDatabase(this));
-
     }
 
     @Override

@@ -38,12 +38,9 @@ public class DictionaryFragment extends Fragment{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                DetailDictionaryFragment fragment = new DetailDictionaryFragment();
-                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                //FragmentTransaction ft = getFragmentManager().beginTransaction();
-                //ft.add(fragment, "Detail").commit();
-                ft.add(R.id.fragment, fragment);
-                ft.commit();
+                //FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction(); //getFragmentManager().beginTransaction();
+                //ft.replace(R.id.your_placeholder, new DetailDictionaryFragment());
+                //ft.commit();
             }
         });
 

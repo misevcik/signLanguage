@@ -40,7 +40,9 @@ public class DatabaseInitializer {
                 new Word("Strom", 0, false, "ahoj.mp3", "ahojSide.mp3"),
                 new Word("Cesta", 0, false, "test.mp3", "testSide.mp3"),
                 new Word("Kotva", 0, false, "ahoj.mp3", "ahojSide.mp3"),
-                new Word("Jablko", 0, false, "test.mp3", "testSide.mp3")
+                new Word("Jablko", 0, false, "test.mp3", "testSide.mp3"),
+                new Word("XXX", 0, false, "test.mp3", "testSide.mp3"),
+                new Word("YYY", 0, false, "test.mp3", "testSide.mp3")
         };
 
 

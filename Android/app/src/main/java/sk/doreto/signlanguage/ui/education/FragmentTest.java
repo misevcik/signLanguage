@@ -1,4 +1,4 @@
-package sk.doreto.signlanguage.ui.dictionary;
+package sk.doreto.signlanguage.ui.education;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,15 +11,17 @@ import androidx.fragment.app.Fragment;
 
 import sk.doreto.signlanguage.R;
 
-public class DetailDictionaryFragment extends Fragment {
+public class FragmentTest extends Fragment {
+
+    public static FragmentTest newInstance() {
+        return new FragmentTest();
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        View rootView = inflater.inflate(R.layout.fragment_detail_dictionary, container, false);
-
-        return rootView;
-
+        View view = inflater.inflate(R.layout.fragment_test, container, false);
+        return view;
     }
+
 }

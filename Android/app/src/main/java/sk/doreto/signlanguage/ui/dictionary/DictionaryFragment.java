@@ -1,5 +1,6 @@
 package sk.doreto.signlanguage.ui.dictionary;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,14 +14,26 @@ import androidx.fragment.app.FragmentTransaction;
 
 import java.util.List;
 
+import sk.doreto.signlanguage.NavigationBarController;
 import sk.doreto.signlanguage.database.AppDatabase;
 import sk.doreto.signlanguage.R;
 import sk.doreto.signlanguage.database.Word;
 
 public class DictionaryFragment extends Fragment{
 
-    private ListView mListView;
-    private DictionaryAdapter mAdapter;
+    private ListView listView;
+    private DictionaryAdapter adapter;
+    private NavigationBarController navigationBarController;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            navigationBarController = (NavigationBarController) context;
+        } catch (ClassCastException castException) {
+            /** The activity does not implement the listener. */
+        }
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -29,18 +42,20 @@ public class DictionaryFragment extends Fragment{
 
         //TODO - use ModelView https://www.thomaskioko.com/android-livedata-viewmodel/
         List<Word> wordList = AppDatabase.getAppDatabase(getContext()).wordDao().getAll();
-        mAdapter = new DictionaryAdapter(wordList, getContext());
+        adapter = new DictionaryAdapter(wordList, getContext());
 
-        mListView = rootView.findViewById(R.id.dictionary_list);
-        mListView.setAdapter(mAdapter);
+        listView = rootView.findViewById(R.id.dictionary_list);
+        listView.setAdapter(adapter);
 
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                //FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction(); //getFragmentManager().beginTransaction();
-                //ft.replace(R.id.your_placeholder, new DetailDictionaryFragment());
-                //ft.commit();
+                navigationBarController.hideBar();
+
+                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.add(R.id.viewLayout, new DetailDictionaryFragment());
+                ft.commit();
             }
         });
 

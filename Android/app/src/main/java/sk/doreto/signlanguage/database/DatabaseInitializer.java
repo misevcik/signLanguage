@@ -1,13 +1,8 @@
-package com.nagarro.persistence.utils;
+package sk.doreto.signlanguage.database;
 
 
 import android.os.AsyncTask;
 import androidx.annotation.NonNull;
-
-
-
-import sk.doreto.signlanguage.database.AppDatabase;
-import sk.doreto.signlanguage.database.Word;
 
 
 public class DatabaseInitializer {
@@ -20,12 +15,35 @@ public class DatabaseInitializer {
     }
 
     public static void populateSync(@NonNull final AppDatabase db) {
+        populateWithLectionData(db);
         populateWithWordData(db);
     }
 
-    private static Word addUser(final AppDatabase db, Word word) {
+    private static Word addWord(final AppDatabase db, Word word) {
         db.wordDao().insertAll(word);
         return word;
+    }
+
+    private static Lection addLection(final AppDatabase db, Lection lection) {
+        db.lectionDao().insertAll(lection);
+        return lection;
+    }
+
+    private static void populateWithLectionData(AppDatabase db) {
+
+        Lection lectionArray[] = {
+                new Lection(0,"Prvy kontakt I.",  "test.png", false),
+                new Lection(1,"Prvy kontakt II.", "test.png", false),
+                new Lection(2,"Prvy kontakt III.", "test.png", false),
+                new Lection(3,"Rodina I.", "test.png", false),
+                new Lection(4,"Rodina II.", "test.png", false),
+                new Lection(5,"Cisla I.", "test.png", false),
+                new Lection(6,"Cisla II.", "test.png", false),
+                new Lection(7,"Farby I.", "test.png", false)
+        };
+
+        for (Lection lection : lectionArray)
+            addLection(db, lection);
     }
 
     private static void populateWithWordData(AppDatabase db) {
@@ -47,7 +65,7 @@ public class DatabaseInitializer {
 
 
         for (Word word : wordArray)
-            addUser(db, word);
+            addWord(db, word);
         
     }
 
@@ -61,6 +79,7 @@ public class DatabaseInitializer {
 
         @Override
         protected Void doInBackground(final Void... params) {
+            populateWithLectionData(mDb);
             populateWithWordData(mDb);
             return null;
         }

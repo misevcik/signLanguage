@@ -47,7 +47,7 @@ public class DictionaryAdapter extends ArrayAdapter<Word> {
     }
 
 
-        @Override
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
         Word word = getItem(position);

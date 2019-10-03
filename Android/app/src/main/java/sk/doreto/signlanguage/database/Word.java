@@ -7,11 +7,11 @@ import androidx.room.PrimaryKey;
 
 
 @Entity(tableName = "WordTable", indices = {@Index(value = "word", unique = true)})
-public class Word {
+    public class Word {
 
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "wid")
-    private int uid;
+    @ColumnInfo(name = "id")
+    private int id;
 
     @ColumnInfo(name = "word")
     private String word;
@@ -36,12 +36,12 @@ public class Word {
         this.videoSide = videoSide;
     }
 
-    public int getUid() {
-        return uid;
+    public int getId() {
+        return id;
     }
 
-    public void setUid(int uid) {
-        this.uid = uid;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getWord() {

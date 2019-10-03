@@ -6,12 +6,13 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Word.class}, version = 1, exportSchema =  false)
+@Database(entities = {Word.class, Lection.class}, version = 1, exportSchema =  false)
 public abstract class AppDatabase extends RoomDatabase {
 
 
     private static AppDatabase INSTANCE;
 
+    public abstract LectionDao lectionDao();
     public abstract WordDao wordDao();
 
     public static AppDatabase getAppDatabase(Context context) {

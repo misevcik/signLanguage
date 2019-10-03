@@ -1,40 +1,73 @@
 package sk.doreto.signlanguage;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomnavigation.LabelVisibilityMode;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import sk.doreto.signlanguage.database.AppDatabase;
+import sk.doreto.signlanguage.database.DatabaseInitializer;
+import sk.doreto.signlanguage.ui.dictionary.DictionaryFragment;
+import sk.doreto.signlanguage.ui.education.EducationFragment;
+import sk.doreto.signlanguage.ui.notifications.NotificationsFragment;
 
 
 public class MainActivity extends AppCompatActivity implements  NavigationBarController {
 
-    BottomNavigationView bottomNavigationView;
+    private BottomNavigationView bottomNavigationView;
+
+    private final DictionaryFragment dictionary = new DictionaryFragment();
+    private final EducationFragment education = new EducationFragment();
+    private final NotificationsFragment notificationsFragment = new NotificationsFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        //TODO Call only once
+        //DatabaseInitializer.populateAsync(AppDatabase.getAppDatabase(this));
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final FragmentManager fragmentManager = getSupportFragmentManager();
+
         bottomNavigationView = findViewById(R.id.navigation_view);
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    Fragment fragment;
 
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_dictionary, R.id.navigation_education, R.id.navigation_notifications)
-                .build();
-        
-        NavController navController = Navigation.findNavController(this, R.id.viewLayout);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(bottomNavigationView, navController);
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.navigation_dictionary:
+                                fragment = dictionary;
+                                setTitle(item.getTitle());
+                                break;
+                            case R.id.navigation_education:
+                                fragment = education;
+                                setTitle(item.getTitle());
+                                break;
+                            case R.id.navigation_notifications:
+                                fragment = notificationsFragment;
+                                setTitle(item.getTitle());
+                                break;
 
 
-        //TODO Call only once
-        //DatabaseInitializer.populateAsync(AppDatabase.getAppDatabase(this));
+                        }
+                        fragmentManager.beginTransaction().replace(R.id.viewLayout, fragment).commit();
+                        return true;
+                    }
+                });
+
+        bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
+        bottomNavigationView.setSelectedItemId(R.id.navigation_dictionary);
+
     }
 
     @Override

@@ -1,28 +1,35 @@
 package sk.doreto.signlanguage.ui.components;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ToggleButton;
 
 import sk.doreto.signlanguage.R;
 
 public class VideoControllerView extends LinearLayout {
 
-    ImageView videoSpeed;
-    ImageView videoBackward;
-    ImageView videoPlay;
-    ImageView videoForward;
-    ImageView videoRotate;
+    private IVideoControllerView videoController;
 
-
+    private ImageView videoSpeed;
+    private ImageView videoBackward;
+    private ImageView videoPlay;
+    private ImageView videoForward;
+    private ImageView videoRotate;
 
 
     public VideoControllerView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
+
+    }
+
+    public void setVideoController(IVideoControllerView videoController) {
+        this.videoController = videoController;
     }
 
     private void init(Context context, AttributeSet attrs) {
@@ -30,6 +37,8 @@ public class VideoControllerView extends LinearLayout {
         inflate(context, R.layout.video_controller_view, this);
         initComponents();
     }
+
+    private boolean state = false;
 
     private void initComponents() {
 
@@ -42,6 +51,15 @@ public class VideoControllerView extends LinearLayout {
         videoSpeed.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)  {
                 Log.i("VideoController", "videoSpeed");
+                if (state == false ) {
+                    Drawable image=(Drawable)getResources().getDrawable(R.mipmap.icon_rotate);
+                    videoSpeed.setBackground(image);
+                } else {
+                    Drawable image=(Drawable)getResources().getDrawable(R.mipmap.icon_clock);
+                    videoSpeed.setBackground(image);
+                }
+                state = !state;
+
             }
         });
 
@@ -53,7 +71,7 @@ public class VideoControllerView extends LinearLayout {
 
         videoPlay.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)  {
-                Log.i("VideoController", "videoPlay");
+                videoController.videoPlay();
             }
         });
 

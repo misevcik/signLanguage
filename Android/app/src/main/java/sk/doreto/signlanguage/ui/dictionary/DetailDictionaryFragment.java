@@ -58,11 +58,11 @@ public class DetailDictionaryFragment extends Fragment implements IVideoControll
 
     }
 
-    public void videoRotate() {
+    public void videoRotate(boolean videoRotate) {
 
     }
 
-    public void videoSpeed() {
+    public void videoSpeed(boolean videoSlowSpeed) {
 
     }
 

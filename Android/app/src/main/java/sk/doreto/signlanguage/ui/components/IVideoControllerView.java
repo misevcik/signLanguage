@@ -5,6 +5,6 @@ public interface IVideoControllerView {
     void videoPlay();
     void videoForward();
     void videoBackward();
-    void videoRotate();
-    void videoSpeed();
+    void videoRotate(boolean videoRotate);
+    void videoSpeed(boolean videoSlowSpeed);
 }

@@ -1,13 +1,12 @@
 package sk.doreto.signlanguage.ui.components;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.ToggleButton;
+
 
 import sk.doreto.signlanguage.R;
 
@@ -15,11 +14,11 @@ public class VideoControllerView extends LinearLayout {
 
     private IVideoControllerView videoController;
 
-    private ImageView videoSpeed;
-    private ImageView videoBackward;
-    private ImageView videoPlay;
-    private ImageView videoForward;
-    private ImageView videoRotate;
+    private ImageButton videoSpeed;
+    private ImageButton videoBackward;
+    private ImageButton videoPlay;
+    private ImageButton videoForward;
+    private ImageButton videoRotate;
 
 
     public VideoControllerView(Context context, AttributeSet attrs) {
@@ -38,7 +37,8 @@ public class VideoControllerView extends LinearLayout {
         initComponents();
     }
 
-    private boolean state = false;
+    private boolean videoSlowSpeed = false;
+    private boolean videoRotateed = false;
 
     private void initComponents() {
 
@@ -50,16 +50,29 @@ public class VideoControllerView extends LinearLayout {
 
         videoSpeed.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)  {
-                Log.i("VideoController", "videoSpeed");
-                if (state == false ) {
-                    Drawable image=(Drawable)getResources().getDrawable(R.mipmap.icon_rotate);
-                    videoSpeed.setBackground(image);
-                } else {
-                    Drawable image=(Drawable)getResources().getDrawable(R.mipmap.icon_clock);
-                    videoSpeed.setBackground(image);
-                }
-                state = !state;
 
+                videoSlowSpeed = !videoSlowSpeed;
+                if (videoSlowSpeed) {
+                    videoSpeed.setImageResource(R.mipmap.icon_clock_selected);
+                } else {
+                    videoSpeed.setImageResource(R.mipmap.icon_clock);
+                }
+                videoController.videoSpeed(videoSlowSpeed);
+
+            }
+        });
+
+        videoRotate .setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)  {
+
+                videoRotateed = !videoRotateed;
+
+                if (videoRotateed) {
+                    videoRotate.setImageResource(R.mipmap.icon_rotate_selected);
+                } else {
+                    videoRotate.setImageResource(R.mipmap.icon_rotate);
+                }
+                videoController.videoRotate(videoRotateed);
             }
         });
 
@@ -81,10 +94,5 @@ public class VideoControllerView extends LinearLayout {
             }
         });
 
-        videoRotate.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v)  {
-                Log.i("VideoController", "videoRotate");
-            }
-        });
     }
 }

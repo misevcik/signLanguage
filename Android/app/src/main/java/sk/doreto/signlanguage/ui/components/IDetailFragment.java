@@ -1,10 +1,10 @@
 package sk.doreto.signlanguage.ui.components;
 
-public interface IVideoControllerView {
+public interface IDetailFragment {
 
     void videoPlay();
     void videoForward();
     void videoBackward();
     void videoRotate(boolean videoRotate);
-    void videoSpeed(boolean videoSlowSpeed);
+    void videoSpeed(boolean videoSlowMotion);
 }

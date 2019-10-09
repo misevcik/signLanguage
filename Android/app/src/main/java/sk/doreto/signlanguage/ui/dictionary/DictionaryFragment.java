@@ -19,11 +19,12 @@ import sk.doreto.signlanguage.database.AppDatabase;
 import sk.doreto.signlanguage.R;
 import sk.doreto.signlanguage.database.Word;
 
-public class DictionaryFragment extends Fragment{
+public class DictionaryFragment extends Fragment implements IDictionaryFragment {
 
     private ListView listView;
     private DictionaryAdapter adapter;
     private NavigationBarController navigationBarController;
+    private DetailDictionaryFragment detailFragment;
 
     @Override
     public void onAttach(Context context) {
@@ -40,9 +41,11 @@ public class DictionaryFragment extends Fragment{
 
         View rootView = inflater.inflate(R.layout.fragment_dictionary, container, false);
 
+
         //TODO - use ModelView https://www.thomaskioko.com/android-livedata-viewmodel/
         List<Word> wordList = AppDatabase.getAppDatabase(getContext()).wordDao().getAll();
         adapter = new DictionaryAdapter(wordList, getContext());
+        detailFragment = new DetailDictionaryFragment(this);
 
         listView = rootView.findViewById(R.id.dictionary_list);
         listView.setAdapter(adapter);
@@ -54,8 +57,10 @@ public class DictionaryFragment extends Fragment{
                 navigationBarController.hideBar();
 
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                ft.add(R.id.viewLayout, new DetailDictionaryFragment());
+                ft.add(R.id.viewLayout, detailFragment);
                 ft.commit();
+
+                detailFragment.setDetailData();
             }
         });
 
@@ -63,6 +68,15 @@ public class DictionaryFragment extends Fragment{
         return rootView;
     }
 
+    public void videoForward() {
+        detailFragment.setDetailData();
+        getActivity().getSupportFragmentManager().beginTransaction().detach(detailFragment).attach(detailFragment).commit();
+    }
+
+    public void videoBackward() {
+        detailFragment.setDetailData();
+        getActivity().getSupportFragmentManager().beginTransaction().detach(detailFragment).attach(detailFragment).commit();
+    }
 
 
 }

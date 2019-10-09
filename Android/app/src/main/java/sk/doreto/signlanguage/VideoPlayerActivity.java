@@ -12,6 +12,8 @@ import android.widget.VideoView;
 public class VideoPlayerActivity extends Activity implements MediaPlayer.OnCompletionListener {
 
     private VideoView videoView;
+    private boolean videoSlowMotion = false;
+    private String videoPath = null;
 
     @Override
     public void onCreate(Bundle b) {
@@ -19,11 +21,12 @@ public class VideoPlayerActivity extends Activity implements MediaPlayer.OnCompl
 
         setContentView(R.layout.activity_video_player);
 
-        String videoPath = null;
+
         Bundle bundle = getIntent().getExtras();
 
         if (bundle != null) {
             videoPath = bundle.getString("videoPath");
+            videoSlowMotion = bundle.getBoolean("videoSlowMotion");
         }
 
         videoView = (VideoView) findViewById(R.id.myvideoview);
@@ -40,9 +43,11 @@ public class VideoPlayerActivity extends Activity implements MediaPlayer.OnCompl
             public void onPrepared(MediaPlayer mp) {
 
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M){
-                    PlaybackParams myPlayBackParams = new PlaybackParams();
-                    myPlayBackParams.setSpeed(0.5f);
-                    mp.setPlaybackParams(myPlayBackParams);
+                    if(videoSlowMotion) {
+                        PlaybackParams myPlayBackParams = new PlaybackParams();
+                        myPlayBackParams.setSpeed(0.5f);
+                        mp.setPlaybackParams(myPlayBackParams);
+                    }
                 }
 
                 videoView.start();

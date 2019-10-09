@@ -24,7 +24,7 @@ class FavoritesViewController : UIViewController {
         fetchRequest.predicate = NSPredicate(format: "favorite == %@", NSNumber(value: true))
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true, selector: #selector(NSString.localizedCompare(_:)))]
         
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.coreDataStack.mainContext, sectionNameKeyPath: "word.firstUpperCaseChar", cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.coreDataStack.mainContext, sectionNameKeyPath: "word.SKfirstUpperCaseChar", cacheName: nil)
         
         fetchedResultsController.delegate = self
         

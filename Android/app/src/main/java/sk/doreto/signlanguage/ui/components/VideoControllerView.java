@@ -2,7 +2,6 @@ package sk.doreto.signlanguage.ui.components;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -12,7 +11,7 @@ import sk.doreto.signlanguage.R;
 
 public class VideoControllerView extends LinearLayout {
 
-    private IVideoControllerView videoController;
+    private IDetailFragment detailFragment;
 
     private ImageButton videoSpeed;
     private ImageButton videoBackward;
@@ -27,8 +26,8 @@ public class VideoControllerView extends LinearLayout {
 
     }
 
-    public void setVideoController(IVideoControllerView videoController) {
-        this.videoController = videoController;
+    public void setDetailFragment(IDetailFragment detailFragment) {
+        this.detailFragment = detailFragment;
     }
 
     private void init(Context context, AttributeSet attrs) {
@@ -37,8 +36,8 @@ public class VideoControllerView extends LinearLayout {
         initComponents();
     }
 
-    private boolean videoSlowSpeed = false;
-    private boolean videoRotateed = false;
+    private boolean videoSlowMotion = false;
+    private boolean videoRotated = false;
 
     private void initComponents() {
 
@@ -51,13 +50,13 @@ public class VideoControllerView extends LinearLayout {
         videoSpeed.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)  {
 
-                videoSlowSpeed = !videoSlowSpeed;
-                if (videoSlowSpeed) {
+                videoSlowMotion = !videoSlowMotion;
+                if (videoSlowMotion) {
                     videoSpeed.setImageResource(R.mipmap.icon_clock_selected);
                 } else {
                     videoSpeed.setImageResource(R.mipmap.icon_clock);
                 }
-                videoController.videoSpeed(videoSlowSpeed);
+                detailFragment.videoSpeed(videoSlowMotion);
 
             }
         });
@@ -65,32 +64,32 @@ public class VideoControllerView extends LinearLayout {
         videoRotate .setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)  {
 
-                videoRotateed = !videoRotateed;
+                videoRotated = !videoRotated;
 
-                if (videoRotateed) {
+                if (videoRotated) {
                     videoRotate.setImageResource(R.mipmap.icon_rotate_selected);
                 } else {
                     videoRotate.setImageResource(R.mipmap.icon_rotate);
                 }
-                videoController.videoRotate(videoRotateed);
+                detailFragment.videoRotate(videoRotated);
             }
         });
 
         videoBackward.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)  {
-                Log.i("VideoController", "videoBackward");
+                detailFragment.videoBackward();
             }
         });
 
         videoPlay.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)  {
-                videoController.videoPlay();
+                detailFragment.videoPlay();
             }
         });
 
         videoForward.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)  {
-                Log.i("VideoController", "videoForward");
+                detailFragment.videoForward();
             }
         });
 

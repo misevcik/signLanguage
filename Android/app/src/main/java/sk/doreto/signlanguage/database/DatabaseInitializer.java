@@ -49,9 +49,9 @@ public class DatabaseInitializer {
     private static void populateWithWordData(AppDatabase db) {
 
         Word wordArray [] = {
-                new Word("Ahoj", 0, false, "ahoj.mp3", "ahojSide.mp3"),
-                new Word("Test", 0, true, "test.mp3", "testSide.mp3"),
-                new Word("Cau", 0, false, "ahoj.mp3", "ahojSide.mp3"),
+                new Word("Ahoj", 0, false, "lection1_ahoj", "lection1_ahoj1"),
+                new Word("Ano", 0, true, "lection1_ano", "lection1_ano1"),
+                new Word("Chlapec", 0, false, "lection1_chlapec", "lection1_chlapec1"),
                 new Word("Dorotka", 0, false, "test.mp3", "testSide.mp3"),
                 new Word("Adamko", 0, true, "ahoj.mp3", "ahojSide.mp3"),
                 new Word("Dom", 0, false, "test.mp3", "testSide.mp3"),

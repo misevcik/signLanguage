@@ -13,17 +13,30 @@ public class VideoControllerView extends LinearLayout {
 
     private IDetailFragment detailFragment;
 
-    private ImageButton videoSpeed;
-    private ImageButton videoBackward;
-    private ImageButton videoPlay;
-    private ImageButton videoForward;
-    private ImageButton videoRotate;
+    private ImageButton videoSlowMotionButton;
+    private ImageButton videoBackwardButton;
+    private ImageButton videoPlayButton;
+    private ImageButton videoForwardButton;
+    private ImageButton videoRotateButton;
+
+    private boolean videoSlowMotion = false;
+    private boolean videoRotate = false;
 
 
     public VideoControllerView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
 
+    }
+
+    public void setDefaultVideoSlowMotion(boolean videoSlowMotion) {
+        this.videoSlowMotion = videoSlowMotion;
+        setVideoSlowMotionButton();
+    }
+
+    public void setDefaultVideoRotate(boolean videoRotate) {
+        this.videoRotate = videoRotate;
+        setVideoRotateButton();
     }
 
     public void setDetailFragment(IDetailFragment detailFragment) {
@@ -36,62 +49,69 @@ public class VideoControllerView extends LinearLayout {
         initComponents();
     }
 
-    private boolean videoSlowMotion = false;
-    private boolean videoRotated = false;
-
     private void initComponents() {
 
-        videoSpeed = findViewById(R.id.video_speed);
-        videoBackward = findViewById(R.id.video_backward);
-        videoPlay = findViewById(R.id.video_play);
-        videoForward = findViewById(R.id.video_forward);
-        videoRotate = findViewById(R.id.video_rotate);
+        videoSlowMotionButton = findViewById(R.id.video_slow_motion);
+        videoBackwardButton = findViewById(R.id.video_backward);
+        videoPlayButton = findViewById(R.id.video_play);
+        videoForwardButton = findViewById(R.id.video_forward);
+        videoRotateButton = findViewById(R.id.video_rotate);
 
-        videoSpeed.setOnClickListener(new View.OnClickListener() {
+
+        videoSlowMotionButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)  {
 
                 videoSlowMotion = !videoSlowMotion;
-                if (videoSlowMotion) {
-                    videoSpeed.setImageResource(R.mipmap.icon_clock_selected);
-                } else {
-                    videoSpeed.setImageResource(R.mipmap.icon_clock);
-                }
-                detailFragment.videoSpeed(videoSlowMotion);
+                setVideoSlowMotionButton();
+                detailFragment.videoSlowMotion(videoSlowMotion);
 
             }
         });
 
-        videoRotate .setOnClickListener(new View.OnClickListener() {
+        videoRotateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)  {
 
-                videoRotated = !videoRotated;
-
-                if (videoRotated) {
-                    videoRotate.setImageResource(R.mipmap.icon_rotate_selected);
-                } else {
-                    videoRotate.setImageResource(R.mipmap.icon_rotate);
-                }
-                detailFragment.videoRotate(videoRotated);
+                videoRotate = !videoRotate;
+                setVideoRotateButton();
+                detailFragment.videoRotate(videoRotate);
             }
         });
 
-        videoBackward.setOnClickListener(new View.OnClickListener() {
+        videoBackwardButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)  {
                 detailFragment.videoBackward();
             }
         });
 
-        videoPlay.setOnClickListener(new View.OnClickListener() {
+        videoPlayButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)  {
                 detailFragment.videoPlay();
             }
         });
 
-        videoForward.setOnClickListener(new View.OnClickListener() {
+        videoForwardButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)  {
                 detailFragment.videoForward();
             }
         });
 
+    }
+
+    private void setVideoSlowMotionButton() {
+
+        if (videoSlowMotion) {
+            videoSlowMotionButton.setImageResource(R.mipmap.icon_clock_selected);
+        } else {
+            videoSlowMotionButton.setImageResource(R.mipmap.icon_clock);
+        }
+    }
+
+    private void setVideoRotateButton() {
+
+        if (videoRotate) {
+            videoRotateButton.setImageResource(R.mipmap.icon_rotate_selected);
+        } else {
+            videoRotateButton.setImageResource(R.mipmap.icon_rotate);
+        }
     }
 }

@@ -10,12 +10,12 @@ import android.util.Log;
 
 public class Utility {
 
-    public static int getResourceId(Context context, String variableName, String resourcename)
+    public static int getResourceId(Context context, String variableName, String resourceName)
     {
         String packageName = context.getPackageName();
 
         try {
-            return context.getResources().getIdentifier(variableName, resourcename, packageName);
+            return context.getResources().getIdentifier(variableName, resourceName, packageName);
         } catch (Exception e) {
             e.printStackTrace();
             return -1;

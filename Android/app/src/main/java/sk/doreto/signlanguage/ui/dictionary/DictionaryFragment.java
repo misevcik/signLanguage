@@ -25,6 +25,9 @@ public class DictionaryFragment extends Fragment implements IDictionaryFragment 
     private DictionaryAdapter adapter;
     private NavigationBarController navigationBarController;
     private DetailDictionaryFragment detailFragment;
+    private List<Word> wordList;
+
+    private int selectedPosition = -1;
 
     @Override
     public void onAttach(Context context) {
@@ -43,7 +46,7 @@ public class DictionaryFragment extends Fragment implements IDictionaryFragment 
 
 
         //TODO - use ModelView https://www.thomaskioko.com/android-livedata-viewmodel/
-        List<Word> wordList = AppDatabase.getAppDatabase(getContext()).wordDao().getAll();
+        wordList = AppDatabase.getAppDatabase(getContext()).wordDao().getAll();
         adapter = new DictionaryAdapter(wordList, getContext());
         detailFragment = new DetailDictionaryFragment(this);
 
@@ -55,12 +58,12 @@ public class DictionaryFragment extends Fragment implements IDictionaryFragment 
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 navigationBarController.hideBar();
+                detailFragment.setDetailData(wordList.get(position));
+                selectedPosition = position;
 
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                 ft.add(R.id.viewLayout, detailFragment);
                 ft.commit();
-
-                detailFragment.setDetailData();
             }
         });
 
@@ -69,12 +72,24 @@ public class DictionaryFragment extends Fragment implements IDictionaryFragment 
     }
 
     public void videoForward() {
-        detailFragment.setDetailData();
+
+        selectedPosition++;
+
+        if(selectedPosition >= wordList.size())
+            selectedPosition = 0;
+
+        detailFragment.setDetailData(wordList.get(selectedPosition));
         getActivity().getSupportFragmentManager().beginTransaction().detach(detailFragment).attach(detailFragment).commit();
     }
 
     public void videoBackward() {
-        detailFragment.setDetailData();
+
+        selectedPosition--;
+
+        if(selectedPosition <= 0)
+            selectedPosition = wordList.size() - 1;
+
+        detailFragment.setDetailData(wordList.get(selectedPosition));
         getActivity().getSupportFragmentManager().beginTransaction().detach(detailFragment).attach(detailFragment).commit();
     }
 

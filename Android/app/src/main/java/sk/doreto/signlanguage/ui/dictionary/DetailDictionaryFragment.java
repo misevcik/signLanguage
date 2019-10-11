@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 
 import sk.doreto.signlanguage.R;
 import sk.doreto.signlanguage.VideoPlayerActivity;
+import sk.doreto.signlanguage.database.Word;
 import sk.doreto.signlanguage.ui.components.IDetailFragment;
 import sk.doreto.signlanguage.ui.components.VideoControllerView;
 import sk.doreto.signlanguage.utils.Utility;
@@ -25,6 +26,7 @@ public class DetailDictionaryFragment extends Fragment implements IDetailFragmen
     private VideoControllerView videoController;
     private IDictionaryFragment dictionaryFragment;
 
+    private Word word;
     private boolean videoRotate = false;
     private boolean videoSlowMotion = false;
 
@@ -40,22 +42,32 @@ public class DetailDictionaryFragment extends Fragment implements IDetailFragmen
         View rootView = inflater.inflate(R.layout.fragment_detail_dictionary, container, false);
 
         imageView = rootView.findViewById(R.id.image_view);
+
         videoController = rootView.findViewById(R.id.video_controller);
+        videoController.setDefaultVideoRotate(videoRotate);
+        videoController.setDefaultVideoSlowMotion(videoSlowMotion);
         videoController.setDetailFragment(this);
 
-        Drawable drawable = Utility.getThumbnail(getContext(), "hello");
-        imageView.setImageDrawable(drawable);
+        drawThumbnail();
 
         return rootView;
     }
 
-    public void setDetailData() {
-
+    public void setDetailData(Word word) {
+        this.word = word;
     }
+
 
     public void videoPlay() {
         Intent videoPlaybackActivity = new Intent(getContext(), VideoPlayerActivity.class);
-        String videoPath = "android.resource://" + getContext().getPackageName() + "/" + R.raw.hello;
+
+        String videoPath;
+        if(this.videoRotate)
+            videoPath = "android.resource://" + getContext().getPackageName() + "/" + Utility.getResourceId(getContext(), word.getVideoSide(), "raw");
+        else
+            videoPath = "android.resource://" + getContext().getPackageName() + "/" + Utility.getResourceId(getContext(), word.getVideoFront(), "raw");
+
+
         videoPlaybackActivity.putExtra("videoPath", videoPath);
         videoPlaybackActivity.putExtra("videoSlowMotion", videoSlowMotion);
         startActivity(videoPlaybackActivity);
@@ -70,11 +82,18 @@ public class DetailDictionaryFragment extends Fragment implements IDetailFragmen
     }
 
     public void videoRotate(boolean videoRotate) {
+
         this.videoRotate = videoRotate;
+        drawThumbnail();
     }
 
-    public void videoSpeed(boolean videoSlowMotion) {
+    public void videoSlowMotion(boolean videoSlowMotion) {
         this.videoSlowMotion = videoSlowMotion;
+    }
+
+    private void drawThumbnail() {
+        Drawable drawable = Utility.getThumbnail(getContext(), this.videoRotate ? word.getVideoSide() : word.getVideoFront());
+        imageView.setImageDrawable(drawable);
     }
 
 }

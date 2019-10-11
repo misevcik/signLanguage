@@ -6,5 +6,5 @@ public interface IDetailFragment {
     void videoForward();
     void videoBackward();
     void videoRotate(boolean videoRotate);
-    void videoSpeed(boolean videoSlowMotion);
+    void videoSlowMotion(boolean videoSlowMotion);
 }

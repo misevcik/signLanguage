@@ -15,18 +15,35 @@ public class DatabaseInitializer {
     }
 
     public static void populateSync(@NonNull final AppDatabase db) {
+
         populateWithLectionData(db);
         populateWithWordData(db);
+        populateWithSentenceData(db);
+        joinWordWithSentence(db);
     }
 
-    private static Word addWord(final AppDatabase db, Word word) {
-        db.wordDao().insertAll(word);
-        return word;
-    }
 
-    private static Lection addLection(final AppDatabase db, Lection lection) {
-        db.lectionDao().insertAll(lection);
-        return lection;
+    private static void populateWithWordData(AppDatabase db) {
+
+        Word wordArray [] = {
+                new Word(0, "Ahoj", 0, false, "lection1_ahoj", "lection1_ahoj1"),
+                new Word(1, "Ano", 0, true, "lection1_ano", "lection1_ano1"),
+                new Word(2, "Chlapec", 0, false, "lection1_chlapec", "lection1_chlapec1"),
+                new Word(3, "Dorotka", 0, false, "test.mp3", "testSide.mp3"),
+                new Word(4, "Adamko", 0, true, "ahoj.mp3", "ahojSide.mp3"),
+                new Word(5, "Dom", 0, false, "test.mp3", "testSide.mp3"),
+                new Word(6, "Strom", 0, false, "ahoj.mp3", "ahojSide.mp3"),
+                new Word(7, "Cesta", 0, false, "test.mp3", "testSide.mp3"),
+                new Word(8, "Kotva", 0, false, "ahoj.mp3", "ahojSide.mp3"),
+                new Word(9, "Jablko", 0, false, "test.mp3", "testSide.mp3"),
+                new Word(10, "XXX", 0, false, "test.mp3", "testSide.mp3"),
+                new Word(11, "YYY", 0, false, "test.mp3", "testSide.mp3")
+        };
+
+
+        for (Word word : wordArray)
+            db.wordDao().insertAll(word);
+        
     }
 
     private static void populateWithLectionData(AppDatabase db) {
@@ -43,30 +60,31 @@ public class DatabaseInitializer {
         };
 
         for (Lection lection : lectionArray)
-            addLection(db, lection);
+            db.lectionDao().insertAll(lection);
     }
 
-    private static void populateWithWordData(AppDatabase db) {
+    private static void populateWithSentenceData(AppDatabase db) {
 
-        Word wordArray [] = {
-                new Word("Ahoj", 0, false, "lection1_ahoj", "lection1_ahoj1"),
-                new Word("Ano", 0, true, "lection1_ano", "lection1_ano1"),
-                new Word("Chlapec", 0, false, "lection1_chlapec", "lection1_chlapec1"),
-                new Word("Dorotka", 0, false, "test.mp3", "testSide.mp3"),
-                new Word("Adamko", 0, true, "ahoj.mp3", "ahojSide.mp3"),
-                new Word("Dom", 0, false, "test.mp3", "testSide.mp3"),
-                new Word("Strom", 0, false, "ahoj.mp3", "ahojSide.mp3"),
-                new Word("Cesta", 0, false, "test.mp3", "testSide.mp3"),
-                new Word("Kotva", 0, false, "ahoj.mp3", "ahojSide.mp3"),
-                new Word("Jablko", 0, false, "test.mp3", "testSide.mp3"),
-                new Word("XXX", 0, false, "test.mp3", "testSide.mp3"),
-                new Word("YYY", 0, false, "test.mp3", "testSide.mp3")
+        Sentence sentencesArray [] = {
+                new Sentence(0, "Ahoj, kamo", "lection1_ahoj"),
+                new Sentence(1, "Ano to je on", "lection1_ahoj")
         };
 
 
-        for (Word word : wordArray)
-            addWord(db, word);
-        
+        for (Sentence sentence : sentencesArray)
+            db.sentenceDao().insertAll(sentence);
+
+    }
+
+    private static void joinWordWithSentence(AppDatabase db) {
+
+        WordSentenceJoin wordSentenceJoinArray [] = {
+                new WordSentenceJoin(0, 0), //Ahoj
+                new WordSentenceJoin(1, 1) //Ano
+        };
+
+        for (WordSentenceJoin wordSentenceJoin : wordSentenceJoinArray)
+            db.wordSentenceJoinDao().insertAll(wordSentenceJoin);
     }
 
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
@@ -79,8 +97,12 @@ public class DatabaseInitializer {
 
         @Override
         protected Void doInBackground(final Void... params) {
+
             populateWithLectionData(mDb);
             populateWithWordData(mDb);
+            populateWithSentenceData(mDb);
+            joinWordWithSentence(mDb);
+
             return null;
         }
 

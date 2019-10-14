@@ -7,9 +7,9 @@ import androidx.room.PrimaryKey;
 
 
 @Entity(tableName = "WordTable", indices = {@Index(value = "word", unique = true)})
-    public class Word {
+public class Word {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     @ColumnInfo(name = "id")
     private int id;
 
@@ -28,7 +28,8 @@ import androidx.room.PrimaryKey;
     @ColumnInfo(name = "videoSide")
     private String videoSide;
 
-    public Word(String word, int lection, boolean favorite, String videoFront, String videoSide) {
+    public Word(int id, String word, int lection, boolean favorite, String videoFront, String videoSide) {
+        this.id = id;
         this.word = word;
         this.lection = lection;
         this.favorite = favorite;

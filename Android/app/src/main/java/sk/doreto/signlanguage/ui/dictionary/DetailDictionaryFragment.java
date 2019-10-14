@@ -6,15 +6,22 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+
+import java.util.List;
 
 import sk.doreto.signlanguage.R;
 import sk.doreto.signlanguage.VideoPlayerActivity;
+import sk.doreto.signlanguage.database.AppDatabase;
+import sk.doreto.signlanguage.database.Sentence;
 import sk.doreto.signlanguage.database.Word;
 import sk.doreto.signlanguage.ui.components.IDetailFragment;
 import sk.doreto.signlanguage.ui.components.VideoControllerView;
@@ -25,8 +32,11 @@ public class DetailDictionaryFragment extends Fragment implements IDetailFragmen
     private ImageView imageView;
     private VideoControllerView videoController;
     private IDictionaryFragment dictionaryFragment;
+    private SentenceAdapter adapter;
+    private ListView listView;
 
     private Word word;
+    private List<Sentence> sentecneList;
     private boolean videoRotate = false;
     private boolean videoSlowMotion = false;
 
@@ -39,7 +49,7 @@ public class DetailDictionaryFragment extends Fragment implements IDetailFragmen
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_detail_dictionary, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_dictionary_detail, container, false);
 
         imageView = rootView.findViewById(R.id.image_view);
 
@@ -48,6 +58,18 @@ public class DetailDictionaryFragment extends Fragment implements IDetailFragmen
         videoController.setDefaultVideoSlowMotion(videoSlowMotion);
         videoController.setDetailFragment(this);
 
+        adapter = new SentenceAdapter(sentecneList, getContext());
+        listView = rootView.findViewById(R.id.sentence_list);
+        listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
+
+
         drawThumbnail();
 
         return rootView;
@@ -55,6 +77,8 @@ public class DetailDictionaryFragment extends Fragment implements IDetailFragmen
 
     public void setDetailData(Word word) {
         this.word = word;
+
+        sentecneList = AppDatabase.getAppDatabase(getContext()).wordSentenceJoinDao().getSentencesForWord(word.getId());
     }
 
 

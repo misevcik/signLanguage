@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">signLanguage</string>
-    <string name="title_dictionary">Slovnik</string>
-    <string name="title_education">Vyucba</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_dictionary">Slovník</string>
+    <string name="title_education">Výučba</string>
+    <string name="title_favorites">Obľubene</string>
+
+    <string name="pouzitie_vo_vetach">"POUŽITIE VO VETÁCH"</string>
 </resources>

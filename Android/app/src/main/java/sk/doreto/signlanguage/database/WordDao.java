@@ -10,14 +10,14 @@ import java.util.List;
 @Dao
 public interface WordDao {
 
+    @Insert
+    void insertAll(Word... words);
+
     @Query("SELECT * FROM WordTable")
     List<Word> getAll();
 
     @Query("SELECT COUNT(*) from WordTable")
     int countWord();
-
-    @Insert
-    void insertAll(Word... words);
 
     @Delete
     void delete(Word word);

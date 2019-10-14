@@ -10,14 +10,14 @@ import java.util.List;
 @Dao
 public interface LectionDao {
 
+    @Insert
+    void insertAll(Lection... lections);
+
     @Query("SELECT * FROM LectionTable")
     List<Lection> getAll();
 
     @Query("SELECT COUNT(*) from LectionTable")
     int countLection();
-
-    @Insert
-    void insertAll(Lection... lections);
 
     @Delete
     void delete(Lection lection);

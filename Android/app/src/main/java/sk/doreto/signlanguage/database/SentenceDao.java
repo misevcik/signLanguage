@@ -10,14 +10,15 @@ import java.util.List;
 @Dao
 public interface SentenceDao {
 
+    @Insert
+    void insertAll(Sentence... sentences);
+
     @Query("SELECT * FROM SentenceTable")
     List<Sentence> getAll();
 
     @Query("SELECT COUNT(*) from SentenceTable")
     int countSentences();
 
-    @Insert
-    void insertAll(Sentence... sentences);
 
     @Delete
     void delete(Sentence sentences);

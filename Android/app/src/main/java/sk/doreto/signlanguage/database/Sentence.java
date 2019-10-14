@@ -2,20 +2,16 @@ package sk.doreto.signlanguage.database;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 
-@Entity(tableName = "SentenceTable",
-        foreignKeys = @ForeignKey(entity = Word.class,
-                                    parentColumns = "wid",
-                                    childColumns = "wordId",
-                                    onDelete = ForeignKey.CASCADE))
+@Entity(tableName = "SentenceTable", indices = {@Index(value = "id", unique = true)})
 public class Sentence {
 
-    @PrimaryKey(autoGenerate = true)
-    private int uid;
+    @PrimaryKey
+    @ColumnInfo(name = "id")
+    private int id;
 
     @ColumnInfo(name = "sentence")
     private String sentence;
@@ -23,20 +19,18 @@ public class Sentence {
     @ColumnInfo(name = "video")
     private String video;
 
-    @ColumnInfo(name = "wordId")
-    private int wordid;
-
-    public Sentence(String sentence, String video) {
+    public Sentence(int id, String sentence, String video) {
+        this.id = id;
         this.sentence = sentence;
-        this.video = video;
+        this.video = video;;
     }
 
-    public int getUid() {
-        return uid;
+    public int getId() {
+        return id;
     }
 
-    public void setUid(int uid) {
-        this.uid = uid;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getSentence() {

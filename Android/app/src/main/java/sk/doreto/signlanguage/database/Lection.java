@@ -6,15 +6,12 @@ import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "LectionTable", indices = {@Index(value = "lection", unique = true)})
+@Entity(tableName = "LectionTable", indices = {@Index(value = "id", unique = true)})
 public class Lection {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     @ColumnInfo(name = "id")
     private int id;
-
-    @ColumnInfo(name = "lection")
-    private int lection;
 
     @ColumnInfo(name = "title")
     private String title;
@@ -27,19 +24,12 @@ public class Lection {
     private boolean locked;
 
 
-    public Lection(int lection, String title,  String image, boolean locked) {
+    public Lection(int id, String title,  String image, boolean locked) {
+
+        this.id = id;
         this.title = title;
-        this.lection = lection;
         this.image = image;
         this.locked = locked;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getTitle() {
@@ -50,12 +40,12 @@ public class Lection {
         this.title = title;
     }
 
-    public int getLection() {
-        return lection;
+    public int getId() {
+        return id;
     }
 
-    public void setLection(int lection) {
-        this.lection = lection;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getImage() {

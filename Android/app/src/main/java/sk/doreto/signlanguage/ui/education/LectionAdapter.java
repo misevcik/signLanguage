@@ -1,6 +1,7 @@
 package sk.doreto.signlanguage.ui.education;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import sk.doreto.signlanguage.R;
+import sk.doreto.signlanguage.database.AppDatabase;
 import sk.doreto.signlanguage.database.Lection;
 
 
@@ -21,6 +23,7 @@ public class LectionAdapter extends ArrayAdapter<Lection> {
 
     private static class ViewHolder {
         TextView word;
+        TextView wordCount;
         ImageView image;
     }
 
@@ -49,6 +52,8 @@ public class LectionAdapter extends ArrayAdapter<Lection> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         Lection lection = getItem(position);
+        int wordCount = AppDatabase.getAppDatabase(getContext()).wordDao().getWordsCountForLection(lection.getId());
+
         LectionAdapter.ViewHolder viewHolder;
 
         if (convertView == null) {
@@ -57,18 +62,20 @@ public class LectionAdapter extends ArrayAdapter<Lection> {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.lection_grid_item, parent, false);
             viewHolder.word = convertView.findViewById(R.id.lection_grid_title);
+            viewHolder.wordCount = convertView.findViewById(R.id.lection_grid_word_count);
             viewHolder.image = convertView.findViewById(R.id.lection_grid_image);
             convertView.setTag(viewHolder);
-
 
         } else {
 
             viewHolder = (LectionAdapter.ViewHolder) convertView.getTag();
         }
 
+        Resources res = getContext().getResources();
 
         viewHolder.word.setText(lection.getTitle());
-//        viewHolder.image.setImageResource(word.getFavorite() ? R.mipmap.icon_heart_red : R.mipmap.icon_heart_black);
+        viewHolder.wordCount.setText(String.format(res.getString(R.string.video_count), wordCount));
+        //viewHolder.image.setImageResource(word.getFavorite() ? R.mipmap.icon_heart_red : R.mipmap.icon_heart_black);
 
         return convertView;
     }

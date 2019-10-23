@@ -5,4 +5,5 @@
     <string name="title_favorites">Obľubene</string>
 
     <string name="pouzitie_vo_vetach">"POUŽITIE VO VETÁCH"</string>
+    <string name="video_count">"%d VIDEI</string>
 </resources>

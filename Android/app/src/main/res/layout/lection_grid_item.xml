@@ -30,7 +30,7 @@
             android:gravity="center"/>
 
         <TextView
-            android:id="@+id/lection_grid_video_count"
+            android:id="@+id/lection_grid_word_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Count"

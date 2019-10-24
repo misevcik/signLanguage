@@ -27,7 +27,12 @@ import sk.doreto.signlanguage.ui.components.IDetailFragment;
 import sk.doreto.signlanguage.ui.components.VideoControllerView;
 import sk.doreto.signlanguage.utils.Utility;
 
-public class DetailDictionaryFragment extends Fragment implements IDetailFragment {
+public class DictionaryDetailFragment extends Fragment implements IDetailFragment {
+
+    public enum FragmentType {
+        DICTIONARY,
+        LECTION
+    }
 
     private ImageView imageView;
     private VideoControllerView videoController;
@@ -40,8 +45,11 @@ public class DetailDictionaryFragment extends Fragment implements IDetailFragmen
     private boolean videoRotate = false;
     private boolean videoSlowMotion = false;
 
-    public DetailDictionaryFragment(IDictionaryFragment dictionaryFragment) {
+    private FragmentType fragmentType;
+
+    public DictionaryDetailFragment(IDictionaryFragment dictionaryFragment, FragmentType fragmentType) {
         this.dictionaryFragment = dictionaryFragment;
+        this.fragmentType = fragmentType;
     }
 
 
@@ -76,11 +84,23 @@ public class DetailDictionaryFragment extends Fragment implements IDetailFragmen
     }
 
     public void setDetailData(Word word) {
-        this.word = word;
 
+        this.word = word;
         sentecneList = AppDatabase.getAppDatabase(getContext()).wordSentenceJoinDao().getSentencesForWord(word.getId());
+
+        if(this.fragmentType == FragmentType.LECTION) {
+            lectionFragment();
+        }
     }
 
+    private void lectionFragment() {
+
+        if (!word.getVisited()) {
+            word.setVisited(true);
+            AppDatabase.getAppDatabase(getContext()).wordDao().updateVisited(true, word.getId());
+            dictionaryFragment.updateContent();
+        }
+    }
 
     public void videoPlay() {
         Intent videoPlaybackActivity = new Intent(getContext(), VideoPlayerActivity.class);
@@ -119,5 +139,4 @@ public class DetailDictionaryFragment extends Fragment implements IDetailFragmen
         Drawable drawable = Utility.getThumbnail(getContext(), this.videoRotate ? word.getVideoSide() : word.getVideoFront());
         imageView.setImageDrawable(drawable);
     }
-
 }

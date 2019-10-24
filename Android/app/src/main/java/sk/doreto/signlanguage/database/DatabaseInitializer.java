@@ -26,18 +26,18 @@ public class DatabaseInitializer {
     private static void populateWithWordData(AppDatabase db) {
 
         Word wordArray [] = {
-                new Word(0, "Ahoj", 0, false, "lection1_ahoj", "lection1_ahoj1"),
-                new Word(1, "Ano", 0, true, "lection1_ano", "lection1_ano1"),
-                new Word(2, "Chlapec", 0, false, "lection1_chlapec", "lection1_chlapec1"),
-                new Word(3, "Dorotka", 0, false, "test.mp3", "testSide.mp3"),
-                new Word(4, "Adamko", 0, true, "ahoj.mp3", "ahojSide.mp3"),
-                new Word(5, "Dom", 0, false, "test.mp3", "testSide.mp3"),
-                new Word(6, "Strom", 0, false, "ahoj.mp3", "ahojSide.mp3"),
-                new Word(7, "Cesta", 0, false, "test.mp3", "testSide.mp3"),
-                new Word(8, "Kotva", 0, false, "ahoj.mp3", "ahojSide.mp3"),
-                new Word(9, "Jablko", 0, false, "test.mp3", "testSide.mp3"),
-                new Word(10, "XXX", 0, false, "test.mp3", "testSide.mp3"),
-                new Word(11, "YYY", 0, false, "test.mp3", "testSide.mp3")
+                new Word(0, "Ahoj", 0, "lection1_ahoj", "lection1_ahoj1"),
+                new Word(1, "Ano", 0,"lection1_ano", "lection1_ano1"),
+                new Word(2, "Chlapec", 0,"lection1_chlapec", "lection1_chlapec1"),
+                new Word(3, "Dorotka", 0, "test.mp3", "testSide.mp3"),
+                new Word(4, "Adamko", 0, "ahoj.mp3", "ahojSide.mp3"),
+                new Word(5, "Dom", 0, "test.mp3", "testSide.mp3"),
+                new Word(6, "Strom", 0, "ahoj.mp3", "ahojSide.mp3"),
+                new Word(7, "Cesta", 0, "test.mp3", "testSide.mp3"),
+                new Word(8, "Kotva", 0,  "ahoj.mp3", "ahojSide.mp3"),
+                new Word(9, "Jablko", 0,  "test.mp3", "testSide.mp3"),
+                new Word(10, "XXX", 0, "test.mp3", "testSide.mp3"),
+                new Word(11, "YYY", 0,  "test.mp3", "testSide.mp3")
         };
 
 

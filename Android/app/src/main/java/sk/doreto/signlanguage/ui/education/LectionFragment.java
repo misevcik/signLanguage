@@ -1,5 +1,6 @@
 package sk.doreto.signlanguage.ui.education;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,20 +17,33 @@ import androidx.fragment.app.FragmentTransaction;
 
 import java.util.List;
 
+import sk.doreto.signlanguage.NavigationBarController;
 import sk.doreto.signlanguage.R;
 import sk.doreto.signlanguage.database.AppDatabase;
 import sk.doreto.signlanguage.database.Lection;
-import sk.doreto.signlanguage.database.Word;
 
 
 public class LectionFragment extends Fragment {
 
     private LectionAdapter adapter;
     private GridView gridView;
+    private NavigationBarController navigationBarController;
+
     private List<Lection> lectionList;
+
 
     public static LectionFragment newInstance() {
         return new LectionFragment();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            navigationBarController = (NavigationBarController) context;
+        } catch (ClassCastException castException) {
+            /** The activity does not implement the listener. */
+        }
     }
 
     @Nullable
@@ -49,15 +63,13 @@ public class LectionFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 
-                //navigationBarController.hideBar();
+                navigationBarController.hideBar();
                 LectionDetailFragment lectionDetailFragment = new LectionDetailFragment();
                 lectionDetailFragment.setDetailData(lectionList.get(position));
 
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                 ft.add(R.id.viewLayout, lectionDetailFragment);
-                ft.commit();
-
-
+                ft.addToBackStack("LectionDetailFragment").commit();
 
             }
         });

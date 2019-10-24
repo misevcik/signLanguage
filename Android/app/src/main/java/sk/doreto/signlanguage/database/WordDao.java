@@ -28,4 +28,8 @@ public interface WordDao {
     @Delete
     void delete(Word word);
 
+
+    @Query("UPDATE WordTable SET visited=:visited WHERE id = :id")
+    void updateVisited(boolean visited, int id);
+
 }

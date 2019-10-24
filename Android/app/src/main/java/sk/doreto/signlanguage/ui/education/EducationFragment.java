@@ -28,8 +28,8 @@ public class EducationFragment extends Fragment {
 
 
         mAdapter = new TabFragmentAdapter(getFragmentManager());
-        mAdapter.addFragment(LectionFragment.newInstance(), "Tab 1");
-        mAdapter.addFragment(TestFragment.newInstance(), "Tab 2");
+        mAdapter.addFragment(LectionFragment.newInstance(), getContext().getString(R.string.tab_lection));
+        mAdapter.addFragment(TestFragment.newInstance(), getContext().getString(R.string.tab_test));
 
         mViewPager.setAdapter(mAdapter);
         mTabs.setupWithViewPager(mViewPager);

@@ -22,19 +22,24 @@ public class Word {
     @ColumnInfo(name = "favorite")
     private boolean favorite;
 
+    @ColumnInfo(name = "visited")
+    private boolean visited;
+
     @ColumnInfo(name = "videoFront")
     private String videoFront;
 
     @ColumnInfo(name = "videoSide")
     private String videoSide;
 
-    public Word(int id, String word, int lection, boolean favorite, String videoFront, String videoSide) {
+    public Word(int id, String word, int lection, String videoFront, String videoSide) {
         this.id = id;
         this.word = word;
         this.lection = lection;
-        this.favorite = favorite;
         this.videoFront = videoFront;
         this.videoSide = videoSide;
+
+        this.favorite = false;
+        this.visited = false;
     }
 
     public int getId() {
@@ -67,6 +72,14 @@ public class Word {
 
     public void setFavorite(boolean favorite) {
         this.favorite = favorite;
+    }
+
+    public boolean getVisited() {
+        return visited;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
     }
 
     public String getVideoFront() {

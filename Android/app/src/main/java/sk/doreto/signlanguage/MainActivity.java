@@ -85,5 +85,20 @@ public class MainActivity extends AppCompatActivity implements  NavigationBarCon
         bottomNavigationView.setVisibility(View.VISIBLE);
     }
 
+    @Override
+    public void onBackPressed() {
+
+        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+            getSupportFragmentManager().popBackStack();
+        }
+        else if(getSupportFragmentManager().getBackStackEntryCount() == 1) {
+            getSupportFragmentManager().popBackStack();
+            this.showBar();
+        }
+        else {
+            super.onBackPressed();
+        }
+    }
+
 
 }

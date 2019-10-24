@@ -24,7 +24,7 @@ public class DictionaryFragment extends Fragment implements IDictionaryFragment 
     private ListView listView;
     private DictionaryAdapter adapter;
     private NavigationBarController navigationBarController;
-    private DetailDictionaryFragment detailFragment;
+    private DictionaryDetailFragment detailFragment;
     private List<Word> wordList;
 
     private int selectedPosition = -1;
@@ -48,7 +48,7 @@ public class DictionaryFragment extends Fragment implements IDictionaryFragment 
         //TODO - use ModelView https://www.thomaskioko.com/android-livedata-viewmodel/
         wordList = AppDatabase.getAppDatabase(getContext()).wordDao().getAll();
         adapter = new DictionaryAdapter(wordList, getContext());
-        detailFragment = new DetailDictionaryFragment(this);
+        detailFragment = new DictionaryDetailFragment(this, DictionaryDetailFragment.FragmentType.DICTIONARY);
 
         listView = rootView.findViewById(R.id.dictionary_list);
         listView.setAdapter(adapter);
@@ -63,7 +63,7 @@ public class DictionaryFragment extends Fragment implements IDictionaryFragment 
 
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                 ft.add(R.id.viewLayout, detailFragment);
-                ft.commit();
+                ft.addToBackStack("DictionaryDetailFragment").commit();
             }
         });
 
@@ -93,5 +93,8 @@ public class DictionaryFragment extends Fragment implements IDictionaryFragment 
         getActivity().getSupportFragmentManager().beginTransaction().detach(detailFragment).attach(detailFragment).commit();
     }
 
+    public void updateContent() {
+
+    }
 
 }

@@ -70,7 +70,7 @@ public class LectionDictionaryAdapter extends ArrayAdapter<Word> {
 
 
         viewHolder.word.setText(word.getWord());
-        viewHolder.image.setImageResource(word.getFavorite() ? R.mipmap.icon_heart_red : R.mipmap.icon_heart_black);
+        viewHolder.image.setImageResource(word.getVisited() ? R.mipmap.icon_chevron_red : R.mipmap.icon_chevron_black);
 
         return convertView;
     }

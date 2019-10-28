@@ -1,12 +1,14 @@
-package sk.doreto.signlanguage.ui.dictionary;
+package sk.doreto.signlanguage.ui.favorite;
+
 
 import android.content.Context;
+
 import sk.doreto.signlanguage.database.AppDatabase;
 import sk.doreto.signlanguage.ui.common.DictionaryCommonFragment;
 
-public class DictionaryFragment extends DictionaryCommonFragment {
+public class FavoriteFragment extends DictionaryCommonFragment {
 
-    public DictionaryFragment() {
+    public FavoriteFragment() {
 
     }
 
@@ -14,7 +16,6 @@ public class DictionaryFragment extends DictionaryCommonFragment {
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        wordList = AppDatabase.getAppDatabase(getContext()).wordDao().getAll();
+        wordList = AppDatabase.getAppDatabase(getContext()).wordDao().getFavorite();
     }
-
 }

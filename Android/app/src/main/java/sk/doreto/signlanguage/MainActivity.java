@@ -12,10 +12,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import sk.doreto.signlanguage.database.AppDatabase;
-import sk.doreto.signlanguage.database.DatabaseInitializer;
 import sk.doreto.signlanguage.ui.dictionary.DictionaryFragment;
 import sk.doreto.signlanguage.ui.education.EducationFragment;
-import sk.doreto.signlanguage.ui.notifications.NotificationsFragment;
+import sk.doreto.signlanguage.ui.favorite.FavoriteFragment;
 
 
 public class MainActivity extends AppCompatActivity implements  NavigationBarController {
@@ -24,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements  NavigationBarCon
 
     private final DictionaryFragment dictionary = new DictionaryFragment();
     private final EducationFragment education = new EducationFragment();
-    private final NotificationsFragment notificationsFragment = new NotificationsFragment();
+    private final FavoriteFragment notificationsFragment = new FavoriteFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

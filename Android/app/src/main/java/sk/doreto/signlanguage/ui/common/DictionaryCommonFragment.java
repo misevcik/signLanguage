@@ -1,6 +1,6 @@
-package sk.doreto.signlanguage.ui.education;
+package sk.doreto.signlanguage.ui.common;
 
-
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,48 +9,55 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import java.util.List;
 
-import sk.doreto.signlanguage.R;
+import sk.doreto.signlanguage.NavigationBarController;
 import sk.doreto.signlanguage.database.AppDatabase;
-import sk.doreto.signlanguage.database.Lection;
+import sk.doreto.signlanguage.R;
 import sk.doreto.signlanguage.database.Word;
-import sk.doreto.signlanguage.ui.common.DictionaryDetailFragment;
-import sk.doreto.signlanguage.ui.common.IDictionaryFragment;
 
+public class DictionaryCommonFragment extends Fragment implements IDictionaryFragment {
 
-public class LectionDetailFragment extends Fragment implements IDictionaryFragment {
+    protected List<Word> wordList;
 
     private ListView listView;
-    private LectionDictionaryAdapter adapter;
-    private List<Word> wordList;
+    private DictionaryAdapter adapter;
+    private NavigationBarController navigationBarController;
     private DictionaryDetailFragment detailFragment;
 
     private int selectedPosition = -1;
 
-    public LectionDetailFragment() {
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            navigationBarController = (NavigationBarController) context;
+        } catch (ClassCastException castException) {
+            /** The activity does not implement the listener. */
+        }
     }
 
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        //TODO - use ModelView https://www.thomaskioko.com/android-livedata-viewmodel/
 
-        View rootView = inflater.inflate(R.layout.fragment_lection_detail, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_dictionary, container, false);
 
-        adapter = new LectionDictionaryAdapter(wordList, getContext());
-        detailFragment = new DictionaryDetailFragment(this, DictionaryDetailFragment.FragmentType.LECTION);
+        adapter = new DictionaryAdapter(wordList, getContext());
+        detailFragment = new DictionaryDetailFragment(this, DictionaryDetailFragment.FragmentType.DICTIONARY);
 
-        listView = rootView.findViewById(R.id.lection_dictionary_list);
+        listView = rootView.findViewById(R.id.dictionary_list);
         listView.setAdapter(adapter);
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                navigationBarController.hideBar();
                 detailFragment.setDetailData(wordList.get(position));
                 selectedPosition = position;
 
@@ -62,13 +69,6 @@ public class LectionDetailFragment extends Fragment implements IDictionaryFragme
 
 
         return rootView;
-
-    }
-
-    public void setDetailData(Lection lection) {
-
-        wordList = AppDatabase.getAppDatabase(getContext()).wordDao().getWordsForLection(lection.getId());
-
     }
 
     public void videoForward() {
@@ -94,7 +94,7 @@ public class LectionDetailFragment extends Fragment implements IDictionaryFragme
     }
 
     public void updateContent() {
-        this.adapter.notifyDataSetChanged();
+
     }
 
 }

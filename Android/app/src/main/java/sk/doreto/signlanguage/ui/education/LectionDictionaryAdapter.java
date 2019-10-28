@@ -12,7 +12,6 @@ import java.util.List;
 
 import sk.doreto.signlanguage.R;
 import sk.doreto.signlanguage.database.Word;
-import sk.doreto.signlanguage.ui.dictionary.DictionaryAdapter;
 
 public class LectionDictionaryAdapter extends ArrayAdapter<Word> {
 

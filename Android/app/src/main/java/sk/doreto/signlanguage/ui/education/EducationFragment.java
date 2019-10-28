@@ -14,8 +14,8 @@ import sk.doreto.signlanguage.R;
 public class EducationFragment extends Fragment {
 
     private TabFragmentAdapter mAdapter;
-    private TabLayout mTabs;
-    private ViewPager mViewPager;
+    private TabLayout tabs;
+    private ViewPager viewPager;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -23,17 +23,20 @@ public class EducationFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_education, container, false);
 
         //Assign view reference
-        mTabs = root.findViewById(R.id.tab);
-        mViewPager = root.findViewById(R.id.viewPager);
+        tabs = root.findViewById(R.id.tab);
+        viewPager = root.findViewById(R.id.viewPager);
 
 
-        mAdapter = new TabFragmentAdapter(getFragmentManager());
+        mAdapter = new TabFragmentAdapter(getChildFragmentManager());
         mAdapter.addFragment(LectionFragment.newInstance(), getContext().getString(R.string.tab_lection));
         mAdapter.addFragment(TestFragment.newInstance(), getContext().getString(R.string.tab_test));
 
-        mViewPager.setAdapter(mAdapter);
-        mTabs.setupWithViewPager(mViewPager);
+        viewPager.setAdapter(mAdapter);
+        tabs.setupWithViewPager(viewPager);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabs));
 
         return root;
     }
+
 }
+

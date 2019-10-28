@@ -16,6 +16,9 @@ public interface WordDao {
     @Query("SELECT * FROM WordTable")
     List<Word> getAll();
 
+    @Query("SELECT * FROM WordTable WHERE WordTable.favorite='true'")
+    List<Word> getFavorite();
+
     @Query("SELECT * FROM WordTable WHERE WordTable.lection=:lectionId")
     List<Word> getWordsForLection(final int lectionId);
 

@@ -1,30 +1,38 @@
-package sk.doreto.signlanguage.ui.dictionary;
+package sk.doreto.signlanguage.ui.common;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
 
 import sk.doreto.signlanguage.R;
-import sk.doreto.signlanguage.database.Sentence;
 import sk.doreto.signlanguage.database.Word;
 
-public class SentenceAdapter extends ArrayAdapter<Sentence> {
+public class DictionaryAdapter extends ArrayAdapter<Word> {
 
-    private List<Sentence> mData;
+    public enum NavigationBarType {
+        DICTIONARY,
+        FAVORITE
+    }
+
+    private List<Word> mData;
+    private Context mContext;
 
 
     private static class ViewHolder {
-        TextView sentence;
+        TextView word;
+        ImageView image;
     }
 
-    public SentenceAdapter(List<Sentence> data, Context context) {
-        super(context, R.layout.sentence_row_item, data);
+    public DictionaryAdapter(List<Word> data, Context context) {
+        super(context, R.layout.dictionary_row_item, data);
         this.mData = data;
+        this.mContext=context;
     }
 
 
@@ -34,7 +42,7 @@ public class SentenceAdapter extends ArrayAdapter<Sentence> {
     }
 
     @Override
-    public Sentence getItem(int position) {
+    public Word getItem(int position) {
         return mData.get(position);
     }
 
@@ -47,15 +55,16 @@ public class SentenceAdapter extends ArrayAdapter<Sentence> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        Sentence sentence = getItem(position);
+        Word word = getItem(position);
         ViewHolder viewHolder;
 
         if (convertView == null) {
 
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.sentence_row_item, parent, false);
-            viewHolder.sentence = convertView.findViewById(R.id.dictionary_detail_row_sentence);
+            convertView = inflater.inflate(R.layout.dictionary_row_item, parent, false);
+            viewHolder.word = convertView.findViewById(R.id.dictionary_row_word);
+            viewHolder.image = convertView.findViewById(R.id.favorite_image);
             convertView.setTag(viewHolder);
 
         } else {
@@ -63,8 +72,13 @@ public class SentenceAdapter extends ArrayAdapter<Sentence> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.sentence.setText(sentence.getSentence());
+
+        viewHolder.word.setText(word.getWord());
+        viewHolder.image.setImageResource(word.getFavorite() ? R.mipmap.icon_heart_red : R.mipmap.icon_heart_black);
 
         return convertView;
     }
+
+
+
 }

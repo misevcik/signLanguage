@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements  NavigationBarCon
 
     private final DictionaryFragment dictionary = new DictionaryFragment();
     private final EducationFragment education = new EducationFragment();
-    private final FavoriteFragment notificationsFragment = new FavoriteFragment();
+    private final FavoriteFragment favorite = new FavoriteFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +52,8 @@ public class MainActivity extends AppCompatActivity implements  NavigationBarCon
                                 fragment = education;
                                 setTitle(item.getTitle());
                                 break;
-                            case R.id.navigation_notifications:
-                                fragment = notificationsFragment;
+                            case R.id.navigation_favorite:
+                                fragment = favorite;
                                 setTitle(item.getTitle());
                                 break;
 

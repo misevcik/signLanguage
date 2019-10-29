@@ -18,7 +18,7 @@
         tools:layout="@layout/fragment_education" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_favorite"
         android:name="sk.doreto.signlanguage.ui.favorite.FavoriteFragment"
         android:label="@string/title_favorites"
         tools:layout="@layout/fragment_notifications" />

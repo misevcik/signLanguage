@@ -1,9 +1,12 @@
 package sk.doreto.signlanguage.ui.education;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
@@ -21,6 +24,11 @@ public class EducationFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_education, container, false);
+
+        TextView toolbarTitleView = root.findViewById(R.id.toolbar_title);
+
+        Resources res = getContext().getResources();
+        toolbarTitleView.setText(res.getString(R.string.title_education));
 
         //Assign view reference
         tabs = root.findViewById(R.id.tab);

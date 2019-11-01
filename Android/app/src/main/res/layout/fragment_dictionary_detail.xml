@@ -5,11 +5,18 @@
     android:background="#FFFFFF"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:id="@+id/dictionary_detail_toolbar"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true" />
+
     <ImageView
         android:id="@+id/image_view"
+        android:layout_below="@id/dictionary_detail_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:scaleType="centerCrop"
         android:background="#000000"/>
 

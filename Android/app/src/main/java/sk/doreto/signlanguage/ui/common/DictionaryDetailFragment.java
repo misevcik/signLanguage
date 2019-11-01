@@ -7,12 +7,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
+
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.appcompat.widget.Toolbar;
 
 
 import java.util.List;
@@ -25,6 +30,8 @@ import sk.doreto.signlanguage.database.Word;
 import sk.doreto.signlanguage.ui.components.IDetailFragment;
 import sk.doreto.signlanguage.ui.components.VideoControllerView;
 import sk.doreto.signlanguage.utils.Utility;
+
+import static android.widget.ListPopupWindow.MATCH_PARENT;
 
 public class DictionaryDetailFragment extends Fragment implements IDetailFragment {
 
@@ -57,6 +64,28 @@ public class DictionaryDetailFragment extends Fragment implements IDetailFragmen
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_dictionary_detail, container, false);
+        View customToolbar = inflater.inflate(R.layout.dictionary_toolbar, null, false);
+
+        if(fragmentType == FragmentType.DICTIONARY) {
+
+            LinearLayout toolbar = rootView.findViewById(R.id.dictionary_detail_toolbar);
+            toolbar.addView(customToolbar, MATCH_PARENT, MATCH_PARENT);
+
+            TextView dictionaryTitle = toolbar.findViewById(R.id.dictionary_detail_word_title);
+            dictionaryTitle.setText(word.getWord());
+
+            ImageButton favorite = toolbar.findViewById(R.id.dictionary_detail_favorite);
+
+            favorite.setImageResource(word.getFavorite() ? R.mipmap.icon_heart_red : R.mipmap.icon_heart_black);
+            favorite.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v)  {
+                    word.setFavorite(!word.getFavorite());
+                    favorite.setImageResource(word.getFavorite() ? R.mipmap.icon_heart_red : R.mipmap.icon_heart_black);
+                }
+            });
+
+
+        }
 
         imageView = rootView.findViewById(R.id.image_view);
 

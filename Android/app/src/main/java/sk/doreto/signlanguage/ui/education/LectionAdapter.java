@@ -28,7 +28,7 @@ public class LectionAdapter extends ArrayAdapter<Lection> {
     }
 
     public LectionAdapter(List<Lection> data, Context context) {
-        super(context, R.layout.lection_grid_item, data);
+        super(context, R.layout.item_lection_grid, data);
         this.mData = data;
         this.mContext=context;
     }
@@ -60,7 +60,7 @@ public class LectionAdapter extends ArrayAdapter<Lection> {
 
             viewHolder = new LectionAdapter.ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.lection_grid_item, parent, false);
+            convertView = inflater.inflate(R.layout.item_lection_grid, parent, false);
             viewHolder.word = convertView.findViewById(R.id.lection_grid_title);
             viewHolder.wordCount = convertView.findViewById(R.id.lection_grid_word_count);
             viewHolder.image = convertView.findViewById(R.id.lection_grid_image);

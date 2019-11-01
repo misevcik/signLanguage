@@ -30,7 +30,7 @@ public class DictionaryDetailFragment extends sk.doreto.signlanguage.ui.common.G
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        View customToolbar = inflater.inflate(R.layout.dictionary_detail_toolbar, null, false);
+        View customToolbar = inflater.inflate(R.layout.toolbar_dictionary_detail, null, false);
 
         LinearLayout toolbar = rootView.findViewById(R.id.dictionary_detail_toolbar);
         toolbar.addView(customToolbar, MATCH_PARENT, MATCH_PARENT);

@@ -22,7 +22,7 @@ public class SentenceAdapter extends ArrayAdapter<Sentence> {
     }
 
     public SentenceAdapter(List<Sentence> data, Context context) {
-        super(context, R.layout.sentence_row_item, data);
+        super(context, R.layout.item_sentence_row, data);
         this.mData = data;
     }
 
@@ -53,7 +53,7 @@ public class SentenceAdapter extends ArrayAdapter<Sentence> {
 
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.sentence_row_item, parent, false);
+            convertView = inflater.inflate(R.layout.item_sentence_row, parent, false);
             viewHolder.sentence = convertView.findViewById(R.id.dictionary_detail_row_sentence);
             convertView.setTag(viewHolder);
 

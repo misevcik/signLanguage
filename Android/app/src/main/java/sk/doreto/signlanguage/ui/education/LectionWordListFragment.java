@@ -1,12 +1,14 @@
 package sk.doreto.signlanguage.ui.education;
 
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,6 +31,7 @@ public class LectionWordListFragment extends Fragment implements IDictionaryFrag
     private List<Word> wordList;
     private LectionDetailFragment detailFragment;
 
+    private Lection lection;
     private int selectedPosition = -1;
 
     public LectionWordListFragment() {
@@ -40,6 +43,10 @@ public class LectionWordListFragment extends Fragment implements IDictionaryFrag
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_lection_word_list, container, false);
+
+        TextView toolbarTitleView = rootView.findViewById(R.id.toolbar_title);
+        toolbarTitleView.setText(lection.getTitle());
+
 
         adapter = new LectionDictionaryAdapter(wordList, getContext());
         detailFragment = new LectionDetailFragment(this);
@@ -66,7 +73,8 @@ public class LectionWordListFragment extends Fragment implements IDictionaryFrag
 
     public void setDetailData(Lection lection) {
 
-        wordList = AppDatabase.getAppDatabase(getContext()).wordDao().getWordsForLection(lection.getId());
+        this.lection = lection;
+        this.wordList = AppDatabase.getAppDatabase(getContext()).wordDao().getWordsForLection(lection.getId());
 
     }
 

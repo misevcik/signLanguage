@@ -2,12 +2,10 @@ package sk.doreto.signlanguage.ui.education;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.GridLayout;
 import android.widget.GridView;
 
 import androidx.annotation.NonNull;
@@ -64,12 +62,12 @@ public class LectionFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 
                 navigationBarController.hideBar();
-                LectionDetailFragment lectionDetailFragment = new LectionDetailFragment();
-                lectionDetailFragment.setDetailData(lectionList.get(position));
+                LectionWordListFragment lectionWordListFragment = new LectionWordListFragment();
+                lectionWordListFragment.setDetailData(lectionList.get(position));
 
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                ft.add(R.id.viewLayout, lectionDetailFragment);
-                ft.addToBackStack("LectionDetailFragment").commit();
+                ft.add(R.id.viewLayout, lectionWordListFragment);
+                ft.addToBackStack("LectionWordListFragment").commit();
 
             }
         });

@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import sk.doreto.signlanguage.database.AppDatabase;
+import sk.doreto.signlanguage.database.DatabaseInitializer;
 import sk.doreto.signlanguage.ui.dictionary.DictionaryFragment;
 import sk.doreto.signlanguage.ui.education.EducationFragment;
 import sk.doreto.signlanguage.ui.favorite.FavoriteFragment;

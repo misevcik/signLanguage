@@ -8,7 +8,7 @@
 
     <include
         android:id="@+id/education_toolbar"
-        layout="@layout/default_toolbar"/>
+        layout="@layout/toolbar_tab_fragment"/>
 
 
     <com.google.android.material.tabs.TabLayout

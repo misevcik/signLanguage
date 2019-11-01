@@ -16,8 +16,8 @@ public interface WordDao {
     @Query("SELECT * FROM WordTable")
     List<Word> getAll();
 
-    @Query("SELECT * FROM WordTable WHERE WordTable.favorite='true'")
-    List<Word> getFavorite();
+    @Query("SELECT * FROM WordTable WHERE WordTable.favorite=:favorite")
+    List<Word> getFavorite(boolean favorite);
 
     @Query("SELECT * FROM WordTable WHERE WordTable.lection=:lectionId")
     List<Word> getWordsForLection(final int lectionId);
@@ -34,5 +34,8 @@ public interface WordDao {
 
     @Query("UPDATE WordTable SET visited=:visited WHERE id = :id")
     void updateVisited(boolean visited, int id);
+
+    @Query("UPDATE WordTable SET favorite=:favorite WHERE id = :id")
+    void updateFavorite(boolean favorite, int id);
 
 }

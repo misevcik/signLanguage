@@ -1,13 +1,13 @@
 package sk.doreto.signlanguage.ui.dictionary;
 
 import android.content.Context;
-import android.content.res.Resources;
 
 import sk.doreto.signlanguage.R;
 import sk.doreto.signlanguage.database.AppDatabase;
-import sk.doreto.signlanguage.ui.common.DictionaryCommonFragment;
+import sk.doreto.signlanguage.database.Word;
+import sk.doreto.signlanguage.ui.common.GeneralDictionaryFragment;
 
-public class DictionaryFragment extends DictionaryCommonFragment {
+public class DictionaryFragment extends GeneralDictionaryFragment {
 
     public DictionaryFragment() {
 
@@ -17,9 +17,10 @@ public class DictionaryFragment extends DictionaryCommonFragment {
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        wordList = AppDatabase.getAppDatabase(getContext()).wordDao().getAll();
-        toolbarTitleId = R.string.title_dictionary;
+        super.wordList = AppDatabase.getAppDatabase(getContext()).wordDao().getAll();
+        super.detailFragment = new DictionaryDetailFragment(this);
+
+        super.toolbarTitleId = R.string.title_dictionary;
 
     }
-
 }

@@ -25,7 +25,7 @@ public class LectionDictionaryAdapter extends ArrayAdapter<Word> {
     }
 
     public LectionDictionaryAdapter(List<Word> data, Context context) {
-        super(context, R.layout.dictionary_row_item, data);
+        super(context, R.layout.item_dictionary_row, data);
         this.mData = data;
         this.mContext=context;
     }
@@ -57,7 +57,7 @@ public class LectionDictionaryAdapter extends ArrayAdapter<Word> {
 
             viewHolder = new LectionDictionaryAdapter.ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.dictionary_row_item, parent, false);
+            convertView = inflater.inflate(R.layout.item_dictionary_row, parent, false);
             viewHolder.word = convertView.findViewById(R.id.dictionary_row_word);
             viewHolder.image = convertView.findViewById(R.id.favorite_image);
             convertView.setTag(viewHolder);

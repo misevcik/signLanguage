@@ -10,7 +10,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.List;
+
 import sk.doreto.signlanguage.R;
+import sk.doreto.signlanguage.database.AppDatabase;
+import sk.doreto.signlanguage.database.Word;
 import sk.doreto.signlanguage.ui.common.GeneralDictionaryDetailFragment;
 import sk.doreto.signlanguage.ui.common.IDictionaryFragment;
 
@@ -18,9 +22,13 @@ import static android.widget.ListPopupWindow.MATCH_PARENT;
 
 public class LectionDetailFragment extends GeneralDictionaryDetailFragment {
 
-    public LectionDetailFragment(IDictionaryFragment dictionaryFragment) {
+
+    private List<Word> wordList;
+
+    public LectionDetailFragment(IDictionaryFragment dictionaryFragment, List<Word> wordList) {
         super(dictionaryFragment);
 
+        this.wordList = wordList;
     }
 
     @Nullable
@@ -37,10 +45,28 @@ public class LectionDetailFragment extends GeneralDictionaryDetailFragment {
         dictionaryTitle.setText(word.getWord());
 
         TextView wordOrder = toolbar.findViewById(R.id.word_order_in_lection);
-        wordOrder.setText("1/1");
+        wordOrder.setText(getCounterLabel());
 
         return rootView;
     }
 
+    public void setDetailData(Word word) {
+
+       if(!word.getVisited()) {
+           word.setVisited(true);
+           AppDatabase.getAppDatabase(getContext()).wordDao().updateVisited(true, word.getId());
+           parentFragment.updateContent(word);
+       }
+
+       super.setDetailData(word);
+    }
+
+    private String getCounterLabel() {
+
+        int index = wordList.indexOf(word) + 1;
+        String label = index + "/" + wordList.size();
+
+        return label;
+    }
 
 }

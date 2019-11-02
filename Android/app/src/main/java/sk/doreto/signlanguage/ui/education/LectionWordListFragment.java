@@ -49,7 +49,7 @@ public class LectionWordListFragment extends Fragment implements IDictionaryFrag
 
 
         adapter = new LectionDictionaryAdapter(wordList, getContext());
-        detailFragment = new LectionDetailFragment(this);
+        detailFragment = new LectionDetailFragment(this, wordList);
 
         listView = rootView.findViewById(R.id.lection_dictionary_list);
         listView.setAdapter(adapter);

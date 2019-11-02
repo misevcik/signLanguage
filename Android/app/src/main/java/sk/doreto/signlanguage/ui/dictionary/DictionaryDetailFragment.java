@@ -14,10 +14,11 @@ import androidx.annotation.Nullable;
 import sk.doreto.signlanguage.R;
 import sk.doreto.signlanguage.database.AppDatabase;
 import sk.doreto.signlanguage.ui.common.IDictionaryFragment;
+import sk.doreto.signlanguage.ui.common.GeneralDictionaryDetailFragment;
 
 import static android.widget.ListPopupWindow.MATCH_PARENT;
 
-public class DictionaryDetailFragment extends sk.doreto.signlanguage.ui.common.GeneralDictionaryDetailFragment {
+public class DictionaryDetailFragment extends GeneralDictionaryDetailFragment {
 
 
     public DictionaryDetailFragment(IDictionaryFragment dictionaryFragment) {

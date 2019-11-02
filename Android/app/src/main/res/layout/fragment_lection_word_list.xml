@@ -6,23 +6,43 @@
     android:orientation="vertical"
     android:background="#FFFFFF">
 
-    <include
-        android:id="@+id/dictionary_toolbar"
-        layout="@layout/toolbar_tab_fragment"/>
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="23dp"
+            android:textStyle="bold"
+            android:text=""/>
+
+    </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="@color/gray"
         android:paddingLeft="10dp"
         android:paddingRight="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZOZNAM VIDEII"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="7dp"/>
 
         <ListView
             android:id="@+id/lection_dictionary_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#FFFFFF"
-            android:divider="#000000"
+            android:background="@android:color/white"
+            android:divider="@android:color/black"
             android:dividerHeight="1dp"
             android:headerDividersEnabled="true"
             android:clickable="true">

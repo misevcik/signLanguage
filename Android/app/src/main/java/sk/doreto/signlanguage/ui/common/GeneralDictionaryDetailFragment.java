@@ -29,8 +29,8 @@ import sk.doreto.signlanguage.utils.Utility;
 
 public class GeneralDictionaryDetailFragment extends Fragment implements IDetailFragment {
 
-    protected IDictionaryFragment parentFragment;
     protected Word word;
+    protected IDictionaryFragment parentFragment;
 
     private ImageView imageView;
     private VideoControllerView videoController;

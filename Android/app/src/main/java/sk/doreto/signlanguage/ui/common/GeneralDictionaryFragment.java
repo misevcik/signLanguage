@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -27,9 +28,9 @@ public class GeneralDictionaryFragment extends Fragment implements IDictionaryFr
     protected GeneralDictionaryDetailFragment detailFragment;
 
     private ListView listView;
+    private SearchView searchView;
     private DictionaryAdapter adapter;
     private NavigationBarController navigationBarController;
-
 
     private int selectedPosition = -1;
 
@@ -70,6 +71,21 @@ public class GeneralDictionaryFragment extends Fragment implements IDictionaryFr
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                 ft.add(R.id.viewLayout, detailFragment);
                 ft.addToBackStack("DictionaryDetailFragment").commit();
+            }
+        });
+
+        searchView = rootView.findViewById(R.id.dictionary_search);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+
+                adapter.getFilter().filter(s);
+                return false;
             }
         });
 

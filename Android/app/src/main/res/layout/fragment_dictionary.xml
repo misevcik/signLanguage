@@ -16,6 +16,12 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp">
 
+        <SearchView
+            android:id="@+id/dictionary_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"/>
+
         <ListView
             android:id="@+id/dictionary_list"
             android:layout_width="match_parent"

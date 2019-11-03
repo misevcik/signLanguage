@@ -4,7 +4,6 @@ import android.content.Context;
 
 import sk.doreto.signlanguage.R;
 import sk.doreto.signlanguage.database.AppDatabase;
-import sk.doreto.signlanguage.database.Word;
 import sk.doreto.signlanguage.ui.common.GeneralDictionaryFragment;
 
 public class DictionaryFragment extends GeneralDictionaryFragment {

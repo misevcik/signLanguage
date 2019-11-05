@@ -4,6 +4,8 @@ package sk.doreto.signlanguage.database;
 import android.os.AsyncTask;
 import androidx.annotation.NonNull;
 
+import sk.doreto.signlanguage.R;
+
 
 public class DatabaseInitializer {
 
@@ -49,14 +51,14 @@ public class DatabaseInitializer {
     private static void populateWithLectionData(AppDatabase db) {
 
         Lection lectionArray[] = {
-                new Lection(0,"Prvy kontakt I.",  "test.png", false),
-                new Lection(1,"Prvy kontakt II.", "test.png", false),
-                new Lection(2,"Prvy kontakt III.", "test.png", false),
-                new Lection(3,"Rodina I.", "test.png", false),
-                new Lection(4,"Rodina II.", "test.png", false),
-                new Lection(5,"Cisla I.", "test.png", false),
-                new Lection(6,"Cisla II.", "test.png", false),
-                new Lection(7,"Farby I.", "test.png", false)
+                new Lection(0,"Prvy kontakt I.",  "first_contact_1", false),
+                new Lection(1,"Prvy kontakt II.", "first_contact_2", false),
+                new Lection(2,"Prvy kontakt III.", "first_contact_3", false),
+                new Lection(3,"Rodina I.", "family_1", false),
+                new Lection(4,"Rodina II.", "family_2", false),
+                new Lection(5,"Cisla I.", "numbers_1", false),
+                new Lection(6,"Cisla II.", "numbers_2", false),
+                new Lection(7,"Farby I.", "colors_1", false)
         };
 
         for (Lection lection : lectionArray)

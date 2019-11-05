@@ -17,25 +17,27 @@ import java.util.List;
 import sk.doreto.signlanguage.R;
 import sk.doreto.signlanguage.database.Word;
 
+
+
+
 public class DictionaryAdapter extends ArrayAdapter<Word> implements Filterable {
-
-    private List<Word> mDataToFilter;
-    private List<Word> mDataToShow;
-
-    private ValueFilter valueFilter;
-    private Context mContext;
-
 
     private static class ViewHolder {
         TextView word;
         ImageView image;
     }
 
+    private List<Word> mDataToFilter;
+    private List<Word> mDataToShow;
+    private ValueFilter valueFilter;
+
+
     public DictionaryAdapter(List<Word> data, Context context) {
         super(context, R.layout.item_dictionary_row, data);
         this.mDataToFilter = data;
-        this.mDataToShow = data;
-        this.mContext=context;
+        this.mDataToShow = new ArrayList<>(data);
+
+        updateSection();
     }
 
 
@@ -58,26 +60,37 @@ public class DictionaryAdapter extends ArrayAdapter<Word> implements Filterable 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
+        LayoutInflater inflater = LayoutInflater.from(getContext());
         Word word = getItem(position);
-        ViewHolder viewHolder;
 
-        if (convertView == null) {
+        if(word.isSection()) {
 
-            viewHolder = new ViewHolder();
-            LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.item_dictionary_row, parent, false);
-            viewHolder.word = convertView.findViewById(R.id.dictionary_row_word);
-            viewHolder.image = convertView.findViewById(R.id.favorite_image);
-            convertView.setTag(viewHolder);
+            convertView = inflater.inflate(R.layout.item_section_row, parent, false);
+            TextView section = convertView.findViewById(R.id.section_row);
+            section.setText(word.getSection());
+
 
         } else {
 
-            viewHolder = (ViewHolder) convertView.getTag();
+            ViewHolder viewHolder;
+
+            if (convertView == null || (convertView != null && convertView.getTag() == null)) {
+
+                viewHolder = new ViewHolder();
+                convertView = inflater.inflate(R.layout.item_dictionary_row, parent, false);
+                viewHolder.word = convertView.findViewById(R.id.dictionary_row_word);
+                viewHolder.image = convertView.findViewById(R.id.favorite_image);
+                convertView.setTag(viewHolder);
+
+            }
+            else {
+                viewHolder = (ViewHolder) convertView.getTag();
+            }
+
+
+            viewHolder.word.setText(word.getWord());
+            viewHolder.image.setImageResource(word.getFavorite() ? R.mipmap.icon_heart_red : R.mipmap.icon_heart_black);
         }
-
-
-        viewHolder.word.setText(word.getWord());
-        viewHolder.image.setImageResource(word.getFavorite() ? R.mipmap.icon_heart_red : R.mipmap.icon_heart_black);
 
         return convertView;
     }
@@ -88,6 +101,31 @@ public class DictionaryAdapter extends ArrayAdapter<Word> implements Filterable 
             valueFilter = new ValueFilter();
         }
         return valueFilter;
+    }
+
+    private void updateSection() {
+
+        if(mDataToShow == null)
+            return;
+
+        if(mDataToShow.size() == 0)
+            return;
+
+        mDataToShow.add(0, new Word(mDataToShow.get(0).getWord().substring(0, 1).toUpperCase()));
+
+        if(mDataToShow.size() <= 2)
+            return;
+
+        for(int i = 2; i < mDataToShow.size(); ++i) {
+
+            String previous = mDataToShow.get(i - 1).getWord();
+            String current = mDataToShow.get(i).getWord();
+
+            if(previous.charAt(0) != current.charAt(0)) {
+                mDataToShow.add(i, new Word(current.substring(0, 1).toUpperCase()));
+                ++i;
+            }
+        }
     }
 
     private class ValueFilter extends Filter {
@@ -118,12 +156,13 @@ public class DictionaryAdapter extends ArrayAdapter<Word> implements Filterable 
         }
 
         @Override
-        protected void publishResults(CharSequence constraint,
-                                      FilterResults results) {
-            mDataToShow = (List<Word>) results.values;
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+
+            List<Word> data = (List<Word>)results.values;
+            mDataToShow = new ArrayList<>(data);
+            updateSection();
             notifyDataSetChanged();
         }
-
     }
 
 

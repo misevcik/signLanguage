@@ -42,8 +42,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/white"
-            android:divider="@android:color/black"
-            android:dividerHeight="1dp"
             android:headerDividersEnabled="true"
             android:clickable="true">
         </ListView>

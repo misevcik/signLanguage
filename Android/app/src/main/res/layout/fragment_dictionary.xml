@@ -20,15 +20,13 @@
             android:id="@+id/dictionary_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"/>
+            android:background="@drawable/search_bar_round"/>
 
         <ListView
             android:id="@+id/dictionary_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#FFFFFF"
-            android:divider="#000000"
-            android:dividerHeight="1dp"
+            android:background="@android:color/white"
             android:headerDividersEnabled="true"
             android:clickable="true">
         </ListView>

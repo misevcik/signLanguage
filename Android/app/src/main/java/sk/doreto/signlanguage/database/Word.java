@@ -2,6 +2,7 @@ package sk.doreto.signlanguage.database;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
@@ -31,6 +32,9 @@ public class Word {
     @ColumnInfo(name = "videoSide")
     private String videoSide;
 
+    @Ignore
+    private String section = "";
+
     public Word(int id, String word, int lection, String videoFront, String videoSide) {
         this.id = id;
         this.word = word;
@@ -40,6 +44,10 @@ public class Word {
 
         this.favorite = false;
         this.visited = false;
+    }
+
+    public Word(String section) {
+        this.section = section;
     }
 
     public int getId() {
@@ -96,6 +104,14 @@ public class Word {
 
     public void setVideoSide(String videoSide) {
         this.videoSide = videoSide;
+    }
+
+    public boolean isSection() {
+        return section.length() != 0;
+    }
+
+    public String getSection() {
+        return section;
     }
 
 

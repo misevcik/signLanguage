@@ -2,6 +2,8 @@ package sk.doreto.signlanguage.ui.education;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +11,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.core.graphics.drawable.RoundedBitmapDrawable;
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
+
 import java.util.List;
 
 import sk.doreto.signlanguage.R;
 import sk.doreto.signlanguage.database.AppDatabase;
 import sk.doreto.signlanguage.database.Lection;
+import sk.doreto.signlanguage.utils.Utility;
 
 
 public class LectionAdapter extends ArrayAdapter<Lection> {
@@ -75,7 +81,12 @@ public class LectionAdapter extends ArrayAdapter<Lection> {
 
         viewHolder.word.setText(lection.getTitle());
         viewHolder.wordCount.setText(String.format(res.getString(R.string.video_count), wordCount));
-        //viewHolder.image.setImageResource(word.getFavorite() ? R.mipmap.icon_heart_red : R.mipmap.icon_heart_black);
+
+        int imageId = Utility.getResourceId(getContext(), lection.getImage(), "drawable");
+        Bitmap bitmap = BitmapFactory.decodeResource(getContext().getResources(), imageId);
+        RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getContext().getResources(), bitmap);
+        roundedBitmapDrawable.setCircular(true);
+        viewHolder.image.setImageDrawable(roundedBitmapDrawable);
 
         return convertView;
     }

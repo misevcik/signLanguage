@@ -21,6 +21,7 @@ import sk.doreto.signlanguage.NavigationBarController;
 import sk.doreto.signlanguage.R;
 import sk.doreto.signlanguage.database.Word;
 
+
 public class GeneralDictionaryFragment extends Fragment implements IDictionaryFragment {
 
     protected List<Word> wordList;

@@ -5,6 +5,7 @@ import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
 @Database(entities = {Word.class, Lection.class, Sentence.class, WordSentenceJoin.class}, version = 1, exportSchema =  false)
 public abstract class AppDatabase extends RoomDatabase {
@@ -17,6 +18,8 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract SentenceDao sentenceDao();
     public abstract WordSentenceJoinDao wordSentenceJoinDao();
 
+//https://github.com/android/architecture-components-samples/blob/master/BasicSample/app/src/main/java/com/example/android/persistence/db/AppDatabase.java
+
     public static AppDatabase getAppDatabase(Context context) {
         if (INSTANCE == null) {
             INSTANCE =
@@ -28,6 +31,7 @@ public abstract class AppDatabase extends RoomDatabase {
         }
         return INSTANCE;
     }
+
 
     public static void destroyInstance() {
         INSTANCE = null;

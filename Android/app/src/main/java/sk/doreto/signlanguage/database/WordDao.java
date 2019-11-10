@@ -24,6 +24,9 @@ public interface WordDao {
     @Query("SELECT COUNT(*) FROM WordTable WHERE WordTable.lection=:lectionId")
     int getWordsCountForLection(final int lectionId);
 
+    @Query("SELECT COUNT(*) FROM WordTable WHERE WordTable.lection=:lectionId AND WordTable.visited = 1")
+    int getVisitedWordsCountForLection(final int lectionId);
+
 
     @Query("UPDATE WordTable SET visited=:visited WHERE id = :id")
     void updateVisited(boolean visited, int id);

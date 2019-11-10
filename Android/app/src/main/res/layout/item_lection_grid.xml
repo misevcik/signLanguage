@@ -4,15 +4,17 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="135dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
     android:gravity="center_vertical|center_horizontal"
     android:background="#FFFFFF">
 
     <ImageView
         android:id="@+id/lection_grid_image"
         android:src="@mipmap/icon_heart_black"
-        android:gravity="left|center"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:gravity="center"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_weight="3"/>
 
     <LinearLayout
@@ -37,4 +39,24 @@
             android:gravity="center"/>
 
     </LinearLayout>
+.
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <ProgressBar
+            android:id="@+id/lection_grid_progress_bar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:indeterminateOnly="false"
+            android:layout_width="85dp"
+            android:layout_height="3dp"
+            android:background="@color/lightBlue"
+            android:progressTint="@color/oceanBlue"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+
+
 </LinearLayout>

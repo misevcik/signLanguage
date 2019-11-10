@@ -29,9 +29,6 @@ public class MainActivity extends AppCompatActivity implements  NavigationBarCon
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        //TODO Call only once
-        //DatabaseInitializer.populateAsync(AppDatabase.getAppDatabase(this));
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 

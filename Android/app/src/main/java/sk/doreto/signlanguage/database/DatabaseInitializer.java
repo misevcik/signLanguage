@@ -9,8 +9,6 @@ import sk.doreto.signlanguage.R;
 
 public class DatabaseInitializer {
 
-    private static final String TAG = DatabaseInitializer.class.getName();
-
     public static void populateAsync(@NonNull final AppDatabase db) {
         PopulateDbAsync task = new PopulateDbAsync(db);
         task.execute();

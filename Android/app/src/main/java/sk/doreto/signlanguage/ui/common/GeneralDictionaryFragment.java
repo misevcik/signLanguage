@@ -49,6 +49,7 @@ public class GeneralDictionaryFragment extends Fragment implements IDictionaryFr
                              ViewGroup container, Bundle savedInstanceState) {
 
         //TODO - use ModelView https://www.thomaskioko.com/android-livedata-viewmodel/
+        //TODO - https://medium.com/@tonia.tkachuk/android-app-example-using-room-database-63f7091e69af
 
         View rootView = inflater.inflate(R.layout.fragment_dictionary, container, false);
         TextView toolbarTitleView = rootView.findViewById(R.id.toolbar_title);

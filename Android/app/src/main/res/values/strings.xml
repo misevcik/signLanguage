@@ -3,10 +3,14 @@
     <string name="title_dictionary">Slovník</string>
     <string name="title_education">Výučba</string>
     <string name="title_favorites">Obľubene</string>
+    <string name="title_info">Info</string>
     <string name="tab_lection">Lekcie</string>
     <string name="tab_test">Test</string>
 
     <string name="pouzitie_vo_vetach">"POUŽITIE VO VETÁCH"</string>
     <string name="video_count">"%d VIDEI</string>
-    <string name="SplashScreen">TODO</string>
+
+    <string name="info_about">O aplikacii</string>
+    <string name="info_rate">Ohodnotit aplikaciu</string>
+    <string name="info_email">Kontaktovat nas</string>
 </resources>

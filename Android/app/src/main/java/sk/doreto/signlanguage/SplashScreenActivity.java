@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import sk.doreto.signlanguage.database.AppDatabase;
-import sk.doreto.signlanguage.database.DatabaseInitializer;
+
 
 public class SplashScreenActivity extends Activity {
 
@@ -15,8 +15,7 @@ public class SplashScreenActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        //DatabaseInitializer.populateAsync(AppDatabase.getAppDatabase(this));
-
+        AppDatabase.getAppDatabase(this);
 
         new Handler().postDelayed(new Runnable() {
             @Override

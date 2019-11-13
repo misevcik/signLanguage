@@ -1,11 +1,17 @@
 package sk.doreto.signlanguage.ui.info;
 
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -46,7 +52,38 @@ public class InfoFragment extends Fragment {
         listView = rootView.findViewById(R.id.info_list);
         listView.setAdapter(adapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                switch (position) {
+                    case 0:
+                        break;
+                    case 1:
+                        //TODO https://ourcodeworld.com/articles/read/940/how-to-add-a-rate-my-app-dialog-to-an-android-application-using-the-android-five-stars-library
+                        break;
+                    case 2:
+                        sendEmail();
+                        break;
+                }
+
+            }
+        });
+
         return rootView;
 
+    }
+
+    private void sendEmail(){
+
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:" + "info@dorteo.sk"));
+        intent.putExtra(Intent.EXTRA_SUBJECT, "My email's subject");
+
+        try {
+            startActivity(Intent.createChooser(intent, "Send mail..."));
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(getActivity(), "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+        }
     }
 }

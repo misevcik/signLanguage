@@ -25,8 +25,7 @@ import sk.doreto.signlanguage.utils.Utility;
 
 public class LectionAdapter extends ArrayAdapter<Lection> {
 
-    private List<Lection> mData;
-    private Context mContext;
+    private List<Lection> lectionList;
 
     private static class ViewHolder {
         TextView word;
@@ -35,20 +34,32 @@ public class LectionAdapter extends ArrayAdapter<Lection> {
         ProgressBar progressBar;
     }
 
-    public LectionAdapter(List<Lection> data, Context context) {
-        super(context, R.layout.item_lection_grid, data);
-        this.mData = data;
-        this.mContext=context;
+    public LectionAdapter(Context context) {
+        super(context, R.layout.item_lection_grid);
+    }
+
+    public void setLectionList(List<Lection> lections) {
+        lectionList = lections;
+        notifyDataSetChanged();
+    }
+
+    public List<Lection> getLectinList() {
+        return lectionList;
     }
 
     @Override
     public int getCount() {
-        return mData.size();
+
+        if(lectionList == null) {
+            return 0;
+        }
+
+        return lectionList.size();
     }
 
     @Override
     public Lection getItem(int position) {
-        return mData.get(position);
+        return lectionList.get(position);
     }
 
     @Override

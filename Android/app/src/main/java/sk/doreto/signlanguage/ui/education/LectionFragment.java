@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import java.util.List;
 
@@ -27,12 +29,11 @@ public class LectionFragment extends Fragment {
     private GridView gridView;
     private NavigationBarController navigationBarController;
 
-    private List<Lection> lectionList;
-
-
     public static LectionFragment newInstance() {
         return new LectionFragment();
     }
+
+    private LectinViewModel modelView;
 
     @Override
     public void onAttach(Context context) {
@@ -42,7 +43,19 @@ public class LectionFragment extends Fragment {
         } catch (ClassCastException castException) {
             /** The activity does not implement the listener. */
         }
+
+        if(adapter == null) {
+            adapter = new LectionAdapter(getContext());
+        }
     }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        initData();
+    }
+
 
     @Nullable
     @Override
@@ -50,10 +63,6 @@ public class LectionFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_lection, container, false);
 
-        //TODO - use ModelView https://www.thomaskioko.com/android-livedata-viewmodel/
-        lectionList = AppDatabase.getAppDatabase(getContext()).lectionDao().getAll();
-
-        adapter = new LectionAdapter(lectionList, getContext());
         gridView = rootView.findViewById(R.id.lection_grid);
         gridView.setAdapter(adapter);
 
@@ -62,8 +71,8 @@ public class LectionFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 
                 navigationBarController.hideBar();
-                LectionWordListFragment lectionWordListFragment = new LectionWordListFragment();
-                lectionWordListFragment.setDetailData(lectionList.get(position));
+                Lection lection = adapter.getLectinList().get(position);
+                LectionWordListFragment lectionWordListFragment = new LectionWordListFragment(lection);
 
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                 ft.add(R.id.viewLayout, lectionWordListFragment);
@@ -73,6 +82,16 @@ public class LectionFragment extends Fragment {
         });
 
         return rootView;
+    }
+
+    private void initData() {
+        modelView = ViewModelProviders.of(this).get(LectinViewModel.class);
+        modelView.getWordList().observe(this, new Observer<List<Lection>>() {
+            @Override
+            public void onChanged(@Nullable List<Lection> lections) {
+                adapter.setLectionList(lections);
+            }
+        });
     }
 
 }

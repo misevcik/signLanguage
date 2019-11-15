@@ -14,19 +14,13 @@ public interface WordDao {
     void insertAll(Word... words);
 
     @Query("SELECT * FROM WordTable ORDER BY WordTable.word ASC")
-    List<Word> getAll();
-
-    @Query("SELECT * FROM WordTable ORDER BY WordTable.word ASC")
     LiveData<List<Word>> getAllLive();
-
-    @Query("SELECT * FROM WordTable WHERE WordTable.favorite=:favorite ORDER BY WordTable.word ASC")
-    List<Word> getFavorite(boolean favorite);
 
     @Query("SELECT * FROM WordTable WHERE WordTable.favorite=:favorite ORDER BY WordTable.word ASC")
     LiveData<List<Word>>  getFavoriteLive(boolean favorite);
 
     @Query("SELECT * FROM WordTable WHERE WordTable.lection=:lectionId ORDER BY WordTable.word ASC")
-    List<Word> getWordsForLection(final int lectionId);
+    LiveData<List<Word>> getWordsForLection(final int lectionId);
 
     @Query("SELECT COUNT(*) FROM WordTable WHERE WordTable.lection=:lectionId")
     int getWordsCountForLection(final int lectionId);

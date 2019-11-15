@@ -15,8 +15,7 @@ import sk.doreto.signlanguage.database.Word;
 
 public class LectionDictionaryAdapter extends ArrayAdapter<Word> {
 
-    private List<Word> mData;
-    private Context mContext;
+    private List<Word> wordList;
 
 
     private static class ViewHolder {
@@ -24,21 +23,32 @@ public class LectionDictionaryAdapter extends ArrayAdapter<Word> {
         ImageView image;
     }
 
-    public LectionDictionaryAdapter(List<Word> data, Context context) {
-        super(context, R.layout.item_dictionary_row, data);
-        this.mData = data;
-        this.mContext=context;
+    public LectionDictionaryAdapter(Context context) {
+        super(context, R.layout.item_dictionary_row);
+    }
+
+    public void setWordList(List<Word> wordList) {
+        this.wordList = wordList;
+        notifyDataSetChanged();
+    }
+
+    public List<Word> getWordList() {
+        return wordList;
     }
 
 
     @Override
     public int getCount() {
-        return mData.size();
+
+        if(wordList == null)
+             return 0;
+
+        return wordList.size();
     }
 
     @Override
     public Word getItem(int position) {
-        return mData.get(position);
+        return wordList.get(position);
     }
 
     @Override

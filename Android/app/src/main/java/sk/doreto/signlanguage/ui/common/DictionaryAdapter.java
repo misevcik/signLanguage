@@ -1,5 +1,6 @@
 package sk.doreto.signlanguage.ui.common;
 
+import android.app.Application;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,13 +11,15 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import sk.doreto.signlanguage.R;
 import sk.doreto.signlanguage.database.Word;
-
-
+import sk.doreto.signlanguage.ui.education.LectionDictionaryViewModel;
 
 
 public class DictionaryAdapter extends ArrayAdapter<Word> implements Filterable {
@@ -181,7 +184,4 @@ public class DictionaryAdapter extends ArrayAdapter<Word> implements Filterable 
             notifyDataSetChanged();
         }
     }
-
-
-
 }

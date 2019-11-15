@@ -1,7 +1,7 @@
 package sk.doreto.signlanguage.ui.education;
 
 
-import android.content.res.Resources;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,28 +14,58 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import java.util.List;
 
 import sk.doreto.signlanguage.R;
-import sk.doreto.signlanguage.database.AppDatabase;
 import sk.doreto.signlanguage.database.Lection;
 import sk.doreto.signlanguage.database.Word;
 import sk.doreto.signlanguage.ui.common.IDictionaryFragment;
+import sk.doreto.signlanguage.ui.common.ViewModelFactory;
 
 
 public class LectionWordListFragment extends Fragment implements IDictionaryFragment {
 
+    private LectionDictionaryViewModel modelView;
+    private Lection lection;
     private ListView listView;
     private LectionDictionaryAdapter adapter;
-    private List<Word> wordList;
     private LectionDetailFragment detailFragment;
 
-    private Lection lection;
     private int selectedPosition = -1;
 
-    public LectionWordListFragment() {
+    public LectionWordListFragment(Lection lection) {
+        this.lection = lection;
     }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        adapter = new LectionDictionaryAdapter(getContext());
+
+    }
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        initData();
+    }
+
+    private void initData() {
+        modelView = ViewModelProviders.of(this, new ViewModelFactory(getActivity().getApplication(), lection.getId())).get(LectionDictionaryViewModel.class);
+        modelView.getWordList().observe(this, new Observer<List<Word>>() {
+            @Override
+            public void onChanged(@Nullable List<Word> wordList) {
+                adapter.setWordList(wordList);
+            }
+        });
+    }
+
 
 
     @Nullable
@@ -48,8 +78,7 @@ public class LectionWordListFragment extends Fragment implements IDictionaryFrag
         toolbarTitleView.setText(lection.getTitle());
 
 
-        adapter = new LectionDictionaryAdapter(wordList, getContext());
-        detailFragment = new LectionDetailFragment(this, wordList);
+        detailFragment = new LectionDetailFragment(this);
 
         listView = rootView.findViewById(R.id.lection_dictionary_list);
         listView.setAdapter(adapter);
@@ -57,7 +86,9 @@ public class LectionWordListFragment extends Fragment implements IDictionaryFrag
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                detailFragment.setDetailData(wordList.get(position));
+                Word word = adapter.getWordList().get(position);
+                detailFragment.setModelView(modelView);
+                detailFragment.setDetailData(word, getLabel(word));
                 selectedPosition = position;
 
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
@@ -71,21 +102,15 @@ public class LectionWordListFragment extends Fragment implements IDictionaryFrag
 
     }
 
-    public void setDetailData(Lection lection) {
-
-        this.lection = lection;
-        this.wordList = AppDatabase.getAppDatabase(getContext()).wordDao().getWordsForLection(lection.getId());
-
-    }
-
     public void videoForward() {
 
         selectedPosition++;
 
-        if(selectedPosition >= wordList.size())
+        if(selectedPosition >= adapter.getWordList().size())
             selectedPosition = 0;
 
-        detailFragment.setDetailData(wordList.get(selectedPosition));
+        Word word = adapter.getWordList().get(selectedPosition);
+        detailFragment.setDetailData(word, getLabel(word));
         getActivity().getSupportFragmentManager().beginTransaction().detach(detailFragment).attach(detailFragment).commit();
     }
 
@@ -94,14 +119,19 @@ public class LectionWordListFragment extends Fragment implements IDictionaryFrag
         selectedPosition--;
 
         if(selectedPosition <= 0)
-            selectedPosition = wordList.size() - 1;
+            selectedPosition = adapter.getWordList().size() - 1;
 
-        detailFragment.setDetailData(wordList.get(selectedPosition));
+        Word word = adapter.getWordList().get(selectedPosition);
+        detailFragment.setDetailData(word, getLabel(word));
         getActivity().getSupportFragmentManager().beginTransaction().detach(detailFragment).attach(detailFragment).commit();
     }
 
-    public void updateContent(Word word) {
-        this.adapter.notifyDataSetChanged();
+    private String getLabel(Word word) {
+
+        int index = adapter.getWordList().indexOf(word) + 1;
+        String label = index + "/" + adapter.getWordList().size();
+
+        return label;
     }
 
 }

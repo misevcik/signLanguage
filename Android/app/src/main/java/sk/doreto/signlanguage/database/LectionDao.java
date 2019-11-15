@@ -1,5 +1,6 @@
 package sk.doreto.signlanguage.database;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -15,6 +16,9 @@ public interface LectionDao {
 
     @Query("SELECT * FROM LectionTable")
     List<Lection> getAll();
+
+    @Query("SELECT * FROM LectionTable")
+    LiveData<List<Lection>> getAllLive();
 
     @Query("SELECT COUNT(*) from LectionTable")
     int countLection();

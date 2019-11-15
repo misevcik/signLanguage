@@ -23,12 +23,15 @@ import static android.widget.ListPopupWindow.MATCH_PARENT;
 public class LectionDetailFragment extends GeneralDictionaryDetailFragment {
 
 
-    private List<Word> wordList;
+    private String counterLabel;
+    private LectionDictionaryViewModel modelView;
 
-    public LectionDetailFragment(IDictionaryFragment dictionaryFragment, List<Word> wordList) {
+    public LectionDetailFragment(IDictionaryFragment dictionaryFragment) {
         super(dictionaryFragment);
+    }
 
-        this.wordList = wordList;
+    public void setModelView(LectionDictionaryViewModel lectionDictionaryViewModel) {
+        modelView =  lectionDictionaryViewModel;
     }
 
     @Nullable
@@ -45,28 +48,23 @@ public class LectionDetailFragment extends GeneralDictionaryDetailFragment {
         dictionaryTitle.setText(word.getWord());
 
         TextView wordOrder = toolbar.findViewById(R.id.word_order_in_lection);
-        wordOrder.setText(getCounterLabel());
+        wordOrder.setText(counterLabel);
 
         return rootView;
     }
 
-    public void setDetailData(Word word) {
+    public void setDetailData(Word word, String counterLabel) {
 
-       if(!word.getVisited()) {
+        this.counterLabel = counterLabel;
+
+        if(!word.getVisited()) {
            word.setVisited(true);
-           AppDatabase.getAppDatabase(getContext()).wordDao().updateVisited(true, word.getId());
-           parentFragment.updateContent(word);
-       }
+           modelView.update(word);
+        }
 
-       super.setDetailData(word);
+        super.setDetailData(word);
     }
 
-    private String getCounterLabel() {
 
-        int index = wordList.indexOf(word) + 1;
-        String label = index + "/" + wordList.size();
-
-        return label;
-    }
 
 }

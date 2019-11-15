@@ -52,6 +52,7 @@ public class FavoriteFragment extends GeneralDictionaryFragment {
             @Override
             public void onChanged(@Nullable List<Word> words) {
                 adapter.setWordList(words);
+                setListVisibility();
             }
         });
 

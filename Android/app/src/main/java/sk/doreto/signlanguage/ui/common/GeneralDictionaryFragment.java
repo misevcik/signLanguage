@@ -132,10 +132,6 @@ public class GeneralDictionaryFragment extends Fragment implements IDictionaryFr
         getActivity().getSupportFragmentManager().beginTransaction().detach(detailFragment).attach(detailFragment).commit();
     }
 
-    public void updateContent(Word word) {
-        this.adapter.notifyDataSetChanged();
-    }
-
     private static void preventTwoClick(final View view){
         view.setEnabled(false);
         view.postDelayed(new Runnable() {

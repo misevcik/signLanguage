@@ -20,6 +20,8 @@ public class EducationFragment extends Fragment {
     private TabLayout tabs;
     private ViewPager viewPager;
 
+    private LectionFragment lectionFragment = LectionFragment.newInstance();
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -36,7 +38,7 @@ public class EducationFragment extends Fragment {
 
 
         mAdapter = new TabFragmentAdapter(getChildFragmentManager());
-        mAdapter.addFragment(LectionFragment.newInstance(), getContext().getString(R.string.tab_lection));
+        mAdapter.addFragment(lectionFragment, getContext().getString(R.string.tab_lection));
         mAdapter.addFragment(TestFragment.newInstance(), getContext().getString(R.string.tab_test));
 
         viewPager.setAdapter(mAdapter);

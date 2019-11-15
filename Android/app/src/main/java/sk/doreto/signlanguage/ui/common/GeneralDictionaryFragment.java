@@ -76,6 +76,12 @@ public class GeneralDictionaryFragment extends Fragment implements IDictionaryFr
             }
         });
 
+        if(wordList.isEmpty()) {
+            listView.setVisibility(View.GONE);
+        } else {
+            listView.setVisibility(View.VISIBLE);
+        }
+
         searchView = rootView.findViewById(R.id.dictionary_search);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

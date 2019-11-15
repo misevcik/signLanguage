@@ -22,9 +22,9 @@ import sk.doreto.signlanguage.R;
 public class InfoFragment extends Fragment {
 
     static InfoItem infoItem [] = {
-                    new InfoItem(R.string.info_about, R.mipmap.icon_forward),
-                    new InfoItem(R.string.info_rate, R.mipmap.icon_forward),
-                    new InfoItem(R.string.info_email, R.mipmap.icon_forward)
+                    new InfoItem(R.string.info_about, R.mipmap.icon_info),
+                    new InfoItem(R.string.info_rate, R.mipmap.icon_star),
+                    new InfoItem(R.string.info_email, R.mipmap.icon_email)
     };
 
 

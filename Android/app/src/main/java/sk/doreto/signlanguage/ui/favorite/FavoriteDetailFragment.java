@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import sk.doreto.signlanguage.R;
-import sk.doreto.signlanguage.database.AppDatabase;
 import sk.doreto.signlanguage.ui.common.GeneralDictionaryDetailFragment;
 import sk.doreto.signlanguage.ui.common.IDictionaryFragment;
 
@@ -20,10 +19,17 @@ import static android.widget.ListPopupWindow.MATCH_PARENT;
 
 public class FavoriteDetailFragment extends GeneralDictionaryDetailFragment {
 
+    FavoriteViewModel modelView;
+
     public FavoriteDetailFragment(IDictionaryFragment dictionaryFragment) {
         super(dictionaryFragment);
 
     }
+
+    public void setModelView(FavoriteViewModel favoriteViewModel) {
+        modelView =  favoriteViewModel;
+    }
+
 
     @Nullable
     @Override
@@ -45,9 +51,7 @@ public class FavoriteDetailFragment extends GeneralDictionaryDetailFragment {
             public void onClick(View v)  {
                 word.setFavorite(!word.getFavorite());
                 favorite.setImageResource(word.getFavorite() ? R.mipmap.icon_heart_red : R.mipmap.icon_heart_black);
-                AppDatabase.getAppDatabase(getContext()).wordDao().updateFavorite(word.getFavorite(), word.getId());
-                parentFragment.updateContent(word);
-
+                modelView.updateFavorite(word);
             }
         });
 

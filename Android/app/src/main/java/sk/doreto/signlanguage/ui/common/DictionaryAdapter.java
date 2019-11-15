@@ -1,7 +1,6 @@
 package sk.doreto.signlanguage.ui.common;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,28 +26,46 @@ public class DictionaryAdapter extends ArrayAdapter<Word> implements Filterable 
         ImageView image;
     }
 
-    private List<Word> mDataToFilter;
-    private List<Word> mDataToShow;
+    private List<Word> wordList;
+    private List<Word> filteredWordList;
     private ValueFilter valueFilter;
 
 
-    public DictionaryAdapter(List<Word> data, Context context) {
-        super(context, R.layout.item_dictionary_row, data);
-        this.mDataToFilter = data;
-        this.mDataToShow = new ArrayList<>(data);
+    public DictionaryAdapter(Context context) {
+        super(context, R.layout.item_dictionary_row);
+    }
 
-        updateSection();
+    public void setWordList(List<Word> wordList) {
+
+        if(wordList == null) {
+            return;
+        }
+
+        this.wordList = wordList;
+        this.filteredWordList = new ArrayList<>(wordList);
+        buildSection();
+        notifyDataSetChanged();
+    }
+
+    public List<Word> getWordList() {
+        //return filteredWordList because it is list which is shown on the screen
+        return filteredWordList;
     }
 
 
     @Override
     public int getCount() {
-        return mDataToShow.size();
+
+        if (filteredWordList == null) {
+            return 0;
+        }
+
+        return filteredWordList.size();
     }
 
     @Override
     public Word getItem(int position) {
-        return mDataToShow.get(position);
+        return filteredWordList.get(position);
     }
 
     @Override
@@ -103,26 +120,26 @@ public class DictionaryAdapter extends ArrayAdapter<Word> implements Filterable 
         return valueFilter;
     }
 
-    private void updateSection() {
+    private void buildSection() {
 
-        if(mDataToShow == null)
+        if(filteredWordList == null)
             return;
 
-        if(mDataToShow.size() == 0)
+        if(filteredWordList.size() == 0)
             return;
 
-        mDataToShow.add(0, new Word(mDataToShow.get(0).getWord().substring(0, 1).toUpperCase()));
+        filteredWordList.add(0, new Word(filteredWordList.get(0).getWord().substring(0, 1).toUpperCase()));
 
-        if(mDataToShow.size() <= 2)
+        if(filteredWordList.size() <= 2)
             return;
 
-        for(int i = 2; i < mDataToShow.size(); ++i) {
+        for(int i = 2; i < filteredWordList.size(); ++i) {
 
-            String previous = mDataToShow.get(i - 1).getWord();
-            String current = mDataToShow.get(i).getWord();
+            String previous = filteredWordList.get(i - 1).getWord();
+            String current = filteredWordList.get(i).getWord();
 
             if(previous.charAt(0) != current.charAt(0)) {
-                mDataToShow.add(i, new Word(current.substring(0, 1).toUpperCase()));
+                filteredWordList.add(i, new Word(current.substring(0, 1).toUpperCase()));
                 ++i;
             }
         }
@@ -138,18 +155,18 @@ public class DictionaryAdapter extends ArrayAdapter<Word> implements Filterable 
 
                 List<Word> filterList = new ArrayList<>();
 
-                for (int i = 0; i < mDataToFilter.size(); i++) {
+                for (int i = 0; i < wordList.size(); i++) {
 
-                    String word = mDataToFilter.get(i).getWord();
+                    String word = wordList.get(i).getWord();
                     if ((word.toUpperCase()).startsWith(constraint.toString().toUpperCase())) {
-                        filterList.add(mDataToFilter.get(i));
+                        filterList.add(wordList.get(i));
                     }
                 }
                 results.count = filterList.size();
                 results.values = filterList;
             } else {
-                results.count = mDataToFilter.size();
-                results.values = mDataToFilter;
+                results.count = wordList.size();
+                results.values = wordList;
             }
             return results;
 
@@ -159,8 +176,8 @@ public class DictionaryAdapter extends ArrayAdapter<Word> implements Filterable 
         protected void publishResults(CharSequence constraint, FilterResults results) {
 
             List<Word> data = (List<Word>)results.values;
-            mDataToShow = new ArrayList<>(data);
-            updateSection();
+            filteredWordList = new ArrayList<>(data);
+            buildSection();
             notifyDataSetChanged();
         }
     }

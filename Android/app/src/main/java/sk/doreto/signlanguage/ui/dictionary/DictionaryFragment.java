@@ -1,25 +1,58 @@
 package sk.doreto.signlanguage.ui.dictionary;
 
 import android.content.Context;
+import android.os.Bundle;
+
+import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+
+import java.util.List;
 
 import sk.doreto.signlanguage.R;
-import sk.doreto.signlanguage.database.AppDatabase;
+import sk.doreto.signlanguage.database.Word;
+import sk.doreto.signlanguage.ui.common.DictionaryAdapter;
 import sk.doreto.signlanguage.ui.common.GeneralDictionaryFragment;
 
 public class DictionaryFragment extends GeneralDictionaryFragment {
 
-    public DictionaryFragment() {
+    private DictionaryViewModel modelView;
 
+    public DictionaryFragment() {
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        super.wordList = AppDatabase.getAppDatabase(getContext()).wordDao().getAll();
-        super.detailFragment = new DictionaryDetailFragment(this);
+        toolbarTitleId = R.string.title_dictionary;
 
-        super.toolbarTitleId = R.string.title_dictionary;
+        if (detailFragment == null) {
+            detailFragment = new DictionaryDetailFragment(this);
+        }
 
+        if(adapter == null) {
+            adapter = new DictionaryAdapter(getContext());
+        }
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        initData();
+    }
+
+
+    private void initData() {
+        modelView = ViewModelProviders.of(this).get(DictionaryViewModel.class);
+        modelView.getWordList().observe(this, new Observer<List<Word>>() {
+            @Override
+            public void onChanged(@Nullable List<Word> words) {
+                adapter.setWordList(words);
+            }
+        });
+
+        ((DictionaryDetailFragment) detailFragment).setModelView(modelView);
     }
 }

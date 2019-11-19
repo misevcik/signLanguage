@@ -1,5 +1,6 @@
 package sk.doreto.signlanguage.ui.education;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,11 +17,19 @@ import sk.doreto.signlanguage.R;
 
 public class EducationFragment extends Fragment {
 
-    private TabFragmentAdapter mAdapter;
+    private TabFragmentAdapter adapter;
     private TabLayout tabs;
     private ViewPager viewPager;
 
     private LectionFragment lectionFragment = LectionFragment.newInstance();
+    private TestFragment testFragment = TestFragment.newInstance();
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+    }
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -32,16 +41,15 @@ public class EducationFragment extends Fragment {
         Resources res = getContext().getResources();
         toolbarTitleView.setText(res.getString(R.string.title_education));
 
-        //Assign view reference
         tabs = root.findViewById(R.id.tab);
         viewPager = root.findViewById(R.id.viewPager);
 
+        //TODO - urobit tak aby sa nemuselo refreshovat
+        adapter = new TabFragmentAdapter(getChildFragmentManager());
+        adapter.addFragment(lectionFragment, getContext().getString(R.string.tab_lection));
+        adapter.addFragment(testFragment, getContext().getString(R.string.tab_test));
 
-        mAdapter = new TabFragmentAdapter(getChildFragmentManager());
-        mAdapter.addFragment(lectionFragment, getContext().getString(R.string.tab_lection));
-        mAdapter.addFragment(TestFragment.newInstance(), getContext().getString(R.string.tab_test));
-
-        viewPager.setAdapter(mAdapter);
+        viewPager.setAdapter(adapter);
         tabs.setupWithViewPager(viewPager);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabs));
 

@@ -53,6 +53,6 @@ public class DictionaryFragment extends GeneralDictionaryFragment {
             }
         });
 
-        ((DictionaryDetailFragment) detailFragment).setModelView(modelView);
+        ((DictionaryDetailFragment) detailFragment).modelView = modelView;
     }
 }

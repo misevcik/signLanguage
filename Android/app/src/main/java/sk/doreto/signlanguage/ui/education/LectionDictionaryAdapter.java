@@ -17,7 +17,6 @@ public class LectionDictionaryAdapter extends ArrayAdapter<Word> {
 
     private List<Word> wordList;
 
-
     private static class ViewHolder {
         TextView word;
         ImageView image;

@@ -44,7 +44,9 @@ public class LectionWordListFragment extends Fragment implements IDictionaryFrag
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        adapter = new LectionDictionaryAdapter(getContext());
+        if(adapter == null) {
+            adapter = new LectionDictionaryAdapter(getContext());
+        }
 
     }
 
@@ -87,7 +89,7 @@ public class LectionWordListFragment extends Fragment implements IDictionaryFrag
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Word word = adapter.getWordList().get(position);
-                detailFragment.setModelView(modelView);
+                detailFragment.modelView = modelView;
                 detailFragment.setDetailData(word, getLabel(word));
                 selectedPosition = position;
 

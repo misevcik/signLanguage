@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import sk.doreto.signlanguage.database.AppDatabase;
+import sk.doreto.signlanguage.ui.about.AboutFragment;
 import sk.doreto.signlanguage.ui.dictionary.DictionaryFragment;
 import sk.doreto.signlanguage.ui.education.EducationFragment;
 import sk.doreto.signlanguage.ui.favorite.FavoriteFragment;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements  NavigationBarCon
     private final EducationFragment education = new EducationFragment();
     private final FavoriteFragment favorite = new FavoriteFragment();
     private final InfoFragment info = new InfoFragment();
+    private final AboutFragment about = new AboutFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +61,6 @@ public class MainActivity extends AppCompatActivity implements  NavigationBarCon
                                 fragment = info;
                                 setTitle(item.getTitle());
                                 break;
-
-
                         }
                         fragmentManager.beginTransaction().replace(R.id.viewLayout, fragment).commit();
                         return true;

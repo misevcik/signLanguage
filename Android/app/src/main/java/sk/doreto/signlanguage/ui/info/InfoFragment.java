@@ -32,6 +32,8 @@ public class InfoFragment extends Fragment {
     private ListView listView;
     private FiveStarsDialog mFiveStarsDialog = null;
     private static final String EMAIL_ADDRESS = "info@dorteo.sk";
+    private LayoutInflater mLayoutInflater;
+    private ViewGroup mContainer;
 
 
     @Override
@@ -45,14 +47,13 @@ public class InfoFragment extends Fragment {
         }
     }
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-
-        View rootView = inflater.inflate(R.layout.fragment_info, container, false);
+    private View createInfoView() {
+        mContainer.removeAllViews();
+        View view = mLayoutInflater.inflate(R.layout.fragment_info, mContainer, false);
 
         InfoAdatper adapter = new InfoAdatper(infoItem);
 
-        listView = rootView.findViewById(R.id.info_list);
+        listView = view.findViewById(R.id.info_list);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -61,6 +62,7 @@ public class InfoFragment extends Fragment {
 
                 switch (position) {
                     case 0:
+                        createAboutView();
                         break;
                     case 1: {
                         if (mFiveStarsDialog == null) {
@@ -72,7 +74,8 @@ public class InfoFragment extends Fragment {
                                 .setUpperBound(2)
                                 .showAfter(0);
                         //todo: if dialog was set to show NEVER or OK, disable also button. Because it will never show again
-                    }break;
+                    }
+                    break;
                     case 2:
                         sendEmail();
                         break;
@@ -80,6 +83,22 @@ public class InfoFragment extends Fragment {
 
             }
         });
+        return view;
+    };
+
+    private View createAboutView(){
+        mContainer.removeAllViews();
+        View view = mLayoutInflater.inflate(R.layout.fragment_about, mContainer, false);
+        return view;
+    }
+
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+
+        mLayoutInflater = inflater;
+        mContainer = container;
+
+        View rootView = createInfoView();
 
         return rootView;
 

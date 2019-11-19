@@ -1,7 +1,5 @@
 package sk.doreto.signlanguage.ui.info;
 
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -33,13 +31,13 @@ public class InfoFragment extends Fragment {
     private NavigationBarController navigationBarController;
     private ListView listView;
     private FiveStarsDialog mFiveStarsDialog = null;
-
+    private static final String EMAIL_ADDRESS = "info@dorteo.sk";
 
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mFiveStarsDialog = new FiveStarsDialog(context, "info@dorteo.sk");
+        mFiveStarsDialog = new FiveStarsDialog(context, EMAIL_ADDRESS);
         try {
             navigationBarController = (NavigationBarController) context;
         } catch (ClassCastException castException) {
@@ -68,12 +66,12 @@ public class InfoFragment extends Fragment {
                         if (mFiveStarsDialog == null) {
                             break;
                         }
-                        mFiveStarsDialog.setRateText(getResources().getString(R.string.info_rate))
-                                .setTitle(getResources().getString(R.string.info_rate_us))
+                        mFiveStarsDialog.setRateText(getResources().getString(R.string.info_rate_us))
+                                .setTitle(getResources().getString(R.string.info_rate))
                                 .setForceMode(false)
                                 .setUpperBound(2)
                                 .showAfter(0);
-                        //todo: if dialog was set to show never, disable also button
+                        //todo: if dialog was set to show NEVER or OK, disable also button. Because it will never show again
                     }break;
                     case 2:
                         sendEmail();
@@ -90,7 +88,7 @@ public class InfoFragment extends Fragment {
     private void sendEmail(){
 
         Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("mailto:" + "info@dorteo.sk"));
+        intent.setData(Uri.parse("mailto:" + EMAIL_ADDRESS));
         intent.putExtra(Intent.EXTRA_SUBJECT, "My email's subject");
 
         try {

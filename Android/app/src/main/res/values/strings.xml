@@ -12,5 +12,6 @@
 
     <string name="info_about">O aplikacii</string>
     <string name="info_rate">Ohodnotit aplikaciu</string>
+    <string name="info_rate_us">Ako ste spokojni?</string>
     <string name="info_email">Kontaktovat nas</string>
 </resources>

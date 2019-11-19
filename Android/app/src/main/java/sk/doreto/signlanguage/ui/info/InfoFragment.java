@@ -18,6 +18,8 @@ import androidx.fragment.app.Fragment;
 
 import sk.doreto.signlanguage.NavigationBarController;
 import sk.doreto.signlanguage.R;
+import angtrim.com.fivestarslibrary.FiveStarsDialog;
+
 
 public class InfoFragment extends Fragment {
 
@@ -30,11 +32,14 @@ public class InfoFragment extends Fragment {
 
     private NavigationBarController navigationBarController;
     private ListView listView;
+    private FiveStarsDialog mFiveStarsDialog = null;
+
 
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        mFiveStarsDialog = new FiveStarsDialog(context, "info@dorteo.sk");
         try {
             navigationBarController = (NavigationBarController) context;
         } catch (ClassCastException castException) {
@@ -59,9 +64,17 @@ public class InfoFragment extends Fragment {
                 switch (position) {
                     case 0:
                         break;
-                    case 1:
-                        //TODO https://ourcodeworld.com/articles/read/940/how-to-add-a-rate-my-app-dialog-to-an-android-application-using-the-android-five-stars-library
-                        break;
+                    case 1: {
+                        if (mFiveStarsDialog == null) {
+                            break;
+                        }
+                        mFiveStarsDialog.setRateText(getResources().getString(R.string.info_rate))
+                                .setTitle(getResources().getString(R.string.info_rate_us))
+                                .setForceMode(false)
+                                .setUpperBound(2)
+                                .showAfter(0);
+                        //todo: if dialog was set to show never, disable also button
+                    }break;
                     case 2:
                         sendEmail();
                         break;

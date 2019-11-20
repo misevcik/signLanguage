@@ -13,10 +13,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import sk.doreto.signlanguage.NavigationBarController;
 import sk.doreto.signlanguage.R;
 import angtrim.com.fivestarslibrary.FiveStarsDialog;
+import sk.doreto.signlanguage.ui.about.AboutFragment;
 
 
 public class InfoFragment extends Fragment {
@@ -34,7 +36,7 @@ public class InfoFragment extends Fragment {
     private static final String EMAIL_ADDRESS = "info@dorteo.sk";
     private LayoutInflater mLayoutInflater;
     private ViewGroup mContainer;
-
+    private AboutFragment mAboutFragment = new AboutFragment();
 
     @Override
     public void onAttach(Context context) {
@@ -86,10 +88,11 @@ public class InfoFragment extends Fragment {
         return view;
     };
 
-    private View createAboutView(){
-        mContainer.removeAllViews();
-        View view = mLayoutInflater.inflate(R.layout.fragment_about, mContainer, false);
-        return view;
+    private void createAboutView(){
+        navigationBarController.hideBar();
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.viewLayout, mAboutFragment);
+        ft.addToBackStack("AboutFragment").commit();
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,

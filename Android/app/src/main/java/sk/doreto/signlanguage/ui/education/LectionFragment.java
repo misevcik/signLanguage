@@ -19,7 +19,6 @@ import java.util.List;
 
 import sk.doreto.signlanguage.NavigationBarController;
 import sk.doreto.signlanguage.R;
-import sk.doreto.signlanguage.database.AppDatabase;
 import sk.doreto.signlanguage.database.Lection;
 
 

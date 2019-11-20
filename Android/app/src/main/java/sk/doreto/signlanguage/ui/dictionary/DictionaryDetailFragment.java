@@ -20,16 +20,12 @@ import sk.doreto.signlanguage.ui.common.GeneralDictionaryDetailFragment;
 
 public class DictionaryDetailFragment extends GeneralDictionaryDetailFragment {
 
-    DictionaryViewModel modelView;
+    public DictionaryViewModel modelView;
 
     public DictionaryDetailFragment(IDictionaryFragment dictionaryFragment) {
         super(dictionaryFragment);
     }
-
-    public void setModelView(DictionaryViewModel dictionaryViewModel) {
-        modelView =  dictionaryViewModel;
-    }
-
+    
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

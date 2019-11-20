@@ -56,7 +56,7 @@ public class FavoriteFragment extends GeneralDictionaryFragment {
             }
         });
 
-        ((FavoriteDetailFragment)detailFragment).setModelView(viewModel);
+        ((FavoriteDetailFragment)detailFragment).modelView = viewModel;
     }
 
 }

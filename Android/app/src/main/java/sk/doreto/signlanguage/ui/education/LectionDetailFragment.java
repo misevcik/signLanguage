@@ -23,16 +23,14 @@ import static android.widget.ListPopupWindow.MATCH_PARENT;
 public class LectionDetailFragment extends GeneralDictionaryDetailFragment {
 
 
+    public LectionDictionaryViewModel modelView;
+
     private String counterLabel;
-    private LectionDictionaryViewModel modelView;
 
     public LectionDetailFragment(IDictionaryFragment dictionaryFragment) {
         super(dictionaryFragment);
     }
 
-    public void setModelView(LectionDictionaryViewModel lectionDictionaryViewModel) {
-        modelView =  lectionDictionaryViewModel;
-    }
 
     @Nullable
     @Override

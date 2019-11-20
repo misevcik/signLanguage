@@ -19,15 +19,11 @@ import static android.widget.ListPopupWindow.MATCH_PARENT;
 
 public class FavoriteDetailFragment extends GeneralDictionaryDetailFragment {
 
-    FavoriteViewModel modelView;
+    public FavoriteViewModel modelView;
 
     public FavoriteDetailFragment(IDictionaryFragment dictionaryFragment) {
         super(dictionaryFragment);
 
-    }
-
-    public void setModelView(FavoriteViewModel favoriteViewModel) {
-        modelView =  favoriteViewModel;
     }
 
 

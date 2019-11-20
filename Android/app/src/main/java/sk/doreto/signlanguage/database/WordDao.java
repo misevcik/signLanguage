@@ -1,6 +1,7 @@
 package sk.doreto.signlanguage.database;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -17,7 +18,7 @@ public interface WordDao {
     LiveData<List<Word>> getAllLive();
 
     @Query("SELECT * FROM WordTable WHERE WordTable.favorite=:favorite ORDER BY WordTable.word ASC")
-    LiveData<List<Word>>  getFavoriteLive(boolean favorite);
+    LiveData<List<Word>> getFavoriteLive(boolean favorite);
 
     @Query("SELECT * FROM WordTable WHERE WordTable.lection=:lectionId ORDER BY WordTable.word ASC")
     LiveData<List<Word>> getWordsForLection(final int lectionId);

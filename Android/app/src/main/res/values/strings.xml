@@ -15,6 +15,8 @@
     <string name="info_rate_us">Ako ste spokojni?</string>
     <string name="info_email">Kontaktovat nas</string>
 
+    <string name="posunkuj_s_nami">"Posunkuj s nami"</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

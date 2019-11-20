@@ -4,5 +4,6 @@
     <color name="oceanBlue">#48B0DF</color>
     <color name="lightBlue">#c5e4ed</color>
     <color name="gray">#F5F5F5</color>
+    <color name="dark_gray">#57595D</color>
     <color name="white">#FFFFFF</color>
 </resources>

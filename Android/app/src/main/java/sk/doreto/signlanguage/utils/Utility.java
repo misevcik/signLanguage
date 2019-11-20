@@ -51,4 +51,20 @@ public class Utility {
         return null;
     }
 
+    public static String getGrade(int score) {
+
+        if (score < 50)
+            return "F";
+        else if (50 <= score && score < 60)
+            return "E";
+        else if (60 <= score && score < 70)
+            return "D";
+        else if (70 <= score && score < 80)
+            return "C";
+        else if (80 <= score && score < 90)
+            return "B";
+        else
+            return "A";
+    }
+
 }

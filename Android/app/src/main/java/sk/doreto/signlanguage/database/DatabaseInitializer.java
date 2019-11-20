@@ -49,14 +49,14 @@ public class DatabaseInitializer {
     private static void populateWithLectionData(AppDatabase db) {
 
         Lection lectionArray[] = {
-                new Lection(0,"Prvy kontakt I.",  "first_contact_1", false),
-                new Lection(1,"Prvy kontakt II.", "first_contact_2", false),
-                new Lection(2,"Prvy kontakt III.", "first_contact_3", false),
-                new Lection(3,"Rodina I.", "family_1", false),
-                new Lection(4,"Rodina II.", "family_2", false),
-                new Lection(5,"Cisla I.", "numbers_1", false),
-                new Lection(6,"Cisla II.", "numbers_2", false),
-                new Lection(7,"Farby I.", "colors_1", false)
+                new Lection(0,"Prvy kontakt I.",  "first_contact_1", -1),
+                new Lection(1,"Prvy kontakt II.", "first_contact_2", -1),
+                new Lection(2,"Prvy kontakt III.", "first_contact_3", -1),
+                new Lection(3,"Rodina I.", "family_1", -1),
+                new Lection(4,"Rodina II.", "family_2", -1),
+                new Lection(5,"Cisla I.", "numbers_1", -1),
+                new Lection(6,"Cisla II.", "numbers_2", -1),
+                new Lection(7,"Farby I.", "colors_1", -1)
         };
 
         for (Lection lection : lectionArray)

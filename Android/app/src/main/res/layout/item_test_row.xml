@@ -21,14 +21,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="start|center"
-            android:textSize="15dp"/>
+            android:textSize="16dp"/>
 
         <TextView
             android:id="@+id/test_statistic_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="start|center"
-            android:text="Skus sa otestovat" />
+            android:textColor="@color/dark_gray"
+            android:text="@string/try_test" />
 
     </LinearLayout>
 
@@ -39,7 +40,7 @@
         android:layout_weight="0.3"
         android:gravity="end|center"
         android:textColor="@color/oceanBlue"
-        android:textSize="30dp"
+        android:textSize="25dp"
         android:text="20% (F)"/>
 
 </LinearLayout>

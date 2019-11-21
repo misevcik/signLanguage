@@ -16,6 +16,12 @@
     <string name="info_email">Kontaktovat nas</string>
 
     <string name="posunkuj_s_nami">"Posunkuj s nami"</string>
+    <string name="info_about_project">"O projekte"</string>
+    <string name="info_about_text">"Cieľom aplikacie je pomocť pri výučbe slovenského posunkového jazyka. \n\nChceme Vás poprosiť aby ste podporili rozvoj aplikácie svojou spatnou väzbou. V prípade akýchoľvek problémov alebo nápadov na zlepšenie nás neváhajte kontaktovať.\n\nZdrojove kódy projektu sú šírene formou "open source" - ak chcete prispieť k vývoju aplikácie, kontaktujte nás - viac informácii nájdete na našej stránke www.dorteo.sk alebo priamo na githube."</string>
+    <string name="info_about_partners_title">"Partneri"</string>
+    <string name="info_about_partners_text">"Michal Hefty - autor slov a posunkov \nAndrej Kováč - kamera"</string>
+    <string name="info_about_eu">"Tento projekt je spolufinancovaný Európskou úniou z prostriedkov Európskeho socilálneho fondu - Európsky fond regionálneho rozvoja."</string>
+
     <string name="try_test">Skus sa otestovat</string>
 
     <!-- TODO: Remove or change this placeholder text -->

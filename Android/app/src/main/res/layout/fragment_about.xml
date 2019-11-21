@@ -25,7 +25,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/info_about"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textSize="25sp"/>
 
         </LinearLayout>
 
@@ -35,9 +36,11 @@
             android:layout_height="?attr/actionBarSize"
             android:layout_below="@id/about_toolbar"
             android:text="@string/posunkuj_s_nami"
-            android:gravity="center"/>
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="25sp"/>
 
-        <View
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/about_text"
@@ -46,8 +49,81 @@
             android:layout_marginStart="25pt"
             android:layout_marginLeft="25pt"
             android:layout_marginTop="5pt"
-            android:layout_marginBottom="5pt">
-        </View>
+            android:layout_marginBottom="5pt"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:text="@string/info_about_project"
+                android:textSize="25sp"
+                android:layout_marginStart="5pt"
+                android:layout_marginLeft="5pt"
+                android:textStyle="bold"
+                android:gravity="center_vertical|left|start"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/info_about_text"
+                android:gravity="start"
+                android:layout_marginLeft="5pt"
+                android:layout_marginRight="5pt"
+                android:textSize="20sp"
+                android:autoLink="web"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:text="@string/info_about_partners_title"
+                android:textSize="25sp"
+                android:layout_marginStart="5pt"
+                android:layout_marginLeft="5pt"
+                android:textStyle="bold"
+                android:gravity="center_vertical|left|start"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/info_about_partners_text"
+                android:gravity="start"
+                android:layout_marginLeft="5pt"
+                android:layout_marginRight="5pt"
+                android:textSize="20sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10pt"
+                android:layout_marginBottom="5pt">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/svk_flag"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/eu_logo"/>
+                />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/info_about_eu"
+                android:gravity="start"
+                android:layout_marginLeft="5pt"
+                android:layout_marginRight="5pt"
+                android:layout_marginTop="5pt"
+                android:layout_marginBottom="5pt"
+                android:textSize="20sp"/>
+        </LinearLayout>
 
     </RelativeLayout>
 

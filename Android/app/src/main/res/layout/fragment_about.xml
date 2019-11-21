@@ -1,39 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:orientation="vertical">
+    android:fillViewport="true">
 
-    <LinearLayout
-        android:id="@+id/dictionary_detail_toolbar"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_alignParentTop="true" />
-
-    <ImageView
-        android:id="@+id/image_view"
-        android:layout_below="@id/dictionary_detail_toolbar"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
-        android:background="#000000"/>
+        android:background="@color/lightBlue"
+        android:orientation="vertical">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="15dp"
-        android:layout_below="@id/image_view"
-        android:layout_above="@id/video_controller_layout"
-        android:background="#EDEDE8">
+        <LinearLayout
+            android:id="@+id/about_toolbar"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentTop="true"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/title_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/info_about"
+                android:gravity="center"/>
+
+        </LinearLayout>
 
         <TextView
+            android:id="@+id/about_text"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_below="@id/about_toolbar"
+            android:text="@string/posunkuj_s_nami"
+            android:gravity="center"/>
+
+        <View
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:text="@string/posunkuj_s_nami"/>
-    </LinearLayout>
+            android:layout_below="@+id/about_text"
+            android:background="@drawable/search_bar_round"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="25pt"
+            android:layout_marginLeft="25pt"
+            android:layout_marginTop="5pt"
+            android:layout_marginBottom="5pt">
+        </View>
 
-</RelativeLayout>
+    </RelativeLayout>
+
+</ScrollView>

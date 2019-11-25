@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true" />
 
     <ImageView
-        android:id="@+id/image_view"
+        android:id="@+id/video_preview"
         android:layout_below="@id/dictionary_detail_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="15dp"
-        android:layout_below="@id/image_view"
+        android:layout_below="@id/video_preview"
         android:layout_above="@id/video_controller_layout"
         android:background="#EDEDE8">
 

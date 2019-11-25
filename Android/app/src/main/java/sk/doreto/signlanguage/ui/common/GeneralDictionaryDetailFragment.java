@@ -52,7 +52,7 @@ public class GeneralDictionaryDetailFragment extends Fragment implements IDetail
 
         View rootView = inflater.inflate(R.layout.fragment_dictionary_detail, container, false);
 
-        imageView = rootView.findViewById(R.id.image_view);
+        imageView = rootView.findViewById(R.id.video_preview);
 
         videoController = rootView.findViewById(R.id.video_controller);
         videoController.setDefaultVideoRotate(videoRotate);

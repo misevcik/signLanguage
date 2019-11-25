@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -17,6 +19,7 @@ import java.util.List;
 
 import sk.doreto.signlanguage.R;
 import sk.doreto.signlanguage.database.Lection;
+import sk.doreto.signlanguage.database.Word;
 
 public class TestFragment extends Fragment {
 
@@ -66,6 +69,16 @@ public class TestFragment extends Fragment {
 
         listView = view.findViewById(R.id.test_list);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                TestDetailFragment testDetailFragment = new TestDetailFragment(adapter.getItem(position));
+                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.add(R.id.viewLayout, testDetailFragment);
+                ft.addToBackStack("TestDetailFragment").commit();
+            }
+        });
 
         return view;
     }

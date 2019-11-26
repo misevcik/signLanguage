@@ -32,7 +32,7 @@ public class LectionFragment extends Fragment {
         return new LectionFragment();
     }
 
-    private LectinViewModel modelView;
+    private LectionViewModel modelView;
 
     @Override
     public void onAttach(Context context) {
@@ -84,7 +84,7 @@ public class LectionFragment extends Fragment {
     }
 
     private void initData() {
-        modelView = ViewModelProviders.of(this).get(LectinViewModel.class);
+        modelView = ViewModelProviders.of(this).get(LectionViewModel.class);
         modelView.getWordList().observe(this, new Observer<List<Lection>>() {
             @Override
             public void onChanged(@Nullable List<Lection> lections) {

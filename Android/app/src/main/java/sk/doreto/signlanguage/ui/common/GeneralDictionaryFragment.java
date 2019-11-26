@@ -21,6 +21,7 @@ import java.util.List;
 import sk.doreto.signlanguage.NavigationBarController;
 import sk.doreto.signlanguage.R;
 import sk.doreto.signlanguage.database.Word;
+import sk.doreto.signlanguage.utils.Utility;
 
 
 public class GeneralDictionaryFragment extends Fragment implements IDictionaryFragment {
@@ -62,7 +63,7 @@ public class GeneralDictionaryFragment extends Fragment implements IDictionaryFr
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                preventTwoClick(listView);
+                Utility.preventTwoClick(listView);
 
                 navigationBarController.hideBar();
                 detailFragment.setDetailData(adapter.getWordList().get(position));
@@ -132,14 +133,7 @@ public class GeneralDictionaryFragment extends Fragment implements IDictionaryFr
         getActivity().getSupportFragmentManager().beginTransaction().detach(detailFragment).attach(detailFragment).commit();
     }
 
-    private static void preventTwoClick(final View view){
-        view.setEnabled(false);
-        view.postDelayed(new Runnable() {
-            public void run() {
-                view.setEnabled(true);
-            }
-        }, 500);
-    }
+
 
     public void setListVisibility() {
 

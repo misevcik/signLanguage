@@ -21,7 +21,10 @@ public interface WordDao {
     LiveData<List<Word>> getFavoriteLive(boolean favorite);
 
     @Query("SELECT * FROM WordTable WHERE WordTable.lection=:lectionId ORDER BY WordTable.word ASC")
-    LiveData<List<Word>> getWordsForLection(final int lectionId);
+    LiveData<List<Word>> getWordsForLectionLive(final int lectionId);
+
+    @Query("SELECT * FROM WordTable WHERE WordTable.lection=:lectionId ORDER BY WordTable.word ASC")
+    List<Word> getWordsForLection(final int lectionId);
 
     @Query("SELECT COUNT(*) FROM WordTable WHERE WordTable.lection=:lectionId")
     int getWordsCountForLection(final int lectionId);

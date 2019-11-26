@@ -17,9 +17,11 @@ import androidx.lifecycle.ViewModelProviders;
 
 import java.util.List;
 
+import sk.doreto.signlanguage.NavigationBarController;
 import sk.doreto.signlanguage.R;
+import sk.doreto.signlanguage.database.AppDatabase;
 import sk.doreto.signlanguage.database.Lection;
-import sk.doreto.signlanguage.database.Word;
+import sk.doreto.signlanguage.utils.Utility;
 
 public class TestFragment extends Fragment {
 
@@ -30,11 +32,17 @@ public class TestFragment extends Fragment {
     private TestAdapter adapter;
     private ListView listView;
 
-    private LectinViewModel modelView;
+    private LectionViewModel modelView;
+    private NavigationBarController navigationBarController;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+
+        try {
+            navigationBarController = (NavigationBarController) context;
+        } catch (ClassCastException castException) {
+        }
 
         if(adapter == null) {
             adapter = new TestAdapter(getContext());
@@ -50,7 +58,7 @@ public class TestFragment extends Fragment {
 
     private void initData() {
 
-        modelView = ViewModelProviders.of(this).get(LectinViewModel.class);
+        modelView = ViewModelProviders.of(this).get(LectionViewModel.class);
         modelView.getWordList().observe(this, new Observer<List<Lection>>() {
             @Override
             public void onChanged(@Nullable List<Lection> lections) {
@@ -73,7 +81,13 @@ public class TestFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                TestDetailFragment testDetailFragment = new TestDetailFragment(adapter.getItem(position));
+                Utility.preventTwoClick(listView);
+
+                navigationBarController.hideBar();
+
+                Lection lection = adapter.getItem(position);
+
+                TestDetailFragment testDetailFragment = new TestDetailFragment(lection);
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                 ft.add(R.id.viewLayout, testDetailFragment);
                 ft.addToBackStack("TestDetailFragment").commit();

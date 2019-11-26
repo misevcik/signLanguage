@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.util.Log;
+import android.view.View;
 
 public class Utility {
 
@@ -65,6 +66,15 @@ public class Utility {
             return "B";
         else
             return "A";
+    }
+
+    public static void preventTwoClick(final View view){
+        view.setEnabled(false);
+        view.postDelayed(new Runnable() {
+            public void run() {
+                view.setEnabled(true);
+            }
+        }, 500);
     }
 
 }

@@ -35,54 +35,78 @@
             android:layout_height="0dp"
             android:layout_weight="0.6"
             android:layout_gravity="center" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/test_question_id"
+            android:id="@+id/test_questionid"/>
+        <TextView
+            android:id="@+id/test_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="20sp"
+            android:text="@string/test_phrase"/>
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.4"
+            android:layout_height="wrap_content"
             android:background="#EDEDE8">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="1.otazka z 6"
-                android:id="@+id/test_questionid"/>
-            <TextView
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:textSize="20sp"
-                android:text="Ake Slovo je znazornene na videu?"/>
-            
-            <TextView
-                android:id="@+id/test_answer1"
+                android:background="@drawable/search_bar_round">
+                <TextView
+                    android:id="@+id/test_answer1"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:text="Odpoved 1"
+                    android:textSize="20sp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical|start"/>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="Odpoved 1"
-                android:gravity="center_vertical|start"
-                android:background="@drawable/search_bar_round"/>
-            <TextView
-                android:id="@+id/test_answer2"
+                android:background="@drawable/search_bar_round">
+                <TextView
+                    android:id="@+id/test_answer2"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:text="Odpoved 2"
+                    android:textSize="20sp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical|start"/>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:text="Odpoved 2"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:gravity="center_vertical|start"
-                android:background="@drawable/search_bar_round"/>
-            <TextView
-                android:id="@+id/test_answer3"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:text="Odpoved 3"
-                android:gravity="center_vertical|start"
-                android:background="@drawable/search_bar_round"/>
+                android:background="@drawable/search_bar_round">
+                <TextView
+                    android:id="@+id/test_answer3"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:text="Odpoved 3"
+                    android:textSize="20sp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical|start"/>
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

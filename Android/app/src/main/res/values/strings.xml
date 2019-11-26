@@ -23,6 +23,8 @@
     <string name="info_about_eu">"Tento projekt je spolufinancovaný Európskou úniou z prostriedkov Európskeho socilálneho fondu - Európsky fond regionálneho rozvoja."</string>
 
     <string name="try_test">Skus sa otestovat</string>
+    <string name="test_phrase">Aké slovo je znázornené na videu?</string>
+    <string name="test_question_id">otázka</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

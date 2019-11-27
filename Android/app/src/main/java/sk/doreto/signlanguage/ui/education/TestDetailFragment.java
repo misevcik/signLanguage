@@ -2,7 +2,6 @@ package sk.doreto.signlanguage.ui.education;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,26 +19,18 @@ import sk.doreto.signlanguage.R;
 import sk.doreto.signlanguage.database.AppDatabase;
 import sk.doreto.signlanguage.database.Lection;
 import sk.doreto.signlanguage.database.Word;
+import sk.doreto.signlanguage.ui.components.TestAnswerControllerView;
 
 
 public class TestDetailFragment extends Fragment {
 
-    private int MAX_ANSWER = 3;
+    private int MAX_ANSWER_COUNT = 3;
 
-    private class AnswerItem {
-        String answerText;
-        boolean isCorrect;
-    }
-
-    private class TestItem {
-        List<AnswerItem> answerList;
-        int selectedAnswer = -1;
-        int videoResourcePath;
-    }
-
-    private Lection lection;
     private int wordCount;
-    private List<TestItem> testItems;
+    private int questionCollectionSize;
+    private int acutalQuestionIndex = 0;
+    private Lection lection;
+    private List<QuestionItem> questionCollection = new ArrayList<QuestionItem>();
 
     public TestDetailFragment(Lection lection) {
         this.lection = lection;
@@ -65,6 +56,11 @@ public class TestDetailFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_test_detail, container, false);
 
+        TestAnswerControllerView testAnswerController = root.findViewById(R.id.testAnswerControllerView);
+
+        testAnswerController.fillData(questionCollection.get(acutalQuestionIndex));
+
+
         return root;
     }
 
@@ -73,26 +69,49 @@ public class TestDetailFragment extends Fragment {
         List<Word> wordList = AppDatabase.getAppDatabase(getContext()).wordDao().getWordsForLection(lection.getId());
         wordCount = wordList.size();
 
-        int maxTestCount = wordCount / 3;
+        questionCollectionSize = wordCount / 3;
 
-        for(int i = 0; i < maxTestCount; ++i) {
+        for(int i = 0; i < questionCollectionSize; ++i) {
+
+
+            QuestionItem questionItem = new QuestionItem();
 
             final int correctAnswerIndex =  new Random().nextInt(1); //nextInt((max - min) + 1) + min;
-            final ArrayList<Integer> randomIndexes = getIndexsForAnswer(wordCount);
+            final ArrayList<Integer> randomIndexes = getRandomIndexAnswer(wordCount);
 
-            Log.e("","");
+
+            //Generate random answer per Question
+            for(int answerIndex = 0; answerIndex < MAX_ANSWER_COUNT; ++answerIndex) {
+
+                Word word = wordList.get(randomIndexes.get(answerIndex));
+
+                QuestionItem.AnswerItem answer = new QuestionItem.AnswerItem();
+                answer.answerText = word.getWord();
+
+                if(correctAnswerIndex == answerIndex) {
+                    answer.isCorrect = true;
+                    questionItem.video = word.getVideoFront();
+                } else {
+                    answer.isCorrect = false;
+                }
+
+                questionItem.answerCollection.add(answer);
+
+            }
+
+            questionCollection.add(questionItem);
         }
 
     }
 
-    private ArrayList<Integer> getIndexsForAnswer(int range) {
+    private ArrayList<Integer> getRandomIndexAnswer(int range) {
 
         final int min = 0;
-        final int max = range;
+        final int max = range - 1;
 
         ArrayList<Integer> randomIndexes = new ArrayList<>();
 
-        for(int i = 0; i < MAX_ANSWER; ++i) {
+        for(int i = 0; i < MAX_ANSWER_COUNT; ++i) {
             int random;
 
             do {

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/test_question_id"
+        android:id="@+id/test_questionid"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"/>
+
+    <TextView
+        android:id="@+id/question_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:maxLines="1"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="@string/test_phrase"/>
+
+    <sk.doreto.signlanguage.ui.components.TestAnswerItem
+        android:id="@+id/answer_item_1"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <sk.doreto.signlanguage.ui.components.TestAnswerItem
+        android:id="@+id/answer_item_2"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <sk.doreto.signlanguage.ui.components.TestAnswerItem
+        android:id="@+id/answer_item_3"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

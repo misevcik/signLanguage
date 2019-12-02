@@ -1,10 +1,20 @@
 package sk.doreto.signlanguage.ui.education;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.MediaController;
+import android.widget.TextView;
+import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,13 +23,17 @@ import androidx.fragment.app.Fragment;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 import sk.doreto.signlanguage.R;
+import sk.doreto.signlanguage.VideoPlayerActivity;
 import sk.doreto.signlanguage.database.AppDatabase;
 import sk.doreto.signlanguage.database.Lection;
 import sk.doreto.signlanguage.database.Word;
 import sk.doreto.signlanguage.ui.components.TestAnswerControllerView;
+import sk.doreto.signlanguage.utils.Utility;
 
 
 public class TestDetailFragment extends Fragment {
@@ -28,9 +42,14 @@ public class TestDetailFragment extends Fragment {
 
     private int wordCount;
     private int questionCollectionSize;
-    private int acutalQuestionIndex = 0;
+    private int currentQuestionIndex = 0;
+    private int timeElapsedSecond = 0;
+    private Timer timer;
+    private TextView testTime;
+    private ImageView videoPreview;
+    private ImageButton playButton;
     private Lection lection;
-    private List<QuestionItem> questionCollection = new ArrayList<QuestionItem>();
+    private List<QuestionItem> questionCollection = new ArrayList<>();
 
     public TestDetailFragment(Lection lection) {
         this.lection = lection;
@@ -46,22 +65,83 @@ public class TestDetailFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //TODO - consider to use model view
-        loadTestData();
+        loadTestData(); //TODO - consider to use model view
+        startTimer();
 
     }
 
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_test_detail, container, false);
 
         TestAnswerControllerView testAnswerController = root.findViewById(R.id.testAnswerControllerView);
+        testAnswerController.fillData(questionCollection.get(currentQuestionIndex));
 
-        testAnswerController.fillData(questionCollection.get(acutalQuestionIndex));
+        testTime = root.findViewById(R.id.test_time);
+
+        videoPreview = root.findViewById(R.id.video_preview);
+        playButton = root.findViewById(R.id.video_play);
+        playButton.setOnClickListener(new View.OnClickListener()   {
+            public void onClick(View v)  {
+                videoPlay();
+            }
+        });
+
+        drawThumbnail();
 
 
         return root;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        timer.cancel();
+
+    }
+
+    private void startTimer() {
+
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                if(testTime != null) {
+                    ++timeElapsedSecond;
+
+                    StringBuilder str = new StringBuilder();
+                    DateUtils.formatElapsedTime(str, timeElapsedSecond);
+
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            testTime.setText(str.toString());
+                        }
+                    });
+                }
+            }
+        }, 0, 1000);
+
+    }
+
+
+    private void videoPlay() {
+        Intent videoPlaybackActivity = new Intent(getContext(), VideoPlayerActivity.class);
+
+        String videoRaw = questionCollection.get(currentQuestionIndex).video;
+
+        String videoPath = "android.resource://" + getContext().getPackageName() + "/" + Utility.getResourceId(getContext(), videoRaw, "raw");
+        videoPlaybackActivity.putExtra("videoPath", videoPath);
+        startActivity(videoPlaybackActivity);
+    }
+
+    private void drawThumbnail() {
+        String videoRaw = questionCollection.get(currentQuestionIndex).video;
+        Drawable drawable = Utility.getThumbnail(getContext(), videoRaw);
+        videoPreview.setImageDrawable(drawable);
     }
 
     private void loadTestData() {
@@ -90,7 +170,7 @@ public class TestDetailFragment extends Fragment {
 
                 if(correctAnswerIndex == answerIndex) {
                     answer.isCorrect = true;
-                    questionItem.video = word.getVideoFront();
+                    questionItem.video = "2131689472"; //TODO word.getVideoFront();
                 } else {
                     answer.isCorrect = false;
                 }

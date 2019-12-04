@@ -77,7 +77,7 @@ public class TestDetailFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_test_detail, container, false);
 
         TestAnswerControllerView testAnswerController = root.findViewById(R.id.testAnswerControllerView);
-        testAnswerController.fillData(questionCollection.get(currentQuestionIndex));
+        testAnswerController.fillData(questionCollection);
 
         testTime = root.findViewById(R.id.test_time);
 

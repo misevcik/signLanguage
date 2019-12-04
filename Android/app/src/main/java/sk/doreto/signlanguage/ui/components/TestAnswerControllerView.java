@@ -20,7 +20,6 @@ public class TestAnswerControllerView extends LinearLayout {
     private ArrayList<TestAnswerItem> answerItems = new ArrayList<TestAnswerItem>(3);
     private List<QuestionItem> mQuestions;
     private ArrayList<QuestionItem> mAnswered = new ArrayList<>();
-    private Handler handler = new Handler();
 
     public TestAnswerControllerView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -69,20 +68,53 @@ public class TestAnswerControllerView extends LinearLayout {
             item.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    TestAnswerItem clickedItem = ((TestAnswerItem) v);
-                    clickedItem.clicked();
-                        //update statistics
-                        //set timer to show next question
+
+                    enableClick(false);
+
+                    TestAnswerItem clickediItem = ((TestAnswerItem) v);
+                    clickediItem.clicked();
+
+                    //Show answer
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            evaluateAnswer(clickediItem);
+                        }
+                    }, 1000);
+
                     if (!mQuestions.isEmpty()) {
-                        handler.postDelayed(new Runnable() {
+                        new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
                                 fillData(mQuestions.remove(0));
+                                enableClick(true);
                             }
-                        }, 1000);
+                        }, 3000);
                     }
                 }
             });
+        }
+    }
+
+    private void evaluateAnswer(TestAnswerItem clickediItem) {
+
+        if(clickediItem.isCorrect()) {
+            clickediItem.selectRightAnswer();
+        } else {
+
+            clickediItem.selectWrongAnswer();
+            for (TestAnswerItem item : answerItems) {
+                if(item.isCorrect()) {
+                    item.showRightAnswer();
+                }
+            }
+        }
+
+    }
+
+    private void enableClick(boolean enabled) {
+        for (TestAnswerItem item : answerItems) {
+            item.setEnabled(enabled);
         }
     }
 

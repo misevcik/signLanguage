@@ -3,6 +3,7 @@ package sk.doreto.signlanguage.ui.components;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import sk.doreto.signlanguage.R;
@@ -11,8 +12,9 @@ import sk.doreto.signlanguage.ui.education.QuestionItem;
 public class TestAnswerItem extends LinearLayout {
 
     private TextView answerText;
-    private LinearLayout layout;
-    private boolean mIsCorect = false;
+    private TextView answerStatus;
+    private RelativeLayout layout;
+    private boolean isCorect = false;
 
     public TestAnswerItem(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -21,10 +23,28 @@ public class TestAnswerItem extends LinearLayout {
 
     public void reset() {
         layout.setBackgroundResource(R.drawable.test_answer_round_white);
+        answerStatus.setVisibility(INVISIBLE);
     }
 
     public void clicked() {
-        layout.setBackgroundResource(mIsCorect? R.drawable.test_answer_round_gray : R.drawable.test_answer_round_red);
+        layout.setBackgroundResource(R.drawable.test_answer_round_gray);
+    }
+
+    public void showRightAnswer() {
+        layout.setBackgroundResource(R.drawable.test_answer_round_green);
+    }
+
+
+    public void selectWrongAnswer() {
+        layout.setBackgroundResource(R.drawable.test_answer_round_red);
+        answerStatus.setText("Nespravna");
+        answerStatus.setVisibility(VISIBLE);
+    }
+
+    public void selectRightAnswer() {
+        layout.setBackgroundResource(R.drawable.test_answer_round_green);
+        answerStatus.setText("Spravna");
+        answerStatus.setVisibility(VISIBLE);
     }
 
     private void init(Context context, AttributeSet attrs) {
@@ -34,14 +54,16 @@ public class TestAnswerItem extends LinearLayout {
     }
 
     private void initComponents() {
-        answerText = findViewById(R.id.answer_text);
+
         layout = findViewById(R.id.answer_layout);
+        answerText = findViewById(R.id.answer_text);
+        answerStatus = findViewById(R.id.answer_status);
 
     }
 
     public void setValue(QuestionItem.AnswerItem item){
         this.answerText.setText(item.answerText);
-        this.mIsCorect = item.isCorrect;
+        this.isCorect = item.isCorrect;
     }
-    public boolean isCorrect(){return mIsCorect;}
+    public boolean isCorrect(){return isCorect;}
 }

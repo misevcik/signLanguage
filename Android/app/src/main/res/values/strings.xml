@@ -25,6 +25,11 @@
     <string name="try_test">Skus sa otestovat</string>
     <string name="test_phrase">Aké slovo je znázornené na videu?</string>
     <string name="test_question_id">otázka</string>
+    <string name="test_result">Výsledok testu</string>
+    <string name="test_result_reccomendation">ODPORUCANIE</string>
+    <string name="test_result_repeat">ZOPAKOVAT TEST</string>
+    <string name="test_result_finish">ZATVOR</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

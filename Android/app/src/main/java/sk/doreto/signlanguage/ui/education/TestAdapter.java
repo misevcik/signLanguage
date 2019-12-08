@@ -60,7 +60,8 @@ public class TestAdapter extends ArrayAdapter<Lection> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        Lection lection = getItem(position);
+        final Lection lection = getItem(position);
+
         ViewHolder viewHolder;
 
         if (convertView == null) {
@@ -89,7 +90,7 @@ public class TestAdapter extends ArrayAdapter<Lection> {
 
     }
 
-    private String getStatistic(Lection lection) {
+    private String getStatistic(final Lection lection) {
 
         if(lection.getTestScore() == -1) {
             Resources res = getContext().getResources();
@@ -99,10 +100,14 @@ public class TestAdapter extends ArrayAdapter<Lection> {
         int wordCount = AppDatabase.getAppDatabase(getContext()).wordDao().getWordsCountForLection(lection.getId());
         int testAnswerCount = (wordCount / 3) + 1;
         int score = lection.getTestScore();
-        int correctAnswers = testAnswerCount / 100 * score;
+        int correctAnswers = (int)(testAnswerCount / 100.0 * score);
         int wrongAnswers = testAnswerCount - correctAnswers;
 
-        return "TODO";
+        Resources res = getContext().getResources();
+        String rightStr = " " + res.getString(R.string.right);
+        String wrongStr = " " +  res.getString(R.string.wrong);
+
+        return correctAnswers + rightStr + "/" + wrongAnswers + wrongStr;
     }
 
 
@@ -110,7 +115,7 @@ public class TestAdapter extends ArrayAdapter<Lection> {
         if(score == -1)
             return "";
 
-        return  score +"% " + Utility.getGrade(score);
+        return  score + "% (" + Utility.getGrade(score) + ")";
     }
 
 }

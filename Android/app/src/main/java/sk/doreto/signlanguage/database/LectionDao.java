@@ -6,6 +6,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
+import java.util.Date;
 import java.util.List;
 
 @Dao
@@ -23,7 +24,7 @@ public interface LectionDao {
     @Query("SELECT COUNT(*) from LectionTable")
     int countLection();
 
-    @Delete
-    void delete(Lection lection);
+    @Query("UPDATE LectionTable SET testScore=:testScore, testDate=:testDate WHERE id = :id")
+    void updateTestScore(int testScore, Long testDate, int id);
 
 }

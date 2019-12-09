@@ -11,6 +11,7 @@ import java.util.List;
 import sk.doreto.signlanguage.database.AppDatabase;
 import sk.doreto.signlanguage.database.Lection;
 import sk.doreto.signlanguage.database.LectionDao;
+import sk.doreto.signlanguage.utils.Converters;
 
 public class LectionViewModel extends AndroidViewModel {
 
@@ -26,5 +27,10 @@ public class LectionViewModel extends AndroidViewModel {
     public LiveData<List<Lection>> getWordList() {
         return lectionLiveData;
     }
+
+    public void updateTestData(Lection lection) {
+        lectionDao.updateTestScore(lection.getTestScore(), Converters.dateToTimestamp(lection.getTestDate()), lection.getId());
+    }
+
 
 }

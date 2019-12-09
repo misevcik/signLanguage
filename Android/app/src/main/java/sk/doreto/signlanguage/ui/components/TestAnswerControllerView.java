@@ -1,6 +1,7 @@
 package sk.doreto.signlanguage.ui.components;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
@@ -11,15 +12,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import sk.doreto.signlanguage.R;
+import sk.doreto.signlanguage.ui.common.ITestDetailFragment;
 import sk.doreto.signlanguage.ui.education.QuestionItem;
 
 
 public class TestAnswerControllerView extends LinearLayout {
 
-    private TextView quistionText;
+    private ITestDetailFragment testDetailFragment;
+    private TextView pageText;
     private ArrayList<TestAnswerItem> answerItems = new ArrayList<TestAnswerItem>(3);
     private List<QuestionItem> mQuestions;
     private ArrayList<QuestionItem> mAnswered = new ArrayList<>();
+    private int pageCount;
 
     public TestAnswerControllerView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -27,12 +31,20 @@ public class TestAnswerControllerView extends LinearLayout {
 
     }
 
-    public void callbackFinished(){
-
+    public void setFinishCallback(ITestDetailFragment testDetailFragment) {
+        this.testDetailFragment = testDetailFragment;
     }
 
-    public void fillData(List<QuestionItem> questions){
+
+    public void callbackFinished() {
+        //TODO set real score and Date - update of list will be done automatic
+        testDetailFragment.finishTest(80);
+    }
+
+    public void fillTestData(List<QuestionItem> questions){
+
         if (!questions.isEmpty()) {
+            pageCount = questions.size();
             mQuestions = questions;
             QuestionItem questionItem = mQuestions.remove(0);
             mAnswered.clear();
@@ -49,6 +61,10 @@ public class TestAnswerControllerView extends LinearLayout {
             answerItems.get(index).setValue(item);
             ++index;
         }
+
+        Resources res = getContext().getResources();
+        pageText.setText(String.format(res.getString(R.string.test_page), (pageCount - mQuestions.size()), pageCount));
+
     }
 
     private void init(Context context, AttributeSet attrs) {
@@ -59,7 +75,7 @@ public class TestAnswerControllerView extends LinearLayout {
 
     private void initComponents() {
 
-        quistionText = findViewById(R.id.question_text);
+        pageText = findViewById(R.id.page_text);
         answerItems.add(findViewById(R.id.answer_item_1));
         answerItems.add(findViewById(R.id.answer_item_2));
         answerItems.add(findViewById(R.id.answer_item_3));

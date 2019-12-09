@@ -5,10 +5,14 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
 import java.util.Date;
 
+import sk.doreto.signlanguage.utils.Converters;
+
 @Entity(tableName = "LectionTable", indices = {@Index(value = "id", unique = true)})
+@TypeConverters({Converters.class})
 public class Lection {
 
     @PrimaryKey
@@ -26,6 +30,9 @@ public class Lection {
 
     @ColumnInfo(name = "testScore")
     private int testScore;
+
+    @ColumnInfo(name = "testDate")
+    private Date testDate;
 
     @ColumnInfo(name = "testDuration")
     private int testDuration;
@@ -72,6 +79,10 @@ public class Lection {
     }
 
     public void setTestScore(int score) { this.testScore = score; }
+
+    public Date getTestDate() { return testDate; }
+
+    public void setTestDate(Date testDate) { this.testDate = testDate; }
 
     public int getTestDuration() { return testDuration; }
 

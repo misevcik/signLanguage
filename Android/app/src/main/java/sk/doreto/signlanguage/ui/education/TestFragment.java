@@ -88,6 +88,7 @@ public class TestFragment extends Fragment {
                 Lection lection = adapter.getItem(position);
 
                 TestDetailFragment testDetailFragment = new TestDetailFragment(lection);
+                testDetailFragment.modelView = modelView;
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                 ft.add(R.id.viewLayout, testDetailFragment);
                 ft.addToBackStack("TestDetailFragment").commit();

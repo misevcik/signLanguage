@@ -3,24 +3,21 @@ package sk.doreto.signlanguage.ui.education;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.format.DateUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.MediaController;
 import android.widget.TextView;
-import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.Timer;
@@ -32,11 +29,14 @@ import sk.doreto.signlanguage.VideoPlayerActivity;
 import sk.doreto.signlanguage.database.AppDatabase;
 import sk.doreto.signlanguage.database.Lection;
 import sk.doreto.signlanguage.database.Word;
+import sk.doreto.signlanguage.ui.common.ITestDetailFragment;
 import sk.doreto.signlanguage.ui.components.TestAnswerControllerView;
 import sk.doreto.signlanguage.utils.Utility;
 
 
-public class TestDetailFragment extends Fragment {
+public class TestDetailFragment extends Fragment implements ITestDetailFragment {
+
+    public LectionViewModel modelView;
 
     private int MAX_ANSWER_COUNT = 3;
 
@@ -77,7 +77,8 @@ public class TestDetailFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_test_detail, container, false);
 
         TestAnswerControllerView testAnswerController = root.findViewById(R.id.testAnswerControllerView);
-        testAnswerController.fillData(questionCollection);
+        testAnswerController.setFinishCallback(this);
+        testAnswerController.fillTestData(questionCollection);
 
         testTime = root.findViewById(R.id.test_time);
 
@@ -101,6 +102,13 @@ public class TestDetailFragment extends Fragment {
 
         timer.cancel();
 
+    }
+
+    public void finishTest(int score) {
+
+        lection.setTestScore(score);
+        lection.setTestDate(new Date());
+        modelView.updateTestData(lection);
     }
 
     private void startTimer() {
@@ -156,7 +164,7 @@ public class TestDetailFragment extends Fragment {
 
             QuestionItem questionItem = new QuestionItem();
 
-            final int correctAnswerIndex =  new Random().nextInt(1); //nextInt((max - min) + 1) + min;
+            final int correctAnswerIndex =  (int)(Math.random() * 10) % 3;
             final ArrayList<Integer> randomIndexes = getRandomIndexAnswer(wordCount);
 
 

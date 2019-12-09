@@ -79,7 +79,9 @@ public class TestAdapter extends ArrayAdapter<Lection> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        String testName = (position + 1) + ". Test - " + lection.getTitle();
+
+        Resources res = getContext().getResources();
+        String testName  = String.format(res.getString(R.string.test_name), (position + 1), lection.getTitle());
 
         viewHolder.testName.setText(testName);
         viewHolder.testResult.setText(getResult(lection.getTestScore()));
@@ -104,10 +106,7 @@ public class TestAdapter extends ArrayAdapter<Lection> {
         int wrongAnswers = testAnswerCount - correctAnswers;
 
         Resources res = getContext().getResources();
-        String rightStr = " " + res.getString(R.string.right);
-        String wrongStr = " " +  res.getString(R.string.wrong);
-
-        return correctAnswers + rightStr + "/" + wrongAnswers + wrongStr;
+        return String.format(res.getString(R.string.test_statistic), correctAnswers, wrongAnswers);
     }
 
 
@@ -115,7 +114,8 @@ public class TestAdapter extends ArrayAdapter<Lection> {
         if(score == -1)
             return "";
 
-        return  score + "% (" + Utility.getGrade(score) + ")";
+        Resources res = getContext().getResources();
+        return String.format(res.getString(R.string.test_result), score, Utility.getGrade(score));
     }
 
 }

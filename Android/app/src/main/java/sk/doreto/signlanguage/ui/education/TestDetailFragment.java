@@ -109,15 +109,16 @@ public class TestDetailFragment extends Fragment implements ITestDetailFragment 
 
     public void finishTest(int score) {
 
+        Date date = new Date();
         lection.setTestScore(score);
-        lection.setTestDate(new Date());
+        lection.setTestDate(date);
         modelView.updateTestData(lection);
         //show result fragment
         TestStatisticsFragment result = new TestStatisticsFragment();
+        result.setStatistics(date, score);
         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
         ft.add(R.id.viewLayout, result);
         ft.addToBackStack("TestStatisticsFragment").commit();
-
     }
 
     private void startTimer() {

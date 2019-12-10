@@ -60,7 +60,8 @@ public class TestAdapter extends ArrayAdapter<Lection> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        Lection lection = getItem(position);
+        final Lection lection = getItem(position);
+
         ViewHolder viewHolder;
 
         if (convertView == null) {
@@ -78,7 +79,9 @@ public class TestAdapter extends ArrayAdapter<Lection> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        String testName = (position + 1) + ". Test - " + lection.getTitle();
+
+        Resources res = getContext().getResources();
+        String testName  = String.format(res.getString(R.string.test_name), (position + 1), lection.getTitle());
 
         viewHolder.testName.setText(testName);
         viewHolder.testResult.setText(getResult(lection.getTestScore()));
@@ -89,7 +92,7 @@ public class TestAdapter extends ArrayAdapter<Lection> {
 
     }
 
-    private String getStatistic(Lection lection) {
+    private String getStatistic(final Lection lection) {
 
         if(lection.getTestScore() == -1) {
             Resources res = getContext().getResources();
@@ -99,10 +102,11 @@ public class TestAdapter extends ArrayAdapter<Lection> {
         int wordCount = AppDatabase.getAppDatabase(getContext()).wordDao().getWordsCountForLection(lection.getId());
         int testAnswerCount = (wordCount / 3) + 1;
         int score = lection.getTestScore();
-        int correctAnswers = testAnswerCount / 100 * score;
+        int correctAnswers = (int)(testAnswerCount / 100.0 * score);
         int wrongAnswers = testAnswerCount - correctAnswers;
 
-        return "TODO";
+        Resources res = getContext().getResources();
+        return String.format(res.getString(R.string.test_statistic), correctAnswers, wrongAnswers);
     }
 
 
@@ -110,7 +114,8 @@ public class TestAdapter extends ArrayAdapter<Lection> {
         if(score == -1)
             return "";
 
-        return  score +"% " + Utility.getGrade(score);
+        Resources res = getContext().getResources();
+        return String.format(res.getString(R.string.test_result), score, Utility.getGrade(score));
     }
 
 }

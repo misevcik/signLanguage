@@ -15,7 +15,7 @@
         android:paddingRight="15dp"/>
 
     <TextView
-        android:id="@+id/question_text"
+        android:id="@+id/page_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"

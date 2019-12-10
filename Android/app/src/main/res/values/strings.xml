@@ -22,7 +22,7 @@
     <string name="info_about_partners_text">"Michal Hefty - autor slov a posunkov \nAndrej Kováč - kamera"</string>
     <string name="info_about_eu">"Tento projekt je spolufinancovaný Európskou úniou z prostriedkov Európskeho socilálneho fondu - Európsky fond regionálneho rozvoja."</string>
 
-    <string name="try_test">Skus sa otestovat</string>
+    <string name="try_test">Skus sa otestovať</string>
     <string name="test_phrase">Aké slovo je znázornené na videu?</string>
     <string name="test_question_id">otázka</string>
     <string name="test_result">Výsledok testu</string>
@@ -30,6 +30,13 @@
     <string name="test_result_repeat">ZOPAKOVAT TEST</string>
     <string name="test_result_finish">ZATVOR</string>
 
+    <string name="test_question_id">Otázka</string>
+    <string name="right">Správne</string>
+    <string name="wrong">Neprávne</string>
+    <string name="test_name">%d. Test - "%s</string>
+    <string name="test_result">%d%% (%s)</string>
+    <string name="test_statistic">%d Správne/%d Neprávne</string>
+    <string name="test_page">%d. otázka z %d</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

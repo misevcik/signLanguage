@@ -37,13 +37,13 @@ public class TestAnswerItem extends LinearLayout {
 
     public void selectWrongAnswer() {
         layout.setBackgroundResource(R.drawable.test_answer_round_red);
-        answerStatus.setText("Nespravna");
+        answerStatus.setText(R.string.wrong);
         answerStatus.setVisibility(VISIBLE);
     }
 
     public void selectRightAnswer() {
         layout.setBackgroundResource(R.drawable.test_answer_round_green);
-        answerStatus.setText("Spravna");
+        answerStatus.setText(R.string.right);
         answerStatus.setVisibility(VISIBLE);
     }
 

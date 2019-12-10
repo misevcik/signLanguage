@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,8 +30,10 @@ import sk.doreto.signlanguage.VideoPlayerActivity;
 import sk.doreto.signlanguage.database.AppDatabase;
 import sk.doreto.signlanguage.database.Lection;
 import sk.doreto.signlanguage.database.Word;
+import sk.doreto.signlanguage.ui.about.TestStatisticsFragment;
 import sk.doreto.signlanguage.ui.common.ITestDetailFragment;
 import sk.doreto.signlanguage.ui.components.TestAnswerControllerView;
+import sk.doreto.signlanguage.ui.components.TestResultItemSummary;
 import sk.doreto.signlanguage.utils.Utility;
 
 
@@ -109,6 +112,12 @@ public class TestDetailFragment extends Fragment implements ITestDetailFragment 
         lection.setTestScore(score);
         lection.setTestDate(new Date());
         modelView.updateTestData(lection);
+        //show result fragment
+        TestStatisticsFragment result = new TestStatisticsFragment();
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.viewLayout, result);
+        ft.addToBackStack("TestStatisticsFragment").commit();
+
     }
 
     private void startTimer() {

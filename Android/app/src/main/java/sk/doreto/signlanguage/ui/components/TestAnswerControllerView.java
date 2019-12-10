@@ -64,7 +64,6 @@ public class TestAnswerControllerView extends LinearLayout {
 
         Resources res = getContext().getResources();
         pageText.setText(String.format(res.getString(R.string.test_page), (pageCount - mQuestions.size()), pageCount));
-
     }
 
     private void init(Context context, AttributeSet attrs) {
@@ -105,7 +104,7 @@ public class TestAnswerControllerView extends LinearLayout {
                                 fillData(mQuestions.remove(0));
                                 enableClick(true);
                             }
-                        }, 3000);
+                        }, 2000);
                     }
                 }
             });
@@ -124,6 +123,9 @@ public class TestAnswerControllerView extends LinearLayout {
                     item.showRightAnswer();
                 }
             }
+        }
+        if (mQuestions.isEmpty()){
+            callbackFinished();
         }
 
     }

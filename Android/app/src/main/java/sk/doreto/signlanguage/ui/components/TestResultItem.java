@@ -25,12 +25,12 @@ public class TestResultItem extends LinearLayout {
     }
 
     private void initComponents() {
-        mResultText = findViewById(R.id.test_result_text);
+        mResultText = findViewById(R.id.test_result_title);
         mResultValue = findViewById(R.id.test_result_value);
     }
 
     public void setValue(String name, String value){
         this.mResultText.setText(name);
-        this.mResultText.setText(value);
+        this.mResultValue.setText(value);
     }
 }

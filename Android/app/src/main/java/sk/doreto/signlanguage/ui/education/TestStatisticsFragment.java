@@ -24,6 +24,14 @@ public class TestStatisticsFragment extends Fragment {
     private TestResultItem mTestDate;
     private TestResultItem mCorrectAnswers;
     private TestResultItem mWrongAnswers;
+    private Date mDate;
+    private int mScore;
+
+    public TestStatisticsFragment(Date date, int score){
+        mDate = date;
+        mScore = score;
+    }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -34,21 +42,24 @@ public class TestStatisticsFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_test_statistics, container, false);
         mTestSummary = rootView.findViewById(R.id.test_item_summary);
+        mTestSummary.setValue(mScore);
         mTestDate = rootView.findViewById(R.id.test_item_date);
+        mTestDate.setValue("Date", mDate.toString());
         mCorrectAnswers = rootView.findViewById(R.id.test_item_correct);
+        mCorrectAnswers.setValue("Correct", String.valueOf(mScore));
         mWrongAnswers = rootView.findViewById(R.id.test_item_wrong);
+        mWrongAnswers.setValue("Wrong", String.valueOf(mScore));
         return rootView;
-    }
-
-    public void setStatistics(Date date, int score){
-        mTestSummary.setValue(score);
-        mTestDate.setValue("Date", date.toString());
-        mCorrectAnswers.setValue("Correct", String.valueOf(score));
-        mWrongAnswers.setValue("Wrong", String.valueOf(score));
     }
 }

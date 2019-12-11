@@ -114,8 +114,7 @@ public class TestDetailFragment extends Fragment implements ITestDetailFragment 
         lection.setTestDate(date);
         modelView.updateTestData(lection);
         //show result fragment
-        TestStatisticsFragment result = new TestStatisticsFragment();
-        result.setStatistics(date, score);
+        TestStatisticsFragment result = new TestStatisticsFragment(date, score);
         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
         ft.add(R.id.viewLayout, result);
         ft.addToBackStack("TestStatisticsFragment").commit();
@@ -157,9 +156,14 @@ public class TestDetailFragment extends Fragment implements ITestDetailFragment 
     }
 
     private void drawThumbnail() {
-        String videoRaw = questionCollection.get(currentQuestionIndex).video;
-        Drawable drawable = Utility.getThumbnail(getContext(), videoRaw);
-        videoPreview.setImageDrawable(drawable);
+        try {
+            String videoRaw = questionCollection.get(currentQuestionIndex).video;
+            Drawable drawable = Utility.getThumbnail(getContext(), videoRaw);
+            videoPreview.setImageDrawable(drawable);
+        }
+        catch (Exception e){
+
+        }
     }
 
     private void loadTestData() {

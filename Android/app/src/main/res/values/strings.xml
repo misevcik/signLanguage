@@ -27,6 +27,7 @@
     <string name="test_result_reccomendation">ODPORUCANIE</string>
     <string name="test_result_repeat">ZOPAKOVAT TEST</string>
     <string name="test_result_finish">ZATVOR</string>
+    <string name="test_result_item_summary_result">Vysledok Testu</string>
 
     <string name="test_question_id">Otázka</string>
     <string name="right">Správne</string>

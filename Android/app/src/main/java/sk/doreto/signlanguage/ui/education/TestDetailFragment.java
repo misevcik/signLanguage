@@ -30,10 +30,8 @@ import sk.doreto.signlanguage.VideoPlayerActivity;
 import sk.doreto.signlanguage.database.AppDatabase;
 import sk.doreto.signlanguage.database.Lection;
 import sk.doreto.signlanguage.database.Word;
-import sk.doreto.signlanguage.ui.about.TestStatisticsFragment;
 import sk.doreto.signlanguage.ui.common.ITestDetailFragment;
 import sk.doreto.signlanguage.ui.components.TestAnswerControllerView;
-import sk.doreto.signlanguage.ui.components.TestResultItemSummary;
 import sk.doreto.signlanguage.utils.Utility;
 
 

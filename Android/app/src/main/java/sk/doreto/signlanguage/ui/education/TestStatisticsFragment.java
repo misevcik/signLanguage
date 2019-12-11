@@ -1,4 +1,4 @@
-package sk.doreto.signlanguage.ui.about;
+package sk.doreto.signlanguage.ui.education;
 
 import android.content.Context;
 
@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import java.text.DateFormat;
 import java.util.Date;
 
 import sk.doreto.signlanguage.NavigationBarController;
@@ -55,7 +56,7 @@ public class TestStatisticsFragment extends Fragment {
         mTestSummary = rootView.findViewById(R.id.test_item_summary);
         mTestSummary.setValue(mScore);
         mTestDate = rootView.findViewById(R.id.test_item_date);
-        mTestDate.setValue("Date", mDate.toString());
+        mTestDate.setValue("Date", DateFormat.getDateInstance().format(mDate));
         mCorrectAnswers = rootView.findViewById(R.id.test_item_correct);
         mCorrectAnswers.setValue("Correct", String.valueOf(mScore));
         mWrongAnswers = rootView.findViewById(R.id.test_item_wrong);

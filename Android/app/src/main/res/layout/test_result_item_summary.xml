@@ -12,13 +12,14 @@
         android:layout_gravity="center">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:text="@string/test_result"
+                android:text="@string/test_result_item_summary_result"
                 android:textSize="20sp"
                 android:layout_marginStart="5pt"
                 android:layout_marginLeft="5pt"
@@ -38,7 +39,8 @@
         </LinearLayout>
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
             android:layout_height="match_parent"
             android:id="@+id/test_result_summary_image"/>
 

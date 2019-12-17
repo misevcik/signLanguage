@@ -113,9 +113,23 @@ public class TestDetailFragment extends Fragment implements ITestDetailFragment 
         modelView.updateTestData(lection);
         //show result fragment
         TestStatisticsFragment result = new TestStatisticsFragment(date, score);
+        result.setOnFinishClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+        result.setOnRepeatClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
         ft.add(R.id.viewLayout, result);
         ft.addToBackStack("TestStatisticsFragment").commit();
+
     }
 
     private void startTimer() {

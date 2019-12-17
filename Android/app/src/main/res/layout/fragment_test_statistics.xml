@@ -115,7 +115,7 @@
                 android:textColor="@color/oceanBlue"
                 android:background="@drawable/test_result_round_button_empty"/>
             <Button
-                android:id ="@+id/btn_finish"
+                android:id ="@+id/btn_finish_test"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:text="@string/test_result_finish"

@@ -10,6 +10,7 @@ import sk.doreto.signlanguage.ui.education.QuestionItem;
 
 public class TestResultItem extends LinearLayout {
 
+
     private TextView mResultText;
     private TextView mResultValue;
 

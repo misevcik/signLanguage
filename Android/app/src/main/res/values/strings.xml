@@ -33,9 +33,10 @@
     <string name="right">Správne</string>
     <string name="wrong">Neprávne</string>
     <string name="test_name">%d. Test - "%s</string>
-    <string name="test_result">%d%% (%s)</string>
     <string name="test_statistic">%d Správne/%d Neprávne</string>
     <string name="test_page">%d. otázka z %d</string>
+    <string name="result">%d%% (%s)</string>
+    <string name="test_result_name">Test - "%s</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

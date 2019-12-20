@@ -2,8 +2,8 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
+    android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="horizontal">
 
     <TextView
@@ -11,7 +11,7 @@
         android:background="@android:color/transparent"
         android:layout_width="0dp"
         android:layout_weight="0.5"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="wrap_content"
         android:textSize="18sp"
         android:text="ASD"
         android:gravity="center_vertical"
@@ -23,7 +23,7 @@
         android:background="@android:color/transparent"
         android:layout_width="0dp"
         android:layout_weight="0.5"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="wrap_content"
         android:textSize="18sp"
         android:text="DSA"
         android:gravity="center_vertical"

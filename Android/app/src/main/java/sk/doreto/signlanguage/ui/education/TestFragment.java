@@ -21,9 +21,10 @@ import sk.doreto.signlanguage.NavigationBarController;
 import sk.doreto.signlanguage.R;
 import sk.doreto.signlanguage.database.AppDatabase;
 import sk.doreto.signlanguage.database.Lection;
+import sk.doreto.signlanguage.ui.common.ITestFragment;
 import sk.doreto.signlanguage.utils.Utility;
 
-public class TestFragment extends Fragment {
+public class TestFragment extends Fragment implements ITestFragment {
 
     public static TestFragment newInstance() {
         return new TestFragment();
@@ -87,15 +88,59 @@ public class TestFragment extends Fragment {
 
                 Lection lection = adapter.getItem(position);
 
-                TestDetailFragment testDetailFragment = new TestDetailFragment(lection);
-                testDetailFragment.modelView = modelView;
-                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                ft.add(R.id.viewLayout, testDetailFragment);
-                ft.addToBackStack("TestDetailFragment").commit();
+                if(lection.getTestScore() != -1) { //Test was already passed
+                    showTestResult(lection);
+                    return;
+                }
+
+                createTestDetailFragment(lection);
+
             }
         });
 
         return view;
+    }
+
+    public void repeatTest(Lection lection) {
+        getActivity().getSupportFragmentManager().popBackStackImmediate();
+        getActivity().getSupportFragmentManager().popBackStackImmediate();
+
+        createTestDetailFragment(lection);
+
+    }
+
+    private void showTestResult(Lection lection) {
+
+        TestStatisticsFragment result = new TestStatisticsFragment(lection);
+        result.setOnFinishClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().popBackStackImmediate();
+            }
+        });
+
+        result.setOnRepeatClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                getActivity().getSupportFragmentManager().popBackStackImmediate();
+                createTestDetailFragment(lection);
+            }
+        });
+
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.viewLayout, result);
+        ft.addToBackStack("TestStatisticsFragment").commit();
+    }
+
+    private void createTestDetailFragment(Lection lection) {
+
+        TestDetailFragment testDetailFragment = new TestDetailFragment(TestFragment.this, lection);
+        testDetailFragment.modelView = modelView;
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.viewLayout, testDetailFragment);
+        ft.addToBackStack("TestDetailFragment").commit();
+
     }
 
 }

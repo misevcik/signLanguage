@@ -3,24 +3,22 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@android:color/transparent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="0.5"
+            android:layout_weight="0.4"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:text="@string/test_result_item_summary_result"
-                android:textSize="20sp"
+                android:textSize="19sp"
                 android:layout_marginStart="5pt"
                 android:layout_marginLeft="5pt"
                 android:textStyle="bold"
@@ -31,7 +29,7 @@
                 android:text="33 % (F)"
                 android:id="@+id/test_result_summary_percent"
                 android:textSize="25sp"
-                android:textColor="@color/lightBlue"
+                android:textColor="@color/oceanBlue"
                 android:layout_marginStart="5pt"
                 android:layout_marginLeft="5pt"
                 android:textStyle="bold"
@@ -40,10 +38,9 @@
 
         <ImageView
             android:layout_width="0dp"
-            android:layout_weight="0.5"
+            android:layout_weight="0.6"
             android:layout_height="match_parent"
             android:id="@+id/test_result_summary_image"/>
 
-    </LinearLayout>
 
 </LinearLayout>

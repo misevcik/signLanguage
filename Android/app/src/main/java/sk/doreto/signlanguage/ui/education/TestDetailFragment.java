@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ import sk.doreto.signlanguage.database.AppDatabase;
 import sk.doreto.signlanguage.database.Lection;
 import sk.doreto.signlanguage.database.Word;
 import sk.doreto.signlanguage.ui.common.ITestDetailFragment;
+import sk.doreto.signlanguage.ui.common.ITestFragment;
 import sk.doreto.signlanguage.ui.components.TestAnswerControllerView;
 import sk.doreto.signlanguage.utils.Utility;
 
@@ -38,6 +40,7 @@ import sk.doreto.signlanguage.utils.Utility;
 public class TestDetailFragment extends Fragment implements ITestDetailFragment {
 
     public LectionViewModel modelView;
+    public ITestFragment testFragment;
 
     private int MAX_ANSWER_COUNT = 3;
 
@@ -52,9 +55,9 @@ public class TestDetailFragment extends Fragment implements ITestDetailFragment 
     private Lection lection;
     private List<QuestionItem> questionCollection = new ArrayList<>();
 
-    public TestDetailFragment(Lection lection) {
+    public TestDetailFragment(ITestFragment testFragment, Lection lection) {
         this.lection = lection;
-
+        this.testFragment = testFragment;
     }
 
     @Override
@@ -112,17 +115,19 @@ public class TestDetailFragment extends Fragment implements ITestDetailFragment 
         lection.setTestDate(date);
         modelView.updateTestData(lection);
         //show result fragment
-        TestStatisticsFragment result = new TestStatisticsFragment(date, score);
+        TestStatisticsFragment result = new TestStatisticsFragment(lection);
         result.setOnFinishClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                getActivity().getSupportFragmentManager().popBackStackImmediate();
+                getActivity().getSupportFragmentManager().popBackStackImmediate();
             }
         });
 
         result.setOnRepeatClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                testFragment.repeatTest(lection);
             }
         });
 

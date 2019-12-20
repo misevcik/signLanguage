@@ -115,7 +115,7 @@ public class TestAdapter extends ArrayAdapter<Lection> {
             return "";
 
         Resources res = getContext().getResources();
-        return String.format(res.getString(R.string.test_result), score, Utility.getGrade(score));
+        return String.format(res.getString(R.string.result), score, Utility.getGrade(score));
     }
 
 }

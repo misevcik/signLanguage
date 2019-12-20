@@ -1,12 +1,14 @@
 package sk.doreto.signlanguage.ui.components;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import sk.doreto.signlanguage.R;
+import sk.doreto.signlanguage.utils.Utility;
 
 public class TestResultItemSummary extends LinearLayout {
 
@@ -29,9 +31,11 @@ public class TestResultItemSummary extends LinearLayout {
         mImage = findViewById(R.id.test_result_summary_image);
     }
 
-    public void setValue(double percent){
-        String mark = "F";
-        this.mResultPercent.setText(Double.toString(percent) + " % " + mark);
-        mImage.setImageResource(R.drawable.eu_logo);
+    public void setValue(int score){
+
+        Resources res = getContext().getResources();
+        this.mResultPercent.setText(String.format(res.getString(R.string.result), score, Utility.getGrade(score)));
+
+        //mImage.setImageResource(R.drawable.eu_logo);
     }
 }

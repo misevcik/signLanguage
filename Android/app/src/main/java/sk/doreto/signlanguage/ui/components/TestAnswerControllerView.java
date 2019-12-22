@@ -21,9 +21,10 @@ public class TestAnswerControllerView extends LinearLayout {
     private ITestDetailFragment testDetailFragment;
     private TextView pageText;
     private ArrayList<TestAnswerItem> answerItems = new ArrayList<TestAnswerItem>(3);
-    private List<QuestionItem> mQuestions;
-    private ArrayList<QuestionItem> mAnswered = new ArrayList<>();
-    private int pageCount;
+    private List<QuestionItem> questionList;
+    private int questionsCount;
+    private int rightAnswers = 0;
+
 
     public TestAnswerControllerView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -37,18 +38,17 @@ public class TestAnswerControllerView extends LinearLayout {
 
 
     public void callbackFinished() {
-        //TODO set real score and Date - update of list will be done automatic
-        testDetailFragment.finishTest(80);
+
+        double score = (double)rightAnswers / questionsCount * 100.0;
+        testDetailFragment.finishTest((int) score);
     }
 
     public void fillTestData(List<QuestionItem> questions){
 
         if (!questions.isEmpty()) {
-            pageCount = questions.size();
-            mQuestions = questions;
-            QuestionItem questionItem = mQuestions.remove(0);
-            mAnswered.clear();
-            mAnswered.add(questionItem);
+            questionsCount = questions.size();
+            questionList = questions;
+            QuestionItem questionItem = questionList.remove(0);
             fillData(questionItem);
         }
     }
@@ -63,7 +63,7 @@ public class TestAnswerControllerView extends LinearLayout {
         }
 
         Resources res = getContext().getResources();
-        pageText.setText(String.format(res.getString(R.string.test_page), (pageCount - mQuestions.size()), pageCount));
+        pageText.setText(String.format(res.getString(R.string.test_page), (questionsCount - questionList.size()), questionsCount));
     }
 
     private void init(Context context, AttributeSet attrs) {
@@ -86,22 +86,22 @@ public class TestAnswerControllerView extends LinearLayout {
 
                     enableClick(false);
 
-                    TestAnswerItem clickediItem = ((TestAnswerItem) v);
-                    clickediItem.clicked();
+                    TestAnswerItem clickedItem = ((TestAnswerItem) v);
+                    clickedItem.clicked();
 
                     //Show answer
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            evaluateAnswer(clickediItem);
+                            evaluateAnswer(clickedItem);
                         }
                     }, 1000);
 
-                    if (!mQuestions.isEmpty()) {
+                    if (!questionList.isEmpty()) {
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                fillData(mQuestions.remove(0));
+                                fillData(questionList.remove(0));
                                 enableClick(true);
                             }
                         }, 2000);
@@ -111,20 +111,20 @@ public class TestAnswerControllerView extends LinearLayout {
         }
     }
 
-    private void evaluateAnswer(TestAnswerItem clickediItem) {
+    private void evaluateAnswer(TestAnswerItem clickedItem) {
 
-        if(clickediItem.isCorrect()) {
-            clickediItem.selectRightAnswer();
+        if(clickedItem.isCorrect()) {
+            clickedItem.selectRightAnswer();
+            ++rightAnswers;
         } else {
-
-            clickediItem.selectWrongAnswer();
+            clickedItem.selectWrongAnswer();
             for (TestAnswerItem item : answerItems) {
                 if(item.isCorrect()) {
                     item.showRightAnswer();
                 }
             }
         }
-        if (mQuestions.isEmpty()){
+        if (questionList.isEmpty()){
             callbackFinished();
         }
 

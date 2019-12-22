@@ -14,13 +14,13 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import java.text.DateFormat;
-import java.util.Date;
 
 import sk.doreto.signlanguage.NavigationBarController;
 import sk.doreto.signlanguage.R;
 import sk.doreto.signlanguage.database.Lection;
 import sk.doreto.signlanguage.ui.components.TestResultItem;
 import sk.doreto.signlanguage.ui.components.TestResultItemSummary;
+import sk.doreto.signlanguage.utils.Utility;
 
 
 public class TestStatisticsFragment extends Fragment {
@@ -36,6 +36,7 @@ public class TestStatisticsFragment extends Fragment {
     private Button mRepeatTest;
     private Button mFinishTest;
     private TextView testTitle;
+    private TextView testRecommendation;
 
     public TestStatisticsFragment(Lection lection){
         this.lection = lection;
@@ -68,24 +69,34 @@ public class TestStatisticsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+        int [] result = Utility.getAnswerResultFromScore(getContext(), lection);
+
         View rootView = inflater.inflate(R.layout.fragment_test_statistics, container, false);
         mTestSummary = rootView.findViewById(R.id.test_item_summary);
         mTestSummary.setValue(lection.getTestScore());
         mTestDate = rootView.findViewById(R.id.test_item_date);
-        mTestDate.setValue("Date", DateFormat.getDateInstance().format(lection.getTestDate()));
+        mTestDate.setValue(R.string.date, DateFormat.getDateInstance().format(lection.getTestDate()));
         mCorrectAnswers = rootView.findViewById(R.id.test_item_correct);
-        mCorrectAnswers.setValue("Correct", String.valueOf(lection.getTestScore()));
+        mCorrectAnswers.setValue(R.string.right_answers, String.valueOf(result[0]));
         mWrongAnswers = rootView.findViewById(R.id.test_item_wrong);
-        mWrongAnswers.setValue("Wrong", String.valueOf(lection.getTestScore()));
+        mWrongAnswers.setValue(R.string.wrong_asnwers, String.valueOf(result[1]));
         mRepeatTest = rootView.findViewById(R.id.btn_repeat_test);
         mFinishTest = rootView.findViewById(R.id.btn_finish_test);
         mRepeatTest.setOnClickListener( mOnRepeatTestEvent);
         mFinishTest.setOnClickListener( mOnFinishTestEvent);
         testTitle = rootView.findViewById(R.id.test_title_text);
+        testRecommendation = rootView.findViewById(R.id.test_item_recommendation);
 
         Resources res = getContext().getResources();
         testTitle.setText(String.format(res.getString(R.string.test_result_name), lection.getTitle()));
 
-    return rootView;
+        if(lection.getTestScore() < 50)
+            testRecommendation.setText(R.string.repeat_test);
+        else if(lection.getTestScore() >= 50 && lection.getTestScore() < 80 )
+            testRecommendation.setText(R.string.improve_test);
+        else
+            testRecommendation.setText(R.string.ok_test);
+
+        return rootView;
     }
 }

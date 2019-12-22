@@ -30,7 +30,7 @@ public class TestResultItem extends LinearLayout {
         mResultValue = findViewById(R.id.test_result_value);
     }
 
-    public void setValue(String name, String value){
+    public void setValue(int name, String value){
         this.mResultText.setText(name);
         this.mResultValue.setText(value);
     }

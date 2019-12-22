@@ -24,7 +24,7 @@
 
     <string name="try_test">Skus sa otestovať</string>
     <string name="test_phrase">Aké slovo je znázornené na videu?</string>
-    <string name="test_result_reccomendation">ODPORUCANIE</string>
+    <string name="test_result_reccomendation">ODPORUČANIE</string>
     <string name="test_result_repeat">ZOPAKOVAT TEST</string>
     <string name="test_result_finish">ZATVOR</string>
     <string name="test_result_item_summary_result">Vysledok Testu</string>
@@ -37,6 +37,12 @@
     <string name="test_page">%d. otázka z %d</string>
     <string name="result">%d%% (%s)</string>
     <string name="test_result_name">Test - "%s</string>
+    <string name="date">Dátum:</string>
+    <string name="right_answers">Správne odpovede:</string>
+    <string name="wrong_asnwers">Nesprávne odpovede:</string>
+    <string name="ok_test">Test úspešny, môžete isť na ďalšiu lekciu.</string>
+    <string name="improve_test">Mali by ste si ešte zopaovať lekciu aby ste sa zdokonalili.</string>
+    <string name="repeat_test">Test neúspešný. Zopakujte si lekciu.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

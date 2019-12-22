@@ -99,14 +99,10 @@ public class TestAdapter extends ArrayAdapter<Lection> {
             return res.getString(R.string.try_test);
         }
 
-        int wordCount = AppDatabase.getAppDatabase(getContext()).wordDao().getWordsCountForLection(lection.getId());
-        int testAnswerCount = (wordCount / 3) + 1;
-        int score = lection.getTestScore();
-        int correctAnswers = (int)(testAnswerCount / 100.0 * score);
-        int wrongAnswers = testAnswerCount - correctAnswers;
+        int [] result = Utility.getAnswerResultFromScore(getContext(), lection);
 
         Resources res = getContext().getResources();
-        return String.format(res.getString(R.string.test_statistic), correctAnswers, wrongAnswers);
+        return String.format(res.getString(R.string.test_statistic), result[0], result[1]);
     }
 
 

@@ -9,6 +9,9 @@ import android.net.Uri;
 import android.util.Log;
 import android.view.View;
 
+import sk.doreto.signlanguage.database.AppDatabase;
+import sk.doreto.signlanguage.database.Lection;
+
 public class Utility {
 
     public static int getResourceId(Context context, String variableName, String resourceName)
@@ -75,6 +78,19 @@ public class Utility {
                 view.setEnabled(true);
             }
         }, 500);
+    }
+
+    public static int[] getAnswerResultFromScore(Context context, Lection lection) {
+
+        int wordCount = AppDatabase.getAppDatabase(context).wordDao().getWordsCountForLection(lection.getId());
+        int score = lection.getTestScore();
+        int result[] = new int[2];
+
+        int testAnswerCount = (wordCount / 3) + 1;
+        result[0] = (int)(testAnswerCount / 100.0 * score);
+        result[1] = testAnswerCount - result[0];
+
+        return result;
     }
 
 }

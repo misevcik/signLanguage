@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.format.DateUtils;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +55,7 @@ public class TestDetailFragment extends Fragment implements ITestDetailFragment 
     private ImageButton playButton;
     private Lection lection;
     private List<QuestionItem> questionCollection = new ArrayList<>();
+    private View root;
 
     public TestDetailFragment(ITestFragment testFragment, Lection lection) {
         this.lection = lection;
@@ -78,7 +80,7 @@ public class TestDetailFragment extends Fragment implements ITestDetailFragment 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_test_detail, container, false);
+        root = inflater.inflate(R.layout.fragment_test_detail, container, false);
 
         TestAnswerControllerView testAnswerController = root.findViewById(R.id.testAnswerControllerView);
         testAnswerController.setFinishCallback(this);
@@ -96,6 +98,40 @@ public class TestDetailFragment extends Fragment implements ITestDetailFragment 
 
         drawThumbnail();
 
+        root.setFocusableInTouchMode(true);
+        root.requestFocus();
+        root.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    if (keyCode == KeyEvent.KEYCODE_BACK) {
+
+                        TestFinishFragment testFinishFragment = new TestFinishFragment();
+                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                        testFinishFragment.show(fragmentManager, "testFinishFragmentDialog");
+
+                        testFinishFragment.setOnContinueClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                testFinishFragment.dismiss();
+                            }
+                        });
+
+                        testFinishFragment.setOnFinishClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                testFinishFragment.dismiss();
+                                getActivity().getSupportFragmentManager().popBackStackImmediate();
+                                //TODO - reset test
+                            }
+                        });
+
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
 
         return root;
     }
@@ -107,6 +143,7 @@ public class TestDetailFragment extends Fragment implements ITestDetailFragment 
         timer.cancel();
 
     }
+
 
     public void finishTest(int score) {
 
@@ -242,5 +279,7 @@ public class TestDetailFragment extends Fragment implements ITestDetailFragment 
         return randomIndexes;
 
     }
+
+
 
 }

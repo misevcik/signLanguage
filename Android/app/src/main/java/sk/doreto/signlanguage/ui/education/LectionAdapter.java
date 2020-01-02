@@ -105,6 +105,7 @@ public class LectionAdapter extends ArrayAdapter<Lection> {
             viewHolder.progressBar.setVisibility(View.GONE);
         }
 
+        //TODO - ak nacitavanie lekcie bude prilis pomale tak treba na cashovat obrazky
         int imageId = Utility.getResourceId(getContext(), lection.getImage(), "drawable");
         Bitmap bitmap = BitmapFactory.decodeResource(getContext().getResources(), imageId);
         RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getContext().getResources(), bitmap);

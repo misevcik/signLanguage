@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.activity.OnBackPressedCallback;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -121,8 +123,9 @@ public class TestDetailFragment extends Fragment implements ITestDetailFragment 
                             @Override
                             public void onClick(View v) {
                                 testFinishFragment.dismiss();
-                                getActivity().getSupportFragmentManager().popBackStackImmediate();
-                                //TODO - reset test
+                                lection.setTestScore(-1);
+                                modelView.updateTestData(lection);
+                                getActivity().onBackPressed();
                             }
                         });
 
@@ -225,7 +228,7 @@ public class TestDetailFragment extends Fragment implements ITestDetailFragment 
         List<Word> wordList = AppDatabase.getAppDatabase(getContext()).wordDao().getWordsForLection(lection.getId());
         wordCount = wordList.size();
 
-        questionCollectionSize = wordCount / 3;
+        questionCollectionSize = wordCount / 3 + 1;
 
         for(int i = 0; i < questionCollectionSize; ++i) {
 

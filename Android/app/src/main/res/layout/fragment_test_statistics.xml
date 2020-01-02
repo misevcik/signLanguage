@@ -93,7 +93,7 @@
                 android:layout_marginTop="10dp"
                 android:id="@+id/test_item_recommendation"
                 android:text="Test neuspesny, treba makat znovu"
-                android:textSize="13sp" />
+                android:textSize="14sp" />
 
         </LinearLayout>
 

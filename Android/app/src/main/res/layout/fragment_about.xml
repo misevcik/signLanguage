@@ -66,10 +66,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/info_about_text"
+                android:justificationMode="inter_word"
                 android:gravity="start"
                 android:layout_marginLeft="5pt"
                 android:layout_marginRight="5pt"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:autoLink="web"/>
 
             <TextView
@@ -89,27 +90,32 @@
                 android:gravity="start"
                 android:layout_marginLeft="5pt"
                 android:layout_marginRight="5pt"
-                android:textSize="20sp"/>
+                android:textSize="16sp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10pt"
-                android:layout_marginBottom="5pt">
+                android:layout_margin="30dp">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="55dp"
                     android:layout_gravity="start"
-                    android:layout_weight="0.5"
+                    android:layout_weight="0.35"
                     android:src="@drawable/svk_flag"/>
 
+                <View
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_height="match_parent"/>
+
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
+                    android:layout_width="0dp"
+                    android:layout_height="55dp"
+                    android:layout_weight="0.35"
                     android:src="@drawable/eu_logo"/>
+
                 />
             </LinearLayout>
 
@@ -118,11 +124,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/info_about_eu"
                 android:gravity="start"
+                android:justificationMode="inter_word"
                 android:layout_marginLeft="5pt"
                 android:layout_marginRight="5pt"
                 android:layout_marginTop="5pt"
                 android:layout_marginBottom="5pt"
-                android:textSize="20sp"/>
+                android:textSize="16sp"/>
         </LinearLayout>
 
     </RelativeLayout>

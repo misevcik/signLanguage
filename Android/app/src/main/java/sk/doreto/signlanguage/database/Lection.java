@@ -38,13 +38,13 @@ public class Lection {
     private int testDuration;
 
 
-    public Lection(int id, String title,  String image, int testScore) {
+    public Lection(int id, String title,  String image) {
 
         this.id = id;
         this.title = title;
         this.image = image;
         this.locked = false;
-        this.testScore = testScore;
+        this.testScore = -1;
         this.testDuration = 0;
     }
 

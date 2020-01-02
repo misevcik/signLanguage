@@ -65,6 +65,13 @@ public class GeneralDictionaryDetailFragment extends Fragment implements IDetail
         sentecneListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Sentence sentence = sentenceList.get(position);
+
+                Intent videoPlaybackActivity = new Intent(getContext(), VideoPlayerActivity.class);
+                String videoRaw = sentence.getVideo();
+                String videoPath = "android.resource://" + getContext().getPackageName() + "/" + Utility.getResourceId(getContext(), videoRaw, "raw");
+                videoPlaybackActivity.putExtra("videoPath", videoPath);
+                startActivity(videoPlaybackActivity);
 
             }
         });

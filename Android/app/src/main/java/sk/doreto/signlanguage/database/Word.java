@@ -32,15 +32,20 @@ public class Word {
     @ColumnInfo(name = "videoSide")
     private String videoSide;
 
+    @ColumnInfo(name = "inDictionary")
+    private boolean inDictionary;
+
     @Ignore
     private String section = "";
 
-    public Word(int id, String word, int lection, String videoFront, String videoSide) {
+    public Word(int id, String word, int lection, String videoFront, String videoSide, boolean inDictionary) {
         this.id = id;
         this.word = word;
         this.lection = lection;
         this.videoFront = videoFront;
         this.videoSide = videoSide;
+        this.inDictionary = inDictionary;
+
 
         this.favorite = false;
         this.visited = false;
@@ -113,6 +118,16 @@ public class Word {
     public String getSection() {
         return section;
     }
+
+    public boolean isInDictionary(boolean inDictionary) {
+        return this.inDictionary = inDictionary;
+    }
+
+    public boolean getInDictionary() {
+        return inDictionary;
+    }
+
+
 
 
 }

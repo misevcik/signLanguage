@@ -14,6 +14,7 @@ import java.util.List;
 import sk.doreto.signlanguage.R;
 import sk.doreto.signlanguage.ui.common.ITestDetailFragment;
 import sk.doreto.signlanguage.ui.education.QuestionItem;
+import sk.doreto.signlanguage.utils.Utility;
 
 
 public class TestAnswerControllerView extends LinearLayout {
@@ -40,7 +41,7 @@ public class TestAnswerControllerView extends LinearLayout {
     public void callbackFinished() {
 
         double score = (double)rightAnswers / questionsCount * 100.0;
-        testDetailFragment.finishTest((int) score);
+        testDetailFragment.finishTest(Utility.roundUp(score));
     }
 
     public void fillTestData(List<QuestionItem> questions){

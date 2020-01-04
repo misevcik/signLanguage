@@ -717,7 +717,7 @@ class PreloadCoreData {
         dictionary.append(Word(name: "Drahe",       lection: 15, order: 13, videoFront: "16/Drahe", videoSide: "16/Drahe1", inDictionary: true, sentence: []))
         dictionary.append(Word(name: "Lacne",       lection: 15, order: 14, videoFront: "16/Lacne", videoSide: "16/Lacne1", inDictionary: true, sentence: []))
         
-        //Lesson 16 - Doprava II.
+        //Lesson 17 - Doprava II.
         dictionary.append(Word(name: "Metro",       lection: 16, order: 0, videoFront: "17/Metro", videoSide: "17/Metro1", inDictionary: true, sentence: [98]))
         dictionary.append(Word(name: "Most",        lection: 16, order: 1, videoFront: "17/Most", videoSide: "17/Most1", inDictionary: true, sentence: [100]))
         dictionary.append(Word(name: "Diaľnica",    lection: 16, order: 2, videoFront: "17/Dialnica", videoSide: "17/Dialnica1", inDictionary: true, sentence: []))
@@ -733,7 +733,7 @@ class PreloadCoreData {
         dictionary.append(Word(name: "Problém",     lection: 16, order: 12, videoFront: "17/Problem", videoSide: "17/Problem1", inDictionary: true, sentence: [99]))
         dictionary.append(Word(name: "Pokuta",      lection: 16, order: 13, videoFront: "17/Pokuta", videoSide: "17/Pokuta1", inDictionary: true, sentence: []))
         
-        //Lesson 17 - Čas I.
+        //Lesson 18 - Čas I.
         dictionary.append(Word(name: "Čas",             lection: 17, order: 0, videoFront: "18/Cas", videoSide: "18/Cas1", inDictionary: true, sentence: [105, 107, 112]))
         dictionary.append(Word(name: "Sekudna",         lection: 17, order: 1, videoFront: "18/Sekunda", videoSide: "18/Sekunda1", inDictionary: true, sentence: []))
         dictionary.append(Word(name: "Minúta",          lection: 17, order: 2, videoFront: "18/Minuta", videoSide: "18/Minuta1", inDictionary: true, sentence: []))

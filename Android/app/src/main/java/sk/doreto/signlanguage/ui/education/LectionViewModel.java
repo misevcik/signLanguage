@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 import sk.doreto.signlanguage.database.AppDatabase;
@@ -28,7 +30,7 @@ public class LectionViewModel extends AndroidViewModel {
         return lectionLiveData;
     }
 
-    public void updateTestData(Lection lection) {
+    public void updateTestData(@NotNull Lection lection) {
         lectionDao.updateTestScore(lection.getTestScore(), Converters.dateToTimestamp(lection.getTestDate()), lection.getId());
     }
 

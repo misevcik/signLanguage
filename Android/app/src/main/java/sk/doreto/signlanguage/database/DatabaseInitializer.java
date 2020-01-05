@@ -6,6 +6,9 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import sk.doreto.signlanguage.R;
 
 
@@ -814,236 +817,262 @@ public class DatabaseInitializer {
 
     }
 
+    private static void addSentenceToWord(List<WordSentenceJoin> join, int wordId, int [] sentenceId) {
+
+        for (int id : sentenceId) {
+            join.add(new WordSentenceJoin(wordId, id));
+        }
+
+    }
+
     private static void joinWordWithSentence(AppDatabase db) {
 
-        //TODO - improve data populate
-        WordSentenceJoin wordSentenceJoinArray [] = {
-                //Ja
-                new WordSentenceJoin(1, 4),
-                new WordSentenceJoin(1, 5),
-                new WordSentenceJoin(1, 11),
-                //On/Ona
-                new WordSentenceJoin(3, 0),
-                new WordSentenceJoin(3, 16),
-                //Nepočujúci
-                new WordSentenceJoin(6, 0),
-                new WordSentenceJoin(6, 5),
-                new WordSentenceJoin(6, 16),
-                //Počujúci
-                new WordSentenceJoin(7, 2),
-                new WordSentenceJoin(7, 9),
-                //Rozumieť
-                new WordSentenceJoin(8, 3),
-                //Nerozumieť
-                new WordSentenceJoin(9, 5),
-                new WordSentenceJoin(9, 11),
-                //Nedoslýchaví
-                new WordSentenceJoin(10, 4),
-                new WordSentenceJoin(10, 17),
-                //Muž
-                new WordSentenceJoin(11, 16),
-                //Žena
-                new WordSentenceJoin(12, 10),
-                //Chlapec
-                new WordSentenceJoin(13, 1),
-                //Dievča
-                new WordSentenceJoin(14, 2),
-                //Meno
-                new WordSentenceJoin(15, 6),
-                //Moje
-                new WordSentenceJoin(16, 6),
-                new WordSentenceJoin(16, 17),
-                //Tvoje
-                new WordSentenceJoin(17, 15),
-                new WordSentenceJoin(17, 28),
-                //Jeho/Jej
-                new WordSentenceJoin(18, 19),
-                //Kto
-                new WordSentenceJoin(19, 7),
-                //My
-                new WordSentenceJoin(20, 9),
-                //Ako
-                new WordSentenceJoin(24, 8),
-                //Dobre
-                new WordSentenceJoin(26, 12),
-                new WordSentenceJoin(26, 13),
-                new WordSentenceJoin(26, 14),
-                //Zle
-                new WordSentenceJoin(27, 10),
-                //Prepáč
-                new WordSentenceJoin(29, 11),
-                //Ráno
-                new WordSentenceJoin(30, 12),
-                //Večer
-                new WordSentenceJoin(33, 14),
-                new WordSentenceJoin(33, 115),
-                //Noc
-                new WordSentenceJoin(34, 64),
-                //Deň
-                new WordSentenceJoin(35, 13),
-                new WordSentenceJoin(35, 108),
-                //Kamarát/ka
-                new WordSentenceJoin(37, 15),
-                //Kolega/Kolegyňa
-                new WordSentenceJoin(38, 17),
-                new WordSentenceJoin(38, 59),
-                //Poznať
-                new WordSentenceJoin(41, 16),
-                new WordSentenceJoin(41, 19),
-                //Tešiť sa
-                new WordSentenceJoin(42, 82),
-                //Vnučka
-                new WordSentenceJoin(61, 25),
-                //Rozvedený/á
-                new WordSentenceJoin(63, 26),
-                //Manželia
-                new WordSentenceJoin(64, 29),
-                new WordSentenceJoin(64, 34),
-                //Priateľ/ka
-                new WordSentenceJoin(66, 24),
-                new WordSentenceJoin(66, 38),
-                //Druh/Družka
-                new WordSentenceJoin(67, 27),
-                new WordSentenceJoin(67, 28),
-                //Teta
-                new WordSentenceJoin(68, 137),
-                //Žiť
-                new WordSentenceJoin(70, 86),
-                //Spolu
-                new WordSentenceJoin(71, 34),
-                //0 - 5
-                new WordSentenceJoin(75, 30),
-                new WordSentenceJoin(75, 31),
-                new WordSentenceJoin(75, 33),
-                //11 - 15
-                new WordSentenceJoin(77, 35),
-                //16 - 20
-                new WordSentenceJoin(78, 34),
-                //31 - 35
-                new WordSentenceJoin(81, 32),
-                //+/-/*/:/=
-                new WordSentenceJoin(88, 37),
-                new WordSentenceJoin(88, 40),
-                //Rokov
-                new WordSentenceJoin(89, 38),
-                new WordSentenceJoin(89, 39),
-                //Starý
-                new WordSentenceJoin(100, 39),
-                new WordSentenceJoin(100, 54),
-                //Mladý
-                new WordSentenceJoin(101, 41),
-                //Koľko
-                new WordSentenceJoin(102, 36),
-                //Správne
-                new WordSentenceJoin(103, 40),
-                //Farba
-                new WordSentenceJoin(105, 42),
-                new WordSentenceJoin(105, 43),
-                new WordSentenceJoin(105, 69),
-                //Biela
-                new WordSentenceJoin(106, 83),
-                //Žltá
-                new WordSentenceJoin(107, 44),
-                new WordSentenceJoin(107, 69),
-                //Oranžová
-                new WordSentenceJoin(109, 42),
-                //Červená
-                new WordSentenceJoin(110, 42),
-                new WordSentenceJoin(110, 45),
-                //Fialová
-                new WordSentenceJoin(111, 42),
-                new WordSentenceJoin(111, 92),
-                //Svetlá
-                new WordSentenceJoin(112, 45),
-                //Tmavá
-                new WordSentenceJoin(113, 43),
-                new WordSentenceJoin(113, 49),
-                new WordSentenceJoin(113, 52),
-                //Milovať
-                new WordSentenceJoin(115, 44),
-                new WordSentenceJoin(115, 45),
-                //Neznášať
-                new WordSentenceJoin(116, 44),
-                new WordSentenceJoin(116, 80),
-                //Pekná
-                new WordSentenceJoin(117, 42),
-                //Škaredá
-                new WordSentenceJoin(118, 47),
-                //Moderná
-                new WordSentenceJoin(119, 52),
-                new WordSentenceJoin(119, 53),
-                //Modrá
-                new WordSentenceJoin(120, 48),
-                new WordSentenceJoin(120, 69),
-                //Hnedá
-                new WordSentenceJoin(121, 46),
-                //Zelená
-                new WordSentenceJoin(122, 50),
-                //Sivá
-                new WordSentenceJoin(123, 52),
-                //Čierna
-                new WordSentenceJoin(124, 44),
-                new WordSentenceJoin(124, 46),
-                //Drevo
-                new WordSentenceJoin(127, 49),
-                //Železo/Kov
-                new WordSentenceJoin(128, 52),
-                //Sklo
-                new WordSentenceJoin(129, 53),
-                //Keramika
-                new WordSentenceJoin(130, 48),
-                //Koža
-                new WordSentenceJoin(132, 51),
-                //Tvrdá
-                new WordSentenceJoin(133, 51),
-                //Byt
-                new WordSentenceJoin(135, 55),
-                new WordSentenceJoin(135, 61),
-                //Dom
-                new WordSentenceJoin(136, 54),
-                new WordSentenceJoin(136, 83),
-                //Doma
-                new WordSentenceJoin(138, 137),
-                //Domov
-                new WordSentenceJoin(139, 56),
-                //Sused/ka
-                new WordSentenceJoin(140, 57),
-                new WordSentenceJoin(140, 63),
-                //Poschodie
-                new WordSentenceJoin(142, 64),
-                //Prenájom
-                new WordSentenceJoin(44, 59),
-                //Nový
-                new WordSentenceJoin(145, 65),
-                //Vlastný
-                new WordSentenceJoin(146, 53),
-                //Kde
-                new WordSentenceJoin(148, 58),
-                //Kam
-                new WordSentenceJoin(149, 62),
-                //Internát
-                new WordSentenceJoin(151, 60),
-                //Chata
-                new WordSentenceJoin(152, 65),
-                //Prísť
-                new WordSentenceJoin(156, 113),
-                //Odísť
-                new WordSentenceJoin(157, 63),
-                //Veľký
-                new WordSentenceJoin(161, 61),
-                //Preč
-                new WordSentenceJoin(162, 63),
-                //Chodiť
-                new WordSentenceJoin(163, 68),
-                new WordSentenceJoin(163, 95),
-                new WordSentenceJoin(163, 109),
-                //Isť do
-                new WordSentenceJoin(164, 62),
-                new WordSentenceJoin(164, 70)
+        List<WordSentenceJoin> wordSentenceJoinArray = new LinkedList();
 
-                //Lesson 12 - Inštitúcie I.
-                
-        };
+        addSentenceToWord(wordSentenceJoinArray, 1, new int[]{4, 5, 6}); // Ja
+        addSentenceToWord(wordSentenceJoinArray, 3, new int[]{0, 16}); //On/Ona
+        addSentenceToWord(wordSentenceJoinArray, 6, new int[]{0, 5, 16}); //Nepočujúci
+        addSentenceToWord(wordSentenceJoinArray, 7, new int[]{2, 9}); //Počujúci
+        addSentenceToWord(wordSentenceJoinArray, 8, new int[]{3}); //Rozumieť
+        addSentenceToWord(wordSentenceJoinArray, 9, new int[]{5, 11}); //Nerozumieť
+        addSentenceToWord(wordSentenceJoinArray, 10, new int[]{4, 17}); //Nedoslýchaví
+        addSentenceToWord(wordSentenceJoinArray, 11, new int[]{16}); //Muž
+        addSentenceToWord(wordSentenceJoinArray, 12, new int[]{10}); //Žena
+        addSentenceToWord(wordSentenceJoinArray, 13, new int[]{1}); //Chlapec
+        addSentenceToWord(wordSentenceJoinArray, 14, new int[]{2}); //Dievča
+        addSentenceToWord(wordSentenceJoinArray, 15, new int[]{6}); //Meno
+        addSentenceToWord(wordSentenceJoinArray, 16, new int[]{6, 17}); //Moje
+        addSentenceToWord(wordSentenceJoinArray, 17, new int[]{15, 28}); //Tvoje
+        addSentenceToWord(wordSentenceJoinArray, 18, new int[]{19});  //Jeho/Jej
+        addSentenceToWord(wordSentenceJoinArray, 19, new int[]{7}); //Kto
+        addSentenceToWord(wordSentenceJoinArray, 20, new int[]{9}); //My
+        addSentenceToWord(wordSentenceJoinArray, 24, new int[]{8}); //Ako
+        addSentenceToWord(wordSentenceJoinArray, 26, new int[]{12, 13, 14}); //Dobre
+        addSentenceToWord(wordSentenceJoinArray, 27, new int[]{10}); //Zle
+        addSentenceToWord(wordSentenceJoinArray, 29, new int[]{11}); //Prepáč
+        addSentenceToWord(wordSentenceJoinArray, 30, new int[]{12}); //Ráno
+        addSentenceToWord(wordSentenceJoinArray, 33, new int[]{14, 115}); //Večer
+        addSentenceToWord(wordSentenceJoinArray, 34, new int[]{64}); //Noc
+        addSentenceToWord(wordSentenceJoinArray, 35, new int[]{13, 108}); //Deň
+        addSentenceToWord(wordSentenceJoinArray, 37, new int[]{15}); //Kamarát/ka
+        addSentenceToWord(wordSentenceJoinArray, 38, new int[]{17, 59}); //Kolega/Kolegyňa
+        addSentenceToWord(wordSentenceJoinArray, 41, new int[]{16, 19}); //Poznať
+        addSentenceToWord(wordSentenceJoinArray, 42, new int[]{82}); //Tešiť sa
+        addSentenceToWord(wordSentenceJoinArray, 61, new int[]{25}); //Vnučka
+        addSentenceToWord(wordSentenceJoinArray, 63, new int[]{26}); //Rozvedený/á
+        addSentenceToWord(wordSentenceJoinArray, 64, new int[]{29, 43}); //Manželia
+        addSentenceToWord(wordSentenceJoinArray, 66, new int[]{24, 38}); //Priateľ/ka
+        addSentenceToWord(wordSentenceJoinArray, 67, new int[]{27, 28}); //Druh/Družka
+        addSentenceToWord(wordSentenceJoinArray, 68, new int[]{137}); //Teta
+        addSentenceToWord(wordSentenceJoinArray, 70, new int[]{86}); //Žiť
+        addSentenceToWord(wordSentenceJoinArray, 71, new int[]{34}); //Spolu
+        addSentenceToWord(wordSentenceJoinArray, 75, new int[]{30, 31, 33}); //0 - 5
+        addSentenceToWord(wordSentenceJoinArray, 77, new int[]{35}); //11 - 15
+        addSentenceToWord(wordSentenceJoinArray, 78, new int[]{34}); //16 - 20
+        addSentenceToWord(wordSentenceJoinArray, 81, new int[]{32}); //31 - 35
+        addSentenceToWord(wordSentenceJoinArray, 88, new int[]{37, 40}); //+/-/*/:/=
+        addSentenceToWord(wordSentenceJoinArray, 89, new int[]{38, 39}); //Rokov
+        addSentenceToWord(wordSentenceJoinArray, 100, new int[]{39, 54}); //Starý
+        addSentenceToWord(wordSentenceJoinArray, 101, new int[]{41}); //Mladý
+        addSentenceToWord(wordSentenceJoinArray, 102, new int[]{36}); //Koľko
+        addSentenceToWord(wordSentenceJoinArray, 103, new int[]{40}); //Správne
+        addSentenceToWord(wordSentenceJoinArray, 105, new int[]{42, 43, 69}); //Farba
+        addSentenceToWord(wordSentenceJoinArray, 106, new int[]{83}); //Biela
+        addSentenceToWord(wordSentenceJoinArray, 107, new int[]{44, 69}); //Žltá
+        addSentenceToWord(wordSentenceJoinArray, 109, new int[]{42}); //Oranžová
+        addSentenceToWord(wordSentenceJoinArray, 110, new int[]{42, 45}); //Červená
+        addSentenceToWord(wordSentenceJoinArray, 111, new int[]{42, 92}); //Fialová
+        addSentenceToWord(wordSentenceJoinArray, 112, new int[]{45}); //Svetlá
+        addSentenceToWord(wordSentenceJoinArray, 113, new int[]{43, 49, 52}); //Tmavá
+        addSentenceToWord(wordSentenceJoinArray, 115, new int[]{44, 45}); //Milovať
+        addSentenceToWord(wordSentenceJoinArray, 116, new int[]{44, 80}); //Neznášať
+        addSentenceToWord(wordSentenceJoinArray, 117, new int[]{42}); //Pekná
+        addSentenceToWord(wordSentenceJoinArray, 118, new int[]{47}); //Škaredá
+        addSentenceToWord(wordSentenceJoinArray, 119, new int[]{52, 53}); //Moderná
+        addSentenceToWord(wordSentenceJoinArray, 120, new int[]{48, 69}); //Modrá
+        addSentenceToWord(wordSentenceJoinArray, 121, new int[]{46}); //Hnedá
+        addSentenceToWord(wordSentenceJoinArray, 122, new int[]{50}); //Zelená
+        addSentenceToWord(wordSentenceJoinArray, 123, new int[]{52}); //Sivá
+        addSentenceToWord(wordSentenceJoinArray, 124, new int[]{44, 46}); //Čierna
+        addSentenceToWord(wordSentenceJoinArray, 127, new int[]{49}); //Drevo
+        addSentenceToWord(wordSentenceJoinArray, 128, new int[]{52}); //Železo/Kov
+        addSentenceToWord(wordSentenceJoinArray, 129, new int[]{53}); //Sklo
+        addSentenceToWord(wordSentenceJoinArray, 130, new int[]{48}); //Keramika
+        addSentenceToWord(wordSentenceJoinArray, 132, new int[]{51}); //Koža
+        addSentenceToWord(wordSentenceJoinArray, 133, new int[]{51}); //Tvrdá
+        addSentenceToWord(wordSentenceJoinArray, 135, new int[]{55, 61}); //Byt
+        addSentenceToWord(wordSentenceJoinArray, 136, new int[]{54, 83}); //Dom
+        addSentenceToWord(wordSentenceJoinArray, 138, new int[]{137}); //Doma
+        addSentenceToWord(wordSentenceJoinArray, 139, new int[]{56}); //Domov
+        addSentenceToWord(wordSentenceJoinArray, 140, new int[]{57, 63}); //Sused/ka
+        addSentenceToWord(wordSentenceJoinArray, 142, new int[]{64}); //Poschodie
+        addSentenceToWord(wordSentenceJoinArray, 144, new int[]{59}); //Prenájom
+        addSentenceToWord(wordSentenceJoinArray, 145, new int[]{65}); //Nový
+        addSentenceToWord(wordSentenceJoinArray, 146, new int[]{53}); //Vlastný
+        addSentenceToWord(wordSentenceJoinArray, 148, new int[]{58});  //Kde
+        addSentenceToWord(wordSentenceJoinArray, 149, new int[]{62}); //Kam
+        addSentenceToWord(wordSentenceJoinArray, 151, new int[]{60}); //Internát
+        addSentenceToWord(wordSentenceJoinArray, 152, new int[]{65}); //Chata
+        addSentenceToWord(wordSentenceJoinArray, 156, new int[]{113}); //Prísť
+        addSentenceToWord(wordSentenceJoinArray, 157, new int[]{63}); //Odísť
+        addSentenceToWord(wordSentenceJoinArray, 161, new int[]{61}); //Veľký
+        addSentenceToWord(wordSentenceJoinArray, 162, new int[]{63}); //Preč
+        addSentenceToWord(wordSentenceJoinArray, 163, new int[]{68, 95, 109}); //Chodiť
+        addSentenceToWord(wordSentenceJoinArray, 164, new int[]{62, 70}); //Isť do
+        addSentenceToWord(wordSentenceJoinArray, 165, new int[]{93}); //Nemocnica
+        addSentenceToWord(wordSentenceJoinArray, 166, new int[]{70}); //Škola
+        addSentenceToWord(wordSentenceJoinArray, 167, new int[]{69}); //Pošta
+        addSentenceToWord(wordSentenceJoinArray, 170, new int[]{83}); //Kostol
+        addSentenceToWord(wordSentenceJoinArray, 171, new int[]{68, 110}); //Úrad
+        addSentenceToWord(wordSentenceJoinArray, 172, new int[]{73}); //Reštaurácia
+        addSentenceToWord(wordSentenceJoinArray, 174, new int[]{71}); //Obchod
+        addSentenceToWord(wordSentenceJoinArray, 175, new int[]{75}); //Vedľa
+        addSentenceToWord(wordSentenceJoinArray, 176, new int[]{66, 84}); //Blízko
+        addSentenceToWord(wordSentenceJoinArray, 177, new int[]{67}); //Ďaleko
+        addSentenceToWord(wordSentenceJoinArray, 178, new int[]{73}); //Otvorené
+        addSentenceToWord(wordSentenceJoinArray, 179, new int[]{71}); //Zatvorené
+        addSentenceToWord(wordSentenceJoinArray, 180, new int[]{72}); //Kino
+        addSentenceToWord(wordSentenceJoinArray, 181, new int[]{75}); //Múzeum
+        addSentenceToWord(wordSentenceJoinArray, 183, new int[]{75, 82}); //Zámok
+        addSentenceToWord(wordSentenceJoinArray, 184, new int[]{74, 109}); //Divadlo
+        addSentenceToWord(wordSentenceJoinArray, 185, new int[]{66, 96}); //Centrum
+        addSentenceToWord(wordSentenceJoinArray, 186, new int[]{73}); //Námestie
+        addSentenceToWord(wordSentenceJoinArray, 187, new int[]{77}); //Ulica
+        addSentenceToWord(wordSentenceJoinArray, 188, new int[]{76}); //Park
+        addSentenceToWord(wordSentenceJoinArray, 189, new int[]{77}); //Hotel
+        addSentenceToWord(wordSentenceJoinArray, 192, new int[]{74}); //Oproti
+        addSentenceToWord(wordSentenceJoinArray, 193, new int[]{127}); //Všetko
+        addSentenceToWord(wordSentenceJoinArray, 194, new int[]{76}); //Prechádzať
+        addSentenceToWord(wordSentenceJoinArray, 195, new int[]{79}); //Bratislava
+        addSentenceToWord(wordSentenceJoinArray, 196, new int[]{79}); //Blava
+        addSentenceToWord(wordSentenceJoinArray, 197, new int[]{88}); //Košice
+        addSentenceToWord(wordSentenceJoinArray, 198, new int[]{89}); //Nitra
+        addSentenceToWord(wordSentenceJoinArray, 199, new int[]{78}); //Žilina
+        addSentenceToWord(wordSentenceJoinArray, 202, new int[]{82}); //Poprad
+        addSentenceToWord(wordSentenceJoinArray, 204, new int[]{81}); //Prešov
+        addSentenceToWord(wordSentenceJoinArray, 206, new int[]{96, 99}); //Mesto
+        addSentenceToWord(wordSentenceJoinArray, 207, new int[]{80, 83}); //Dedina
+        addSentenceToWord(wordSentenceJoinArray, 209, new int[]{81}); //Pekné
+        addSentenceToWord(wordSentenceJoinArray, 211, new int[]{86}); //Zvolen
+        addSentenceToWord(wordSentenceJoinArray, 213, new int[]{84}); //Prievidza
+        addSentenceToWord(wordSentenceJoinArray, 217, new int[]{87}); //Ružomberok
+        addSentenceToWord(wordSentenceJoinArray, 222, new int[]{87}); //Nechcieť
+        addSentenceToWord(wordSentenceJoinArray, 223, new int[]{88}); //Pochádzať
+        addSentenceToWord(wordSentenceJoinArray, 225, new int[]{85}); //Odkiaľ
+        addSentenceToWord(wordSentenceJoinArray, 226, new int[]{90, 92, 95}); //Auto
+        addSentenceToWord(wordSentenceJoinArray, 227, new int[]{93}); //Motorka
+        addSentenceToWord(wordSentenceJoinArray, 228, new int[]{101}); //Autobus
+        addSentenceToWord(wordSentenceJoinArray, 229, new int[]{113}); //Vlak
+        addSentenceToWord(wordSentenceJoinArray, 231, new int[]{79}); //Električka
+        addSentenceToWord(wordSentenceJoinArray, 233, new int[]{94}); //Bicykel
+        addSentenceToWord(wordSentenceJoinArray, 234, new int[]{91}); //Loď
+        addSentenceToWord(wordSentenceJoinArray, 236, new int[]{164}); //Jazdiť
+        addSentenceToWord(wordSentenceJoinArray, 237, new int[]{90, 96}); //Pomaly
+        addSentenceToWord(wordSentenceJoinArray, 238, new int[]{93}); //Rýchlo
+        addSentenceToWord(wordSentenceJoinArray, 241, new int[]{98}); //Metro
+        addSentenceToWord(wordSentenceJoinArray, 242, new int[]{100}); //Most
+        addSentenceToWord(wordSentenceJoinArray, 244, new int[]{153}); //Cesta
+        addSentenceToWord(wordSentenceJoinArray, 245, new int[]{100}); //Parkovisko
+        addSentenceToWord(wordSentenceJoinArray, 246, new int[]{96}); //Taxi
+        addSentenceToWord(wordSentenceJoinArray, 251, new int[]{97}); //Šofér
+        addSentenceToWord(wordSentenceJoinArray, 253, new int[]{99}); //Problém
+        addSentenceToWord(wordSentenceJoinArray, 255, new int[]{105, 107, 112}); //Čas
+        addSentenceToWord(wordSentenceJoinArray, 258, new int[]{106, 110}); //Hodina
+        addSentenceToWord(wordSentenceJoinArray, 261, new int[]{102}); //6h - 10h
+        addSentenceToWord(wordSentenceJoinArray, 262, new int[]{104}); //11h - 12h
+        addSentenceToWord(wordSentenceJoinArray, 263, new int[]{103}); //o 1h - o 6h
+        addSentenceToWord(wordSentenceJoinArray, 265, new int[]{106}); //O koľkej
+        addSentenceToWord(wordSentenceJoinArray, 268, new int[]{110}); //Čakať
+        addSentenceToWord(wordSentenceJoinArray, 270, new int[]{108}); //Práca
+        addSentenceToWord(wordSentenceJoinArray, 272, new int[]{117}); //Voľno
+        addSentenceToWord(wordSentenceJoinArray, 275, new int[]{109}); //Pravidelne
+        addSentenceToWord(wordSentenceJoinArray, 278, new int[]{114}); //Bolo
+        addSentenceToWord(wordSentenceJoinArray, 288, new int[]{116}); //Štvrtok
+        addSentenceToWord(wordSentenceJoinArray, 289, new int[]{119}); //Piatok
+        addSentenceToWord(wordSentenceJoinArray, 290, new int[]{115}); //Sobota
+        addSentenceToWord(wordSentenceJoinArray, 291, new int[]{114}); //Nedeľa
+        addSentenceToWord(wordSentenceJoinArray, 293, new int[]{124}); //Sviatok
+        addSentenceToWord(wordSentenceJoinArray, 294, new int[]{116}); //Dnes
+        addSentenceToWord(wordSentenceJoinArray, 295, new int[]{114}); //Včera
+        addSentenceToWord(wordSentenceJoinArray, 296, new int[]{117}); //Zajtra
+        addSentenceToWord(wordSentenceJoinArray, 299, new int[]{118}); //Víkend
+        addSentenceToWord(wordSentenceJoinArray, 301, new int[]{121}); //Február
+        addSentenceToWord(wordSentenceJoinArray, 303, new int[]{123}); //Apríl
+        addSentenceToWord(wordSentenceJoinArray, 304, new int[]{120, 124}); //Máj
+        addSentenceToWord(wordSentenceJoinArray, 305, new int[]{146}); //Jún
+        addSentenceToWord(wordSentenceJoinArray, 306, new int[]{165}); //Júl
+        addSentenceToWord(wordSentenceJoinArray, 307, new int[]{122}); //August
+        addSentenceToWord(wordSentenceJoinArray, 312, new int[]{125}); //Mesiac
+        addSentenceToWord(wordSentenceJoinArray, 313, new int[]{125}); //Rok
+        addSentenceToWord(wordSentenceJoinArray, 314, new int[]{120, 121}); //Dátum
+        addSentenceToWord(wordSentenceJoinArray, 315, new int[]{128}); //Pes
+        addSentenceToWord(wordSentenceJoinArray, 317, new int[]{131}); //Sliepka
+        addSentenceToWord(wordSentenceJoinArray, 318, new int[]{126}); //Krava
+        addSentenceToWord(wordSentenceJoinArray, 319, new int[]{131, 133}); //Koza
+        addSentenceToWord(wordSentenceJoinArray, 320, new int[]{127}); //Prasa
+        addSentenceToWord(wordSentenceJoinArray, 321, new int[]{126, 133}); //Kôn
+        addSentenceToWord(wordSentenceJoinArray, 322, new int[]{131}); //Zajac
+        addSentenceToWord(wordSentenceJoinArray, 323, new int[]{126, 133}); //Ovca
+        addSentenceToWord(wordSentenceJoinArray, 325, new int[]{129}); //Farma
+        addSentenceToWord(wordSentenceJoinArray, 326, new int[]{130, 132}); //Dvor
+        addSentenceToWord(wordSentenceJoinArray, 328, new int[]{128}); //Strážiť
+        addSentenceToWord(wordSentenceJoinArray, 329, new int[]{126}); //Chovať
+        addSentenceToWord(wordSentenceJoinArray, 330, new int[]{136, 139}); //Medveď
+        addSentenceToWord(wordSentenceJoinArray, 333, new int[]{139}); //Srna
+        addSentenceToWord(wordSentenceJoinArray, 334, new int[]{135}); //Myš
+        addSentenceToWord(wordSentenceJoinArray, 335, new int[]{137}); //Motýľ
+        addSentenceToWord(wordSentenceJoinArray, 336, new int[]{139}); //Líška
+        addSentenceToWord(wordSentenceJoinArray, 337, new int[]{128}); //Žaba
+        addSentenceToWord(wordSentenceJoinArray, 338, new int[]{134}); //Veverička
+        addSentenceToWord(wordSentenceJoinArray, 340, new int[]{138}); //Les
+        addSentenceToWord(wordSentenceJoinArray, 341, new int[]{142}); //Zviera
+        addSentenceToWord(wordSentenceJoinArray, 342, new int[]{134}); //Strom
+        addSentenceToWord(wordSentenceJoinArray, 343, new int[]{135, 142}); //Báť sa
+        addSentenceToWord(wordSentenceJoinArray, 345, new int[]{140}); //Opica
+        addSentenceToWord(wordSentenceJoinArray, 347, new int[]{141, 145}); //Lev
+        addSentenceToWord(wordSentenceJoinArray, 348, new int[]{141, 145}); //Tiger
+        addSentenceToWord(wordSentenceJoinArray, 350, new int[]{143}); //Had
+        addSentenceToWord(wordSentenceJoinArray, 351, new int[]{145}); //Krokodil
+        addSentenceToWord(wordSentenceJoinArray, 355, new int[]{144}); //ZOO
+        addSentenceToWord(wordSentenceJoinArray, 356, new int[]{142, 145}); //Nebezpečný
+        addSentenceToWord(wordSentenceJoinArray, 358, new int[]{140}); //Hrať
+        addSentenceToWord(wordSentenceJoinArray, 360, new int[]{150, 169}); //Jablko
+        addSentenceToWord(wordSentenceJoinArray, 361, new int[]{149}); //Pomaranč
+        addSentenceToWord(wordSentenceJoinArray, 364, new int[]{150}); //Banán
+        addSentenceToWord(wordSentenceJoinArray, 365, new int[]{147}); //Čerešne
+        addSentenceToWord(wordSentenceJoinArray, 366, new int[]{148, 160}); //Hrozno
+        addSentenceToWord(wordSentenceJoinArray, 367, new int[]{146}); //Jahoda
+        addSentenceToWord(wordSentenceJoinArray, 370, new int[]{148}); //Sladké
+        addSentenceToWord(wordSentenceJoinArray, 371, new int[]{148, 156}); //Kyslé
+        addSentenceToWord(wordSentenceJoinArray, 371, new int[]{149}); //Chutné
+        addSentenceToWord(wordSentenceJoinArray, 373, new int[]{155}); //Čerstvé
+        addSentenceToWord(wordSentenceJoinArray, 374, new int[]{151, 152}); //Ovocie
+        addSentenceToWord(wordSentenceJoinArray, 378, new int[]{163}); //Mrkva
+        addSentenceToWord(wordSentenceJoinArray, 379, new int[]{156, 163}); //Kapusta
+        addSentenceToWord(wordSentenceJoinArray, 382, new int[]{154}); //Zemiaky
+        addSentenceToWord(wordSentenceJoinArray, 385, new int[]{154}); //Ošúpať
+        addSentenceToWord(wordSentenceJoinArray, 386, new int[]{151, 152}); //Zelenina
+        addSentenceToWord(wordSentenceJoinArray, 387, new int[]{157}); //Zdravá
+        addSentenceToWord(wordSentenceJoinArray, 388, new int[]{155,156}); //Tržnica
+        addSentenceToWord(wordSentenceJoinArray, 389, new int[]{150}); //Kúpiť
+        addSentenceToWord(wordSentenceJoinArray, 390, new int[]{158}); //Jar
+        addSentenceToWord(wordSentenceJoinArray, 392, new int[]{160, 169}); //Jeseň
+        addSentenceToWord(wordSentenceJoinArray, 393, new int[]{136, 168}); //Zima
+        addSentenceToWord(wordSentenceJoinArray, 396, new int[]{163}); //Záhrada
+        addSentenceToWord(wordSentenceJoinArray, 397, new int[]{158, 159}); //Kvet
+        addSentenceToWord(wordSentenceJoinArray, 398, new int[]{161}); //Tráva
+        addSentenceToWord(wordSentenceJoinArray, 400, new int[]{131, 159}); //Krásne
+        addSentenceToWord(wordSentenceJoinArray, 401, new int[]{158}); //Sadiť
+        addSentenceToWord(wordSentenceJoinArray, 402, new int[]{161, 169}); //Rásť
+        addSentenceToWord(wordSentenceJoinArray, 404, new int[]{160}); //Oberať
+        addSentenceToWord(wordSentenceJoinArray, 406, new int[]{166}); //Hora
+        addSentenceToWord(wordSentenceJoinArray, 407, new int[]{165}); //Horúco
+        addSentenceToWord(wordSentenceJoinArray, 411, new int[]{167}); //Vianoce
+        addSentenceToWord(wordSentenceJoinArray, 412, new int[]{168}); //Oblečenie
+        addSentenceToWord(wordSentenceJoinArray, 413, new int[]{164}); //Sneh
+        addSentenceToWord(wordSentenceJoinArray, 414, new int[]{166}); //Vietor
+        addSentenceToWord(wordSentenceJoinArray, 415, new int[]{166}); //Silný
+        addSentenceToWord(wordSentenceJoinArray, 419, new int[]{168}); //Hrubé
 
         for (WordSentenceJoin wordSentenceJoin : wordSentenceJoinArray)
             db.wordSentenceJoinDao().insertAll(wordSentenceJoin);

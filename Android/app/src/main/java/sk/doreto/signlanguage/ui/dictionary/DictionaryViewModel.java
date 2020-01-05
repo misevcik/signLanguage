@@ -31,8 +31,4 @@ public class DictionaryViewModel extends AndroidViewModel {
         wordDao.updateFavorite(word.getFavorite(), word.getId());
     }
 
-    public void doAction() {
-        notifyAll();
-    }
-
 }

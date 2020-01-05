@@ -1,5 +1,6 @@
 package sk.doreto.signlanguage;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.MenuItem;
@@ -18,7 +19,6 @@ import java.util.Locale;
 import sk.doreto.signlanguage.database.AppDatabase;
 import sk.doreto.signlanguage.ui.dictionary.DictionaryFragment;
 import sk.doreto.signlanguage.ui.education.EducationFragment;
-import sk.doreto.signlanguage.ui.education.TestDetailFragment;
 import sk.doreto.signlanguage.ui.favorite.FavoriteFragment;
 import sk.doreto.signlanguage.ui.info.InfoFragment;
 
@@ -32,14 +32,25 @@ public class MainActivity extends AppCompatActivity implements  NavigationBarCon
     private final FavoriteFragment favorite = new FavoriteFragment();
     private final InfoFragment info = new InfoFragment();
 
+    public void setLocale(String lang) {
+
+        Locale myLocale = new Locale(lang);
+        Locale.setDefault(myLocale);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
-        //Localize
-        Locale locale = new Locale("sk");
-        Locale.setDefault(locale);
-
+        Locale current = getResources().getConfiguration().locale;
+        if(current.getLanguage().compareTo("sk") != 0) {
+            setLocale("sk");
+        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

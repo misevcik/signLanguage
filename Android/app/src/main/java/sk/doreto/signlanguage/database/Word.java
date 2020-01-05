@@ -14,7 +14,7 @@ public class Word {
     @ColumnInfo(name = "id")
     private int id;
 
-    @ColumnInfo(name = "word")
+    @ColumnInfo(name = "word", collate = ColumnInfo.LOCALIZED)
     private String word;
 
     @ColumnInfo(name = "lection")

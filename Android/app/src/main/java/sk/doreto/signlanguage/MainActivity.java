@@ -1,5 +1,7 @@
 package sk.doreto.signlanguage;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -10,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+
+import java.util.Locale;
 
 import sk.doreto.signlanguage.database.AppDatabase;
 import sk.doreto.signlanguage.ui.dictionary.DictionaryFragment;
@@ -30,6 +34,12 @@ public class MainActivity extends AppCompatActivity implements  NavigationBarCon
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+        //Localize
+        Locale locale = new Locale("sk");
+        Locale.setDefault(locale);
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

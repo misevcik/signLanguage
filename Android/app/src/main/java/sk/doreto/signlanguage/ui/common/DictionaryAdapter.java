@@ -141,8 +141,17 @@ public class DictionaryAdapter extends ArrayAdapter<Word> implements Filterable 
             String previous = filteredWordList.get(i - 1).getWord();
             String current = filteredWordList.get(i).getWord();
 
+            //EXCEPTION because fo wrong ordering
+            if((previous.charAt(0) == 'A' && current.charAt(0) == 'Á') || (previous.charAt(0) == 'Á' && current.charAt(0) == 'A'))
+                continue;
+
             if(previous.charAt(0) != current.charAt(0)) {
-                filteredWordList.add(i, new Word(current.substring(0, 1).toUpperCase()));
+                
+                if(current.charAt(0) == 'C' && current.charAt(1) == 'h') {
+                    filteredWordList.add(i, new Word(current.substring(0, 2).toUpperCase()));
+                } else {
+                    filteredWordList.add(i, new Word(current.substring(0, 1).toUpperCase()));
+                }
                 ++i;
             }
         }

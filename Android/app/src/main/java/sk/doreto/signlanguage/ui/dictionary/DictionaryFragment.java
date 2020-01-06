@@ -28,7 +28,8 @@ public class DictionaryFragment extends GeneralDictionaryFragment {
         toolbarTitleId = R.string.title_dictionary;
 
         if (detailFragment == null) {
-            detailFragment = new DictionaryDetailFragment(this);
+            detailFragment = new DictionaryDetailFragment();
+            detailFragment.setParentFragment(this);
         }
 
         if(adapter == null) {

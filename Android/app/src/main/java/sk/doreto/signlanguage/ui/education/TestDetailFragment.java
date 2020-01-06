@@ -2,6 +2,7 @@ package sk.doreto.signlanguage.ui.education;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.format.DateUtils;
@@ -91,6 +92,13 @@ public class TestDetailFragment extends Fragment implements ITestDetailFragment 
         testTime = root.findViewById(R.id.test_time);
 
         videoPreview = root.findViewById(R.id.video_preview);
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            videoPreview.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        } else {
+            videoPreview.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        }
+
+
         playButton = root.findViewById(R.id.video_play);
         playButton.setOnClickListener(new View.OnClickListener()   {
             public void onClick(View v)  {

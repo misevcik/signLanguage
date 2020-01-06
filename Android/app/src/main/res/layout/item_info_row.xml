@@ -27,11 +27,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.6"
-            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
             android:gravity="left|center" />
 
         <ImageView
-            android:src="@mipmap/icon_chevron_black"
+            android:src="@drawable/icon_chevron_black"
             android:gravity="right|center"
             android:layout_width="25dp"
             android:layout_height="25dp"/>

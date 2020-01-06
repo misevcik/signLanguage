@@ -23,8 +23,7 @@ public class DictionaryDetailFragment extends GeneralDictionaryDetailFragment {
     public DictionaryViewModel modelView;
 
 
-    public DictionaryDetailFragment(IDictionaryFragment dictionaryFragment) {
-        super(dictionaryFragment);
+    public DictionaryDetailFragment() {
     }
     
     @Nullable

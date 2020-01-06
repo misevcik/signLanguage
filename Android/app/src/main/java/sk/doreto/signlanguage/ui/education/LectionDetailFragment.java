@@ -27,8 +27,7 @@ public class LectionDetailFragment extends GeneralDictionaryDetailFragment {
 
     private String counterLabel;
 
-    public LectionDetailFragment(IDictionaryFragment dictionaryFragment) {
-        super(dictionaryFragment);
+    public LectionDetailFragment() {
     }
 
 

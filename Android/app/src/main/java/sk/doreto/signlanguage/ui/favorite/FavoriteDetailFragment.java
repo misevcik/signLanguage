@@ -21,9 +21,7 @@ public class FavoriteDetailFragment extends GeneralDictionaryDetailFragment {
 
     public FavoriteViewModel modelView;
 
-    public FavoriteDetailFragment(IDictionaryFragment dictionaryFragment) {
-        super(dictionaryFragment);
-
+    public FavoriteDetailFragment() {
     }
 
 

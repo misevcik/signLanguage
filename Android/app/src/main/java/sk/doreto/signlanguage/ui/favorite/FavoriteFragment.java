@@ -30,7 +30,8 @@ public class FavoriteFragment extends GeneralDictionaryFragment {
         super.toolbarTitleId = R.string.title_favorites;
 
         if (detailFragment == null) {
-            detailFragment = new FavoriteDetailFragment(this);
+            detailFragment = new FavoriteDetailFragment();
+            detailFragment.setParentFragment(this);
         }
 
         if(adapter == null) {

@@ -1,6 +1,7 @@
 package sk.doreto.signlanguage.ui.common;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -29,21 +30,23 @@ import sk.doreto.signlanguage.utils.Utility;
 
 public class GeneralDictionaryDetailFragment extends Fragment implements IDetailFragment {
 
-    protected Word word;
     protected IDictionaryFragment parentFragment;
+    protected Word word;
 
-    private ImageView imageView;
+    private ImageView videoPreview;
     private VideoControllerView videoController;
     private SentenceAdapter sentenceAdapter;
-    private ListView sentecneListView;
+    private ListView sentenceListView;
 
     private List<Sentence> sentenceList;
     private boolean videoRotate = false;
     private boolean videoSlowMotion = false;
 
-    
-    public GeneralDictionaryDetailFragment(IDictionaryFragment parentFragment) {
+    public void setParentFragment(IDictionaryFragment parentFragment) {
         this.parentFragment = parentFragment;
+    }
+
+    public GeneralDictionaryDetailFragment() {
     }
 
 
@@ -53,7 +56,13 @@ public class GeneralDictionaryDetailFragment extends Fragment implements IDetail
 
         View rootView = inflater.inflate(R.layout.fragment_dictionary_detail, container, false);
 
-        imageView = rootView.findViewById(R.id.video_preview);
+        videoPreview = rootView.findViewById(R.id.video_preview);
+
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            videoPreview.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        } else {
+            videoPreview.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        }
 
         videoController = rootView.findViewById(R.id.video_controller);
         videoController.setDefaultVideoRotate(videoRotate);
@@ -61,9 +70,9 @@ public class GeneralDictionaryDetailFragment extends Fragment implements IDetail
         videoController.setDetailFragment(this);
 
         sentenceAdapter = new SentenceAdapter(sentenceList, getContext());
-        sentecneListView = rootView.findViewById(R.id.sentence_list);
-        sentecneListView.setAdapter(sentenceAdapter);
-        sentecneListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        sentenceListView = rootView.findViewById(R.id.sentence_list);
+        sentenceListView.setAdapter(sentenceAdapter);
+        sentenceListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Sentence sentence = sentenceList.get(position);
@@ -124,6 +133,6 @@ public class GeneralDictionaryDetailFragment extends Fragment implements IDetail
 
     private void drawThumbnail() {
         Drawable drawable = Utility.getThumbnail(getContext(), this.videoRotate ? word.getVideoSide() : word.getVideoFront());
-        imageView.setImageDrawable(drawable);
+        videoPreview.setImageDrawable(drawable);
     }
 }

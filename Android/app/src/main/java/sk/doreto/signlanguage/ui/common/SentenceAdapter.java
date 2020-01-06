@@ -29,6 +29,11 @@ public class SentenceAdapter extends ArrayAdapter<Sentence> {
 
     @Override
     public int getCount() {
+
+        if(mData == null) {
+            return 0;
+        }
+
         return mData.size();
     }
 

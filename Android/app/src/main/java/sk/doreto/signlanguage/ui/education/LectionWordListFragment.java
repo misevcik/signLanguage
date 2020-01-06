@@ -80,7 +80,8 @@ public class LectionWordListFragment extends Fragment implements IDictionaryFrag
         toolbarTitleView.setText(lection.getTitle());
 
 
-        detailFragment = new LectionDetailFragment(this);
+        detailFragment = new LectionDetailFragment();
+        detailFragment.setParentFragment(this);
 
         listView = rootView.findViewById(R.id.lection_dictionary_list);
         listView.setAdapter(adapter);

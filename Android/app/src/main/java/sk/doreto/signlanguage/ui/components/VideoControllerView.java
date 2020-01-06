@@ -100,18 +100,18 @@ public class VideoControllerView extends LinearLayout {
     private void setVideoSlowMotionButton() {
 
         if (videoSlowMotion) {
-            videoSlowMotionButton.setImageResource(R.mipmap.icon_clock_selected);
+            videoSlowMotionButton.setImageResource(R.drawable.icon_clock_selected);
         } else {
-            videoSlowMotionButton.setImageResource(R.mipmap.icon_clock);
+            videoSlowMotionButton.setImageResource(R.drawable.icon_clock);
         }
     }
 
     private void setVideoRotateButton() {
 
         if (videoRotate) {
-            videoRotateButton.setImageResource(R.mipmap.icon_rotate_selected);
+            videoRotateButton.setImageResource(R.drawable.icon_rotate_selected);
         } else {
-            videoRotateButton.setImageResource(R.mipmap.icon_rotate);
+            videoRotateButton.setImageResource(R.drawable.icon_rotate);
         }
     }
 }

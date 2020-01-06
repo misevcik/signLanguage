@@ -2,4 +2,17 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="test_result_item_summary_result_size">19sp</dimen>
+    <dimen name="test_result_summary_percent_size">25sp</dimen>
+    <dimen name="test_result_item_size">16sp</dimen>
+    <dimen name="test_result_recommendation_size">15sp</dimen>
+    <dimen name="test_item_recommendation_size">14sp</dimen>
+    <dimen name="item_lection_grid_height">135dp</dimen>
+    <dimen name="fragment_test_statistic_title_size">25sp</dimen>
+    <dimen name="fragment_test_statistic_margin_side">20dp</dimen>
+    <dimen name="fragment_test_statistic_margin_up">10dp</dimen>
+    <dimen name="fragment_test_statistic_padding">15dp</dimen>
+    <dimen name="fragment_test_statistic_button_padding">10dp</dimen>
+    <integer name="lection_grid_column">2</integer>
+
 </resources>

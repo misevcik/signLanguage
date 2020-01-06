@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="test_result_item_summary_result_size">35sp</dimen>
+    <dimen name="test_result_summary_percent_size">40sp</dimen>
+    <dimen name="test_result_item_size">24sp</dimen>
+    <dimen name="test_result_recommendation_size">25sp</dimen>
+    <dimen name="test_item_recommendation_size">24sp</dimen>
+    <dimen name="fragment_test_statistic_title_size">35sp</dimen>
+    <dimen name="fragment_test_statistic_margin_side">40dp</dimen>
+    <dimen name="fragment_test_statistic_margin_up">30dp</dimen>
+    <dimen name="fragment_test_statistic_padding">30dp</dimen>
+    <dimen name="fragment_test_statistic_button_padding">20dp</dimen>
+    <dimen name="item_lection_grid_height">180dp</dimen>
+    <integer name="lection_grid_column">3</integer>
+</resources>

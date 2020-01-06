@@ -24,8 +24,8 @@
 
     <string name="try_test">Skus sa otestovať</string>
     <string name="test_phrase">Aké slovo je znázornené na videu?</string>
-    <string name="test_result_reccomendation">ODPORUČANIE</string>
-    <string name="test_result_repeat">ZOPAKOVAT TEST</string>
+    <string name="test_result_recommendation">ODPORUČANIE</string>
+    <string name="test_result_repeat">ZOPAKOVAŤ TEST</string>
     <string name="test_result_finish">ZATVOR</string>
     <string name="test_result_item_summary_result">Vysledok Testu</string>
 
@@ -47,4 +47,8 @@
     <string name="finish_test_yes_finish">Áno, ukončiť test</string>
     <string name="finish_test_detail">Predčasným ukončením testu sa nedozviete výsledok</string>
     <string name="finish_test_title">Nauzaj\nchcete ukončiť test?</string>
+
+    <string name="video_control_slow_down">Spomaliť video</string>
+    <string name="video_control_side_view">Bočný pohlad</string>
+
 </resources>

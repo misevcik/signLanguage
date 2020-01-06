@@ -41,12 +41,12 @@ public class FavoriteDetailFragment extends GeneralDictionaryDetailFragment {
         dictionaryTitle.setText(word.getWord());
 
         ImageButton favorite = toolbar.findViewById(R.id.dictionary_detail_favorite);
-        favorite.setImageResource(word.getFavorite() ? R.mipmap.icon_heart_red : R.mipmap.icon_heart_black);
+        favorite.setImageResource(word.getFavorite() ? R.drawable.icon_heart_red : R.drawable.icon_heart_black);
 
         favorite.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)  {
                 word.setFavorite(!word.getFavorite());
-                favorite.setImageResource(word.getFavorite() ? R.mipmap.icon_heart_red : R.mipmap.icon_heart_black);
+                favorite.setImageResource(word.getFavorite() ? R.drawable.icon_heart_red : R.drawable.icon_heart_black);
                 modelView.updateFavorite(word);
             }
         });

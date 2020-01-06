@@ -24,9 +24,9 @@ import sk.doreto.signlanguage.ui.about.AboutFragment;
 public class InfoFragment extends Fragment {
 
     static InfoItem infoItem [] = {
-                    new InfoItem(R.string.info_about, R.mipmap.icon_info),
-                    new InfoItem(R.string.info_rate, R.mipmap.icon_star),
-                    new InfoItem(R.string.info_email, R.mipmap.icon_email)
+                    new InfoItem(R.string.info_about, R.drawable.icon_info),
+                    new InfoItem(R.string.info_rate, R.drawable.icon_star),
+                    new InfoItem(R.string.info_email, R.drawable.icon_email)
     };
 
 

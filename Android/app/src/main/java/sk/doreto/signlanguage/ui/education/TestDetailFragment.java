@@ -160,7 +160,8 @@ public class TestDetailFragment extends Fragment implements ITestDetailFragment 
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().popBackStackImmediate();
-                getActivity().getSupportFragmentManager().popBackStackImmediate();
+                getActivity().onBackPressed();
+
             }
         });
 

@@ -1,4 +1,6 @@
 package sk.doreto.signlanguage;
+import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -32,24 +34,16 @@ public class MainActivity extends AppCompatActivity implements  NavigationBarCon
     private final FavoriteFragment favorite = new FavoriteFragment();
     private final InfoFragment info = new InfoFragment();
 
-    public void setLocale(String lang) {
-
-        Locale myLocale = new Locale(lang);
-        Locale.setDefault(myLocale);
-        Resources res = getResources();
-        DisplayMetrics dm = res.getDisplayMetrics();
-        Configuration conf = res.getConfiguration();
-        conf.locale = myLocale;
-        res.updateConfiguration(conf, dm);
-    }
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         Locale current = getResources().getConfiguration().locale;
         if(current.getLanguage().compareTo("sk") != 0) {
             setLocale("sk");
+        }
+
+        if (!isLargeDevice(getBaseContext())) {
+            this.setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
 
         super.onCreate(savedInstanceState);
@@ -119,6 +113,33 @@ public class MainActivity extends AppCompatActivity implements  NavigationBarCon
         }
         else {
             super.onBackPressed();
+        }
+    }
+
+    private void setLocale(String lang) {
+
+        Locale myLocale = new Locale(lang);
+        Locale.setDefault(myLocale);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
+    }
+
+    private boolean isLargeDevice(Context context) {
+        int screenLayout = context.getResources().getConfiguration().screenLayout;
+        screenLayout &= Configuration.SCREENLAYOUT_SIZE_MASK;
+
+        switch (screenLayout) {
+            case Configuration.SCREENLAYOUT_SIZE_SMALL:
+            case Configuration.SCREENLAYOUT_SIZE_NORMAL:
+                return false;
+            case Configuration.SCREENLAYOUT_SIZE_LARGE:
+            case Configuration.SCREENLAYOUT_SIZE_XLARGE:
+                return true;
+            default:
+                return false;
         }
     }
 

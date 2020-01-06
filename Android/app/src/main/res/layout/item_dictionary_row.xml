@@ -24,7 +24,7 @@
 
         <ImageView
             android:id="@+id/favorite_image"
-            android:src="@mipmap/icon_heart_black"
+            android:src="@drawable/icon_heart_black"
             android:gravity="left|center"
             android:layout_width="25dp"
             android:layout_height="25dp"/>

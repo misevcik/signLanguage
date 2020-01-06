@@ -115,7 +115,7 @@ public class TestFragment extends Fragment implements ITestFragment {
         result.setOnFinishClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().popBackStackImmediate();
+                getActivity().onBackPressed();
             }
         });
 

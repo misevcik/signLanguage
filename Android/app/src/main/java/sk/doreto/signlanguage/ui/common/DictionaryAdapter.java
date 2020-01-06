@@ -109,7 +109,7 @@ public class DictionaryAdapter extends ArrayAdapter<Word> implements Filterable 
 
 
             viewHolder.word.setText(word.getWord());
-            viewHolder.image.setImageResource(word.getFavorite() ? R.mipmap.icon_heart_red : R.mipmap.icon_heart_black);
+            viewHolder.image.setImageResource(word.getFavorite() ? R.drawable.icon_heart_red : R.drawable.icon_heart_black);
         }
 
         return convertView;
@@ -186,6 +186,11 @@ public class DictionaryAdapter extends ArrayAdapter<Word> implements Filterable 
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
+
+            //Fix crash during rotation
+            if(results.count == 0) {
+                return;
+            }
 
             List<Word> data = (List<Word>)results.values;
             filteredWordList = new ArrayList<>(data);

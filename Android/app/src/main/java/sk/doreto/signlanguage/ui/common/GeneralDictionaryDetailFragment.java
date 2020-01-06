@@ -41,6 +41,7 @@ public class GeneralDictionaryDetailFragment extends Fragment implements IDetail
     private boolean videoRotate = false;
     private boolean videoSlowMotion = false;
 
+    
     public GeneralDictionaryDetailFragment(IDictionaryFragment parentFragment) {
         this.parentFragment = parentFragment;
     }

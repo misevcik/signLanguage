@@ -11,7 +11,7 @@
 
     <ImageView
         android:id="@+id/lection_grid_image"
-        android:src="@mipmap/icon_heart_black"
+        android:src="@drawable/icon_heart_black"
         android:gravity="center"
         android:layout_width="60dp"
         android:layout_height="60dp"

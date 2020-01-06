@@ -10,7 +10,7 @@
         android:layout_weight="2"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginStart="8dp">
+        android:layout_marginLeft="8dp">
     </LinearLayout>
 
     <TextView
@@ -21,22 +21,23 @@
         android:textColor="@android:color/black"
         android:textStyle="bold"
         android:gravity="center"
-        android:textSize="21dp"
+        android:textSize="21sp"
         android:text="TEST"/>
 
     <LinearLayout
         android:layout_weight="2"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:gravity="right|center_vertical">
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:scaleType="centerInside"
             android:id="@+id/dictionary_detail_favorite"
             android:background="@color/white"
-            android:src="@mipmap/icon_heart_black" />
+            android:src="@drawable/icon_heart_black" />
 
     </LinearLayout>
 

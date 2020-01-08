@@ -920,7 +920,7 @@ class PreloadCoreData {
         dictionary.append(Word(name: "Slabý",       lection: 27, order: 11, videoFront: "28/Slaby", videoSide: "28/Slaby1", inDictionary: true, sentence: []))
         dictionary.append(Word(name: "Padať",       lection: 27, order: 12, videoFront: "28/Padat", videoSide: "28/Padat1", inDictionary: true, sentence: []))
         dictionary.append(Word(name: "Tenké",       lection: 27, order: 13, videoFront: "28/Tenke", videoSide: "28/Tenke1", inDictionary: true, sentence: []))
-        dictionary.append(Word(name: "Hrubé",       lection: 27, order: 14, videoFront: "28/Hrube", videoSide: "28/Hrube1", inDictionary: true, sentence: [168]))
+        dictionary.append(Word(name: "2",       lection: 27, order: 14, videoFront: "28/Hrube", videoSide: "28/Hrube1", inDictionary: true, sentence: [168]))
         
         //Lesson 29 - ABECEDA
         dictionary.append(Word(name: "A, Á, Ä", lection: 28, order: 0, videoFront: "29/A", videoSide: "29/A1", inDictionary: false, sentence: []))

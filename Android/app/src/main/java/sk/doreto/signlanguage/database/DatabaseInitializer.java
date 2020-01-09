@@ -118,38 +118,38 @@ public class DatabaseInitializer {
                 new Word(74, "Láska", 4,  "lection5_laska", "lection5_laska1", true),
 
                 //Lesson 6 - Čísla I.
-                new Word(75, "0 - 5", 5, "lection1_ahoj", "lection1_ahoj1", false),
-                new Word(76, "6 - 10", 5,"lection1_ano", "lection1_ano1", false),
-                new Word(77, "11 - 15", 5,"lection1_chlapec", "lection1_chlapec1", false),
-                new Word(78, "16 - 20", 5, "test", "testSide", false),
-                new Word(79, "21 - 25", 5, "ahoj", "ahojSide", false),
-                new Word(80, "26 - 30", 5, "test", "testSide", false),
-                new Word(81, "31 - 35", 5, "ahoj", "ahojSide", false),
-                new Word(82, "46 - 50", 5, "test", "testSide", false),
-                new Word(83, "51 - 55", 5,  "ahoj", "ahojSide", false),
-                new Word(84, "66 - 70", 5,  "test", "testSide", false),
-                new Word(85, "81 - 85", 5, "test", "testSide", false),
-                new Word(86, "96 - 99", 5,  "test", "testSide", false),
-                new Word(87, "Číslo", 5,  "test", "testSide", true),
-                new Word(88, "+/-/*/:/=", 5,  "test", "testSide", false),
-                new Word(89, "Rokov", 5,  "test", "testSide", true),
+                new Word(75, "0 - 5", 5, "lection6_0_5", "lection6_0a", false),
+                new Word(76, "6 - 10", 5,"lection6_6_10", "lection6_6_10a", false),
+                new Word(77, "11 - 15", 5,"lection6_11_15", "lection6_11_15a", false),
+                new Word(78, "16 - 20", 5, "lection6_16_20", "lection6_16_20a", false),
+                new Word(79, "21 - 25", 5, "lection6_21_25", "lection6_21_25a", false),
+                new Word(80, "26 - 30", 5, "lection6_26_30", "lection6_26_30a", false),
+                new Word(81, "31 - 35", 5, "lection6_31_35", "lection6_31_35a", false),
+                new Word(82, "46 - 50", 5, "lection6_46_50", "lection6_46_50a", false),
+                new Word(83, "51 - 55", 5,  "lection6_51_55", "lection6_51_55a", false),
+                new Word(84, "66 - 70", 5,  "lection6_66_70", "lection6_66_70a", false),
+                new Word(85, "81 - 85", 5, "lection6_81_85", "lection6_81_85a", false),
+                new Word(86, "96 - 99", 5,  "lection6_96_99", "lection6_96_99a", false),
+                new Word(87, "Číslo", 5,  "lection6_cislo", "lection6_cislo1", true),
+                new Word(88, "+/-/*/:/=", 5,  "lection6_znamienka", "lection6_znamienka1", false),
+                new Word(89, "Rokov", 5,  "lection6_rokov", "lection6_rokov1", true),
 
                 //Lesson 7 - Čísla II.
-                new Word(90, "100 - 500", 6, "lection1_ahoj", "lection1_ahoj1", false),
-                new Word(91, "600 - 900", 6,"lection1_ano", "lection1_ano1", false),
-                new Word(92, "1000 - 5000", 6,"lection1_chlapec", "lection1_chlapec1", false),
-                new Word(93, "6000 - 10000", 6, "test", "testSide", false),
-                new Word(94, "200000 - 50000", 6, "ahoj", "ahojSide", false),
-                new Word(95, "100 000", 6, "test", "testSide", false),
-                new Word(96, "250 000", 6, "ahoj", "ahojSide", false),
-                new Word(97, "700 000", 6, "test", "testSide", false),
-                new Word(98, "1 000 000", 6,  "ahoj", "ahojSide", false),
-                new Word(99, "10 000 000", 6,  "test", "testSide", false),
-                new Word(100, "Starý", 6, "test", "testSide", true),
-                new Word(101, "Mladý", 6,  "test", "testSide", true),
-                new Word(102, "Koľko", 6,  "test", "testSide", true),
-                new Word(103, "Správne", 6,  "test", "testSide", true),
-                new Word(104, "Nesprávne", 6,  "test", "testSide", true),
+                new Word(90, "100 - 500", 6, "lection7_100_500", "lection7_100_500a", false),
+                new Word(91, "600 - 900", 6,"lection7_600_900", "lection7_600_900a", false),
+                new Word(92, "1000 - 5000", 6,"lection7_1000_5000", "lection7_1000_5000a", false),
+                new Word(93, "6000 - 10000", 6, "lection7_6000_10000", "lection7_6000_10000a", false),
+                new Word(94, "20000 - 50000", 6, "lection7_20000_50000", "lection7_20000_50000a", false),
+                new Word(95, "100 000", 6, "lection7_100000", "lection7_100000a", false),
+                new Word(96, "250 000", 6, "lection7_250000", "lection7_250000a", false),
+                new Word(97, "700 000", 6, "lection7_700000", "lection7_700000a", false),
+                new Word(98, "1 000 000", 6,  "lection7_1000000", "lection7_1000000a", false),
+                new Word(99, "10 000 000", 6,  "lection7_10000000", "lection7_10000000a", false),
+                new Word(100, "Starý", 6, "lection7_stary", "lection7_stary1", true),
+                new Word(101, "Mladý", 6,  "lection7_mlady", "lection7_mlady1", true),
+                new Word(102, "Koľko", 6,  "lection7_kolko", "lection7_kolko1", true),
+                new Word(103, "Správne", 6,  "lection7_spravne", "lection7_spravne1", true),
+                new Word(104, "Nesprávne", 6,  "lection7_nespravne", "lection7_nespravne1", true),
 
                 //Lesson 8 - Materiály a farby I.
                 new Word(105, "Farba", 7, "lection1_ahoj", "lection1_ahoj1", true),
@@ -633,20 +633,20 @@ public class DatabaseInitializer {
                 new Sentence(35, "Chlapec má 12 rokov.", "lection6_35"),
 
                 //Lesson 7 - Cisla II
-                new Sentence(36, "Koľko máš rokov?", ""),
-                new Sentence(37, "67 – 12 = ?", ""),
-                new Sentence(38, "Moja sestra má 17 rokov.", ""),
-                new Sentence(39, "Starý muž má 70 rokov.", ""),
-                new Sentence(40, "30 + 50 = 80. Je to správne?", ""),
-                new Sentence(41, "Mladá žena má 27 rokov.", ""),
+                new Sentence(36, "Koľko máš rokov?", "lection6_36"),
+                new Sentence(37, "67 – 12 = ?", "lection6_37"),
+                new Sentence(38, "Moja sestra má 17 rokov.", "lection6_38"),
+                new Sentence(39, "Starý muž má 70 rokov.", "lection6_39"),
+                new Sentence(40, "30 + 50 = 80. Je to správne?", "lection6_40"),
+                new Sentence(41, "Mladá žena má 27 rokov.", "lection6_41"),
 
                 //Lesson 8 - Meterialy a farby I
-                new Sentence(42, "Oranžové, fialové a červené farby sú pekné.", ""),
-                new Sentence(43, "Otec má rád tmavé farby.", ""),
-                new Sentence(44, "Milujem žltú farbu a neznášam čiernu farbu.", ""),
-                new Sentence(45, "Milujem svetlú červenú farbu.", ""),
-                new Sentence(46, "Nemám rád hnedú a čiernu farbu.", ""),
-                new Sentence(47, "Tá žena je škaredá.", ""),
+                new Sentence(42, "Oranžové, fialové a červené farby sú pekné.", "lection7_42"),
+                new Sentence(43, "Otec má rád tmavé farby.", "lection7_43"),
+                new Sentence(44, "Milujem žltú farbu a neznášam čiernu farbu.", "lection7_44"),
+                new Sentence(45, "Milujem svetlú červenú farbu.", "lection7_45"),
+                new Sentence(46, "Nemám rád hnedú a čiernu farbu.", "lection7_46"),
+                new Sentence(47, "Tá žena je škaredá.", "lection7_47"),
 
                 //Lesson 9 - Meterialy a farby II
                 new Sentence(48, "Modrá keramika je pekná.", ""),
@@ -883,7 +883,7 @@ public class DatabaseInitializer {
         addSentenceToWord(wordSentenceJoinArray, 78, new int[]{34}); //16 - 20
         addSentenceToWord(wordSentenceJoinArray, 81, new int[]{32}); //31 - 35
         addSentenceToWord(wordSentenceJoinArray, 88, new int[]{37, 40}); //+/-/*/:/=
-        addSentenceToWord(wordSentenceJoinArray, 89, new int[]{38, 39}); //Rokov
+        addSentenceToWord(wordSentenceJoinArray, 89, new int[]{38, 36, 39}); //Rokov
         addSentenceToWord(wordSentenceJoinArray, 100, new int[]{39, 54}); //Starý
         addSentenceToWord(wordSentenceJoinArray, 101, new int[]{41}); //Mladý
         addSentenceToWord(wordSentenceJoinArray, 102, new int[]{36}); //Koľko

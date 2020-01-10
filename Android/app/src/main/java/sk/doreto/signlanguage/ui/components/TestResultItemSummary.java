@@ -32,10 +32,8 @@ public class TestResultItemSummary extends LinearLayout {
     }
 
     public void setValue(int score){
-
         Resources res = getContext().getResources();
         this.mResultPercent.setText(String.format(res.getString(R.string.result), score, Utility.getGrade(score)));
-
-        //mImage.setImageResource(R.drawable.eu_logo);
+        mImage.setImageResource(score >= 50 ? R.drawable.thumbsup : R.drawable.thumbsdown);
     }
 }

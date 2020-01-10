@@ -6,7 +6,6 @@ import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.format.DateUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +19,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.activity.OnBackPressedCallback;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -258,7 +256,7 @@ public class TestDetailFragment extends Fragment implements ITestDetailFragment 
 
                 if(correctAnswerIndex == answerIndex) {
                     answer.isCorrect = true;
-                    questionItem.video = "2131689472"; //TODO word.getVideoFront();
+                    questionItem.video = word.getVideoFront();
                 } else {
                     answer.isCorrect = false;
                 }

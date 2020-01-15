@@ -88,8 +88,8 @@ public class MainActivity extends AppCompatActivity implements  NavigationBarCon
 
     @Override
     protected void onDestroy() {
-        AppDatabase.destroyInstance();
         super.onDestroy();
+        AppDatabase.destroyInstance();
     }
 
 

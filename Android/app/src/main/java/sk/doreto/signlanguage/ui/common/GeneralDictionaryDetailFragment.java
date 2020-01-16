@@ -65,9 +65,9 @@ public class GeneralDictionaryDetailFragment extends Fragment implements IDetail
         }
 
         videoController = rootView.findViewById(R.id.video_controller);
+        videoController.setDetailFragment(this);
         videoController.setDefaultVideoRotate(videoRotate);
         videoController.setDefaultVideoSlowMotion(videoSlowMotion);
-        videoController.setDetailFragment(this);
 
         sentenceAdapter = new SentenceAdapter(sentenceList, getContext());
         sentenceListView = rootView.findViewById(R.id.sentence_list);
@@ -118,7 +118,7 @@ public class GeneralDictionaryDetailFragment extends Fragment implements IDetail
     }
 
     public void videoBackward() {
-        parentFragment.videoBackward();
+            parentFragment.videoBackward();
     }
 
     public void videoRotate(boolean videoRotate) {

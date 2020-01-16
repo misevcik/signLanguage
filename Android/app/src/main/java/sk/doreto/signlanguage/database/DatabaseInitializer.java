@@ -118,7 +118,7 @@ public class DatabaseInitializer {
                 new Word(74, "Láska", 4,  "laska", "laska1", true),
 
                 //Lesson 6 - Čísla I.
-                new Word(75, "0 - 5", 5, "w0_5", "w0a", false),
+                new Word(75, "0 - 5", 5, "w0_5", "w0_5a", false),
                 new Word(76, "6 - 10", 5,"w6_10", "w6_10a", false),
                 new Word(77, "11 - 15", 5,"w11_15", "w11_15a", false),
                 new Word(78, "16 - 20", 5, "w16_20", "w16_20a", false),
@@ -224,7 +224,7 @@ public class DatabaseInitializer {
                 new Word(166, "Škola", 11,"skola", "skola1", true),
                 new Word(167, "Pošta", 11,"posta", "posta1", true),
                 new Word(168, "Polícia", 11, "policia", "policia1", true),
-                new Word(169, "Televízia", 11, "televizia", "televizia1", true),
+                new Word(169, "Televízia", 11, "tv", "tv1", true),
                 new Word(170, "Kostol", 11, "kostol", "kostol1", true),
                 new Word(171, "Úrad", 11, "urad", "urad1", true),
                 new Word(172, "Reštaurácia", 11, "restauracia", "restauracia1", true),
@@ -261,7 +261,7 @@ public class DatabaseInitializer {
                 new Word(199, "Žilina", 13, "zilina", "zilina1", true),
                 new Word(200, "Banská Bystrica", 13, "bb", "bb1", true),
                 new Word(201, "Lučenec", 13, "lucenec", "lucenec1", true),
-                new Word(202, "Poprad", 13, "popard", "popard1", true),
+                new Word(202, "Poprad", 13, "poprad", "poprad1", true),
                 new Word(203, "Liptovský Mikuláš", 13,  "lm", "lm1", true),
                 new Word(204, "Prešov", 13,  "presov", "presov1", true),
                 new Word(205, "Trnava", 13, "trnava", "trnava1", true),
@@ -327,7 +327,7 @@ public class DatabaseInitializer {
                 new Word(257, "Minúta", 17,"minuta", "minuta1", true),
                 new Word(258, "Hodina", 17, "hodina", "hodina1", true),
                 new Word(259, "Hodiny", 17, "hodiny", "hodiny1", true),
-                new Word(260, "1h - 5h", 17, "w1h_5h", "1h_5h1", false),
+                new Word(260, "1h - 5h", 17, "w1h_5h", "w1h_5h1", false),
                 new Word(261, "6h - 10h", 17, "w6h_10h", "w6h_10h1", false),
                 new Word(262, "11h - 12h", 17,  "w11h_12h", "w11h_12h1", false),
                 new Word(263, "o 1h - o 6h", 17,  "o1h_6h", "o1h_6h1", false),
@@ -446,7 +446,7 @@ public class DatabaseInitializer {
                 new Word(362, "Slivka", 24,"slivka", "slivka1", true),
                 new Word(363, "Citron", 24,"citron", "citron1", true),
                 new Word(364, "Banán", 24, "banan", "banan1", true),
-                new Word(365, "Čerešne", 24, "cersne", "cersne1", true),
+                new Word(365, "Čerešne", 24, "ceresne", "ceresne1", true),
                 new Word(366, "Hrozno", 24, "hrozno", "hrozno1", true),
                 new Word(367, "Jahoda", 24, "jahoda", "jahoda1", true),
                 new Word(368, "Hruška", 24,  "hruska", "hruska1", true),
@@ -465,7 +465,7 @@ public class DatabaseInitializer {
                 new Word(379, "Kapusta", 25, "kapusta", "kapusta1", true),
                 new Word(380, "Kukurica", 25, "kukurica", "kukurica1", true),
                 new Word(381, "Uhorka", 25, "uhorka", "uhorka1", true),
-                new Word(382, "Zemiaky", 25, "zemikay", "zemikay1", true),
+                new Word(382, "Zemiaky", 25, "zemiakay", "zemiakay1", true),
                 new Word(383, "Cesnak", 25,  "cesnak", "cesnak1", true),
                 new Word(384, "Hrach", 25,  "hrach", "hrach1", true),
                 new Word(385, "Ošúpať", 25, "osupat", "osupat1", true),
@@ -569,7 +569,7 @@ public class DatabaseInitializer {
                 new Lection(22,"Zvierata II.", "animals_2"),
                 new Lection(23,"Zvierata III.", "animals_3"),
                 new Lection(24,"Ovocie", "fruits_1"),
-                new Lection(25,"Zelenina", "vegetables_2"),
+                new Lection(25,"Zelenina", "vegetables_1"),
                 new Lection(26,"Ročné obdobie I.", "season_1"),
                 new Lection(27,"Ročné obdobie II.", "season_2"),
                 new Lection(28,"Abeceda", "alphabet")
@@ -1034,7 +1034,7 @@ public class DatabaseInitializer {
         addSentenceToWord(wordSentenceJoinArray, 334, new int[]{135}); //Myš
         addSentenceToWord(wordSentenceJoinArray, 335, new int[]{137}); //Motýľ
         addSentenceToWord(wordSentenceJoinArray, 336, new int[]{139}); //Líška
-        addSentenceToWord(wordSentenceJoinArray, 337, new int[]{128}); //Žaba
+        addSentenceToWord(wordSentenceJoinArray, 337, new int[]{138}); //Žaba
         addSentenceToWord(wordSentenceJoinArray, 338, new int[]{134}); //Veverička
         addSentenceToWord(wordSentenceJoinArray, 340, new int[]{138}); //Les
         addSentenceToWord(wordSentenceJoinArray, 341, new int[]{142}); //Zviera
@@ -1056,7 +1056,7 @@ public class DatabaseInitializer {
         addSentenceToWord(wordSentenceJoinArray, 367, new int[]{146}); //Jahoda
         addSentenceToWord(wordSentenceJoinArray, 370, new int[]{148}); //Sladké
         addSentenceToWord(wordSentenceJoinArray, 371, new int[]{148, 156}); //Kyslé
-        addSentenceToWord(wordSentenceJoinArray, 371, new int[]{149}); //Chutné
+        addSentenceToWord(wordSentenceJoinArray, 372, new int[]{149}); //Chutné
         addSentenceToWord(wordSentenceJoinArray, 373, new int[]{155}); //Čerstvé
         addSentenceToWord(wordSentenceJoinArray, 374, new int[]{151, 152}); //Ovocie
         addSentenceToWord(wordSentenceJoinArray, 378, new int[]{163}); //Mrkva
@@ -1073,7 +1073,7 @@ public class DatabaseInitializer {
         addSentenceToWord(wordSentenceJoinArray, 396, new int[]{163}); //Záhrada
         addSentenceToWord(wordSentenceJoinArray, 397, new int[]{158, 159}); //Kvet
         addSentenceToWord(wordSentenceJoinArray, 398, new int[]{161}); //Tráva
-        addSentenceToWord(wordSentenceJoinArray, 400, new int[]{131, 159}); //Krásne
+        addSentenceToWord(wordSentenceJoinArray, 400, new int[]{132, 159}); //Krásne
         addSentenceToWord(wordSentenceJoinArray, 401, new int[]{158}); //Sadiť
         addSentenceToWord(wordSentenceJoinArray, 402, new int[]{161, 169}); //Rásť
         addSentenceToWord(wordSentenceJoinArray, 404, new int[]{160}); //Oberať

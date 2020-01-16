@@ -19,7 +19,6 @@ import java.util.List;
 
 import sk.doreto.signlanguage.NavigationBarController;
 import sk.doreto.signlanguage.R;
-import sk.doreto.signlanguage.database.AppDatabase;
 import sk.doreto.signlanguage.database.Lection;
 import sk.doreto.signlanguage.ui.common.ITestFragment;
 import sk.doreto.signlanguage.utils.Utility;
@@ -82,7 +81,7 @@ public class TestFragment extends Fragment implements ITestFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Utility.preventTwoClick(listView);
+                Utility.preventDoubleClick(listView, 500);
 
                 navigationBarController.hideBar();
 

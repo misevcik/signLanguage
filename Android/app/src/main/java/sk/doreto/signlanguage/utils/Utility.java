@@ -71,13 +71,13 @@ public class Utility {
             return "A";
     }
 
-    public static void preventTwoClick(final View view){
+    public static void preventDoubleClick(final View view, int timeout){
         view.setEnabled(false);
         view.postDelayed(new Runnable() {
             public void run() {
                 view.setEnabled(true);
             }
-        }, 500);
+        }, timeout);
     }
 
     public static int[] getAnswerResultFromScore(Context context, Lection lection) {

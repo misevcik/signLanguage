@@ -2,8 +2,10 @@ package sk.doreto.signlanguage.ui.common;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +17,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-
-import java.util.List;
 
 import sk.doreto.signlanguage.NavigationBarController;
 import sk.doreto.signlanguage.R;
@@ -63,10 +63,15 @@ public class GeneralDictionaryFragment extends Fragment implements IDictionaryFr
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Utility.preventTwoClick(listView);
+                Utility.preventDoubleClick(listView, 500);
+
+                Word word = adapter.getWordList().get(position);
+                if(word.isSection()) {
+                    return;
+                }
 
                 navigationBarController.hideBar();
-                detailFragment.setDetailData(adapter.getWordList().get(position));
+                detailFragment.setDetailData(word);
                 selectedPosition = position;
 
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
@@ -99,17 +104,16 @@ public class GeneralDictionaryFragment extends Fragment implements IDictionaryFr
 
         Word word;
 
-        while(true) {
+        while (true) {
 
-            if(selectedPosition >= listView.getCount() - 1)
+            if (selectedPosition >= listView.getCount() - 1)
                 selectedPosition = 0;
 
             word = adapter.getWordList().get(++selectedPosition);
-            if(!word.isSection())
+            if (!word.isSection())
                 break;
 
         }
-
 
         detailFragment.setDetailData(word);
         getActivity().getSupportFragmentManager().beginTransaction().detach(detailFragment).attach(detailFragment).commit();
@@ -119,7 +123,7 @@ public class GeneralDictionaryFragment extends Fragment implements IDictionaryFr
 
         Word word;
 
-        while(true) {
+        while (true) {
 
             if (selectedPosition <= 0)
                 selectedPosition = listView.getCount();

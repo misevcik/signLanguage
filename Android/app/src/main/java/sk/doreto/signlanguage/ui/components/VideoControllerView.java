@@ -7,7 +7,11 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import sk.doreto.signlanguage.R;
+import sk.doreto.signlanguage.utils.Utility;
 
 public class VideoControllerView extends LinearLayout {
 
@@ -21,6 +25,7 @@ public class VideoControllerView extends LinearLayout {
 
     private boolean videoSlowMotion = false;
     private boolean videoRotate = false;
+    private boolean clicked = false;
 
 
     public VideoControllerView(Context context, AttributeSet attrs) {

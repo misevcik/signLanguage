@@ -121,7 +121,7 @@ public class LectionWordListFragment extends Fragment implements IDictionaryFrag
 
         selectedPosition--;
 
-        if(selectedPosition <= 0)
+        if(selectedPosition <= -1)
             selectedPosition = adapter.getWordList().size() - 1;
 
         Word word = adapter.getWordList().get(selectedPosition);

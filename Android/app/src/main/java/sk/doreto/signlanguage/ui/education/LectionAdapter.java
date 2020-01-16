@@ -94,7 +94,7 @@ public class LectionAdapter extends ArrayAdapter<Lection> {
 
         Resources res = getContext().getResources();
 
-        viewHolder.word.setText(lection.getTitle());
+        viewHolder.word.setText(String.format("%d. %s", position + 1, lection.getTitle()));
         viewHolder.wordCount.setText(String.format(res.getString(R.string.video_count), wordCount));
 
         if(wordVisited != 0) {

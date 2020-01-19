@@ -19,13 +19,15 @@ import androidx.fragment.app.FragmentManager;
 import java.util.Locale;
 
 import sk.doreto.signlanguage.database.AppDatabase;
+import sk.doreto.signlanguage.ui.common.IDictionaryFragment;
+import sk.doreto.signlanguage.ui.components.IDetailFragment;
 import sk.doreto.signlanguage.ui.dictionary.DictionaryFragment;
 import sk.doreto.signlanguage.ui.education.EducationFragment;
 import sk.doreto.signlanguage.ui.favorite.FavoriteFragment;
 import sk.doreto.signlanguage.ui.info.InfoFragment;
 
 
-public class MainActivity extends AppCompatActivity implements  NavigationBarController {
+public class MainActivity extends AppCompatActivity implements  NavigationBarController, IDictionaryFragment {
 
     private BottomNavigationView bottomNavigationView;
 
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements  NavigationBarCon
     private final EducationFragment education = new EducationFragment();
     private final FavoriteFragment favorite = new FavoriteFragment();
     private final InfoFragment info = new InfoFragment();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements  NavigationBarCon
         bottomNavigationView = findViewById(R.id.navigation_view);
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
+
                     Fragment fragment;
 
                     @Override
@@ -76,13 +80,16 @@ public class MainActivity extends AppCompatActivity implements  NavigationBarCon
                                 setTitle(item.getTitle());
                                 break;
                         }
+
                         fragmentManager.beginTransaction().replace(R.id.viewLayout, fragment).commit();
                         return true;
                     }
                 });
 
         bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
-        bottomNavigationView.setSelectedItemId(R.id.navigation_dictionary);
+        if(savedInstanceState == null) {
+            bottomNavigationView.setSelectedItemId(R.id.navigation_dictionary);
+        }
 
     }
 
@@ -91,7 +98,6 @@ public class MainActivity extends AppCompatActivity implements  NavigationBarCon
         super.onDestroy();
         AppDatabase.destroyInstance();
     }
-
 
     public void hideBar() {
         bottomNavigationView.setVisibility(View.GONE);
@@ -141,6 +147,14 @@ public class MainActivity extends AppCompatActivity implements  NavigationBarCon
             default:
                 return false;
         }
+    }
+
+    public void videoForward() {
+        dictionary.videoForward();
+    }
+
+    public void videoBackward() {
+        dictionary.videoBackward();
     }
 
 

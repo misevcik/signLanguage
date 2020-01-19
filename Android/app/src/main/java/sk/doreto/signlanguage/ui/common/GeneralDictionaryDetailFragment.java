@@ -1,5 +1,6 @@
 package sk.doreto.signlanguage.ui.common;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
@@ -19,6 +20,7 @@ import androidx.fragment.app.Fragment;
 
 import java.util.List;
 
+import sk.doreto.signlanguage.NavigationBarController;
 import sk.doreto.signlanguage.R;
 import sk.doreto.signlanguage.VideoPlayerActivity;
 import sk.doreto.signlanguage.database.AppDatabase;
@@ -30,10 +32,12 @@ import sk.doreto.signlanguage.utils.Utility;
 
 public class GeneralDictionaryDetailFragment extends Fragment implements IDetailFragment {
 
-    protected IDictionaryFragment parentFragment;
+    private static final String STATE_WORD = "state_word";
+
     protected Word word;
 
     private ImageView videoPreview;
+    private IDictionaryFragment parentFragment;
     private VideoControllerView videoController;
     private SentenceAdapter sentenceAdapter;
     private ListView sentenceListView;
@@ -42,8 +46,21 @@ public class GeneralDictionaryDetailFragment extends Fragment implements IDetail
     private boolean videoRotate = false;
     private boolean videoSlowMotion = false;
 
-    public void setParentFragment(IDictionaryFragment parentFragment) {
-        this.parentFragment = parentFragment;
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        try {
+            this.parentFragment = (IDictionaryFragment)context;
+        } catch (ClassCastException castException) {
+            /** The activity does not implement the listener. */
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(STATE_WORD, word);
     }
 
     public GeneralDictionaryDetailFragment() {
@@ -53,6 +70,10 @@ public class GeneralDictionaryDetailFragment extends Fragment implements IDetail
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        if (savedInstanceState != null) {
+            word = (Word)savedInstanceState.getSerializable(STATE_WORD);
+        }
 
         View rootView = inflater.inflate(R.layout.fragment_dictionary_detail, container, false);
 

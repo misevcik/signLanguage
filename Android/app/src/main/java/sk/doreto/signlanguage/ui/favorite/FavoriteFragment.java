@@ -29,11 +29,6 @@ public class FavoriteFragment extends GeneralDictionaryFragment {
 
         super.toolbarTitleId = R.string.title_favorites;
 
-        if (detailFragment == null) {
-            detailFragment = new FavoriteDetailFragment();
-            detailFragment.setParentFragment(this);
-        }
-
         if(adapter == null) {
             adapter = new DictionaryAdapter(getContext());
         }
@@ -57,7 +52,7 @@ public class FavoriteFragment extends GeneralDictionaryFragment {
             }
         });
 
-        ((FavoriteDetailFragment)detailFragment).modelView = viewModel;
+        super.modelView = viewModel;
     }
 
 }

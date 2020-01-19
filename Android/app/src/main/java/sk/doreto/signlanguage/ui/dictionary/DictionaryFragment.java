@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -27,11 +28,6 @@ public class DictionaryFragment extends GeneralDictionaryFragment {
 
         toolbarTitleId = R.string.title_dictionary;
 
-        if (detailFragment == null) {
-            detailFragment = new DictionaryDetailFragment();
-            detailFragment.setParentFragment(this);
-        }
-
         if(adapter == null) {
             adapter = new DictionaryAdapter(getContext());
         }
@@ -54,6 +50,6 @@ public class DictionaryFragment extends GeneralDictionaryFragment {
             }
         });
 
-        ((DictionaryDetailFragment) detailFragment).modelView = modelView;
+        super.modelView = modelView;
     }
 }

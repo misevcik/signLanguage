@@ -41,6 +41,8 @@ import sk.doreto.signlanguage.utils.Utility;
 
 public class TestDetailFragment extends Fragment implements ITestDetailFragment {
 
+    private static final String STATE_LECTION = "test_detail_lection";
+
     public LectionViewModel modelView;
     public ITestFragment testFragment;
 
@@ -58,10 +60,22 @@ public class TestDetailFragment extends Fragment implements ITestDetailFragment 
     private List<QuestionItem> questionCollection = new ArrayList<>();
     private View root;
 
+    public TestDetailFragment() {
+
+    }
+
     public TestDetailFragment(ITestFragment testFragment, Lection lection) {
         this.lection = lection;
         this.testFragment = testFragment;
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        // Save our own state now
+        outState.putSerializable(STATE_LECTION, lection);
+    }
+
 
     @Override
     public void onAttach(Context context) {
@@ -71,6 +85,10 @@ public class TestDetailFragment extends Fragment implements ITestDetailFragment 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            lection = (Lection)savedInstanceState.getSerializable(STATE_LECTION);
+        }
 
         loadTestData(); //TODO - consider to use model view
         startTimer();

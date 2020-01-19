@@ -14,12 +14,13 @@ import androidx.annotation.Nullable;
 import sk.doreto.signlanguage.R;
 import sk.doreto.signlanguage.ui.common.GeneralDictionaryDetailFragment;
 import sk.doreto.signlanguage.ui.common.IDictionaryFragment;
+import sk.doreto.signlanguage.ui.common.IDictionaryViewModel;
 
 import static android.widget.ListPopupWindow.MATCH_PARENT;
 
 public class FavoriteDetailFragment extends GeneralDictionaryDetailFragment {
 
-    public FavoriteViewModel modelView;
+    public IDictionaryViewModel modelView;
 
     public FavoriteDetailFragment() {
     }

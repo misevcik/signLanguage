@@ -1,6 +1,7 @@
 package sk.doreto.signlanguage.ui.dictionary;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,12 +17,17 @@ import androidx.annotation.Nullable;
 import sk.doreto.signlanguage.R;
 import sk.doreto.signlanguage.ui.common.IDictionaryFragment;
 import sk.doreto.signlanguage.ui.common.GeneralDictionaryDetailFragment;
+import sk.doreto.signlanguage.ui.common.IDictionaryViewModel;
 
 
 public class DictionaryDetailFragment extends GeneralDictionaryDetailFragment {
 
-    public DictionaryViewModel modelView;
+    public IDictionaryViewModel modelView;
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+    }
 
     public DictionaryDetailFragment() {
     }

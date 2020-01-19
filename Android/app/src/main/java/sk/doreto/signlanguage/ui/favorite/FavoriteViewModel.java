@@ -11,8 +11,9 @@ import java.util.List;
 import sk.doreto.signlanguage.database.AppDatabase;
 import sk.doreto.signlanguage.database.Word;
 import sk.doreto.signlanguage.database.WordDao;
+import sk.doreto.signlanguage.ui.common.IDictionaryViewModel;
 
-public class FavoriteViewModel extends AndroidViewModel {
+public class FavoriteViewModel extends AndroidViewModel implements IDictionaryViewModel {
 
     private WordDao wordDao;
     private LiveData<List<Word>> wordLiveData;

@@ -7,13 +7,14 @@ import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import sk.doreto.signlanguage.utils.Converters;
 
 @Entity(tableName = "LectionTable", indices = {@Index(value = "id", unique = true)})
 @TypeConverters({Converters.class})
-public class Lection {
+public class Lection implements Serializable  {
 
     @PrimaryKey
     @ColumnInfo(name = "id")

@@ -17,24 +17,32 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.AndroidViewModel;
 
 import sk.doreto.signlanguage.NavigationBarController;
 import sk.doreto.signlanguage.R;
 import sk.doreto.signlanguage.database.Word;
+import sk.doreto.signlanguage.ui.dictionary.DictionaryDetailFragment;
+import sk.doreto.signlanguage.ui.dictionary.DictionaryViewModel;
 import sk.doreto.signlanguage.utils.Utility;
 
 
 public class GeneralDictionaryFragment extends Fragment implements IDictionaryFragment {
 
+    private static String DICTIONARY_DETAIL_FRAGMENT = "DictionaryDetailFragment";
+
     protected int toolbarTitleId;
     protected DictionaryAdapter adapter;
-    protected GeneralDictionaryDetailFragment detailFragment;
+    protected IDictionaryViewModel modelView;
 
     private ListView listView;
     private SearchView searchView;
     private NavigationBarController navigationBarController;
 
     private int selectedPosition = -1;
+
+    public GeneralDictionaryFragment() {
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -44,6 +52,11 @@ public class GeneralDictionaryFragment extends Fragment implements IDictionaryFr
         } catch (ClassCastException castException) {
             /** The activity does not implement the listener. */
         }
+    }
+
+    @Override
+    public void onCreate(Bundle savedState) {
+        super.onCreate(savedState);
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -70,13 +83,16 @@ public class GeneralDictionaryFragment extends Fragment implements IDictionaryFr
                     return;
                 }
 
-                navigationBarController.hideBar();
+                DictionaryDetailFragment detailFragment = new DictionaryDetailFragment();
+                detailFragment.modelView = modelView;
                 detailFragment.setDetailData(word);
+
+                navigationBarController.hideBar();
                 selectedPosition = position;
 
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                 ft.add(R.id.viewLayout, detailFragment);
-                ft.addToBackStack("DictionaryDetailFragment").commit();
+                ft.addToBackStack(DICTIONARY_DETAIL_FRAGMENT).commit();
 
             }
         });
@@ -115,8 +131,14 @@ public class GeneralDictionaryFragment extends Fragment implements IDictionaryFr
 
         }
 
+        DictionaryDetailFragment detailFragment = new DictionaryDetailFragment();
+        detailFragment.modelView = modelView;
         detailFragment.setDetailData(word);
-        getActivity().getSupportFragmentManager().beginTransaction().detach(detailFragment).attach(detailFragment).commit();
+
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.viewLayout, detailFragment);
+        ft.addToBackStack(DICTIONARY_DETAIL_FRAGMENT).commit();
+
     }
 
     public void videoBackward() {
@@ -133,8 +155,13 @@ public class GeneralDictionaryFragment extends Fragment implements IDictionaryFr
                 break;
         }
 
+        DictionaryDetailFragment detailFragment = new DictionaryDetailFragment();
+        detailFragment.modelView = modelView;
         detailFragment.setDetailData(word);
-        getActivity().getSupportFragmentManager().beginTransaction().detach(detailFragment).attach(detailFragment).commit();
+
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.viewLayout, detailFragment);
+        ft.addToBackStack(DICTIONARY_DETAIL_FRAGMENT).commit();
     }
 
 

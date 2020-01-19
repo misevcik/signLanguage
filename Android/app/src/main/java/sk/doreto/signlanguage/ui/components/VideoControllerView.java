@@ -25,8 +25,6 @@ public class VideoControllerView extends LinearLayout {
 
     private boolean videoSlowMotion = false;
     private boolean videoRotate = false;
-    private boolean clicked = false;
-
 
     public VideoControllerView(Context context, AttributeSet attrs) {
         super(context, attrs);

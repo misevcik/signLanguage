@@ -28,6 +28,8 @@ import sk.doreto.signlanguage.ui.common.ViewModelFactory;
 
 public class LectionWordListFragment extends Fragment implements IDictionaryFragment {
 
+    private static final String STATE_LECTION = "lection_word_lection";
+
     private LectionDictionaryViewModel modelView;
     private Lection lection;
     private ListView listView;
@@ -36,8 +38,17 @@ public class LectionWordListFragment extends Fragment implements IDictionaryFrag
 
     private int selectedPosition = -1;
 
+    public LectionWordListFragment() { }
+
     public LectionWordListFragment(Lection lection) {
         this.lection = lection;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        // Save our own state now
+        outState.putSerializable(STATE_LECTION, lection);
     }
 
     @Override
@@ -54,6 +65,11 @@ public class LectionWordListFragment extends Fragment implements IDictionaryFrag
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            lection = (Lection)savedInstanceState.getSerializable(STATE_LECTION);
+        }
+
 
         initData();
     }
@@ -81,7 +97,6 @@ public class LectionWordListFragment extends Fragment implements IDictionaryFrag
 
 
         detailFragment = new LectionDetailFragment();
-        detailFragment.setParentFragment(this);
 
         listView = rootView.findViewById(R.id.lection_dictionary_list);
         listView.setAdapter(adapter);

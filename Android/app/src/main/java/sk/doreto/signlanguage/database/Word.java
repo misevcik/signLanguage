@@ -6,9 +6,11 @@ import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 
 @Entity(tableName = "WordTable", indices = {@Index(value = "word", unique = true)})
-public class Word {
+public class Word implements Serializable {
 
     @PrimaryKey
     @ColumnInfo(name = "id")

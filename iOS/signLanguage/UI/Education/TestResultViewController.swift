@@ -47,7 +47,7 @@ class TestResultViewController: UIViewController {
     private var wrongAnswers = 0
     private var goFromTestDetail = false
     private let cRecommendGood = "Test úspešny, možete isť na dalšiu lekciu"
-    private let cRecommendWrong = "Mal by ste si ešte zopakovať lekciu aby ste sa zdokonalili"
+    private let cRecommendWrong = "Mali by ste si ešte zopakovať lekciu aby ste sa zdokonalili"
     private let cRecommendBad = "Test neúspešny. Zopakujte si lekciu."
 
     

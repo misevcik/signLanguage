@@ -12,6 +12,8 @@ import MessageUI
 
 @available(iOS 10.3, *)
 class InfoTableViewController: UITableViewController, MFMailComposeViewControllerDelegate {
+    
+    static var EMAIL = "info@dorteo.sk"
 
     @IBOutlet var infoTableView: UITableView!
     
@@ -50,7 +52,7 @@ class InfoTableViewController: UITableViewController, MFMailComposeViewControlle
                 let composeVC = MFMailComposeViewController()
                 composeVC.mailComposeDelegate = self
                 
-                composeVC.setToRecipients(["info@dorteo.sk"])
+                composeVC.setToRecipients([InfoTableViewController.EMAIL])
                 composeVC.setSubject("Message Subject")
                 composeVC.setMessageBody("...", isHTML: false)
                 

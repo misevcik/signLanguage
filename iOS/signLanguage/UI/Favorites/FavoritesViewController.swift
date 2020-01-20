@@ -44,12 +44,20 @@ class FavoritesViewController : UIViewController {
         dictionaryTable.indexPathsForSelectedRows?.forEach {
             dictionaryTable.deselectRow(at: $0, animated: true)
         }
+          
+        updateTableLayout()
+    }
+    
+    private func updateTableLayout() {
         
-        if (self.fetchedResultsController.sections?.count)! > 0 {
+        if (self.fetchedResultsController.fetchedObjects?.count)! > 0 {
             dictionaryTableTrailing.constant = 4
+            dictionaryTable.isHidden = false
         } else {
             dictionaryTableTrailing.constant = 16
+            dictionaryTable.isHidden = true
         }
+        
     }
 }
 
@@ -71,6 +79,7 @@ extension FavoritesViewController: NSFetchedResultsControllerDelegate {
             break
         case .delete:
             self.dictionaryTable.deleteSections(NSIndexSet(index: sectionIndex) as IndexSet, with: .fade)
+            updateTableLayout()
             break
         default:
             os_log("...", log: Log.general, type: .info)

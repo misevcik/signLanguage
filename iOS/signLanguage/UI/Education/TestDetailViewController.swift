@@ -178,7 +178,7 @@ class TestDetailViewController: UIViewController {
         for _ in 0...maxQuizItems {
             
             var testData = TestItem()
-            let defineRightAnswerIndex = Int.random(in: 0..<2)
+            let defineRightAnswerIndex = Int.random(in: 0..<3)
             let indexArray = getRandomIndexArray(wordArray.count)
             
             for i in 0...answerCollection.count - 1 {

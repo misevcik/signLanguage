@@ -28,6 +28,10 @@
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:configChanges="orientation|screenSize" />
 
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="4b8bd6293df8570ffab69e9aea09c2768b5c83a2" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

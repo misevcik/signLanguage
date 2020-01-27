@@ -1,8 +1,10 @@
 package sk.doreto.signlanguage;
+import android.app.PendingIntent;
 import android.content.Context;
-import android.content.pm.ActivityInfo;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.MenuItem;
@@ -42,9 +44,6 @@ public class MainActivity extends AppCompatActivity implements  NavigationBarCon
             setLocale("sk");
         }
 
-        if (!isLargeDevice(getBaseContext())) {
-            this.setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

@@ -12,6 +12,8 @@ apply plugin: 'io.fabric'
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
+    //APK expansion external library
+    maven { url "https://jitpack.io" }
 }
 
 
@@ -60,4 +62,5 @@ dependencies {
     implementation "androidx.room:room-ktx:$roomVersion"
     annotationProcessor "androidx.room:room-compiler:$roomVersion"
     implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
+    implementation 'com.github.bolein.better-apk-expansion:downloader_library:5.0.3'
 }

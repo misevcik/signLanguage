@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
+import sk.doreto.signlanguage.utils.ZipFileContentProvider;
+
 public class VideoPlayerActivity extends Activity implements MediaPlayer.OnCompletionListener {
 
     private VideoView videoView;
@@ -37,7 +39,9 @@ public class VideoPlayerActivity extends Activity implements MediaPlayer.OnCompl
         mediaController.setMediaPlayer(videoView);
         videoView.setMediaController(mediaController);
 
-        videoView.setVideoURI(Uri.parse(videoPath));
+       Uri uri = ZipFileContentProvider.buildUri(videoPath + ".mp4");
+
+        videoView.setVideoURI(uri);
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {

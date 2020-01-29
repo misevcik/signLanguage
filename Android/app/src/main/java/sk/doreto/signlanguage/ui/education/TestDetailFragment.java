@@ -212,9 +212,8 @@ public class TestDetailFragment extends Fragment implements ITestDetailFragment 
     private void videoPlay() {
         Intent videoPlaybackActivity = new Intent(getContext(), VideoPlayerActivity.class);
 
-        String videoRaw = questionCollection.get(currentQuestionIndex).video;
+        String videoPath = questionCollection.get(currentQuestionIndex).video;
 
-        String videoPath = "android.resource://" + getContext().getPackageName() + "/" + Utility.getResourceId(getContext(), videoRaw, "raw");
         videoPlaybackActivity.putExtra("videoPath", videoPath);
         startActivity(videoPlaybackActivity);
     }

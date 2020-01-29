@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="sk.doreto.signlanguage">
 
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/icon"
@@ -9,6 +10,11 @@
         android:roundIcon="@mipmap/icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <provider
+            android:name="sk.doreto.signlanguage.utils.ZipFileContentProvider"
+            android:authorities="sk.doreto.signlanguage">
+        </provider>
+
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen">
@@ -33,5 +39,26 @@
             android:value="4b8bd6293df8570ffab69e9aea09c2768b5c83a2" />
     </application>
 
+
+    <!-- Required to access Google Play Licensing -->
+    <uses-permission android:name="com.android.vending.CHECK_LICENSE" />
+
+    <!-- Required to download files from Google Play -->
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Required to keep CPU alive while downloading files
+        (NOT to keep screen awake) -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- Required to poll the state of the network connection
+        and respond to changes -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Required to check whether Wi-Fi is enabled -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+
+    <!-- Required to read and write the expansion files on shared storage -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
 </manifest>

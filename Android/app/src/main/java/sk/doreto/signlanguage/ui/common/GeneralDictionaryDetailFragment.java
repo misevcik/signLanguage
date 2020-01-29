@@ -78,9 +78,7 @@ public class GeneralDictionaryDetailFragment extends Fragment implements IDetail
                 Sentence sentence = sentenceList.get(position);
 
                 Intent videoPlaybackActivity = new Intent(getContext(), VideoPlayerActivity.class);
-                String videoRaw = sentence.getVideo();
-                String videoPath = "android.resource://" + getContext().getPackageName() + "/" + Utility.getResourceId(getContext(), videoRaw, "raw");
-                videoPlaybackActivity.putExtra("videoPath", videoPath);
+                videoPlaybackActivity.putExtra("videoPath", sentence.getVideo());
                 startActivity(videoPlaybackActivity);
 
             }
@@ -103,9 +101,9 @@ public class GeneralDictionaryDetailFragment extends Fragment implements IDetail
 
         String videoPath;
         if(this.videoRotate)
-            videoPath = "android.resource://" + getContext().getPackageName() + "/" + Utility.getResourceId(getContext(), word.getVideoSide(), "raw");
+            videoPath = word.getVideoSide();
         else
-            videoPath = "android.resource://" + getContext().getPackageName() + "/" + Utility.getResourceId(getContext(), word.getVideoFront(), "raw");
+            videoPath = word.getVideoFront();
 
 
         videoPlaybackActivity.putExtra("videoPath", videoPath);

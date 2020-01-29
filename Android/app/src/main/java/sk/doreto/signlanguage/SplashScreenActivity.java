@@ -83,7 +83,8 @@ public class SplashScreenActivity extends Activity {
             new XAPKFile(true, 1, 301266911L)
     };
 
-    public static final String BASE64_PUBLIC_KEY = "outKey";
+    //public key to app can be found: Google Play Console / Posunkuj s Nami / Development / Services & APIs
+    public static final String BASE64_PUBLIC_KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiGyD4imSv4O+1iBuxfuqbtjYbGd3OGZOvtdWMzDPuNb/qfvbtsPB67nN76JwRw4IVSYjEHMIT9++2ME23rl5g+DQhVSDNztGDnfbd+zklwWKiGSySG6oWFih3ip81Knj/0HPebvyvZ3SBBvK/6MaMT03iWeYefS7sKuOt5PnlboT3gbLggJe+e2h78Zn/1DcKGIG+HUj8ai6ftXT2WfDbLmWnk41M9uz2Yvq0axpx2k63BEC1JzvzkxMgVe4zuHTNOopTKpPy/QcivXpMA5QA8o2KhR1r61DaoMU/serp2zd49itam6CStxcp9xgB3EfYhwAtV5nC8fjizqLmE3tswIDAQAB";
     public static final byte[] SALT = new byte[] { 1, 42, -12, -1, 54, 98,
             -100, -12, 43, 2, -8, -4, 9, 5, -106, -107, -33, 45, -1, 84
     };

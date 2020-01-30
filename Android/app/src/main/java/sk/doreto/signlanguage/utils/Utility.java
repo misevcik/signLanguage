@@ -11,6 +11,7 @@ import android.view.View;
 
 import sk.doreto.signlanguage.database.AppDatabase;
 import sk.doreto.signlanguage.database.Lection;
+import sk.doreto.signlanguage.utils.ZipFileContentProvider;
 
 public class Utility {
 
@@ -27,13 +28,9 @@ public class Utility {
     }
 
     public static Drawable getThumbnail(Context context, String resource) {
-
-        int resourceId = Utility.getResourceId(context, resource, "raw");
-        String path = "android.resource://" + context.getPackageName() + "/" + resourceId;
-
         try {
 
-            Uri uri = Uri.parse(path);
+            Uri uri = ZipFileContentProvider.buildUri(resource + ".mp4");
 
             MediaMetadataRetriever retriever = new MediaMetadataRetriever();
             retriever.setDataSource(context, uri);

@@ -33,7 +33,7 @@ public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase buildDatabase(final Context context) {
 
 
-        return Room.databaseBuilder(context, AppDatabase.class, "signLanguage-database")
+        return Room.databaseBuilder(context, AppDatabase.class, "signLanguage-db")
                 .addCallback(new Callback() {
                      @Override
                     public void onCreate(@NonNull SupportSQLiteDatabase db) {

@@ -4,17 +4,14 @@ import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.AssetFileDescriptor;
-import android.net.Uri;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.util.Log;
-import android.widget.Toast;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
-import com.android.vending.expansion.zipfile.APKExpansionSupport;
-import com.android.vending.expansion.zipfile.ZipResourceFile;
 import com.crashlytics.android.Crashlytics;
 import com.google.android.vending.expansion.downloader.DownloadProgressInfo;
 import com.google.android.vending.expansion.downloader.Helpers;
@@ -22,44 +19,41 @@ import com.google.android.vending.expansion.downloader.impl.BroadcastDownloaderC
 import com.google.android.vending.expansion.downloader.impl.DownloaderService;
 
 
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
 
 import io.fabric.sdk.android.Fabric;
 import sk.doreto.signlanguage.database.AppDatabase;
-import sk.doreto.signlanguage.utils.ZipFileContentProvider;
 
 import static com.google.android.vending.expansion.downloader.impl.DownloadsDB.LOG_TAG;
 
 
 class DownloaderClient extends BroadcastDownloaderClient {
 
+    Activity activity;
+
+    public DownloaderClient(Activity activity) {
+        this.activity = activity;
+    }
+
     @Override
     public void onDownloadStateChanged(int newState) {
         if (newState == STATE_COMPLETED) {
             // downloaded successfully...
         } else if (newState >= 15) {
-            // failed
+            //TODO - show alert-dialog
             int message = Helpers.getDownloaderStringResourceIDFromState(newState);
-            Log.i("DownloaderClient", "Failed");
-            //Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+            Log.i("DownloaderClient", "Failed: " + message);
+
         }
     }
 
     @Override
     public void onDownloadProgress(DownloadProgressInfo progress) {
         if (progress.mOverallTotal > 0) {
-            // receive the download progress
-            // you can then display the progress in your activity
-            //String progress = Helpers.getDownloadProgressPercent(progress.mOverallProgress, progress.mOverallTotal);
-            Log.i("DownloaderClient", "downloading progress: " + progress);
+            long percent = progress.mOverallProgress * 100 / progress.mOverallTotal;
+            ((SplashScreenActivity)activity).setProgressBarValue((int)percent);
+
+            //String percent = Helpers.getDownloadProgressPercent(progress.mOverallProgress, progress.mOverallTotal);
+            //Log.i("DownloaderClient", "downloading progress: " + progress);
         }
     }
 }
@@ -90,17 +84,28 @@ public class SplashScreenActivity extends Activity {
     };
 
 
-    private final DownloaderClient mClient = new DownloaderClient();
+    private ProgressBar progressBar;
+    private TextView progressBarText;
+    private final DownloaderClient mClient = new DownloaderClient(this);
+
+    public void setProgressBarValue(int progress) {
+
+        Resources res = getApplicationContext().getResources();
+        progressBarText.setText(String.format(res.getString(R.string.download_text),progress));
+        progressBar.setProgress(progress);
+    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
+
         Fabric.with(this, new Crashlytics());
+
+        downloadExpansionFile();
+
         setContentView(R.layout.activity_splash_screen);
-
-        //downloadExpansionFile();
-
         AppDatabase.getAppDatabase(this);
 
         new Handler().postDelayed(new Runnable() {
@@ -150,8 +155,9 @@ public class SplashScreenActivity extends Activity {
     private void downloadExpansionFile() {
 
         //TODO - check if storage is avaliable for reading
+        //TODO - Create donwloade-channel
 
-        if (!expansionFilesExist()) {
+        if (expansionFilesExist()) {
 
             if (Helpers.canWriteOBBFile(this)) {
                 launchDownloader();
@@ -169,9 +175,10 @@ public class SplashScreenActivity extends Activity {
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notifierIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
             int startResult = DownloaderService.startDownloadServiceIfRequired(this, "downloader-channel", pendingIntent, SALT, BASE64_PUBLIC_KEY);
-            if (startResult != DownloaderService.NO_DOWNLOAD_REQUIRED){
-
-                // Inflate layout that shows download progress
+            if (startResult != DownloaderService.NO_DOWNLOAD_REQUIRED) {
+                setContentView(R.layout.download_progress_bar);
+                progressBar = findViewById(R.id.progress_bar);
+                progressBarText = findViewById(R.id.progress_bar_text);
                 return;
             }
         } catch (PackageManager.NameNotFoundException e) {

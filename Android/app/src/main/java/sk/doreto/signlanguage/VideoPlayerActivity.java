@@ -7,12 +7,8 @@ import android.media.PlaybackParams;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.webkit.URLUtil;
 import android.widget.MediaController;
 import android.widget.VideoView;
-
-import java.io.File;
-import java.io.InputStream;
 
 import sk.doreto.signlanguage.utils.Utility;
 import sk.doreto.signlanguage.utils.ZipFileContentProvider;
@@ -47,7 +43,7 @@ public class VideoPlayerActivity extends Activity implements MediaPlayer.OnCompl
 
         Uri uri = ZipFileContentProvider.buildUri(videoPath + ".mp4");
 
-        if(!Utility.isValidUri(uri)) {
+        if(!Utility.isValidURI(getBaseContext(), uri)) {
             Log.e("VideoPlayerActivity", "Video path is not valid: " + uri.getPath());
             finish();
         }

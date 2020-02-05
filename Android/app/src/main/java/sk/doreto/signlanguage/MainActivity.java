@@ -4,9 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.media.MediaMetadataRetriever;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -25,6 +29,7 @@ import sk.doreto.signlanguage.ui.dictionary.DictionaryFragment;
 import sk.doreto.signlanguage.ui.education.EducationFragment;
 import sk.doreto.signlanguage.ui.favorite.FavoriteFragment;
 import sk.doreto.signlanguage.ui.info.InfoFragment;
+import sk.doreto.signlanguage.utils.ZipFileContentProvider;
 
 
 public class MainActivity extends AppCompatActivity implements  NavigationBarController {
@@ -43,7 +48,6 @@ public class MainActivity extends AppCompatActivity implements  NavigationBarCon
         if(current.getLanguage().compareTo("sk") != 0) {
             setLocale("sk");
         }
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -141,6 +145,5 @@ public class MainActivity extends AppCompatActivity implements  NavigationBarCon
                 return false;
         }
     }
-
 
 }

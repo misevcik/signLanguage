@@ -5,6 +5,8 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.media.MediaMetadataRetriever;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,11 +21,9 @@ import com.google.android.vending.expansion.downloader.impl.BroadcastDownloaderC
 import com.google.android.vending.expansion.downloader.impl.DownloaderService;
 
 
-import java.io.File;
-
 import io.fabric.sdk.android.Fabric;
 import sk.doreto.signlanguage.database.AppDatabase;
-import sk.doreto.signlanguage.BuildConfig;
+
 
 import static com.google.android.vending.expansion.downloader.impl.DownloadsDB.LOG_TAG;
 
@@ -41,6 +41,7 @@ class DownloaderClient extends BroadcastDownloaderClient {
 
         if (newState == STATE_COMPLETED) {
             Log.e("DownloaderClient", "Finished");
+            ((SplashScreenActivity)activity).runMainActivity(false);
         } else if (newState >= 15) {
             //TODO - show alert-dialog
             int message = Helpers.getDownloaderStringResourceIDFromState(newState);
@@ -99,16 +100,11 @@ public class SplashScreenActivity extends Activity {
     }
 
 
+    public void runMainActivity(boolean showSplashScreen) {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        Fabric.with(this, new Crashlytics());
-
-        downloadExpansionFile();
-
-        setContentView(R.layout.activity_splash_screen);
+        if(showSplashScreen) {
+            setContentView(R.layout.activity_splash_screen);
+        }
         AppDatabase.getAppDatabase(this);
 
         new Handler().postDelayed(new Runnable() {
@@ -120,6 +116,18 @@ public class SplashScreenActivity extends Activity {
             }
         }, 1000);
 
+
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        Fabric.with(this, new Crashlytics());
+
+        if(!downloadExpansionFile()) {
+            runMainActivity(true);
+        }
     }
 
     @Override
@@ -155,7 +163,7 @@ public class SplashScreenActivity extends Activity {
         return true;
     }
 
-    private void downloadExpansionFile() {
+    private boolean downloadExpansionFile() {
 
         //TODO - check if storage is avaliable for reading
         //TODO - Create donwloade-channel
@@ -163,14 +171,16 @@ public class SplashScreenActivity extends Activity {
         if (!expansionFilesExist()) {
 
             if (Helpers.canWriteOBBFile(this)) {
-                launchDownloader();
+                return launchDownloader();
             } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 //xAPKFilesReadable();
             }
         }
+
+        return false;
     }
 
-    private void launchDownloader() {
+    private boolean launchDownloader() {
 
         try {
             Intent notifierIntent = new Intent(this, SplashScreenActivity.this.getClass());
@@ -182,11 +192,15 @@ public class SplashScreenActivity extends Activity {
                 setContentView(R.layout.download_progress_bar);
                 progressBar = findViewById(R.id.progress_bar);
                 progressBarText = findViewById(R.id.progress_bar_text);
-                return;
+                this.setProgressBarValue(0);
+                return true;
             }
         } catch (PackageManager.NameNotFoundException e) {
             Log.e(LOG_TAG, "Cannot find own package!");
             e.printStackTrace();
+            return false;
         }
+
+        return false;
     }
 }

@@ -1,6 +1,7 @@
 package sk.doreto.signlanguage.utils;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -9,11 +10,11 @@ import android.net.Uri;
 import android.util.Log;
 import android.view.View;
 
-import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 
 import sk.doreto.signlanguage.database.AppDatabase;
 import sk.doreto.signlanguage.database.Lection;
-import sk.doreto.signlanguage.utils.ZipFileContentProvider;
 
 public class Utility {
 
@@ -29,18 +30,25 @@ public class Utility {
         }
     }
 
-    public static boolean isValidUri(Uri uri) {
+    public static boolean isValidURI(Context context, Uri uri) {
 
-        File file = new File(uri.getPath());
-        return file.exists();
+
+        //TODO - implement via client provider
+        try {
+            MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+            retriever.setDataSource(context, uri);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public static Drawable getThumbnail(Context context, String resource) {
         try {
 
-            Uri uri = ZipFileContentProvider.buildUri(resource + ".mp4");
+            Uri uri = ZipFileContentProvider.buildUri(resource + ".mp2");
 
-            if(!isValidUri(uri)) {
+            if(!isValidURI(context, uri)) {
                 return null;
             }
 

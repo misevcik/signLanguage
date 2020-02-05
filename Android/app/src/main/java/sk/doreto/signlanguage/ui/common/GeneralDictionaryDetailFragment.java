@@ -1,5 +1,6 @@
 package sk.doreto.signlanguage.ui.common;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -75,6 +77,8 @@ public class GeneralDictionaryDetailFragment extends Fragment implements IDetail
         sentenceListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+
                 Sentence sentence = sentenceList.get(position);
 
                 Intent videoPlaybackActivity = new Intent(getContext(), VideoPlayerActivity.class);

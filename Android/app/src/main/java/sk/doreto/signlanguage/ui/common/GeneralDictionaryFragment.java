@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -37,6 +38,12 @@ public class GeneralDictionaryFragment extends Fragment implements IDictionaryFr
     private int selectedPosition = -1;
 
     @Override
+    public void onResume() {
+        super.onResume();
+        searchView.clearFocus();
+    }
+
+    @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         try {
@@ -62,6 +69,9 @@ public class GeneralDictionaryFragment extends Fragment implements IDictionaryFr
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                InputMethodManager imm =(InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
                 Utility.preventDoubleClick(listView, 500);
 

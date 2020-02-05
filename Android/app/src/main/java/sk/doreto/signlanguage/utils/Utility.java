@@ -9,6 +9,8 @@ import android.net.Uri;
 import android.util.Log;
 import android.view.View;
 
+import java.io.File;
+
 import sk.doreto.signlanguage.database.AppDatabase;
 import sk.doreto.signlanguage.database.Lection;
 import sk.doreto.signlanguage.utils.ZipFileContentProvider;
@@ -27,10 +29,20 @@ public class Utility {
         }
     }
 
+    public static boolean isValidUri(Uri uri) {
+
+        File file = new File(uri.getPath());
+        return file.exists();
+    }
+
     public static Drawable getThumbnail(Context context, String resource) {
         try {
 
             Uri uri = ZipFileContentProvider.buildUri(resource + ".mp4");
+
+            if(!isValidUri(uri)) {
+                return null;
+            }
 
             MediaMetadataRetriever retriever = new MediaMetadataRetriever();
             retriever.setDataSource(context, uri);
@@ -38,7 +50,7 @@ public class Utility {
             String duration = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
             int time = Integer.valueOf(duration)/2;
 
-            Bitmap bitmap = retriever.getFrameAtTime(25000000, MediaMetadataRetriever.OPTION_CLOSEST);
+            Bitmap bitmap = retriever.getFrameAtTime(time * 1000, MediaMetadataRetriever.OPTION_CLOSEST);
 
             Drawable drawable = new BitmapDrawable(context.getResources(), bitmap);
 

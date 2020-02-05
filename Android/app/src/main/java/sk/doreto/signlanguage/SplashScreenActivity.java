@@ -19,9 +19,11 @@ import com.google.android.vending.expansion.downloader.impl.BroadcastDownloaderC
 import com.google.android.vending.expansion.downloader.impl.DownloaderService;
 
 
+import java.io.File;
 
 import io.fabric.sdk.android.Fabric;
 import sk.doreto.signlanguage.database.AppDatabase;
+import sk.doreto.signlanguage.BuildConfig;
 
 import static com.google.android.vending.expansion.downloader.impl.DownloadsDB.LOG_TAG;
 
@@ -36,12 +38,13 @@ class DownloaderClient extends BroadcastDownloaderClient {
 
     @Override
     public void onDownloadStateChanged(int newState) {
+
         if (newState == STATE_COMPLETED) {
-            // downloaded successfully...
+            Log.e("DownloaderClient", "Finished");
         } else if (newState >= 15) {
             //TODO - show alert-dialog
             int message = Helpers.getDownloaderStringResourceIDFromState(newState);
-            Log.i("DownloaderClient", "Failed: " + message);
+            Log.e("DownloaderClient", "Failed: " + message);
 
         }
     }
@@ -52,8 +55,8 @@ class DownloaderClient extends BroadcastDownloaderClient {
             long percent = progress.mOverallProgress * 100 / progress.mOverallTotal;
             ((SplashScreenActivity)activity).setProgressBarValue((int)percent);
 
-            //String percent = Helpers.getDownloadProgressPercent(progress.mOverallProgress, progress.mOverallTotal);
-            //Log.i("DownloaderClient", "downloading progress: " + progress);
+            String status = Helpers.getDownloadProgressPercent(progress.mOverallProgress, progress.mOverallTotal);
+            Log.e("DownloaderClient", "downloading progress: " + status);
         }
     }
 }
@@ -74,7 +77,7 @@ public class SplashScreenActivity extends Activity {
     }
 
     private static final XAPKFile[] xAPKS = {
-            new XAPKFile(true, 1, 301266911L)
+            new XAPKFile(true, BuildConfig.VERSION_CODE, 301266911L)
     };
 
     //public key to app can be found: Google Play Console / Posunkuj s Nami / Development / Services & APIs
@@ -157,7 +160,7 @@ public class SplashScreenActivity extends Activity {
         //TODO - check if storage is avaliable for reading
         //TODO - Create donwloade-channel
 
-        if (expansionFilesExist()) {
+        if (!expansionFilesExist()) {
 
             if (Helpers.canWriteOBBFile(this)) {
                 launchDownloader();

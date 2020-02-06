@@ -43,7 +43,7 @@ public class VideoPlayerActivity extends Activity implements MediaPlayer.OnCompl
 
         Uri uri = ZipFileContentProvider.buildUri(videoPath + ".mp4");
 
-        if(!Utility.isValidURI(getBaseContext(), uri)) {
+        if(!Utility.isValidMediaURI(getBaseContext(), uri)) {
             Log.e("VideoPlayerActivity", "Video path is not valid: " + uri.getPath());
             finish();
         }

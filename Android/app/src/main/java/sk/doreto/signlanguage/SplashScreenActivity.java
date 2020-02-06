@@ -30,10 +30,10 @@ import static com.google.android.vending.expansion.downloader.impl.DownloadsDB.L
 
 class DownloaderClient extends BroadcastDownloaderClient {
 
-    Activity activity;
+    SplashScreenActivity activity;
 
     public DownloaderClient(Activity activity) {
-        this.activity = activity;
+        this.activity = (SplashScreenActivity)activity;
     }
 
     @Override
@@ -41,11 +41,11 @@ class DownloaderClient extends BroadcastDownloaderClient {
 
         if (newState == STATE_COMPLETED) {
             Log.e("DownloaderClient", "Finished");
-            ((SplashScreenActivity)activity).runMainActivity(false);
+            activity.runMainActivity(false);
         } else if (newState >= 15) {
-            //TODO - show alert-dialog
             int message = Helpers.getDownloaderStringResourceIDFromState(newState);
             Log.e("DownloaderClient", "Failed: " + message);
+            activity.downloadFail();
 
         }
     }
@@ -54,7 +54,7 @@ class DownloaderClient extends BroadcastDownloaderClient {
     public void onDownloadProgress(DownloadProgressInfo progress) {
         if (progress.mOverallTotal > 0) {
             long percent = progress.mOverallProgress * 100 / progress.mOverallTotal;
-            ((SplashScreenActivity)activity).setProgressBarValue((int)percent);
+            activity.setProgressBarValue((int)percent);
 
             String status = Helpers.getDownloadProgressPercent(progress.mOverallProgress, progress.mOverallTotal);
             Log.e("DownloaderClient", "downloading progress: " + status);
@@ -97,6 +97,10 @@ public class SplashScreenActivity extends Activity {
         Resources res = getApplicationContext().getResources();
         progressBarText.setText(String.format(res.getString(R.string.download_text),progress));
         progressBar.setProgress(progress);
+    }
+
+    public void downloadFail() {
+        progressBarText.setText(R.string.download_fail);
     }
 
 

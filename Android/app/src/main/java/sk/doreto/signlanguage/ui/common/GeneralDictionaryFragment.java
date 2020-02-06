@@ -70,8 +70,7 @@ public class GeneralDictionaryFragment extends Fragment implements IDictionaryFr
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                InputMethodManager imm =(InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                searchView.clearFocus();
 
                 Utility.preventDoubleClick(listView, 500);
 

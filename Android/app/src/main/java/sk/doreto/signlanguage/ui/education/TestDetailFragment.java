@@ -48,7 +48,6 @@ public class TestDetailFragment extends Fragment implements ITestDetailFragment 
 
     private int wordCount;
     private int questionCollectionSize;
-    private int currentQuestionIndex = 0;
     private int timeElapsedSecond = 0;
     private Timer timer;
     private TextView testTime;
@@ -57,6 +56,7 @@ public class TestDetailFragment extends Fragment implements ITestDetailFragment 
     private Lection lection;
     private List<QuestionItem> questionCollection = new ArrayList<>();
     private View root;
+    private String videoPath = "";
 
     public TestDetailFragment(ITestFragment testFragment, Lection lection) {
         this.lection = lection;
@@ -84,7 +84,7 @@ public class TestDetailFragment extends Fragment implements ITestDetailFragment 
         root = inflater.inflate(R.layout.fragment_test_detail, container, false);
 
         TestAnswerControllerView testAnswerController = root.findViewById(R.id.testAnswerControllerView);
-        testAnswerController.setFinishCallback(this);
+        testAnswerController.setCallback(this);
         testAnswerController.fillTestData(questionCollection);
 
         testTime = root.findViewById(R.id.test_time);
@@ -154,6 +154,11 @@ public class TestDetailFragment extends Fragment implements ITestDetailFragment 
     }
 
 
+    public void setVideo(String videoPath) {
+        this.videoPath = videoPath;
+        this.drawThumbnail();
+    }
+
     public void finishTest(int score) {
 
         Date date = new Date();
@@ -210,18 +215,16 @@ public class TestDetailFragment extends Fragment implements ITestDetailFragment 
 
 
     private void videoPlay() {
+
         Intent videoPlaybackActivity = new Intent(getContext(), VideoPlayerActivity.class);
-
-        String videoPath = questionCollection.get(currentQuestionIndex).video;
-
         videoPlaybackActivity.putExtra("videoPath", videoPath);
         startActivity(videoPlaybackActivity);
     }
 
     private void drawThumbnail() {
+
         try {
-            String videoRaw = questionCollection.get(currentQuestionIndex).video;
-            Drawable drawable = Utility.getThumbnail(getContext(), videoRaw);
+            Drawable drawable = Utility.getThumbnail(getContext(), videoPath);
             videoPreview.setImageDrawable(drawable);
         }
         catch (Exception e){

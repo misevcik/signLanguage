@@ -34,8 +34,8 @@ public class DatabaseInitializer {
         Word wordArray [] = {
                 //Lesson 1 - Prvy kontakt I
                 new Word(0, "Ahoj", 0, "ahoj", "ahoj1", true),
-                new Word(1, "Ja", 0,"ano", "ano1", true),
-                new Word(2, "Ty", 0,"chlapec", "chlapec1", true),
+                new Word(1, "Ja", 0,"ja", "ja1", true),
+                new Word(2, "Ty", 0,"ty", "ty1", true),
                 new Word(3, "On/Ona", 0, "onona", "onona1", true),
                 new Word(4, "Áno", 0, "ano", "ano1", true),
                 new Word(5, "Nie", 0, "nie", "nie1", true),
@@ -156,7 +156,7 @@ public class DatabaseInitializer {
                 new Word(106, "Biela", 7,"biela", "biela1", true),
                 new Word(107, "Žltá", 7,"zlta", "zlta1", true),
                 new Word(108, "Ružová", 7, "ruzova", "ruzova1", true),
-                new Word(109, "Oranžová", 7, "skareda", "skareda1", true),
+                new Word(109, "Oranžová", 7, "oranzova", "oranzova1", true),
                 new Word(110, "Červená", 7, "cervena", "cervena1", true),
                 new Word(111, "Fialová", 7, "fialova", "fialova1", true),
                 new Word(112, "Svetlá", 7, "svetla", "svetla1", true),
@@ -319,7 +319,7 @@ public class DatabaseInitializer {
                 new Word(251, "Šofér", 16,  "sofer", "sofer1", true),
                 new Word(252, "Pri", 16,  "pri", "pri1", true),
                 new Word(253, "Problém", 16,  "problem", "problem1", true),
-                new Word(254, "Pokuta", 16,  "problem", "problem1", true),
+                new Word(254, "Pokuta", 16,  "pokuta", "pokuta1", true),
 
                 //Lesson 18 - Čas I.
                 new Word(255, "Čas", 17, "cas", "cas1", true),

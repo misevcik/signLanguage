@@ -33,7 +33,7 @@ public class TestAnswerControllerView extends LinearLayout {
 
     }
 
-    public void setFinishCallback(ITestDetailFragment testDetailFragment) {
+    public void setCallback(ITestDetailFragment testDetailFragment) {
         this.testDetailFragment = testDetailFragment;
     }
 
@@ -50,11 +50,14 @@ public class TestAnswerControllerView extends LinearLayout {
             questionsCount = questions.size();
             questionList = questions;
             QuestionItem questionItem = questionList.remove(0);
+            testDetailFragment.setVideo(questionItem.video);
             fillData(questionItem);
         }
     }
 
     private void fillData(QuestionItem questionItem) {
+
+        testDetailFragment.setVideo(questionItem.video);
 
         int index = 0;
         for (QuestionItem.AnswerItem item : questionItem.answerCollection) {

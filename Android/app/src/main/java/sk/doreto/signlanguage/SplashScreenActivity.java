@@ -5,8 +5,6 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.media.MediaMetadataRetriever;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -46,7 +44,6 @@ class DownloaderClient extends BroadcastDownloaderClient {
             int message = Helpers.getDownloaderStringResourceIDFromState(newState);
             Log.e("DownloaderClient", "Failed: " + message);
             activity.downloadFail();
-
         }
     }
 
@@ -78,7 +75,7 @@ public class SplashScreenActivity extends Activity {
     }
 
     private static final XAPKFile[] xAPKS = {
-            new XAPKFile(true, BuildConfig.VERSION_CODE, 301266911L)
+            new XAPKFile(true, SplashScreenActivity.OBB_FILE_VERSION, 301266911L)
     };
 
     //public key to app can be found: Google Play Console / Posunkuj s Nami / Development / Services & APIs
@@ -86,6 +83,8 @@ public class SplashScreenActivity extends Activity {
     public static final byte[] SALT = new byte[] { 1, 42, -12, -1, 54, 98,
             -100, -12, 43, 2, -8, -4, 9, 5, -106, -107, -33, 45, -1, 84
     };
+
+    public static final int OBB_FILE_VERSION = 5;
 
 
     private ProgressBar progressBar;

@@ -29,7 +29,6 @@ import sk.doreto.signlanguage.ui.dictionary.DictionaryFragment;
 import sk.doreto.signlanguage.ui.education.EducationFragment;
 import sk.doreto.signlanguage.ui.favorite.FavoriteFragment;
 import sk.doreto.signlanguage.ui.info.InfoFragment;
-import sk.doreto.signlanguage.utils.ZipFileContentProvider;
 
 
 public class MainActivity extends AppCompatActivity implements  NavigationBarController {

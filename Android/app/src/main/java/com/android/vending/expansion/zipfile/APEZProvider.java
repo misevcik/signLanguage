@@ -42,6 +42,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import sk.doreto.signlanguage.SplashScreenActivity;
+
 /**
  * This content provider is an optional part of the library.
  * 
@@ -134,7 +136,7 @@ public abstract class APEZProvider extends ContentProvider {
             }
             int patchFileVersion;
             int mainFileVersion;
-            int appVersionCode = packInfo.versionCode;
+            int appVersionCode = SplashScreenActivity.OBB_FILE_VERSION;
             String[] resourceFiles = null;
             if ( null != pi.metaData ) {
                 mainFileVersion = pi.metaData.getInt("mainVersion", appVersionCode);

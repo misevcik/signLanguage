@@ -51,6 +51,6 @@
     <string name="video_control_slow_down">Spomaliť video</string>
     <string name="video_control_side_view">Bočný pohlad</string>
     <string name="download_text">Sťahuju sa videa %d%% </string>
-    <string name="download_fail">Sťahovanie zlyhalo </string>
+    <string name="download_fail">Sťahovanie videii zlyhalo.</string>
 
 </resources>

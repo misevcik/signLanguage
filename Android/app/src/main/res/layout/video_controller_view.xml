@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="#FFFFFF"
     android:weightSum="5"
     android:padding="10dp">
@@ -12,13 +12,14 @@
         android:layout_weight="1"
         android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center">
 
         <ImageButton
             android:id="@+id/video_slow_motion"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:scaleType="fitCenter"
             android:src="@drawable/icon_clock"
             android:background="#FFFFFF"/>
 
@@ -39,7 +40,8 @@
         <ImageButton
             android:id="@+id/video_backward"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:scaleType="fitCenter"
             android:src="@drawable/icon_backward"
             android:background="@drawable/button_pressed"/>
 
@@ -54,7 +56,8 @@
         <ImageButton
             android:id="@+id/video_play"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:scaleType="fitCenter"
             android:src="@drawable/icon_play"
             android:background="@drawable/button_pressed"/>
 
@@ -69,7 +72,8 @@
         <ImageButton
             android:id="@+id/video_forward"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:scaleType="fitCenter"
             android:src="@drawable/icon_forward"
             android:background="@drawable/button_pressed"/>
 
@@ -85,7 +89,8 @@
         <ImageButton
             android:id="@+id/video_rotate"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:scaleType="fitCenter"
             android:src="@drawable/icon_rotate"
             android:background="#FFFFFF"/>
 

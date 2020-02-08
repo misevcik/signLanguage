@@ -1,5 +1,6 @@
 package sk.doreto.signlanguage;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -9,10 +10,14 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.core.app.ActivityCompat;
+
 import com.crashlytics.android.Crashlytics;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.vending.expansion.downloader.DownloadProgressInfo;
 import com.google.android.vending.expansion.downloader.Helpers;
 import com.google.android.vending.expansion.downloader.impl.BroadcastDownloaderClient;
@@ -38,11 +43,11 @@ class DownloaderClient extends BroadcastDownloaderClient {
     public void onDownloadStateChanged(int newState) {
 
         if (newState == STATE_COMPLETED) {
-            Log.e("DownloaderClient", "Finished");
+            Log.i(LOG_TAG, "Download finished");
             activity.runMainActivity(false);
         } else if (newState >= 15) {
             int message = Helpers.getDownloaderStringResourceIDFromState(newState);
-            Log.e("DownloaderClient", "Failed: " + message);
+            Log.e(LOG_TAG, "Download failed: " + message);
             activity.downloadFail();
         }
     }
@@ -54,13 +59,27 @@ class DownloaderClient extends BroadcastDownloaderClient {
             activity.setProgressBarValue((int)percent);
 
             String status = Helpers.getDownloadProgressPercent(progress.mOverallProgress, progress.mOverallTotal);
-            Log.e("DownloaderClient", "downloading progress: " + status);
+            Log.i(LOG_TAG, "downloading progress: " + status);
         }
     }
 }
 
-public class SplashScreenActivity extends Activity {
+public class SplashScreenActivity extends Activity implements  ActivityCompat.OnRequestPermissionsResultCallback{
 
+    private static final int PERMISSION_STORAGE_READ_REQUEST_CODE = 1;
+    private static final int PERMISSION_STORAGE_WRITE_REQUEST_CODE = 2;
+
+    public static final int OBB_FILE_VERSION = 5;
+
+    //public key to app can be found: Google Play Console / Posunkuj s Nami / Development / Services & APIs
+    public static final String BASE64_PUBLIC_KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiGyD4imSv4O+1iBuxfuqbtjYbGd3OGZOvtdWMzDPuNb/qfvbtsPB67nN76JwRw4IVSYjEHMIT9++2ME23rl5g+DQhVSDNztGDnfbd+zklwWKiGSySG6oWFih3ip81Knj/0HPebvyvZ3SBBvK/6MaMT03iWeYefS7sKuOt5PnlboT3gbLggJe+e2h78Zn/1DcKGIG+HUj8ai6ftXT2WfDbLmWnk41M9uz2Yvq0axpx2k63BEC1JzvzkxMgVe4zuHTNOopTKpPy/QcivXpMA5QA8o2KhR1r61DaoMU/serp2zd49itam6CStxcp9xgB3EfYhwAtV5nC8fjizqLmE3tswIDAQAB";
+    public static final byte[] SALT = new byte[] { 1, 42, -12, -1, 54, 98,
+            -100, -12, 43, 2, -8, -4, 9, 5, -106, -107, -33, 45, -1, 84
+    };
+
+    private static final XAPKFile[] xAPKS = {
+            new XAPKFile(true, SplashScreenActivity.OBB_FILE_VERSION, 301266911L)
+    };
 
     private static class XAPKFile {
         public final boolean mIsMain;
@@ -74,17 +93,6 @@ public class SplashScreenActivity extends Activity {
         }
     }
 
-    private static final XAPKFile[] xAPKS = {
-            new XAPKFile(true, SplashScreenActivity.OBB_FILE_VERSION, 301266911L)
-    };
-
-    //public key to app can be found: Google Play Console / Posunkuj s Nami / Development / Services & APIs
-    public static final String BASE64_PUBLIC_KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiGyD4imSv4O+1iBuxfuqbtjYbGd3OGZOvtdWMzDPuNb/qfvbtsPB67nN76JwRw4IVSYjEHMIT9++2ME23rl5g+DQhVSDNztGDnfbd+zklwWKiGSySG6oWFih3ip81Knj/0HPebvyvZ3SBBvK/6MaMT03iWeYefS7sKuOt5PnlboT3gbLggJe+e2h78Zn/1DcKGIG+HUj8ai6ftXT2WfDbLmWnk41M9uz2Yvq0axpx2k63BEC1JzvzkxMgVe4zuHTNOopTKpPy/QcivXpMA5QA8o2KhR1r61DaoMU/serp2zd49itam6CStxcp9xgB3EfYhwAtV5nC8fjizqLmE3tswIDAQAB";
-    public static final byte[] SALT = new byte[] { 1, 42, -12, -1, 54, 98,
-            -100, -12, 43, 2, -8, -4, 9, 5, -106, -107, -33, 45, -1, 84
-    };
-
-    public static final int OBB_FILE_VERSION = 5;
 
 
     private ProgressBar progressBar;
@@ -128,7 +136,7 @@ public class SplashScreenActivity extends Activity {
 
         Fabric.with(this, new Crashlytics());
 
-        if(!downloadExpansionFile()) {
+        if(isExpansionFilePrepared()) {
             runMainActivity(true);
         }
     }
@@ -166,26 +174,91 @@ public class SplashScreenActivity extends Activity {
         return true;
     }
 
-    private boolean downloadExpansionFile() {
+    private boolean isExpansionFilePrepared() {
 
-        //TODO - check if storage is avaliable for reading
         //TODO - Create donwloade-channel
 
         if (!expansionFilesExist()) {
 
             if (Helpers.canWriteOBBFile(this)) {
-                return launchDownloader();
+
+                Log.i(LOG_TAG, "OBB file is ready to download");
+                boolean isRunning = launchDownloader();
+                return !isRunning;
+
             } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                //xAPKFilesReadable();
+                Log.e(LOG_TAG, "Request write permission.");
+                requestStorageWritePermission();
+                return false;
+            }
+        } else if(!xAPKFilesReadable()) {
+
+            Log.e(LOG_TAG, "Cannot read APKx File.  Permission Perhaps?");
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                Log.e(LOG_TAG, "Need Permission!");
+                requestStorageReadPermission();
+                return false;
             }
         }
 
-        return false;
+        return true;
+    }
+
+    private void  requestStorageWritePermission() {
+        setContentView(R.layout.permission_request);
+        View rootLayout = findViewById(R.id.requestPermission);
+
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+
+            Snackbar.make(rootLayout, R.string.write_permission,
+                    Snackbar.LENGTH_INDEFINITE).setAction("OK", new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ActivityCompat.requestPermissions(SplashScreenActivity.this,
+                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                            PERMISSION_STORAGE_WRITE_REQUEST_CODE);
+                }
+            }).show();
+
+        } else {
+            Snackbar.make(rootLayout, R.string.write_permission, Snackbar.LENGTH_SHORT).show();
+            ActivityCompat.requestPermissions(SplashScreenActivity.this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    PERMISSION_STORAGE_WRITE_REQUEST_CODE);
+        }
+    }
+
+    private void requestStorageReadPermission() {
+
+        setContentView(R.layout.permission_request);
+        View rootLayout = findViewById(R.id.requestPermission);
+
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            Snackbar.make(rootLayout, R.string.read_permission,
+                    Snackbar.LENGTH_INDEFINITE).setAction("OK", new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ActivityCompat.requestPermissions(SplashScreenActivity.this,
+                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                            PERMISSION_STORAGE_READ_REQUEST_CODE);
+                }
+            }).show();
+
+        } else {
+            Snackbar.make(rootLayout, R.string.read_permission, Snackbar.LENGTH_SHORT).show();
+            ActivityCompat.requestPermissions(SplashScreenActivity.this,
+                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    PERMISSION_STORAGE_READ_REQUEST_CODE);
+
+        }
     }
 
     private boolean launchDownloader() {
 
+        Log.i(LOG_TAG, "launchDownloader");
+
         try {
+
             Intent notifierIntent = new Intent(this, SplashScreenActivity.this.getClass());
             notifierIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notifierIntent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -205,5 +278,36 @@ public class SplashScreenActivity extends Activity {
         }
 
         return false;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+
+        Log.i(LOG_TAG, "Receive onRequestPermissionsResult");
+
+        switch (requestCode) {
+            case PERMISSION_STORAGE_READ_REQUEST_CODE:
+
+                if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Log.i(LOG_TAG, "PERMISSION_STORAGE_READ_REQUEST_CODE grangted");
+                    runMainActivity(false);
+                } else {
+                    Snackbar.make(findViewById(R.id.requestPermission), R.string.permission_denied,
+                            Snackbar.LENGTH_SHORT)
+                            .show();
+                }
+                break;
+            case PERMISSION_STORAGE_WRITE_REQUEST_CODE:
+                if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Log.i(LOG_TAG, "PERMISSION_STORAGE_WRITE_REQUEST_CODE grangted");
+                    launchDownloader();
+                } else {
+                    Snackbar.make(findViewById(R.id.requestPermission), R.string.permission_denied,
+                            Snackbar.LENGTH_SHORT)
+                            .show();
+                }
+                break;
+
+        }
     }
 }

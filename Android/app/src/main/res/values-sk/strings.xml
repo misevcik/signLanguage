@@ -53,5 +53,8 @@
     <string name="video_control_side_view">Bočný pohlad</string>
     <string name="download_text">Sťahuju sa videa %d%%</string>
     <string name="download_fail">Sťahovanie videii zlyhalo.</string>
+    <string name="read_permission">Aplikácia vyžaduje prístup k uloženým videam s posunkami.</string>
+    <string name="write_permission">Aplikácia vyžaduje prístup pre uloženie videi</string>
+    <string name="permission_denied">Oprávnenie bolo zamietnute. Aplikácia nebude správne fungovať.</string>
 
 </resources>

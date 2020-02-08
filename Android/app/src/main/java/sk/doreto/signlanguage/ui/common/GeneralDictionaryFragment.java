@@ -83,9 +83,11 @@ public class GeneralDictionaryFragment extends Fragment implements IDictionaryFr
                 detailFragment.setDetailData(word);
                 selectedPosition = position;
 
-                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                ft.add(R.id.viewLayout, detailFragment);
-                ft.addToBackStack("DictionaryDetailFragment").commit();
+                if(!detailFragment.isAdded()) {
+                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                    ft.add(R.id.viewLayout, detailFragment);
+                    ft.addToBackStack("DictionaryDetailFragment").commit();
+                }
 
             }
         });

@@ -28,9 +28,6 @@ import io.fabric.sdk.android.Fabric;
 import sk.doreto.signlanguage.database.AppDatabase;
 
 
-import static com.google.android.vending.expansion.downloader.impl.DownloadsDB.LOG_TAG;
-
-
 class DownloaderClient extends BroadcastDownloaderClient {
 
     SplashScreenActivity activity;
@@ -43,11 +40,11 @@ class DownloaderClient extends BroadcastDownloaderClient {
     public void onDownloadStateChanged(int newState) {
 
         if (newState == STATE_COMPLETED) {
-            Log.i(LOG_TAG, "Download finished");
+            Log.i("DownloadActivity", "Download finished");
             activity.runMainActivity(false);
         } else if (newState >= 15) {
             int message = Helpers.getDownloaderStringResourceIDFromState(newState);
-            Log.e(LOG_TAG, "Download failed: " + message);
+            Log.e("DownloadActivity", "Download failed: " + message);
             activity.downloadFail();
         }
     }
@@ -59,7 +56,7 @@ class DownloaderClient extends BroadcastDownloaderClient {
             activity.setProgressBarValue((int)percent);
 
             String status = Helpers.getDownloadProgressPercent(progress.mOverallProgress, progress.mOverallTotal);
-            Log.i(LOG_TAG, "downloading progress: " + status);
+            Log.i("DownloadActivity", "downloading progress: " + status);
         }
     }
 }
@@ -182,20 +179,20 @@ public class SplashScreenActivity extends Activity implements  ActivityCompat.On
 
             if (Helpers.canWriteOBBFile(this)) {
 
-                Log.i(LOG_TAG, "OBB file is ready to download");
+                Log.i("DownloadActivity", "OBB file is ready to download");
                 boolean isRunning = launchDownloader();
                 return !isRunning;
 
             } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                Log.e(LOG_TAG, "Request write permission.");
+                Log.e("DownloadActivity", "Request write permission.");
                 requestStorageWritePermission();
                 return false;
             }
         } else if(!xAPKFilesReadable()) {
 
-            Log.e(LOG_TAG, "Cannot read APKx File.  Permission Perhaps?");
+            Log.e("DownloadActivity", "Cannot read APKx File.  Permission Perhaps?");
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                Log.e(LOG_TAG, "Need Permission!");
+                Log.e("DownloadActivity", "Need Permission!");
                 requestStorageReadPermission();
                 return false;
             }
@@ -255,7 +252,7 @@ public class SplashScreenActivity extends Activity implements  ActivityCompat.On
 
     private boolean launchDownloader() {
 
-        Log.i(LOG_TAG, "launchDownloader");
+        Log.i("DownloadActivity", "launchDownloader");
 
         try {
 
@@ -272,7 +269,7 @@ public class SplashScreenActivity extends Activity implements  ActivityCompat.On
                 return true;
             }
         } catch (PackageManager.NameNotFoundException e) {
-            Log.e(LOG_TAG, "Cannot find own package!");
+            Log.e("DownloadActivity", "Cannot find own package!");
             e.printStackTrace();
             return false;
         }
@@ -283,13 +280,13 @@ public class SplashScreenActivity extends Activity implements  ActivityCompat.On
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
 
-        Log.i(LOG_TAG, "Receive onRequestPermissionsResult");
+        Log.i("DownloadActivity", "Receive onRequestPermissionsResult");
 
         switch (requestCode) {
             case PERMISSION_STORAGE_READ_REQUEST_CODE:
 
                 if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Log.i(LOG_TAG, "PERMISSION_STORAGE_READ_REQUEST_CODE grangted");
+                    Log.i("DownloadActivity", "PERMISSION_STORAGE_READ_REQUEST_CODE grangted");
                     runMainActivity(false);
                 } else {
                     Snackbar.make(findViewById(R.id.requestPermission), R.string.permission_denied,
@@ -299,7 +296,7 @@ public class SplashScreenActivity extends Activity implements  ActivityCompat.On
                 break;
             case PERMISSION_STORAGE_WRITE_REQUEST_CODE:
                 if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Log.i(LOG_TAG, "PERMISSION_STORAGE_WRITE_REQUEST_CODE grangted");
+                    Log.i("DownloadActivity", "PERMISSION_STORAGE_WRITE_REQUEST_CODE grangted");
                     launchDownloader();
                 } else {
                     Snackbar.make(findViewById(R.id.requestPermission), R.string.permission_denied,

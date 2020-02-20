@@ -94,9 +94,11 @@ public class LectionWordListFragment extends Fragment implements IDictionaryFrag
                 detailFragment.setDetailData(word, getLabel(word));
                 selectedPosition = position;
 
-                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                ft.add(R.id.viewLayout, detailFragment);
-                ft.addToBackStack("DictionaryDetailFragment").commit();
+                if(!detailFragment.isAdded()) {
+                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                    ft.add(R.id.viewLayout, detailFragment);
+                    ft.addToBackStack("DictionaryDetailFragment").commit();
+                }
             }
         });
 

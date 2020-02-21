@@ -35,7 +35,7 @@ class InfoDetailViewController: UIViewController , MFMailComposeViewControllerDe
         let text = aboutText.text! as NSString
         let attrbuteString = NSMutableAttributedString(string: text as String)
         let dorteoRange = text.range(of: InfoTableViewController.EMAIL)
-        let github = text.range(of: "githube")
+        let github = text.range(of: "githube.")
         attrbuteString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: dorteoRange)
         attrbuteString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: github)
         attrbuteString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.blue, range: dorteoRange)
@@ -50,7 +50,7 @@ class InfoDetailViewController: UIViewController , MFMailComposeViewControllerDe
     @IBAction func tapLabel(gesture: UITapGestureRecognizer) {
         let text = aboutText.text! as NSString
         let dorteoRange = (text as NSString).range(of: InfoTableViewController.EMAIL)
-        let githubRange = (text as NSString).range(of: "githube")
+        let githubRange = (text as NSString).range(of: "githube.")
         
         if gesture.didTapAttributedTextInLabel(label: aboutText, inRange: dorteoRange) {
 

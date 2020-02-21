@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dSn-gq-qxt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dSn-gq-qxt">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -70,13 +70,13 @@
                                                                     <rect key="frame" x="0.0" y="2" width="355" height="41"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dictionary word" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXd-tb-Oxd" userLabel="Word">
-                                                                            <rect key="frame" x="16" y="10" width="199.5" height="21"/>
+                                                                            <rect key="frame" x="16" y="10" width="282" height="21"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qAN-Zu-a66" userLabel="Placeholder">
-                                                                            <rect key="frame" x="225.5" y="10" width="82.5" height="21"/>
+                                                                            <rect key="frame" x="308" y="10" width="0.0" height="21"/>
                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </view>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconHeart-black" translatesAutoresizingMaskIntoConstraints="NO" id="GYV-ht-Txx" userLabel="Favorite">
@@ -2335,7 +2335,7 @@
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="15" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uzr-Zv-SVI" userLabel="About">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="315" height="298.5"/>
-                                                                                        <mutableString key="text">Cieľom aplikacie je pomocť pri výučbe slovenského posunkového jazyka.  Chceme Vás poprosiť aby ste podporili rozvoj aplikácie svojou spatnou väzbou. V prípade akýchoľvek problémov alebo nápadov na zlepšenie nás neváhajte kontaktovať.  Zdrojove kódy projektu sú šírene formou "open source" - ak chcete prispieť k vývoju aplikácie, kontaktujte nás na info@dorteo.sk. Zdrojové kódy nájdete na githube.</mutableString>
+                                                                                        <mutableString key="text">Cieľom aplikacie je pomocť pri výučbe slovenského posunkového jazyka.  Chceme Vás poprosiť aby ste podporili rozvoj aplikácie svojou spatnou väzbou. V prípade akýchoľvek problémov alebo nápadov na zlepšenie nás neváhajte kontaktovať na info@dorteo.sk  Zdrojove kódy projektu sú šírene formou "open source" - ak chcete prispieť k vývoju aplikácie, kontaktujte nás na. Zdrojové kódy nájdete na githube.</mutableString>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                                         <color key="textColor" red="0.1843137255" green="0.1843137255" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                                                                         <nil key="highlightedColor"/>

@@ -18,7 +18,7 @@
 
     <string name="posunkuj_s_nami">"<b>Posunkuj</b> s nami"</string>
     <string name="info_about_project">"O projekte"</string>
-    <string name="info_about_text">"Cieľom aplikacie je pomocť pri výučbe slovenského posunkového jazyka. \n\nChceme Vás poprosiť aby ste podporili rozvoj aplikácie svojou spatnou väzbou. V prípade akýchoľvek problémov alebo nápadov na zlepšenie nás neváhajte kontaktovať.\n\nZdrojove kódy projektu sú šírene formou "open source" - ak chcete prispieť k vývoju aplikácie, kontaktujte nás na <b>info@dorteo.sk</b>. Zdrojové kódy nájdete na <a href="https://github.com/misevcik/signLanguage">githube</a>."</string>
+    <string name="info_about_text">"Cieľom aplikacie je pomocť pri výučbe slovenského posunkového jazyka. \n\nChceme Vás poprosiť aby ste podporili rozvoj aplikácie svojou spatnou väzbou. V prípade akýchoľvek problémov alebo nápadov na zlepšenie nás neváhajte kontaktovať <b>info@dorteo.sk</b>\n\nZdrojove kódy projektu sú šírene formou "open source" - ak chcete prispieť k vývoju aplikácie, kontaktujte nás. Zdrojové kódy nájdete na <a href="https://github.com/misevcik/signLanguage">githube</a>."</string>
     <string name="info_about_partners_title">"Partneri"</string>
     <string name="info_about_partners_text">"Michal Hefty - autor slov a posunkov\nAndrej Kováč - kamera"</string>
     <string name="info_about_eu">"Tento projekt je spolufinancovaný Európskou úniou z prostriedkov Európskeho socilálneho fondu - Európsky fond regionálneho rozvoja."</string>

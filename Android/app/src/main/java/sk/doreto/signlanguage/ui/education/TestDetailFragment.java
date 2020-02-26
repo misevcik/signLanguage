@@ -224,8 +224,8 @@ public class TestDetailFragment extends Fragment implements ITestDetailFragment 
     private void drawThumbnail() {
 
         try {
-            Drawable drawable = Utility.getThumbnail(getContext(), videoPath);
-            videoPreview.setImageDrawable(drawable);
+            int resourceId = Utility.getResourceId(getContext(), videoPath, "raw");
+            videoPreview.setImageResource(resourceId);
         }
         catch (Exception e){
 

@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.util.Log;
 import android.view.View;
 
+import sk.doreto.signlanguage.R;
 import sk.doreto.signlanguage.database.AppDatabase;
 import sk.doreto.signlanguage.database.Lection;
 

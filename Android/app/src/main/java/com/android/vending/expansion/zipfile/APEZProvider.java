@@ -239,7 +239,8 @@ public abstract class APEZProvider extends ContentProvider {
 				} else if ( projection[i].equals(COMPRESSIONTYPE) ) {
 					intProjection[i] = COMPTYPE_IDX;
 				} else {
-					throw new RuntimeException();
+					intProjection[i] = ZIPFILE_IDX;
+					//throw new RuntimeException();
 				}
 			}
 		}

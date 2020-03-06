@@ -85,7 +85,7 @@ private extension DictionaryViewController {
             keyPath = "word.SKfirstUpperCaseChar"
         } else {
             let localization = Locale.current.languageCode
-            keyPath = localization == "sk" ? "word.SKfirstUpperCaseChar" : "word.UniversalfirstUpperCaseChar"
+            keyPath = (localization == "sk" || localization == "cs") ? "word.SKfirstUpperCaseChar" : "word.UniversalfirstUpperCaseChar"
         }
         
         self.coreDataStack = appDelegate.coreDataStack

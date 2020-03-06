@@ -46,7 +46,9 @@ class VideoHandler {
         }
         
         if speed == 1.0 {
-            let videoUrl = Bundle.main.url(forResource: self.videoPath, withExtension: "mp4")!
+            guard let videoUrl = Bundle.main.url(forResource: self.videoPath, withExtension: "mp4") else {
+                 return
+            }
             let item = AVPlayerItem(url: videoUrl)
             self.playerViewController.player!.replaceCurrentItem(with: item)
             return
@@ -71,16 +73,16 @@ class VideoHandler {
     }
     
     fileprivate func loadVideoData() {
-        if videoPath!.isEmpty == false {
-            
-            let videoUrl = Bundle.main.url(forResource: self.videoPath, withExtension: "mp4")!
-            videoPreview.image = Utils.getVideoImage(url: videoUrl, at: 2)
-            playerViewController.player = AVPlayer(url: videoUrl)
-            
-        } else {
-            videoPreview.image = UIImage()
-            playerViewController.player = AVPlayer()
+        
+        guard let videoUrl = Bundle.main.url(forResource: self.videoPath, withExtension: "mp4") else {
+             videoPreview.image = UIImage()
+             playerViewController.player = AVPlayer()
+             return
         }
+        
+        videoPreview.image = Utils.getVideoImage(url: videoUrl, at: 2)
+        playerViewController.player = AVPlayer(url: videoUrl)
+
     }
     
     

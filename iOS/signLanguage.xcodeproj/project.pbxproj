@@ -100,6 +100,8 @@
 		38E4638422ADA628002394A2 /* 18 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 18; sourceTree = "<group>"; };
 		38E4638622ADAACD002394A2 /* 20 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 20; sourceTree = "<group>"; };
 		38E4638722ADAACD002394A2 /* 19 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 19; sourceTree = "<group>"; };
+		38E72E8924128E1200E42323 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/MainViewController.strings; sourceTree = "<group>"; };
+		38E72E8A24128E1300E42323 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		38F029AA22AEEFDE0030F247 /* 21 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 21; sourceTree = "<group>"; };
 		38F029AB22AEEFDE0030F247 /* 22 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 22; sourceTree = "<group>"; };
 		38F029AE22AEF1EB0030F247 /* 23 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 23; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 			knownRegions = (
 				en,
 				Base,
+				cs,
 			);
 			mainGroup = 54B12C5A21D11FBC00A9E2C1;
 			productRefGroup = 54B12C6421D11FBC00A9E2C1 /* Products */;
@@ -548,6 +551,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				54B12C6B21D11FBC00A9E2C1 /* Base */,
+				38E72E8924128E1200E42323 /* cs */,
 			);
 			name = MainViewController.storyboard;
 			sourceTree = "<group>";
@@ -557,6 +561,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				54B12C7021D11FBD00A9E2C1 /* Base */,
+				38E72E8A24128E1300E42323 /* cs */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

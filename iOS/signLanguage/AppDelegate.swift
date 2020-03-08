@@ -36,10 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-        return isFullScreen == true ? UIInterfaceOrientationMask.all : UIInterfaceOrientationMask.portrait
-    }
-    
     @objc func willEnterFullScreen (notification: NSNotification) {
         isFullScreen = true
     }

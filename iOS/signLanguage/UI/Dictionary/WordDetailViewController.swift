@@ -51,6 +51,15 @@ class WordDetailViewController : UIViewController {
         updateFavoriteButton(dbWord.favorite)
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+       super.viewWillTransition(to: size, with: coordinator)
+
+       if UIDevice.current.orientation.isLandscape {
+            videoImage.contentMode = .scaleAspectFit
+       } else {
+            videoImage.contentMode = .scaleAspectFill
+       }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -164,7 +173,7 @@ private extension WordDetailViewController {
         }
         videoImage.image = videoHandler.getPreviewImage()
         videoImage.clipsToBounds = true
-        videoImage.contentMode = .scaleAspectFill
+        videoImage.contentMode = Utils.getPreviewVideoDetailAspcet()
     }
     
     private func updateTableLayout() {

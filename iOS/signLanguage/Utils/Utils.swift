@@ -38,6 +38,20 @@ class Utils {
         return UIImage(cgImage: image)
     }
     
+    static func getPreviewVideoDetailAspcet() -> UIView.ContentMode {
+        
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return .scaleAspectFill
+        }
+        
+        if UIDevice.current.orientation.isPortrait {
+            return .scaleAspectFill
+            
+        } else  {
+            return .scaleAspectFit
+            
+        }
+    }
     
     static func gradeCalculator(_ result : Int) -> String {
         if result < 50 {

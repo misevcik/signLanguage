@@ -134,8 +134,11 @@ public class GeneralDictionaryDetailFragment extends Fragment implements IDetail
     }
 
     private void drawThumbnail() {
-        String resource = this.videoRotate ? word.getVideoSide() : word.getVideoFront();
-        int resourceId = Utility.getResourceId(getContext(), resource, "raw");
-        videoPreview.setImageResource(resourceId);
+
+        if(word != null) {
+            String resource = this.videoRotate ? word.getVideoSide() : word.getVideoFront();
+            int resourceId = Utility.getResourceId(getContext(), resource, "raw");
+            videoPreview.setImageResource(resourceId);
+        }
     }
 }

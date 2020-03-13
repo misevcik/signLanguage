@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,8 +17,7 @@
 		3858C5CB22ABFB9A00501DB6 /* 15 in Resources */ = {isa = PBXBuildFile; fileRef = 3858C5CA22ABFB9A00501DB6 /* 15 */; };
 		3858C5CD22ABFBA400501DB6 /* 16 in Resources */ = {isa = PBXBuildFile; fileRef = 3858C5CC22ABFBA400501DB6 /* 16 */; };
 		38A3240222B0443000DACDCD /* 29 in Resources */ = {isa = PBXBuildFile; fileRef = 38A3240122B0443000DACDCD /* 29 */; };
-		38B313012304A72C00CC22F5 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B312FF2304A72C00CC22F5 /* Crashlytics.framework */; };
-		38B313022304A72C00CC22F5 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B313002304A72C00CC22F5 /* Fabric.framework */; };
+		38B0B4C2241B74AF00010627 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 38B0B4C1241B74AE00010627 /* GoogleService-Info.plist */; };
 		38BFB00C22ABA92A00D47E91 /* 5 in Resources */ = {isa = PBXBuildFile; fileRef = 38BFB00B22ABA92900D47E91 /* 5 */; };
 		38BFB00E22ABB44900D47E91 /* 6 in Resources */ = {isa = PBXBuildFile; fileRef = 38BFB00D22ABB44800D47E91 /* 6 */; };
 		38BFB01022ABB66400D47E91 /* 7 in Resources */ = {isa = PBXBuildFile; fileRef = 38BFB00F22ABB66400D47E91 /* 7 */; };
@@ -78,9 +77,11 @@
 		54CE808B22539DCE00D73B94 /* CancelTestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54CE808922539DCE00D73B94 /* CancelTestView.xib */; };
 		54EA763521F677BD00A5C50C /* EducationDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EA763421F677BD00A5C50C /* EducationDetailCell.swift */; };
 		54EF9ED522708FD200BF4A03 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EF9ED422708FD200BF4A03 /* CoreDataStack.swift */; };
+		AE7FCCD937EE81889688CB46 /* Pods_signLanguage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 343E616BD9906E31815FB8AE /* Pods_signLanguage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		343E616BD9906E31815FB8AE /* Pods_signLanguage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_signLanguage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3858C5BC22ABE10B00501DB6 /* 8 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 8; sourceTree = "<group>"; };
 		3858C5BE22ABE3D100501DB6 /* 9 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 9; sourceTree = "<group>"; };
 		3858C5C022ABE5BA00501DB6 /* 10 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 10; sourceTree = "<group>"; };
@@ -91,8 +92,7 @@
 		3858C5CA22ABFB9A00501DB6 /* 15 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 15; sourceTree = "<group>"; };
 		3858C5CC22ABFBA400501DB6 /* 16 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 16; sourceTree = "<group>"; };
 		38A3240122B0443000DACDCD /* 29 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 29; sourceTree = "<group>"; };
-		38B312FF2304A72C00CC22F5 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		38B313002304A72C00CC22F5 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		38B0B4C1241B74AE00010627 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		38BFB00B22ABA92900D47E91 /* 5 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 5; sourceTree = "<group>"; };
 		38BFB00D22ABB44800D47E91 /* 6 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 6; sourceTree = "<group>"; };
 		38BFB00F22ABB66400D47E91 /* 7 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 7; sourceTree = "<group>"; };
@@ -156,6 +156,8 @@
 		54CE808922539DCE00D73B94 /* CancelTestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CancelTestView.xib; sourceTree = "<group>"; };
 		54EA763421F677BD00A5C50C /* EducationDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EducationDetailCell.swift; sourceTree = "<group>"; };
 		54EF9ED422708FD200BF4A03 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		8657D6F4F1FC8F7194D65816 /* Pods-signLanguage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-signLanguage.release.xcconfig"; path = "Target Support Files/Pods-signLanguage/Pods-signLanguage.release.xcconfig"; sourceTree = "<group>"; };
+		A6ACC0A600614806E22C33F6 /* Pods-signLanguage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-signLanguage.debug.xcconfig"; path = "Target Support Files/Pods-signLanguage/Pods-signLanguage.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,8 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38B313012304A72C00CC22F5 /* Crashlytics.framework in Frameworks */,
-				38B313022304A72C00CC22F5 /* Fabric.framework in Frameworks */,
+				AE7FCCD937EE81889688CB46 /* Pods_signLanguage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,8 +303,7 @@
 		54A386AF22199DDC00D35569 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				38B312FF2304A72C00CC22F5 /* Crashlytics.framework */,
-				38B313002304A72C00CC22F5 /* Fabric.framework */,
+				343E616BD9906E31815FB8AE /* Pods_signLanguage.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -311,10 +311,12 @@
 		54B12C5A21D11FBC00A9E2C1 = {
 			isa = PBXGroup;
 			children = (
+				38B0B4C1241B74AE00010627 /* GoogleService-Info.plist */,
 				549894782212234900024E77 /* Videos */,
 				54B12C6521D11FBC00A9E2C1 /* signLanguage */,
 				54B12C6421D11FBC00A9E2C1 /* Products */,
 				54A386AF22199DDC00D35569 /* Frameworks */,
+				FDA99A83CC1D413F8B60732D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -362,6 +364,15 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		FDA99A83CC1D413F8B60732D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A6ACC0A600614806E22C33F6 /* Pods-signLanguage.debug.xcconfig */,
+				8657D6F4F1FC8F7194D65816 /* Pods-signLanguage.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -369,11 +380,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 54B12C7521D11FBD00A9E2C1 /* Build configuration list for PBXNativeTarget "signLanguage" */;
 			buildPhases = (
+				6232F79D6594364C5972A6F4 /* [CP] Check Pods Manifest.lock */,
 				54B12C5F21D11FBC00A9E2C1 /* Sources */,
 				54B12C6021D11FBC00A9E2C1 /* Frameworks */,
 				54B12C6121D11FBC00A9E2C1 /* Resources */,
 				54A386B122199E6000D35569 /* ShellScript */,
-				38B312FE2304A6DF00CC22F5 /* ShellScript */,
+				7E0F7507DAA73D0F97B39A6C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -435,6 +447,7 @@
 				54B12C7121D11FBD00A9E2C1 /* LaunchScreen.storyboard in Resources */,
 				38F029B922AEFB0E0030F247 /* 28 in Resources */,
 				38A3240222B0443000DACDCD /* 29 in Resources */,
+				38B0B4C2241B74AF00010627 /* GoogleService-Info.plist in Resources */,
 				54B12C6E21D11FBD00A9E2C1 /* Assets.xcassets in Resources */,
 				38F029B122AEF35C0030F247 /* 24 in Resources */,
 				3858C5BD22ABE10C00501DB6 /* 8 in Resources */,
@@ -467,24 +480,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		38B312FE2304A6DF00CC22F5 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PROJECT_DIR}/Fabric.framework/run\" 4b8bd6293df8570ffab69e9aea09c2768b5c83a2 4b5725ce18cf63179f6ccaad1b58c1376a3c472032f58c9772909ed49dc4929c\n";
-		};
 		54A386B122199E6000D35569 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -501,6 +496,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		6232F79D6594364C5972A6F4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-signLanguage-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7E0F7507DAA73D0F97B39A6C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-signLanguage/Pods-signLanguage-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-signLanguage/Pods-signLanguage-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-signLanguage/Pods-signLanguage-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -689,6 +723,7 @@
 		};
 		54B12C7621D11FBD00A9E2C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6ACC0A600614806E22C33F6 /* Pods-signLanguage.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -713,6 +748,7 @@
 		};
 		54B12C7721D11FBD00A9E2C1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8657D6F4F1FC8F7194D65816 /* Pods-signLanguage.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

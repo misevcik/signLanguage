@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>96250009416-uqim6h57nbh6ocl2t8r54uu0dfq5fgpe.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.96250009416-uqim6h57nbh6ocl2t8r54uu0dfq5fgpe</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBImDnn8pCaxAU3mBEUe3JqiRT40wH-5Rc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>96250009416</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>sk.dorteo.sign-language</string>
+	<key>PROJECT_ID</key>
+	<string>sign-language-ios</string>
+	<key>STORAGE_BUCKET</key>
+	<string>sign-language-ios.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:96250009416:ios:030d5f51a9c72f9449457d</string>
+	<key>DATABASE_URL</key>
+	<string>https://sign-language-ios.firebaseio.com</string>
+</dict>
+</plist>

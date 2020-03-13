@@ -9,8 +9,7 @@
 import UIKit
 import CoreData
 import os.log
-import Fabric
-import Crashlytics
+import Firebase
 
 struct Log {
     static var general = OSLog(subsystem: "sk.dorteo.signLanguage", category: "dorteo")
@@ -26,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        Fabric.with([Crashlytics.self])
+        FirebaseApp.configure()
         
         preloadData()
         
